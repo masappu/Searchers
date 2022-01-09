@@ -1,14 +1,13 @@
 //
-//  ViewController.swift
+//  GourmandCategoryViewController.swift
 //  Seachers
 //
-//  Created by 都甲裕希 on 2022/01/09.
+//  Created by 山口誠士 on 2022/01/10.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
-    
+class GourmandCategoryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,7 +15,6 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
 
     /*
     // MARK: - Navigation

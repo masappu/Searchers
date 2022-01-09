@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OcU-Db-H1X">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OcU-Db-H1X">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -35,7 +35,6 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="goGourmadSearchVC:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xur-FO-3AA"/>
-                                    <action selector="goNetShoppingVC:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BNo-6P-KHk"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fnd-lv-8yB">
@@ -49,7 +48,7 @@
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="goNetShoppingVC:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AVv-gz-dYl"/>
+                                    <action selector="goTravelSearchVC:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KmX-6j-odJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4D-9d-icM">
@@ -66,37 +65,26 @@
                                     <action selector="goNetShoppingVC:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ggK-AE-ejc"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3S8-Wf-2kg">
+                                <rect key="frame" x="180" y="775" width="234" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="お気に入り一覧へ">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="16"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="goFavView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mtq-MJ-zzZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="c8f-9I-bgO"/>
-                    <connections>
-                        <segue destination="NHh-2I-mHG" kind="show" id="X6N-eV-LAV"/>
-                        <segue destination="v0f-za-sNZ" kind="show" id="H8U-i2-iGQ"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="97.767857142857139"/>
-        </scene>
-        <!--NetShopping-->
-        <scene sceneID="Auo-yF-9ob">
-            <objects>
-                <viewControllerPlaceholder storyboardName="NetShopping" id="NHh-2I-mHG" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="gUw-hI-5CI"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rTW-7h-VdB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1979" y="7"/>
-        </scene>
-        <!--TravelSearch-->
-        <scene sceneID="Xu7-b9-ewp">
-            <objects>
-                <viewControllerPlaceholder storyboardName="TravelSearch" id="4tu-yg-6pF" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4eP-GV-6jq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1997" y="153"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0wY-E9-eCT">
