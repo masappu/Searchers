@@ -1,5 +1,5 @@
 //
-//  GourmandSearchViewController.swift
+//  TravelSearchViewController.swift
 //  Seachers
 //
 //  Created by 山口誠士 on 2022/01/10.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GourmandSearchViewController: UIViewController {
+class TravelSearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,6 @@ class GourmandSearchViewController: UIViewController {
         let mapVC = navigationController.topViewController as! MapViewController
         self.navigationController?.pushViewController(mapVC, animated: true)
     }
-    
     
     /*
     // MARK: - Navigation
