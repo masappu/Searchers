@@ -11,4 +11,5 @@ pod 'GooglePlaces'
 pod 'SwiftyJSON'
 pod 'Alamofire'
 pod 'SDWebImage'
+pod 'RealmSwift'
 end
