@@ -20,6 +20,13 @@ class HomeViewController: UIViewController {
         navigationController?.pushViewController(NetShopVC, animated: true)
     }
     
+    @IBAction func goGourmadSearchVC(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "GourmandSearch", bundle: nil)
+        let gourmandSearchVC = storyboard.instantiateViewController(withIdentifier: "gourmandSearchVC") as! GourmandSearchViewController
+        navigationController?.pushViewController(gourmandSearchVC, animated: true)
+    }
+    
+    
 
 }
 

@@ -18,6 +18,8 @@
 		87E10C6D278A9680005AAA4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87E10C6B278A9680005AAA4A /* LaunchScreen.storyboard */; };
 		87E10C7A278A9E00005AAA4A /* NetShopping.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87E10C79278A9E00005AAA4A /* NetShopping.storyboard */; };
 		87E10C7E278A9EB4005AAA4A /* NetShoppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E10C7D278A9EB4005AAA4A /* NetShoppingViewController.swift */; };
+		87E10C80278AAA3A005AAA4A /* GourmandSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87E10C7F278AAA3A005AAA4A /* GourmandSearch.storyboard */; };
+		87E10C83278ADD89005AAA4A /* GourmandSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E10C82278ADD89005AAA4A /* GourmandSearchViewController.swift */; };
 		C0F0D02932466EB2F5332F9E /* Pods_Seachers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02AC76828558B154338808DE /* Pods_Seachers.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +40,8 @@
 		87E10C6E278A9680005AAA4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87E10C79278A9E00005AAA4A /* NetShopping.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NetShopping.storyboard; sourceTree = "<group>"; };
 		87E10C7D278A9EB4005AAA4A /* NetShoppingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetShoppingViewController.swift; sourceTree = "<group>"; };
+		87E10C7F278AAA3A005AAA4A /* GourmandSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GourmandSearch.storyboard; sourceTree = "<group>"; };
+		87E10C82278ADD89005AAA4A /* GourmandSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GourmandSearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +137,7 @@
 				220A0BEB278ADB79000F4AD1 /* TravelSearch.storyboard */,
 				87E10C6B278A9680005AAA4A /* LaunchScreen.storyboard */,
 				87E10C79278A9E00005AAA4A /* NetShopping.storyboard */,
+				87E10C7F278AAA3A005AAA4A /* GourmandSearch.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -151,6 +156,14 @@
 				87E10C7D278A9EB4005AAA4A /* NetShoppingViewController.swift */,
 			);
 			path = NetShoppingViewController;
+			sourceTree = "<group>";
+		};
+		87E10C81278ADD5A005AAA4A /* GourmandSearchViewController */ = {
+			isa = PBXGroup;
+			children = (
+				87E10C82278ADD89005AAA4A /* GourmandSearchViewController.swift */,
+			);
+			path = GourmandSearchViewController;
 			sourceTree = "<group>";
 		};
 		C2E58B1126870D992F1FFBE7 /* Pods */ = {
@@ -228,6 +241,7 @@
 				220A0BEC278ADB79000F4AD1 /* TravelSearch.storyboard in Resources */,
 				87E10C6A278A9680005AAA4A /* Assets.xcassets in Resources */,
 				87E10C68278A967F005AAA4A /* Main.storyboard in Resources */,
+				87E10C80278AAA3A005AAA4A /* GourmandSearch.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +315,7 @@
 				87E10C7E278A9EB4005AAA4A /* NetShoppingViewController.swift in Sources */,
 				220A0BE6278ACED3000F4AD1 /* PlaceSearchPresenter.swift in Sources */,
 				87E10C65278A967F005AAA4A /* HomeViewController.swift in Sources */,
+				87E10C83278ADD89005AAA4A /* GourmandSearchViewController.swift in Sources */,
 				87E10C61278A967F005AAA4A /* AppDelegate.swift in Sources */,
 				87E10C63278A967F005AAA4A /* SceneDelegate.swift in Sources */,
 			);
