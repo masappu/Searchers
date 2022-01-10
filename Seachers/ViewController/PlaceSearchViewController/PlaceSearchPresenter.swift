@@ -13,6 +13,6 @@ protocol PlaceSearchPresenterInput{
 
 class PlaceSearchPresenter: PlaceSearchPresenterInput{
     func viewDidLoad() {
-        <#code#>
+        print(" ")
     }
 }
