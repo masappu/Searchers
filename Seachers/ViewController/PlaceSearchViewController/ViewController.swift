@@ -9,7 +9,6 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    private var placeSearchPresenter: PlaceSearchPresenter!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,11 +16,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        placeSearchPresenter.viewDidLoad()
-    }
-    
+
 
     /*
     // MARK: - Navigation
