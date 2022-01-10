@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		220A0BEC278ADB79000F4AD1 /* TravelSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 220A0BEB278ADB79000F4AD1 /* TravelSearch.storyboard */; };
+		86514DEA278C0EC2003839DF /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86514DE9278C0EC2003839DF /* MapPresenter.swift */; };
 		87A49747278B4DDA00D1D33A /* GourmandSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A49746278B4DD900D1D33A /* GourmandSearchViewController.swift */; };
 		87A4974B278B536A00D1D33A /* TravelSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A4974A278B536A00D1D33A /* TravelSearchViewController.swift */; };
 		87A4974E278B648F00D1D33A /* WebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87A4974D278B648F00D1D33A /* WebView.storyboard */; };
@@ -38,6 +39,7 @@
 		220A0BEB278ADB79000F4AD1 /* TravelSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TravelSearch.storyboard; sourceTree = "<group>"; };
 		246EEE1674E45709A3BAA599 /* Pods-Seachers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seachers.release.xcconfig"; path = "Target Support Files/Pods-Seachers/Pods-Seachers.release.xcconfig"; sourceTree = "<group>"; };
 		3A6F3AEA775E55F36E45865B /* Pods-Seachers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seachers.debug.xcconfig"; path = "Target Support Files/Pods-Seachers/Pods-Seachers.debug.xcconfig"; sourceTree = "<group>"; };
+		86514DE9278C0EC2003839DF /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
 		87A49746278B4DD900D1D33A /* GourmandSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GourmandSearchViewController.swift; sourceTree = "<group>"; };
 		87A4974A278B536A00D1D33A /* TravelSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSearchViewController.swift; sourceTree = "<group>"; };
 		87A4974D278B648F00D1D33A /* WebView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebView.storyboard; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				87A49754278B664500D1D33A /* MapViewController.swift */,
+				86514DE9278C0EC2003839DF /* MapPresenter.swift */,
 			);
 			path = MapViewController;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87A49768278B714F00D1D33A /* FavOfNetShoppingViewController.swift in Sources */,
+				86514DEA278C0EC2003839DF /* MapPresenter.swift in Sources */,
 				87A4974B278B536A00D1D33A /* TravelSearchViewController.swift in Sources */,
 				87A4975A278B671F00D1D33A /* WebViewController.swift in Sources */,
 				87E10C7E278A9EB4005AAA4A /* NetShoppingViewController.swift in Sources */,
