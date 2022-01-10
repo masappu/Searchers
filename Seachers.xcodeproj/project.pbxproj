@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		220A0BEC278ADB79000F4AD1 /* TravelSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 220A0BEB278ADB79000F4AD1 /* TravelSearch.storyboard */; };
+		22F3A8E6278C0E2500A15D68 /* PlaceSearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F3A8E5278C0E2500A15D68 /* PlaceSearchPresenter.swift */; };
 		87A49747278B4DDA00D1D33A /* GourmandSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A49746278B4DD900D1D33A /* GourmandSearchViewController.swift */; };
 		87A4974B278B536A00D1D33A /* TravelSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A4974A278B536A00D1D33A /* TravelSearchViewController.swift */; };
 		87A4974E278B648F00D1D33A /* WebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87A4974D278B648F00D1D33A /* WebView.storyboard */; };
@@ -36,6 +37,7 @@
 /* Begin PBXFileReference section */
 		02AC76828558B154338808DE /* Pods_Seachers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Seachers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		220A0BEB278ADB79000F4AD1 /* TravelSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TravelSearch.storyboard; sourceTree = "<group>"; };
+		22F3A8E5278C0E2500A15D68 /* PlaceSearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchPresenter.swift; sourceTree = "<group>"; };
 		246EEE1674E45709A3BAA599 /* Pods-Seachers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seachers.release.xcconfig"; path = "Target Support Files/Pods-Seachers/Pods-Seachers.release.xcconfig"; sourceTree = "<group>"; };
 		3A6F3AEA775E55F36E45865B /* Pods-Seachers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seachers.debug.xcconfig"; path = "Target Support Files/Pods-Seachers/Pods-Seachers.debug.xcconfig"; sourceTree = "<group>"; };
 		87A49746278B4DD900D1D33A /* GourmandSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GourmandSearchViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				87A49756278B668000D1D33A /* PlaceSearchViewController.swift */,
+				22F3A8E5278C0E2500A15D68 /* PlaceSearchPresenter.swift */,
 			);
 			path = PlaceSearchViewController;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 				87A4975D278B678600D1D33A /* GourmandCategoryViewController.swift in Sources */,
 				87A49757278B668000D1D33A /* PlaceSearchViewController.swift in Sources */,
 				87E10C61278A967F005AAA4A /* AppDelegate.swift in Sources */,
+				22F3A8E6278C0E2500A15D68 /* PlaceSearchPresenter.swift in Sources */,
 				87E10C63278A967F005AAA4A /* SceneDelegate.swift in Sources */,
 				87A49766278B713B00D1D33A /* FavOfGourmandViewController.swift in Sources */,
 				87A49755278B664500D1D33A /* MapViewController.swift in Sources */,

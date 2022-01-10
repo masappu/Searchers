@@ -8,11 +8,18 @@
 import UIKit
 
 class PlaceSearchViewController: UIViewController {
+    
+    private var placeSearchPresenter: PlaceSearchPresenter!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        placeSearchPresenter.viewDidLoad()
     }
     
 
