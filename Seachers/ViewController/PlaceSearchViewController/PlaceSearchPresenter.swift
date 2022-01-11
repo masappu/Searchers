@@ -1,6 +1,6 @@
 //
 //  PlaceSearchPresenter.swift
-//  
+//  Seachers
 //
 //  Created by 都甲裕希 on 2022/01/11.
 //
@@ -13,6 +13,5 @@ protocol PlaceSearchPresenterInput{
 
 class PlaceSearchPresenter: PlaceSearchPresenterInput{
     func viewDidLoad() {
-        <#code#>
     }
 }
