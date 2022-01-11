@@ -73,15 +73,6 @@
                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="16"/>
                                 </buttonConfiguration>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsT-W8-l0E">
-                                <rect key="frame" x="165" y="694" width="169" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="mapVIew（仮ボタン）"/>
-                                <connections>
-                                    <segue destination="Aea-Rf-4Dg" kind="show" id="XN1-xG-6mc"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -131,16 +122,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AUi-ns-HaK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1726" y="343"/>
-        </scene>
-        <!--MapView-->
-        <scene sceneID="DfG-NA-4KP">
-            <objects>
-                <viewControllerPlaceholder storyboardName="MapView" id="e38-cb-2on" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="xEx-zF-6EP"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7rd-Pt-azc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1643" y="511"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0wY-E9-eCT">
