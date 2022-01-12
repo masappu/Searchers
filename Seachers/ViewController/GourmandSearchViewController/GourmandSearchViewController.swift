@@ -8,7 +8,12 @@
 import UIKit
 
 class GourmandSearchViewController: UIViewController {
-
+    
+    @IBOutlet weak var tableView: UITableView!
+    private var isDatePickerShowing = false
+    private var PickerCell:ReservationDateCell?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
