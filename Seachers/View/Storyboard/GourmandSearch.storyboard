@@ -48,10 +48,10 @@
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="116.51785714285714"/>
         </scene>
-        <!--Gourmand Category View Controller-->
+        <!--Gourmand Genre View Controller-->
         <scene sceneID="h4l-5U-eeO">
             <objects>
-                <viewController storyboardIdentifier="gourmandCategoryVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Pj-9P-drc" customClass="GourmandCategoryViewController" customModule="Seachers" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="gourmandGenreVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Pj-9P-drc" customClass="GourmandGenreViewController" customModule="Seachers" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6og-Wa-7V7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
