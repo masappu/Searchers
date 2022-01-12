@@ -8,6 +8,11 @@
 import UIKit
 
 class MemberCountCell: UITableViewCell {
+    
+    @IBOutlet weak var memberCountLabel: UILabel!
+    @IBOutlet weak var plusButton: UIButton!
+    @IBOutlet weak var minusButton: UIButton!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
