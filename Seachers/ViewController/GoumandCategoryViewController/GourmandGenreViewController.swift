@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GourmandCategoryViewController: UIViewController {
+class GourmandGenreViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
