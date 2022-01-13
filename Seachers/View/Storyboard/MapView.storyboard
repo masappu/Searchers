@@ -16,9 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WLP-bu-67o" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
-                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9By-kX-89q">
                                 <rect key="frame" x="0.0" y="646" width="414" height="202"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -34,17 +31,10 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="WLP-bu-67o" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="19o-zp-xg9"/>
-                            <constraint firstItem="WLP-bu-67o" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Ogt-km-rhh"/>
-                            <constraint firstItem="WLP-bu-67o" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="bpZ-Ej-F0y"/>
-                            <constraint firstAttribute="bottom" secondItem="WLP-bu-67o" secondAttribute="bottom" id="gqH-1o-cJD"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RTq-5W-ybX"/>
                     <connections>
                         <outlet property="collectionView" destination="9By-kX-89q" id="Nno-bZ-5TW"/>
-                        <outlet property="mapView" destination="WLP-bu-67o" id="gRG-U0-pEU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
