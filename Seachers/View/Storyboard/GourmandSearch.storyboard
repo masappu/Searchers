@@ -51,9 +51,9 @@
         <!--Gourmand Genre View Controller-->
         <scene sceneID="h4l-5U-eeO">
             <objects>
-                <viewController storyboardIdentifier="gourmandGenreVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Pj-9P-drc" customClass="GourmandGenreViewController" customModule="Seachers" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="gourmandGenreVC" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Pj-9P-drc" customClass="GourmandGenreViewController" customModule="Seachers" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6og-Wa-7V7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="Nth-ix-DgV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
