@@ -1,4 +1,4 @@
-//
+    //
 //  MapViewController.swift
 //  Seachers
 //
@@ -8,19 +8,25 @@
 import UIKit
 import GoogleMaps
 
-enum CellType {
-    case goumand
-    case travel
-}
 
 class MapViewController: UIViewController {
-
-    @IBOutlet weak var mapView: GMSMapView!
+    
+    
     @IBOutlet weak var collectionView: UICollectionView!
-    var mapview2 = GMSMapView()
+    var googleMap = GMSMapView()
+    
+    private var presenter: MapPresenterInput!
+    
+    func inject(presenter: MapPresenter) {
+        self.presenter = presenter
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        let model = MapModel()
+        let presenter = MapPresenter(view: self)
+        inject(presenter: presenter)
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -29,29 +35,14 @@ class MapViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.isPagingEnabled = true
         collectionView.register(UINib(nibName: "GoumandCell", bundle: nil), forCellWithReuseIdentifier: "GoumandCell")
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setupMap()
-    }
-    
-    func setupMap() {
-        let camera = GMSCameraPosition.camera(withLatitude: 35.68154,longitude: 139.752498, zoom: 13)
-        mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2DMake(35.68154,139.752498)
-        marker.title = "The Imperial Palace"
-        marker.snippet = "Tokyo"
-        marker.map = mapView
+        presenter.reloadData()
         
-//        let camera = GMSCameraPosition.camera(withLatitude: 35.68154,longitude: 139.752498, zoom: 13)
-//        mapview2 = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-//        mapview2.isMyLocationEnabled = true
-//        view.addSubview(mapview2)
     }
     
 }
@@ -98,3 +89,25 @@ extension MapViewController: UICollectionViewDelegateFlowLayout{
     
 }
 
+
+extension MapViewController: MapPresenterOutput{
+    
+    func setupMap() {
+        let camera = GMSCameraPosition.camera(withLatitude: 35.68154,longitude: 139.752498, zoom: 15)
+        let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height), camera: camera)
+        self.googleMap = mapView
+        self.view.addSubview(googleMap)
+        self.view.sendSubviewToBack(googleMap)
+        
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2DMake(35.68154,139.752498)
+        //        marker.title = "The Imperial Palace"
+        //        marker.snippet = "Tokyo"
+        marker.map = mapView
+    }
+    
+    func reloadMap() {
+        setupMap()
+    }
+    
+}
