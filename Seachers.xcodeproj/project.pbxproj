@@ -10,10 +10,12 @@
 		220A0BEC278ADB79000F4AD1 /* TravelSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 220A0BEB278ADB79000F4AD1 /* TravelSearch.storyboard */; };
 		2276BDD0278D362C00DBB69A /* PlaceSearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2276BDCF278D362C00DBB69A /* PlaceSearchPresenter.swift */; };
 		86514DEA278C0EC2003839DF /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86514DE9278C0EC2003839DF /* MapPresenter.swift */; };
+<<<<<<< HEAD
 		86514DEF278DB217003839DF /* GoumandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86514DED278DB217003839DF /* GoumandCell.swift */; };
 		86514DF0278DB217003839DF /* GoumandCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86514DEE278DB217003839DF /* GoumandCell.xib */; };
 		86514DF3278E7D06003839DF /* TravelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86514DF1278E7D05003839DF /* TravelCell.swift */; };
 		86514DF4278E7D06003839DF /* TravelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86514DF2278E7D05003839DF /* TravelCell.xib */; };
+=======
 		87A49747278B4DDA00D1D33A /* GourmandSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A49746278B4DD900D1D33A /* GourmandSearchViewController.swift */; };
 		87A4974B278B536A00D1D33A /* TravelSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A4974A278B536A00D1D33A /* TravelSearchViewController.swift */; };
 		87A4974E278B648F00D1D33A /* WebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87A4974D278B648F00D1D33A /* WebView.storyboard */; };
@@ -22,11 +24,20 @@
 		87A49755278B664500D1D33A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A49754278B664500D1D33A /* MapViewController.swift */; };
 		87A49757278B668000D1D33A /* PlaceSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A49756278B668000D1D33A /* PlaceSearchViewController.swift */; };
 		87A4975A278B671F00D1D33A /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A49759278B671E00D1D33A /* WebViewController.swift */; };
-		87A4975D278B678600D1D33A /* GourmandCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A4975C278B678600D1D33A /* GourmandCategoryViewController.swift */; };
+		87A4975D278B678600D1D33A /* GourmandGenreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A4975C278B678600D1D33A /* GourmandGenreViewController.swift */; };
 		87A4975F278B6CE600D1D33A /* FavView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87A4975E278B6CE600D1D33A /* FavView.storyboard */; };
 		87A49764278B712600D1D33A /* FavOfTravelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A49763278B712600D1D33A /* FavOfTravelViewController.swift */; };
 		87A49766278B713B00D1D33A /* FavOfGourmandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A49765278B713B00D1D33A /* FavOfGourmandViewController.swift */; };
 		87A49768278B714F00D1D33A /* FavOfNetShoppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A49767278B714F00D1D33A /* FavOfNetShoppingViewController.swift */; };
+		87A4976F278D64A200D1D33A /* SelectDestinationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A4976D278D64A200D1D33A /* SelectDestinationCell.swift */; };
+		87A49770278D64A200D1D33A /* SelectDestinationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87A4976E278D64A200D1D33A /* SelectDestinationCell.xib */; };
+		87A49774278D64E400D1D33A /* SelectGenreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A49772278D64E400D1D33A /* SelectGenreCell.swift */; };
+		87A49775278D64E400D1D33A /* SelectGenreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87A49773278D64E400D1D33A /* SelectGenreCell.xib */; };
+		87A49779278D657400D1D33A /* ReservationDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A49777278D657300D1D33A /* ReservationDateCell.swift */; };
+		87A4977A278D657400D1D33A /* ReservationDateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87A49778278D657400D1D33A /* ReservationDateCell.xib */; };
+		87A4977E278D65F800D1D33A /* MemberCountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A4977C278D65F800D1D33A /* MemberCountCell.swift */; };
+		87A4977F278D65F800D1D33A /* MemberCountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87A4977D278D65F800D1D33A /* MemberCountCell.xib */; };
+		87A49782278D669400D1D33A /* GourmandSearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A49781278D669400D1D33A /* GourmandSearchPresenter.swift */; };
 		87E10C61278A967F005AAA4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E10C60278A967F005AAA4A /* AppDelegate.swift */; };
 		87E10C63278A967F005AAA4A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E10C62278A967F005AAA4A /* SceneDelegate.swift */; };
 		87E10C65278A967F005AAA4A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E10C64278A967F005AAA4A /* HomeViewController.swift */; };
@@ -46,10 +57,12 @@
 		246EEE1674E45709A3BAA599 /* Pods-Seachers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seachers.release.xcconfig"; path = "Target Support Files/Pods-Seachers/Pods-Seachers.release.xcconfig"; sourceTree = "<group>"; };
 		3A6F3AEA775E55F36E45865B /* Pods-Seachers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seachers.debug.xcconfig"; path = "Target Support Files/Pods-Seachers/Pods-Seachers.debug.xcconfig"; sourceTree = "<group>"; };
 		86514DE9278C0EC2003839DF /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		86514DED278DB217003839DF /* GoumandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoumandCell.swift; sourceTree = "<group>"; };
 		86514DEE278DB217003839DF /* GoumandCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoumandCell.xib; sourceTree = "<group>"; };
 		86514DF1278E7D05003839DF /* TravelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelCell.swift; sourceTree = "<group>"; };
 		86514DF2278E7D05003839DF /* TravelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TravelCell.xib; sourceTree = "<group>"; };
+=======
 		87A49746278B4DD900D1D33A /* GourmandSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GourmandSearchViewController.swift; sourceTree = "<group>"; };
 		87A4974A278B536A00D1D33A /* TravelSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSearchViewController.swift; sourceTree = "<group>"; };
 		87A4974D278B648F00D1D33A /* WebView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebView.storyboard; sourceTree = "<group>"; };
@@ -58,11 +71,20 @@
 		87A49754278B664500D1D33A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		87A49756278B668000D1D33A /* PlaceSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchViewController.swift; sourceTree = "<group>"; };
 		87A49759278B671E00D1D33A /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		87A4975C278B678600D1D33A /* GourmandCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GourmandCategoryViewController.swift; sourceTree = "<group>"; };
+		87A4975C278B678600D1D33A /* GourmandGenreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GourmandGenreViewController.swift; sourceTree = "<group>"; };
 		87A4975E278B6CE600D1D33A /* FavView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FavView.storyboard; sourceTree = "<group>"; };
 		87A49763278B712600D1D33A /* FavOfTravelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavOfTravelViewController.swift; sourceTree = "<group>"; };
 		87A49765278B713B00D1D33A /* FavOfGourmandViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavOfGourmandViewController.swift; sourceTree = "<group>"; };
 		87A49767278B714F00D1D33A /* FavOfNetShoppingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavOfNetShoppingViewController.swift; sourceTree = "<group>"; };
+		87A4976D278D64A200D1D33A /* SelectDestinationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDestinationCell.swift; sourceTree = "<group>"; };
+		87A4976E278D64A200D1D33A /* SelectDestinationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectDestinationCell.xib; sourceTree = "<group>"; };
+		87A49772278D64E400D1D33A /* SelectGenreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGenreCell.swift; sourceTree = "<group>"; };
+		87A49773278D64E400D1D33A /* SelectGenreCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectGenreCell.xib; sourceTree = "<group>"; };
+		87A49777278D657300D1D33A /* ReservationDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationDateCell.swift; sourceTree = "<group>"; };
+		87A49778278D657400D1D33A /* ReservationDateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReservationDateCell.xib; sourceTree = "<group>"; };
+		87A4977C278D65F800D1D33A /* MemberCountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCountCell.swift; sourceTree = "<group>"; };
+		87A4977D278D65F800D1D33A /* MemberCountCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemberCountCell.xib; sourceTree = "<group>"; };
+		87A49781278D669400D1D33A /* GourmandSearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GourmandSearchPresenter.swift; sourceTree = "<group>"; };
 		87E10C5D278A967F005AAA4A /* Seachers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seachers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87E10C60278A967F005AAA4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87E10C62278A967F005AAA4A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +128,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		87717DB0278DD95F00AD966C /* struct */ = {
+			isa = PBXGroup;
+			children = (
+				87717DB1278DD97A00AD966C /* GourmandSearchDataModel.swift */,
+				87717DB3278DDA0200AD966C /* PlaceSearchDataModel.swift */,
+				87717DB5278DDC8F00AD966C /* DateModel.swift */,
+			);
+			path = struct;
+			sourceTree = "<group>";
+		};
 		87A49743278B4B2A00D1D33A /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				87A49746278B4DD900D1D33A /* GourmandSearchViewController.swift */,
+				87A49781278D669400D1D33A /* GourmandSearchPresenter.swift */,
 			);
 			path = GourmandSearchViewController;
 			sourceTree = "<group>";
@@ -154,7 +187,7 @@
 		87A4975B278B675600D1D33A /* GoumandCategoryViewController */ = {
 			isa = PBXGroup;
 			children = (
-				87A4975C278B678600D1D33A /* GourmandCategoryViewController.swift */,
+				87A4975C278B678600D1D33A /* GourmandGenreViewController.swift */,
 			);
 			path = GoumandCategoryViewController;
 			sourceTree = "<group>";
@@ -183,6 +216,61 @@
 			path = FavOfTravelViewController;
 			sourceTree = "<group>";
 		};
+		87A4976B278D63DE00D1D33A /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				87A4977B278D659E00D1D33A /* MenberCountCell */,
+				87A49776278D64E900D1D33A /* ReservationDateCell */,
+				87A49771278D64AB00D1D33A /* SelectGenreCell */,
+				87A4976C278D642200D1D33A /* DestinationCell */,
+			);
+			path = CustomCell;
+			sourceTree = "<group>";
+		};
+		87A4976C278D642200D1D33A /* DestinationCell */ = {
+			isa = PBXGroup;
+			children = (
+				87A4976D278D64A200D1D33A /* SelectDestinationCell.swift */,
+				87A4976E278D64A200D1D33A /* SelectDestinationCell.xib */,
+			);
+			path = DestinationCell;
+			sourceTree = "<group>";
+		};
+		87A49771278D64AB00D1D33A /* SelectGenreCell */ = {
+			isa = PBXGroup;
+			children = (
+				87A49780278D660B00D1D33A /* SelectedView */,
+				87A49772278D64E400D1D33A /* SelectGenreCell.swift */,
+				87A49773278D64E400D1D33A /* SelectGenreCell.xib */,
+			);
+			path = SelectGenreCell;
+			sourceTree = "<group>";
+		};
+		87A49776278D64E900D1D33A /* ReservationDateCell */ = {
+			isa = PBXGroup;
+			children = (
+				87A49777278D657300D1D33A /* ReservationDateCell.swift */,
+				87A49778278D657400D1D33A /* ReservationDateCell.xib */,
+			);
+			path = ReservationDateCell;
+			sourceTree = "<group>";
+		};
+		87A4977B278D659E00D1D33A /* MenberCountCell */ = {
+			isa = PBXGroup;
+			children = (
+				87A4977C278D65F800D1D33A /* MemberCountCell.swift */,
+				87A4977D278D65F800D1D33A /* MemberCountCell.xib */,
+			);
+			path = MenberCountCell;
+			sourceTree = "<group>";
+		};
+		87A49780278D660B00D1D33A /* SelectedView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SelectedView;
+			sourceTree = "<group>";
+		};
 		87E10C54278A967F005AAA4A = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +293,7 @@
 		87E10C5F278A967F005AAA4A /* Seachers */ = {
 			isa = PBXGroup;
 			children = (
+				87A4976B278D63DE00D1D33A /* CustomCell */,
 				87E10C76278A9B8D005AAA4A /* ViewController */,
 				87E10C75278A9B87005AAA4A /* Model */,
 				87E10C74278A9B6D005AAA4A /* View */,
@@ -227,6 +316,7 @@
 		87E10C75278A9B87005AAA4A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				87717DB0278DD95F00AD966C /* struct */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -351,16 +441,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87A4977A278D657400D1D33A /* ReservationDateCell.xib in Resources */,
 				87A49750278B653900D1D33A /* PlaceSearch.storyboard in Resources */,
+
 				86514DF4278E7D06003839DF /* TravelCell.xib in Resources */,
+
 				87E10C7A278A9E00005AAA4A /* NetShopping.storyboard in Resources */,
 				87E10C6D278A9680005AAA4A /* LaunchScreen.storyboard in Resources */,
 				220A0BEC278ADB79000F4AD1 /* TravelSearch.storyboard in Resources */,
 				86514DF0278DB217003839DF /* GoumandCell.xib in Resources */,
 				87A4974E278B648F00D1D33A /* WebView.storyboard in Resources */,
+				87A4977F278D65F800D1D33A /* MemberCountCell.xib in Resources */,
 				87A49752278B65E100D1D33A /* MapView.storyboard in Resources */,
 				87E10C6A278A9680005AAA4A /* Assets.xcassets in Resources */,
 				87E10C68278A967F005AAA4A /* Main.storyboard in Resources */,
+				87A49775278D64E400D1D33A /* SelectGenreCell.xib in Resources */,
 				87E10C80278AAA3A005AAA4A /* GourmandSearch.storyboard in Resources */,
 				87A4975F278B6CE600D1D33A /* FavView.storyboard in Resources */,
 			);
@@ -434,21 +529,27 @@
 			files = (
 				86514DF3278E7D06003839DF /* TravelCell.swift in Sources */,
 				87A49768278B714F00D1D33A /* FavOfNetShoppingViewController.swift in Sources */,
+				87A49774278D64E400D1D33A /* SelectGenreCell.swift in Sources */,
 				86514DEA278C0EC2003839DF /* MapPresenter.swift in Sources */,
 				87A4974B278B536A00D1D33A /* TravelSearchViewController.swift in Sources */,
 				87A4975A278B671F00D1D33A /* WebViewController.swift in Sources */,
 				87E10C7E278A9EB4005AAA4A /* NetShoppingViewController.swift in Sources */,
+
 				2276BDD0278D362C00DBB69A /* PlaceSearchPresenter.swift in Sources */,
+
 				87A49747278B4DDA00D1D33A /* GourmandSearchViewController.swift in Sources */,
 				87E10C65278A967F005AAA4A /* HomeViewController.swift in Sources */,
 				87A49764278B712600D1D33A /* FavOfTravelViewController.swift in Sources */,
-				87A4975D278B678600D1D33A /* GourmandCategoryViewController.swift in Sources */,
+				87A4975D278B678600D1D33A /* GourmandGenreViewController.swift in Sources */,
 				87A49757278B668000D1D33A /* PlaceSearchViewController.swift in Sources */,
 				86514DEF278DB217003839DF /* GoumandCell.swift in Sources */,
 				87E10C61278A967F005AAA4A /* AppDelegate.swift in Sources */,
 				87E10C63278A967F005AAA4A /* SceneDelegate.swift in Sources */,
+				87A4976F278D64A200D1D33A /* SelectDestinationCell.swift in Sources */,
 				87A49766278B713B00D1D33A /* FavOfGourmandViewController.swift in Sources */,
+				87A4977E278D65F800D1D33A /* MemberCountCell.swift in Sources */,
 				87A49755278B664500D1D33A /* MapViewController.swift in Sources */,
+				87A49779278D657400D1D33A /* ReservationDateCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

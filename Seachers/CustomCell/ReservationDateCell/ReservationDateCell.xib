@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="reservationDateCell" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ReservationDateCell" customModule="Seachers" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="390" height="300"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="390" height="300"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rOP-dU-AKW">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="300"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日時" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xKf-9A-Q4Q">
+                                <rect key="frame" x="20" y="0.0" width="120" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="7qP-FA-8Kl"/>
+                                    <constraint firstAttribute="width" constant="120" id="V8U-ry-9bj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日時" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x2l-eU-oLt">
+                                <rect key="frame" x="148" y="0.0" width="209" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="yw1-hN-bIS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="Qhv-pT-Rym">
+                                <rect key="frame" x="0.0" y="80" width="390" height="220"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="220" id="8kk-cf-o37"/>
+                                </constraints>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Qhv-pT-Rym" firstAttribute="leading" secondItem="rOP-dU-AKW" secondAttribute="leading" id="BrQ-qP-1Vi"/>
+                            <constraint firstAttribute="height" constant="300" id="HMW-jL-zav"/>
+                            <constraint firstItem="xKf-9A-Q4Q" firstAttribute="leading" secondItem="rOP-dU-AKW" secondAttribute="leading" constant="20" id="Irr-G7-cT4"/>
+                            <constraint firstItem="xKf-9A-Q4Q" firstAttribute="top" secondItem="rOP-dU-AKW" secondAttribute="top" id="LnR-Qx-Ud4"/>
+                            <constraint firstItem="x2l-eU-oLt" firstAttribute="top" secondItem="rOP-dU-AKW" secondAttribute="top" id="N26-De-rLb"/>
+                            <constraint firstAttribute="trailing" secondItem="x2l-eU-oLt" secondAttribute="trailing" constant="33" id="TEM-4w-EAo"/>
+                            <constraint firstItem="x2l-eU-oLt" firstAttribute="leading" secondItem="xKf-9A-Q4Q" secondAttribute="trailing" constant="8" id="YFF-6K-rc5"/>
+                            <constraint firstItem="Qhv-pT-Rym" firstAttribute="top" secondItem="xKf-9A-Q4Q" secondAttribute="bottom" id="bFJ-qZ-Eo4"/>
+                            <constraint firstAttribute="trailing" secondItem="Qhv-pT-Rym" secondAttribute="trailing" id="jOa-Si-Hjy"/>
+                            <constraint firstItem="Qhv-pT-Rym" firstAttribute="top" secondItem="x2l-eU-oLt" secondAttribute="bottom" id="sIz-xX-eF4"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="rOP-dU-AKW" secondAttribute="bottom" id="92Z-CP-dlL"/>
+                    <constraint firstItem="rOP-dU-AKW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="WGG-9s-UXW"/>
+                    <constraint firstAttribute="trailing" secondItem="rOP-dU-AKW" secondAttribute="trailing" id="m9q-pe-WMF"/>
+                    <constraint firstItem="rOP-dU-AKW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="mdD-01-Glg"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="conteinerViewHeight" destination="HMW-jL-zav" id="hWm-Eg-wHd"/>
+                <outlet property="datePicker" destination="Qhv-pT-Rym" id="K1M-zc-ObE"/>
+                <outlet property="rserevationDateLabel" destination="x2l-eU-oLt" id="rru-DQ-M5t"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="99.776785714285708"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
