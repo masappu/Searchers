@@ -17,6 +17,8 @@
 		87717DB2278DD97A00AD966C /* GourmandSearchDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87717DB1278DD97A00AD966C /* GourmandSearchDataModel.swift */; };
 		87717DB4278DDA0200AD966C /* PlaceSearchDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87717DB3278DDA0200AD966C /* PlaceSearchDataModel.swift */; };
 		87717DB6278DDC8F00AD966C /* DateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87717DB5278DDC8F00AD966C /* DateModel.swift */; };
+		87717DC227906BFF00AD966C /* GourmandDataLoadModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87717DC127906BFF00AD966C /* GourmandDataLoadModel.swift */; };
+		87717DC427906C3200AD966C /* GourmandGenrePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87717DC327906C3200AD966C /* GourmandGenrePresenter.swift */; };
 		87A49747278B4DDA00D1D33A /* GourmandSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A49746278B4DD900D1D33A /* GourmandSearchViewController.swift */; };
 		87A4974B278B536A00D1D33A /* TravelSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A4974A278B536A00D1D33A /* TravelSearchViewController.swift */; };
 		87A4974E278B648F00D1D33A /* WebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87A4974D278B648F00D1D33A /* WebView.storyboard */; };
@@ -65,6 +67,8 @@
 		87717DB1278DD97A00AD966C /* GourmandSearchDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GourmandSearchDataModel.swift; sourceTree = "<group>"; };
 		87717DB3278DDA0200AD966C /* PlaceSearchDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchDataModel.swift; sourceTree = "<group>"; };
 		87717DB5278DDC8F00AD966C /* DateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateModel.swift; sourceTree = "<group>"; };
+		87717DC127906BFF00AD966C /* GourmandDataLoadModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GourmandDataLoadModel.swift; sourceTree = "<group>"; };
+		87717DC327906C3200AD966C /* GourmandGenrePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GourmandGenrePresenter.swift; sourceTree = "<group>"; };
 		87A49746278B4DD900D1D33A /* GourmandSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GourmandSearchViewController.swift; sourceTree = "<group>"; };
 		87A4974A278B536A00D1D33A /* TravelSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSearchViewController.swift; sourceTree = "<group>"; };
 		87A4974D278B648F00D1D33A /* WebView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebView.storyboard; sourceTree = "<group>"; };
@@ -190,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				87A4975C278B678600D1D33A /* GourmandGenreViewController.swift */,
+				87717DC327906C3200AD966C /* GourmandGenrePresenter.swift */,
 			);
 			path = GoumandCategoryViewController;
 			sourceTree = "<group>";
@@ -319,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				87717DB0278DD95F00AD966C /* struct */,
+				87717DC127906BFF00AD966C /* GourmandDataLoadModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -543,11 +549,13 @@
 				87A49747278B4DDA00D1D33A /* GourmandSearchViewController.swift in Sources */,
 				87E10C65278A967F005AAA4A /* HomeViewController.swift in Sources */,
 				87A49764278B712600D1D33A /* FavOfTravelViewController.swift in Sources */,
+				87717DC427906C3200AD966C /* GourmandGenrePresenter.swift in Sources */,
 				87A4975D278B678600D1D33A /* GourmandGenreViewController.swift in Sources */,
 				87A49757278B668000D1D33A /* PlaceSearchViewController.swift in Sources */,
 				86514DEF278DB217003839DF /* GoumandCell.swift in Sources */,
 				87E10C61278A967F005AAA4A /* AppDelegate.swift in Sources */,
 				87E10C63278A967F005AAA4A /* SceneDelegate.swift in Sources */,
+				87717DC227906BFF00AD966C /* GourmandDataLoadModel.swift in Sources */,
 				87A4976F278D64A200D1D33A /* SelectDestinationCell.swift in Sources */,
 				87A49766278B713B00D1D33A /* FavOfGourmandViewController.swift in Sources */,
 				87A4977E278D65F800D1D33A /* MemberCountCell.swift in Sources */,
