@@ -17,15 +17,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WLP-bu-67o" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="608"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9By-kX-89q">
-                                <rect key="frame" x="0.0" y="660" width="414" height="202"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="202" id="iRr-gz-vLb"/>
-                                </constraints>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9By-kX-89q">
+                                <rect key="frame" x="0.0" y="646" width="414" height="202"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rSf-gW-Sa8">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -38,19 +35,16 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="WLP-bu-67o" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="K8S-js-osU"/>
-                            <constraint firstItem="9By-kX-89q" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="UHT-ug-4Ix"/>
-                            <constraint firstItem="WLP-bu-67o" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="cie-LZ-6WZ"/>
-                            <constraint firstItem="9By-kX-89q" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="dh2-SN-8XK"/>
-                            <constraint firstItem="WLP-bu-67o" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="iLl-FP-HLY"/>
-                            <constraint firstItem="9By-kX-89q" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="rWG-Kf-4dI"/>
-                            <constraint firstItem="9By-kX-89q" firstAttribute="top" secondItem="WLP-bu-67o" secondAttribute="bottom" constant="8" symbolic="YES" id="t4M-lM-yuO"/>
+                            <constraint firstItem="WLP-bu-67o" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="19o-zp-xg9"/>
+                            <constraint firstItem="WLP-bu-67o" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Ogt-km-rhh"/>
+                            <constraint firstItem="WLP-bu-67o" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="bpZ-Ej-F0y"/>
+                            <constraint firstAttribute="bottom" secondItem="WLP-bu-67o" secondAttribute="bottom" id="gqH-1o-cJD"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RTq-5W-ybX"/>
                     <connections>
                         <outlet property="collectionView" destination="9By-kX-89q" id="Nno-bZ-5TW"/>
-                        <outlet property="mapView" destination="WLP-bu-67o" id="Ihr-Qx-Krw"/>
+                        <outlet property="mapView" destination="WLP-bu-67o" id="gRG-U0-pEU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

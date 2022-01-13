@@ -21,16 +21,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="400" height="200"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lza-W7-QGu">
-                                <rect key="frame" x="8" y="7" width="384" height="185"/>
+                                <rect key="frame" x="20.5" y="13.5" width="359" height="173"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Wg-Ia-U6q">
-                                        <rect key="frame" x="332.5" y="5" width="43.5" height="31"/>
+                                        <rect key="frame" x="314.5" y="8" width="43.5" height="31"/>
                                         <color key="backgroundColor" red="0.3449250935" green="1" blue="0.35691490669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="43.5" id="RiU-he-KcI"/>
+                                            <constraint firstAttribute="height" constant="31" id="sJh-SL-aQv"/>
+                                        </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="fav"/>
                                     </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="dMZ-LG-0rJ">
-                                        <rect key="frame" x="4" y="25" width="377" height="115"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gP8-UJ-nFm">
+                                        <rect key="frame" x="43" y="142" width="273" height="23"/>
+                                        <color key="backgroundColor" red="0.3449250935" green="1" blue="0.35691490669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="273" id="cCK-AK-2zI"/>
+                                            <constraint firstAttribute="height" constant="23" id="w2A-x1-cvN"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="予算・詳細の確認"/>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="dMZ-LG-0rJ">
+                                        <rect key="frame" x="6" y="17" width="347" height="115"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ilp-f8-rI3">
                                                 <rect key="frame" x="0.0" y="0.0" width="115" height="115"/>
@@ -40,10 +54,10 @@
                                                 </constraints>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="Hmu-WA-SFC">
-                                                <rect key="frame" x="127" y="0.0" width="250" height="115"/>
+                                                <rect key="frame" x="127" y="0.0" width="220" height="115"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小エリア/ジャンル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G6a-aU-3kS">
-                                                        <rect key="frame" x="0.0" y="0.0" width="250" height="20"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="220" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="IDV-PS-cxW"/>
                                                         </constraints>
@@ -52,7 +66,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="店名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wKs-jD-cuC">
-                                                        <rect key="frame" x="0.0" y="29" width="250" height="20"/>
+                                                        <rect key="frame" x="0.0" y="29" width="220" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="3Es-5C-K3v"/>
                                                         </constraints>
@@ -61,47 +75,37 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="税込○○○○円〜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAj-99-YMB">
-                                                        <rect key="frame" x="0.0" y="58" width="250" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="58" width="220" height="20.5"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="220" id="afG-VH-YhI"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pmx-Cy-7PH">
-                                                        <rect key="frame" x="0.0" y="87.5" width="250" height="27.5"/>
+                                                        <rect key="frame" x="0.0" y="87.5" width="220" height="27.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gP8-UJ-nFm">
-                                        <rect key="frame" x="55.5" y="150" width="273" height="31"/>
-                                        <color key="backgroundColor" red="0.3449250935" green="1" blue="0.35691490669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="273" id="cCK-AK-2zI"/>
-                                            <constraint firstAttribute="height" constant="31" id="zjR-m4-SKp"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="予算・詳細の確認"/>
-                                    </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="9Wg-Ia-U6q" firstAttribute="top" secondItem="lza-W7-QGu" secondAttribute="top" constant="5" id="6Nl-r4-XUj"/>
-                                    <constraint firstItem="gP8-UJ-nFm" firstAttribute="centerX" secondItem="lza-W7-QGu" secondAttribute="centerX" id="89o-TP-1E8"/>
-                                    <constraint firstAttribute="trailing" secondItem="dMZ-LG-0rJ" secondAttribute="trailing" constant="3" id="d5i-pQ-U1M"/>
-                                    <constraint firstAttribute="trailing" secondItem="9Wg-Ia-U6q" secondAttribute="trailing" constant="8" id="eIk-AJ-6f9"/>
-                                    <constraint firstItem="gP8-UJ-nFm" firstAttribute="top" secondItem="dMZ-LG-0rJ" secondAttribute="bottom" constant="10" id="eYB-8v-W2r"/>
-                                    <constraint firstItem="dMZ-LG-0rJ" firstAttribute="leading" secondItem="lza-W7-QGu" secondAttribute="leading" constant="4" id="nFQ-nX-LZu"/>
-                                    <constraint firstItem="dMZ-LG-0rJ" firstAttribute="centerY" secondItem="lza-W7-QGu" secondAttribute="centerY" constant="-10" id="pJH-j1-KDR"/>
+                                    <constraint firstItem="9Wg-Ia-U6q" firstAttribute="top" secondItem="lza-W7-QGu" secondAttribute="top" constant="8" id="6Pn-xZ-97J"/>
+                                    <constraint firstAttribute="bottom" secondItem="gP8-UJ-nFm" secondAttribute="bottom" constant="8" id="JAz-Hf-9GQ"/>
+                                    <constraint firstAttribute="height" constant="173" id="Rik-7U-Va3"/>
+                                    <constraint firstAttribute="width" constant="359" id="Scs-2C-E7g"/>
+                                    <constraint firstAttribute="trailing" secondItem="9Wg-Ia-U6q" secondAttribute="trailing" constant="1" id="e3y-SW-50K"/>
+                                    <constraint firstItem="gP8-UJ-nFm" firstAttribute="centerX" secondItem="lza-W7-QGu" secondAttribute="centerX" id="rPr-yK-29x"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="lza-W7-QGu" firstAttribute="top" secondItem="OfC-sU-8Ti" secondAttribute="top" constant="7" id="3UL-e1-tAI"/>
-                            <constraint firstAttribute="bottom" secondItem="lza-W7-QGu" secondAttribute="bottom" constant="8" id="9IN-Ck-Pz3"/>
-                            <constraint firstItem="lza-W7-QGu" firstAttribute="leading" secondItem="OfC-sU-8Ti" secondAttribute="leading" constant="8" id="EoB-gh-Lb6"/>
-                            <constraint firstAttribute="trailing" secondItem="lza-W7-QGu" secondAttribute="trailing" constant="8" id="JGC-mb-whG"/>
+                            <constraint firstItem="lza-W7-QGu" firstAttribute="centerX" secondItem="OfC-sU-8Ti" secondAttribute="centerX" id="084-M6-pF3"/>
+                            <constraint firstItem="lza-W7-QGu" firstAttribute="centerY" secondItem="OfC-sU-8Ti" secondAttribute="centerY" id="9VE-fI-CxE"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -113,7 +117,7 @@
                 <constraint firstAttribute="bottom" secondItem="OfC-sU-8Ti" secondAttribute="bottom" id="gGL-qK-rpR"/>
                 <constraint firstAttribute="trailing" secondItem="OfC-sU-8Ti" secondAttribute="trailing" id="o9O-oR-R8R"/>
             </constraints>
-            <point key="canvasLocation" x="177" y="156"/>
+            <point key="canvasLocation" x="179.71014492753625" y="152.67857142857142"/>
         </collectionViewCell>
     </objects>
     <resources>
