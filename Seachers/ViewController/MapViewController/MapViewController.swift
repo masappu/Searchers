@@ -14,6 +14,7 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     var googleMap = GMSMapView()
+    var markers: [GMSMarker] = []
     
     private var presenter: MapPresenterInput!
     
@@ -34,7 +35,8 @@ class MapViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.isPagingEnabled = true
-        collectionView.register(UINib(nibName: "GoumandCell", bundle: nil), forCellWithReuseIdentifier: "GoumandCell")
+        collectionView.register(UINib(nibName: "GourmandCell", bundle: nil), forCellWithReuseIdentifier: "GourmandCell")
+        collectionView.register(UINib(nibName: "TravelCell", bundle: nil), forCellWithReuseIdentifier: "TravelCell")
         
     }
     
@@ -44,6 +46,7 @@ class MapViewController: UIViewController {
         presenter.reloadData()
         
     }
+    
     
 }
 
@@ -62,7 +65,7 @@ extension MapViewController: UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GoumandCell", for: indexPath) as! GoumandCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GourmandCell", for: indexPath) as! GourmandCell
         
         return cell
     }
@@ -89,6 +92,21 @@ extension MapViewController: UICollectionViewDelegateFlowLayout{
     
 }
 
+extension MapViewController: GMSMapViewDelegate{
+    
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        
+//        collectionView.scrollToItem(at: IndexPath(row: 2, section: 0), at: .right, animated: true)
+        print(marker.title)
+        
+        marker.tracksInfoWindowChanges = true //情報ウィンドウを自動的に更新するように設定する
+        googleMap.selectedMarker = marker //デフォルトで情報ウィンドウを表示
+        
+        return true
+    }
+    
+}
+
 
 extension MapViewController: MapPresenterOutput{
     
@@ -98,12 +116,24 @@ extension MapViewController: MapPresenterOutput{
         self.googleMap = mapView
         self.view.addSubview(googleMap)
         self.view.sendSubviewToBack(googleMap)
+        googleMap.delegate = self
         
+        let lat = [35.68154,35.6954496]
+        let log = [139.752498,139.7514154]
+        let title = ["皇居","九段下駅"]
+
+        for i in 0..<2{
+            makeMarker(lat: lat[i], log: log[i], title: title[i])
+        }
+    }
+    
+    func makeMarker(lat: Double,log: Double,title: String) {
         let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2DMake(35.68154,139.752498)
-        //        marker.title = "The Imperial Palace"
-        //        marker.snippet = "Tokyo"
-        marker.map = mapView
+        marker.position = CLLocationCoordinate2DMake(lat,log)
+        marker.appearAnimation = GMSMarkerAnimation.pop
+        marker.title = "\(title)"
+        marker.snippet = "Tokyo"
+        marker.map = googleMap
     }
     
     func reloadMap() {
@@ -111,3 +141,4 @@ extension MapViewController: MapPresenterOutput{
     }
     
 }
+
