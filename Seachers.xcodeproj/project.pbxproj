@@ -22,6 +22,7 @@
 		86514DF4278E7D06003839DF /* TravelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86514DF2278E7D05003839DF /* TravelCell.xib */; };
 		86514DF627914CE0003839DF /* GourmandAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86514DF527914CE0003839DF /* GourmandAPIModel.swift */; };
 		86514DF827914CF4003839DF /* TravelAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86514DF727914CF4003839DF /* TravelAPIModel.swift */; };
+		871D95462791DAE500AA05F3 /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871D95452791DAE500AA05F3 /* CellType.swift */; };
 		87717DB2278DD97A00AD966C /* GourmandSearchDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87717DB1278DD97A00AD966C /* GourmandSearchDataModel.swift */; };
 		87717DB4278DDA0200AD966C /* PlaceSearchDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87717DB3278DDA0200AD966C /* PlaceSearchDataModel.swift */; };
 		87717DB6278DDC8F00AD966C /* DateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87717DB5278DDC8F00AD966C /* DateModel.swift */; };
@@ -80,6 +81,7 @@
 		86514DF2278E7D05003839DF /* TravelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TravelCell.xib; sourceTree = "<group>"; };
 		86514DF527914CE0003839DF /* GourmandAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GourmandAPIModel.swift; sourceTree = "<group>"; };
 		86514DF727914CF4003839DF /* TravelAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelAPIModel.swift; sourceTree = "<group>"; };
+		871D95452791DAE500AA05F3 /* CellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellType.swift; sourceTree = "<group>"; };
 		87717DB1278DD97A00AD966C /* GourmandSearchDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GourmandSearchDataModel.swift; sourceTree = "<group>"; };
 		87717DB3278DDA0200AD966C /* PlaceSearchDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchDataModel.swift; sourceTree = "<group>"; };
 		87717DB5278DDC8F00AD966C /* DateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateModel.swift; sourceTree = "<group>"; };
@@ -373,6 +375,7 @@
 				87717DC127906BFF00AD966C /* GourmandDataLoadModel.swift */,
 				86514DF527914CE0003839DF /* GourmandAPIModel.swift */,
 				86514DF727914CF4003839DF /* TravelAPIModel.swift */,
+				871D95452791DAE500AA05F3 /* CellType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -613,6 +616,7 @@
 				87E10C63278A967F005AAA4A /* SceneDelegate.swift in Sources */,
 				87717DC227906BFF00AD966C /* GourmandDataLoadModel.swift in Sources */,
 				87A4976F278D64A200D1D33A /* SelectDestinationCell.swift in Sources */,
+				871D95462791DAE500AA05F3 /* CellType.swift in Sources */,
 				87A49766278B713B00D1D33A /* FavOfGourmandViewController.swift in Sources */,
 				87A4977E278D65F800D1D33A /* MemberCountCell.swift in Sources */,
 				87A49755278B664500D1D33A /* MapViewController.swift in Sources */,
