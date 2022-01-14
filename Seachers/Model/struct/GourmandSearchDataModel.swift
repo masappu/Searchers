@@ -9,13 +9,13 @@ import Foundation
 
 struct GourmandSearchDataModel{
     var place:PlaceSearchDataModel
-    var genre:GenreModel
+    var genre:[GenreModel]
     var date:DateModel
     var memberCount:Int
     
     init(){
         self.place = PlaceSearchDataModel()
-        self.genre = GenreModel()
+        self.genre = [GenreModel]()
         self.date = DateModel()
         memberCount = 2
     }
@@ -23,13 +23,8 @@ struct GourmandSearchDataModel{
 
 
 struct GenreModel{
-    var name:[String]
-    var id:[String]
-    
-    init(){
-        self.name = []
-        self.id = []
-    }
+    var name:String
+    var id:String
 }
 
 
