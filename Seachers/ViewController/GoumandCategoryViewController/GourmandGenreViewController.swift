@@ -22,7 +22,8 @@ class GourmandGenreViewController: UIViewController {
         super.viewDidLoad()
         let presenter = GourmandGenrePresenter(view: self)
         inject(presenter: presenter)
-        // Do any additional setup after loading the view.
+        self.presenter?.loadView()
+        print(self.presenter?.allGenreData)
     }
     
 }

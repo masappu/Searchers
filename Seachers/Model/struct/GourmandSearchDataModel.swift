@@ -25,6 +25,12 @@ struct GourmandSearchDataModel{
 struct GenreModel{
     var name:String
     var id:String
+    var selected:Bool
+    init(){
+        self.name = String()
+        self.id = String()
+        self.selected = false
+    }
 }
 
 
