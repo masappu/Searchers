@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		220A0BEC278ADB79000F4AD1 /* TravelSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 220A0BEB278ADB79000F4AD1 /* TravelSearch.storyboard */; };
 		2276BDD0278D362C00DBB69A /* PlaceSearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2276BDCF278D362C00DBB69A /* PlaceSearchPresenter.swift */; };
+		22838C842791563C00562F67 /* PlaceSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22838C822791563C00562F67 /* PlaceSearchCell.swift */; };
+		22838C852791563C00562F67 /* PlaceSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22838C832791563C00562F67 /* PlaceSearchCell.xib */; };
+		22838C882791565A00562F67 /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22838C862791565A00562F67 /* PlaceCell.swift */; };
+		22838C892791565A00562F67 /* PlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22838C872791565A00562F67 /* PlaceCell.xib */; };
+		22838C8C279156B300562F67 /* DistanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22838C8A279156B300562F67 /* DistanceCell.swift */; };
+		22838C8D279156B300562F67 /* DistanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22838C8B279156B300562F67 /* DistanceCell.xib */; };
 		86514DEA278C0EC2003839DF /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86514DE9278C0EC2003839DF /* MapPresenter.swift */; };
 		86514DEF278DB217003839DF /* GourmandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86514DED278DB217003839DF /* GourmandCell.swift */; };
 		86514DF0278DB217003839DF /* GourmandCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86514DEE278DB217003839DF /* GourmandCell.xib */; };
@@ -59,6 +65,12 @@
 		02AC76828558B154338808DE /* Pods_Seachers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Seachers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		220A0BEB278ADB79000F4AD1 /* TravelSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TravelSearch.storyboard; sourceTree = "<group>"; };
 		2276BDCF278D362C00DBB69A /* PlaceSearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchPresenter.swift; sourceTree = "<group>"; };
+		22838C822791563C00562F67 /* PlaceSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchCell.swift; sourceTree = "<group>"; };
+		22838C832791563C00562F67 /* PlaceSearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceSearchCell.xib; sourceTree = "<group>"; };
+		22838C862791565A00562F67 /* PlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
+		22838C872791565A00562F67 /* PlaceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceCell.xib; sourceTree = "<group>"; };
+		22838C8A279156B300562F67 /* DistanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceCell.swift; sourceTree = "<group>"; };
+		22838C8B279156B300562F67 /* DistanceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DistanceCell.xib; sourceTree = "<group>"; };
 		246EEE1674E45709A3BAA599 /* Pods-Seachers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seachers.release.xcconfig"; path = "Target Support Files/Pods-Seachers/Pods-Seachers.release.xcconfig"; sourceTree = "<group>"; };
 		3A6F3AEA775E55F36E45865B /* Pods-Seachers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seachers.debug.xcconfig"; path = "Target Support Files/Pods-Seachers/Pods-Seachers.debug.xcconfig"; sourceTree = "<group>"; };
 		86514DE9278C0EC2003839DF /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
@@ -128,6 +140,33 @@
 				2276BDCF278D362C00DBB69A /* PlaceSearchPresenter.swift */,
 			);
 			path = PlaceSearchViewController;
+			sourceTree = "<group>";
+		};
+		22838C8E279156BE00562F67 /* PlaceSearchCell */ = {
+			isa = PBXGroup;
+			children = (
+				22838C822791563C00562F67 /* PlaceSearchCell.swift */,
+				22838C832791563C00562F67 /* PlaceSearchCell.xib */,
+			);
+			path = PlaceSearchCell;
+			sourceTree = "<group>";
+		};
+		22838C8F279156F400562F67 /* PlaceCell */ = {
+			isa = PBXGroup;
+			children = (
+				22838C862791565A00562F67 /* PlaceCell.swift */,
+				22838C872791565A00562F67 /* PlaceCell.xib */,
+			);
+			path = PlaceCell;
+			sourceTree = "<group>";
+		};
+		22838C902791572000562F67 /* DistanceCell */ = {
+			isa = PBXGroup;
+			children = (
+				22838C8A279156B300562F67 /* DistanceCell.swift */,
+				22838C8B279156B300562F67 /* DistanceCell.xib */,
+			);
+			path = DistanceCell;
 			sourceTree = "<group>";
 		};
 		840095A7B1C94F6C57977F12 /* Frameworks */ = {
@@ -234,6 +273,9 @@
 				87A49776278D64E900D1D33A /* ReservationDateCell */,
 				87A49771278D64AB00D1D33A /* SelectGenreCell */,
 				87A4976C278D642200D1D33A /* DestinationCell */,
+				22838C8E279156BE00562F67 /* PlaceSearchCell */,
+				22838C8F279156F400562F67 /* PlaceCell */,
+				22838C902791572000562F67 /* DistanceCell */,
 			);
 			path = CustomCell;
 			sourceTree = "<group>";
@@ -464,9 +506,12 @@
 				220A0BEC278ADB79000F4AD1 /* TravelSearch.storyboard in Resources */,
 				86514DF0278DB217003839DF /* GourmandCell.xib in Resources */,
 				87A4974E278B648F00D1D33A /* WebView.storyboard in Resources */,
+				22838C892791565A00562F67 /* PlaceCell.xib in Resources */,
+				22838C8D279156B300562F67 /* DistanceCell.xib in Resources */,
 				87A4977F278D65F800D1D33A /* MemberCountCell.xib in Resources */,
 				87A49752278B65E100D1D33A /* MapView.storyboard in Resources */,
 				87E10C6A278A9680005AAA4A /* Assets.xcassets in Resources */,
+				22838C852791563C00562F67 /* PlaceSearchCell.xib in Resources */,
 				87E10C68278A967F005AAA4A /* Main.storyboard in Resources */,
 				87A49775278D64E400D1D33A /* SelectGenreCell.xib in Resources */,
 				87E10C80278AAA3A005AAA4A /* GourmandSearch.storyboard in Resources */,
@@ -540,6 +585,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22838C882791565A00562F67 /* PlaceCell.swift in Sources */,
 				86514DF3278E7D06003839DF /* TravelCell.swift in Sources */,
 				87A49768278B714F00D1D33A /* FavOfNetShoppingViewController.swift in Sources */,
 				87A49774278D64E400D1D33A /* SelectGenreCell.swift in Sources */,
@@ -557,11 +603,13 @@
 				87A49747278B4DDA00D1D33A /* GourmandSearchViewController.swift in Sources */,
 				87E10C65278A967F005AAA4A /* HomeViewController.swift in Sources */,
 				87A49764278B712600D1D33A /* FavOfTravelViewController.swift in Sources */,
+				22838C842791563C00562F67 /* PlaceSearchCell.swift in Sources */,
 				87717DC427906C3200AD966C /* GourmandGenrePresenter.swift in Sources */,
 				87A4975D278B678600D1D33A /* GourmandGenreViewController.swift in Sources */,
 				87A49757278B668000D1D33A /* PlaceSearchViewController.swift in Sources */,
 				86514DEF278DB217003839DF /* GourmandCell.swift in Sources */,
 				87E10C61278A967F005AAA4A /* AppDelegate.swift in Sources */,
+				22838C8C279156B300562F67 /* DistanceCell.swift in Sources */,
 				87E10C63278A967F005AAA4A /* SceneDelegate.swift in Sources */,
 				87717DC227906BFF00AD966C /* GourmandDataLoadModel.swift in Sources */,
 				87A4976F278D64A200D1D33A /* SelectDestinationCell.swift in Sources */,
@@ -716,15 +764,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z3WGH6HULM;
+				DEVELOPMENT_TEAM = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Seachers/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -734,6 +784,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.masashi.Seachers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -748,13 +799,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z3WGH6HULM;
+				DEVELOPMENT_TEAM = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Seachers/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -762,6 +814,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.masashi.Seachers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
