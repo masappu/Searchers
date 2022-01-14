@@ -10,10 +10,12 @@
 		220A0BEC278ADB79000F4AD1 /* TravelSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 220A0BEB278ADB79000F4AD1 /* TravelSearch.storyboard */; };
 		2276BDD0278D362C00DBB69A /* PlaceSearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2276BDCF278D362C00DBB69A /* PlaceSearchPresenter.swift */; };
 		86514DEA278C0EC2003839DF /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86514DE9278C0EC2003839DF /* MapPresenter.swift */; };
-		86514DEF278DB217003839DF /* GoumandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86514DED278DB217003839DF /* GoumandCell.swift */; };
-		86514DF0278DB217003839DF /* GoumandCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86514DEE278DB217003839DF /* GoumandCell.xib */; };
+		86514DEF278DB217003839DF /* GourmandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86514DED278DB217003839DF /* GourmandCell.swift */; };
+		86514DF0278DB217003839DF /* GourmandCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86514DEE278DB217003839DF /* GourmandCell.xib */; };
 		86514DF3278E7D06003839DF /* TravelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86514DF1278E7D05003839DF /* TravelCell.swift */; };
 		86514DF4278E7D06003839DF /* TravelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86514DF2278E7D05003839DF /* TravelCell.xib */; };
+		86514DF627914CE0003839DF /* GourmandAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86514DF527914CE0003839DF /* GourmandAPIModel.swift */; };
+		86514DF827914CF4003839DF /* TravelAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86514DF727914CF4003839DF /* TravelAPIModel.swift */; };
 		87717DB2278DD97A00AD966C /* GourmandSearchDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87717DB1278DD97A00AD966C /* GourmandSearchDataModel.swift */; };
 		87717DB4278DDA0200AD966C /* PlaceSearchDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87717DB3278DDA0200AD966C /* PlaceSearchDataModel.swift */; };
 		87717DB6278DDC8F00AD966C /* DateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87717DB5278DDC8F00AD966C /* DateModel.swift */; };
@@ -60,10 +62,12 @@
 		246EEE1674E45709A3BAA599 /* Pods-Seachers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seachers.release.xcconfig"; path = "Target Support Files/Pods-Seachers/Pods-Seachers.release.xcconfig"; sourceTree = "<group>"; };
 		3A6F3AEA775E55F36E45865B /* Pods-Seachers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seachers.debug.xcconfig"; path = "Target Support Files/Pods-Seachers/Pods-Seachers.debug.xcconfig"; sourceTree = "<group>"; };
 		86514DE9278C0EC2003839DF /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
-		86514DED278DB217003839DF /* GoumandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoumandCell.swift; sourceTree = "<group>"; };
-		86514DEE278DB217003839DF /* GoumandCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoumandCell.xib; sourceTree = "<group>"; };
+		86514DED278DB217003839DF /* GourmandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GourmandCell.swift; sourceTree = "<group>"; };
+		86514DEE278DB217003839DF /* GourmandCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GourmandCell.xib; sourceTree = "<group>"; };
 		86514DF1278E7D05003839DF /* TravelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelCell.swift; sourceTree = "<group>"; };
 		86514DF2278E7D05003839DF /* TravelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TravelCell.xib; sourceTree = "<group>"; };
+		86514DF527914CE0003839DF /* GourmandAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GourmandAPIModel.swift; sourceTree = "<group>"; };
+		86514DF727914CF4003839DF /* TravelAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelAPIModel.swift; sourceTree = "<group>"; };
 		87717DB1278DD97A00AD966C /* GourmandSearchDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GourmandSearchDataModel.swift; sourceTree = "<group>"; };
 		87717DB3278DDA0200AD966C /* PlaceSearchDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchDataModel.swift; sourceTree = "<group>"; };
 		87717DB5278DDC8F00AD966C /* DateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateModel.swift; sourceTree = "<group>"; };
@@ -174,8 +178,8 @@
 			children = (
 				87A49754278B664500D1D33A /* MapViewController.swift */,
 				86514DE9278C0EC2003839DF /* MapPresenter.swift */,
-				86514DED278DB217003839DF /* GoumandCell.swift */,
-				86514DEE278DB217003839DF /* GoumandCell.xib */,
+				86514DED278DB217003839DF /* GourmandCell.swift */,
+				86514DEE278DB217003839DF /* GourmandCell.xib */,
 				86514DF1278E7D05003839DF /* TravelCell.swift */,
 				86514DF2278E7D05003839DF /* TravelCell.xib */,
 			);
@@ -325,6 +329,8 @@
 			children = (
 				87717DB0278DD95F00AD966C /* struct */,
 				87717DC127906BFF00AD966C /* GourmandDataLoadModel.swift */,
+				86514DF527914CE0003839DF /* GourmandAPIModel.swift */,
+				86514DF727914CF4003839DF /* TravelAPIModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -456,7 +462,7 @@
 				87E10C7A278A9E00005AAA4A /* NetShopping.storyboard in Resources */,
 				87E10C6D278A9680005AAA4A /* LaunchScreen.storyboard in Resources */,
 				220A0BEC278ADB79000F4AD1 /* TravelSearch.storyboard in Resources */,
-				86514DF0278DB217003839DF /* GoumandCell.xib in Resources */,
+				86514DF0278DB217003839DF /* GourmandCell.xib in Resources */,
 				87A4974E278B648F00D1D33A /* WebView.storyboard in Resources */,
 				87A4977F278D65F800D1D33A /* MemberCountCell.xib in Resources */,
 				87A49752278B65E100D1D33A /* MapView.storyboard in Resources */,
@@ -543,8 +549,10 @@
 				87E10C7E278A9EB4005AAA4A /* NetShoppingViewController.swift in Sources */,
 				2276BDD0278D362C00DBB69A /* PlaceSearchPresenter.swift in Sources */,
 				87717DB2278DD97A00AD966C /* GourmandSearchDataModel.swift in Sources */,
+				86514DF627914CE0003839DF /* GourmandAPIModel.swift in Sources */,
 				87717DB6278DDC8F00AD966C /* DateModel.swift in Sources */,
 				87717DB4278DDA0200AD966C /* PlaceSearchDataModel.swift in Sources */,
+				86514DF827914CF4003839DF /* TravelAPIModel.swift in Sources */,
 				87A49782278D669400D1D33A /* GourmandSearchPresenter.swift in Sources */,
 				87A49747278B4DDA00D1D33A /* GourmandSearchViewController.swift in Sources */,
 				87E10C65278A967F005AAA4A /* HomeViewController.swift in Sources */,
@@ -552,7 +560,7 @@
 				87717DC427906C3200AD966C /* GourmandGenrePresenter.swift in Sources */,
 				87A4975D278B678600D1D33A /* GourmandGenreViewController.swift in Sources */,
 				87A49757278B668000D1D33A /* PlaceSearchViewController.swift in Sources */,
-				86514DEF278DB217003839DF /* GoumandCell.swift in Sources */,
+				86514DEF278DB217003839DF /* GourmandCell.swift in Sources */,
 				87E10C61278A967F005AAA4A /* AppDelegate.swift in Sources */,
 				87E10C63278A967F005AAA4A /* SceneDelegate.swift in Sources */,
 				87717DC227906BFF00AD966C /* GourmandDataLoadModel.swift in Sources */,
