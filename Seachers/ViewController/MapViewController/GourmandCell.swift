@@ -11,6 +11,14 @@ class GourmandCell: UICollectionViewCell {
 
     
     @IBOutlet weak var gourmandView: UIView!
+    @IBOutlet weak var shopImageView: UIImageView!
+    @IBOutlet weak var area_genreLabel: UILabel!
+    @IBOutlet weak var shopNameLabel: UILabel!
+    @IBOutlet weak var averageBudgetLabel: UILabel!
+    @IBOutlet weak var lunchLabel: UILabel!
+    @IBOutlet weak var favButton: UIButton!
+    @IBOutlet weak var detailButton: UIButton!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,6 +28,8 @@ class GourmandCell: UICollectionViewCell {
         gourmandView.layer.shadowOffset = CGSize(width: 1, height: 3)
         gourmandView.layer.shadowOpacity = 0.2
         gourmandView.layer.shadowRadius = 3
+        
+        detailButton.layer.cornerRadius = 5
         // Initialization code
     }
 

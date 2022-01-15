@@ -7,14 +7,16 @@
 
 import UIKit
 import GoogleMaps
+import SDWebImage
 
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController,UISearchBarDelegate {
     
     
     @IBOutlet weak var collectionView: UICollectionView!
     var googleMap = GMSMapView()
     var markers: [GMSMarker] = []
+    var searchBar = UISearchBar()
     
     private var presenter: MapPresenterInput!
     
@@ -25,18 +27,8 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let model = MapModel()
         let presenter = MapPresenter(view: self)
         inject(presenter: presenter)
-        
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        collectionView.collectionViewLayout = layout
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.isPagingEnabled = true
-        collectionView.register(UINib(nibName: "GourmandCell", bundle: nil), forCellWithReuseIdentifier: "GourmandCell")
-        collectionView.register(UINib(nibName: "TravelCell", bundle: nil), forCellWithReuseIdentifier: "TravelCell")
         
     }
     
@@ -44,20 +36,48 @@ class MapViewController: UIViewController {
         super.viewWillAppear(animated)
         
         presenter.reloadData()
+        setupSearchBar()
         
+    }
+    
+    func setupSearchBar() {
+        if let navigationBarFrame = navigationController?.navigationBar.bounds {
+            let frame = CGRect(x: 0, y: 0, width: 100, height: 40)
+            let searchBar: UISearchBar = UISearchBar(frame: frame)
+            searchBar.delegate = self
+            searchBar.placeholder = "500m"
+            searchBar.tintColor = UIColor.darkGray
+            searchBar.keyboardType = UIKeyboardType.default
+            navigationItem.titleView = searchBar
+            navigationItem.titleView?.frame = searchBar.frame
+//            self.navigationController?.navigationBar.isTranslucent = false
+//            self.navigationController?.navigationBar.backgroundColor = .clear
+            searchBar.backgroundColor = .white
+            self.searchBar = searchBar
+        }
     }
     
     
 }
 
 extension MapViewController: UICollectionViewDelegate{
-    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let x = Double(scrollView.contentOffset.x)
+        let indexCount = x / view.frame.width
+        let marker = markers[Int(indexCount)]
+        marker.tracksInfoWindowChanges = true
+        googleMap.selectedMarker = marker
+    }
 }
 
 extension MapViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        if presenter.shopDataArray == nil{
+            return 0
+        }else{
+            return presenter.shopDataArray!.count
+        }
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -66,6 +86,21 @@ extension MapViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GourmandCell", for: indexPath) as! GourmandCell
+        let shopImageView = cell.shopImageView
+        let area_genreLabel = cell.area_genreLabel
+        let shopNameLabel = cell.shopNameLabel
+        let averageBudgetLabel = cell.averageBudgetLabel
+        let lunchLabel = cell.lunchLabel
+        let favButton = cell.favButton
+        let detailButton = cell.detailButton
+        
+        let shopDataArray = presenter.shopDataArray!
+        
+        shopImageView?.sd_setImage(with: URL(string: shopDataArray[indexPath.row].value!.shop_image!), completed: nil)
+        area_genreLabel?.text = shopDataArray[indexPath.row].value!.smallAreaName! + "/" + shopDataArray[indexPath.row].value!.genreName!
+        shopNameLabel?.text = shopDataArray[indexPath.row].value!.name
+        averageBudgetLabel?.text = shopDataArray[indexPath.row].value!.budgetAverage
+        lunchLabel?.text = shopDataArray[indexPath.row].value!.lunch
         
         return cell
     }
@@ -96,9 +131,8 @@ extension MapViewController: GMSMapViewDelegate{
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         
-//        collectionView.scrollToItem(at: IndexPath(row: 2, section: 0), at: .right, animated: true)
-        print(marker.title)
-        
+        let index = presenter.shopDataArray?.firstIndex(where: { $0.key == marker.title })
+        collectionView.scrollToItem(at: IndexPath(row: index!, section: 0), at: .right, animated: true)
         marker.tracksInfoWindowChanges = true //情報ウィンドウを自動的に更新するように設定する
         googleMap.selectedMarker = marker //デフォルトで情報ウィンドウを表示
         
@@ -111,33 +145,49 @@ extension MapViewController: GMSMapViewDelegate{
 extension MapViewController: MapPresenterOutput{
     
     func setupMap() {
-        let camera = GMSCameraPosition.camera(withLatitude: 35.68154,longitude: 139.752498, zoom: 15)
+        let camera = GMSCameraPosition.camera(withLatitude: 35.6954496,longitude: 139.7514154, zoom: 15)
         let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height), camera: camera)
         self.googleMap = mapView
         self.view.addSubview(googleMap)
         self.view.sendSubviewToBack(googleMap)
         googleMap.delegate = self
-        
-        let lat = [35.68154,35.6954496]
-        let log = [139.752498,139.7514154]
-        let title = ["皇居","九段下駅"]
 
-        for i in 0..<2{
-            makeMarker(lat: lat[i], log: log[i], title: title[i])
+        let shopDataArray = presenter.shopDataArray!
+        for shopDataDic in shopDataArray{
+            makeMarker(shopData: shopDataDic.value!)
         }
+        collectionView.reloadData()
     }
     
-    func makeMarker(lat: Double,log: Double,title: String) {
+    func makeMarker(shopData:ShopData) -> [GMSMarker] {
+        let latitude = shopData.latitude!
+        let longitude = shopData.longitude!
+        let title = shopData.name!
+        
         let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2DMake(lat,log)
+        marker.position = CLLocationCoordinate2DMake(latitude,longitude)
         marker.appearAnimation = GMSMarkerAnimation.pop
         marker.title = "\(title)"
-        marker.snippet = "Tokyo"
+        marker.snippet = shopData.smallAreaName! + "/" + shopData.genreName!
         marker.map = googleMap
+        markers.append(marker)
+        
+        return markers
     }
     
     func reloadMap() {
         setupMap()
+    }
+    
+    func reloadCollectionView() {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        collectionView.collectionViewLayout = layout
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.isPagingEnabled = true
+        collectionView.register(UINib(nibName: "GourmandCell", bundle: nil), forCellWithReuseIdentifier: "GourmandCell")
+        collectionView.register(UINib(nibName: "TravelCell", bundle: nil), forCellWithReuseIdentifier: "TravelCell")
     }
     
 }
