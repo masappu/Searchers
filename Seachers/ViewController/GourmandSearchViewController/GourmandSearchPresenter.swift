@@ -56,7 +56,7 @@ protocol GourmandSearchOutput{
     func transitionToPlaceSearchVIew()
     
     //GourmandGenreViewへの遷移を指示する
-    func transitionToGourmandGenreView()
+    func transitionToGourmandGenreView(selectedGenres:[GenreModel])
 }
 
 final class GourmandSearchPresenter: GourmandSearchInput{
@@ -99,7 +99,7 @@ final class GourmandSearchPresenter: GourmandSearchInput{
         if index == 0{
             self.view.transitionToPlaceSearchVIew()
         }else if index == 1{
-            self.view.transitionToGourmandGenreView()
+            self.view.transitionToGourmandGenreView(selectedGenres: self.searchData.genre)
         }else if index == 2{
             self.view.reloadDatePickerIsHidden()
         }

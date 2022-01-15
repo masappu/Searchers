@@ -18,7 +18,6 @@ struct DateModel{
     
     private var dateFormatter: DateFormatter{
         let formatter = DateFormatter()
-//        formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy年MM月dd日 HH時mm分", options: 0, locale: Locale(identifier: "ja_JP"))
         formatter.dateFormat = "MM月dd日(EEE) HH時mm分"
         formatter.locale = Locale(identifier: "ja_JP") 
         return formatter
@@ -26,10 +25,8 @@ struct DateModel{
     
     private func initialDate() -> Date{
         let formatter = DateFormatter()
-//        formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy年MM月dd日", options: 0, locale: Locale(identifier: "ja_JP"))
         formatter.dateFormat = "MM月dd日(EEE)"
         formatter.locale = Locale(identifier: "ja_JP")
-        print(formatter.string(from: Date()))
         let initialDateString = formatter.string(from: Date()) + " 19時00分"
 
         return self.dateFormatter.date(from: initialDateString)!

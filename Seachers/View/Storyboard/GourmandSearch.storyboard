@@ -83,22 +83,22 @@
                                                     </buttonConfiguration>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ck4-O2-IA4">
-                                                    <rect key="frame" x="28" y="18" width="276" height="45"/>
+                                                    <rect key="frame" x="28" y="11" width="276" height="59"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="sIk-5c-mWs"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Fp7-lk-3Ii" firstAttribute="leading" secondItem="ck4-O2-IA4" secondAttribute="trailing" constant="26" id="1dW-u5-k82"/>
+                                                <constraint firstItem="ck4-O2-IA4" firstAttribute="top" secondItem="9QV-DV-RC9" secondAttribute="topMargin" id="8VR-Wp-X1t"/>
                                                 <constraint firstItem="Fp7-lk-3Ii" firstAttribute="centerY" secondItem="ck4-O2-IA4" secondAttribute="centerY" id="He3-XN-ixL"/>
-                                                <constraint firstItem="ck4-O2-IA4" firstAttribute="top" secondItem="9QV-DV-RC9" secondAttribute="topMargin" constant="7" id="Nrf-pC-cvF"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Fp7-lk-3Ii" secondAttribute="trailing" constant="8" id="e4K-s2-eZ3"/>
                                                 <constraint firstItem="ck4-O2-IA4" firstAttribute="leading" secondItem="9QV-DV-RC9" secondAttribute="leadingMargin" constant="8" id="sWL-LI-Q1j"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="ck4-O2-IA4" secondAttribute="bottom" constant="7" id="vEB-0c-vg3"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="ck4-O2-IA4" secondAttribute="bottom" id="wMU-MU-zOp"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -119,6 +119,9 @@
                                             <fontDescription key="titleFontDescription" type="boldSystem" pointSize="18"/>
                                             <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="doneButton:" destination="5Pj-9P-drc" eventType="touchUpInside" id="PE6-Gn-BkQ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -148,7 +151,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lu9-6f-KdL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1975" y="111"/>
+            <point key="canvasLocation" x="1983" y="117"/>
         </scene>
     </scenes>
     <resources>
