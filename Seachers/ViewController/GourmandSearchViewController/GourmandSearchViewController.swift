@@ -26,6 +26,7 @@ class GourmandSearchViewController: UIViewController {
         super.viewDidLoad()
         let presenter = GourmandSearchPresenter(view: self)
         inject(presenter: presenter)
+        self.searchDate = GourmandSearchDataModel()
         self.navigationItem.title = "グルメ検索"
     }
 
@@ -105,11 +106,21 @@ extension GourmandSearchViewController:GourmandSearchOutput{
         self.navigationController?.pushViewController(placeSearchVC, animated: true)
     }
 
-    func transitionToGourmandGenreView() {
+    func transitionToGourmandGenreView(selectedGenres:[GenreModel]) {
         let gourmandGenreVC = self.storyboard?.instantiateViewController(withIdentifier: "gourmandGenreVC") as! GourmandGenreViewController
+        gourmandGenreVC.popVC = self
+        gourmandGenreVC.selecteGenres = selectedGenres
+        print(selectedGenres)
         self.navigationController?.pushViewController(gourmandGenreVC, animated: true)
     }
 
+}
+
+extension GourmandSearchViewController:GourmandGenreViewOutput{
+    
+    func passData(data: [GenreModel]) {
+        self.searchDate.genre = data
+    }
 }
 
 extension GourmandSearchViewController:UITableViewDelegate,UITableViewDataSource{

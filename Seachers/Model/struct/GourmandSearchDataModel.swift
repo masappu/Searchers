@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct GourmandSearchDataModel{
     var place:PlaceSearchDataModel
@@ -26,6 +27,18 @@ struct GenreModel{
     var name:String
     var id:String
     var selected:Bool
+    var selectbuttonImageID:String{
+        switch self.selected{
+        case false: return "checkmark.circle"
+        case true: return "checkmark.circle.fill"
+        }
+    }
+    var selectButtonImageColor:UIColor{
+        switch self.selected{
+        case false: return .lightGray
+        case true: return .red
+        }
+    }
     init(){
         self.name = String()
         self.id = String()
