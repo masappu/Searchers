@@ -60,6 +60,8 @@
 		87E10C7E278A9EB4005AAA4A /* NetShoppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E10C7D278A9EB4005AAA4A /* NetShoppingViewController.swift */; };
 		87E10C80278AAA3A005AAA4A /* GourmandSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87E10C7F278AAA3A005AAA4A /* GourmandSearch.storyboard */; };
 		C0F0D02932466EB2F5332F9E /* Pods_Seachers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02AC76828558B154338808DE /* Pods_Seachers.framework */; };
+		CCC805A42793DCA1000AAE8F /* NetShoppingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC805A22793DCA1000AAE8F /* NetShoppingTableViewCell.swift */; };
+		CCC805A52793DCA1000AAE8F /* NetShoppingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCC805A32793DCA1000AAE8F /* NetShoppingTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -121,6 +123,8 @@
 		87E10C7D278A9EB4005AAA4A /* NetShoppingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetShoppingViewController.swift; sourceTree = "<group>"; };
 		87E10C7F278AAA3A005AAA4A /* GourmandSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GourmandSearch.storyboard; sourceTree = "<group>"; };
 		87E10C82278ADD89005AAA4A /* GourmandSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GourmandSearchViewController.swift; sourceTree = "<group>"; };
+		CCC805A22793DCA1000AAE8F /* NetShoppingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetShoppingTableViewCell.swift; path = Seachers/CustomCell/NetShopppingCell/NetShoppingTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		CCC805A32793DCA1000AAE8F /* NetShoppingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NetShoppingTableViewCell.xib; path = Seachers/CustomCell/NetShopppingCell/NetShoppingTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,6 +275,7 @@
 		87A4976B278D63DE00D1D33A /* CustomCell */ = {
 			isa = PBXGroup;
 			children = (
+				CCC805A62793DCB6000AAE8F /* NetShopppingCell */,
 				87A4977B278D659E00D1D33A /* MenberCountCell */,
 				87A49776278D64E900D1D33A /* ReservationDateCell */,
 				87A49771278D64AB00D1D33A /* SelectGenreCell */,
@@ -439,6 +444,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		CCC805A62793DCB6000AAE8F /* NetShopppingCell */ = {
+			isa = PBXGroup;
+			children = (
+				CCC805A22793DCA1000AAE8F /* NetShoppingTableViewCell.swift */,
+				CCC805A32793DCA1000AAE8F /* NetShoppingTableViewCell.xib */,
+			);
+			path = NetShopppingCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -519,6 +533,7 @@
 				87A49775278D64E400D1D33A /* SelectGenreCell.xib in Resources */,
 				87E10C80278AAA3A005AAA4A /* GourmandSearch.storyboard in Resources */,
 				87A4975F278B6CE600D1D33A /* FavView.storyboard in Resources */,
+				CCC805A52793DCA1000AAE8F /* NetShoppingTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,6 +606,7 @@
 				22838C882791565A00562F67 /* PlaceCell.swift in Sources */,
 				86514DF3278E7D06003839DF /* TravelCell.swift in Sources */,
 				87A49768278B714F00D1D33A /* FavOfNetShoppingViewController.swift in Sources */,
+				CCC805A42793DCA1000AAE8F /* NetShoppingTableViewCell.swift in Sources */,
 				87A49774278D64E400D1D33A /* SelectGenreCell.swift in Sources */,
 				86514DEA278C0EC2003839DF /* MapPresenter.swift in Sources */,
 				87A4974B278B536A00D1D33A /* TravelSearchViewController.swift in Sources */,
