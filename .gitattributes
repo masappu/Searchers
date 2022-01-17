@@ -1,3 +1,4 @@
 /Users/yamaguchimakotoshi/Library/Mobile[[:space:]]Documents/com~apple~CloudDocs/swift_学習用/Seachers/Pods/Realm filter=lfs diff=lfs merge=lfs -text
 /Users/yamaguchimakotoshi/Library/Mobile[[:space:]]Documents/com~apple~CloudDocs/swift_学習用/Seachers/Pods filter=lfs diff=lfs merge=lfs -text
 Pods/Realm/core/realm-monorepo.xcframework/watchos-arm64_i386_x86_64-simulator/librealm-monorepo.a filter=lfs diff=lfs merge=lfs -text
+Pods/Realm/core/realm-monorepo.xcframework/watchos-armv7k_arm64_32/librealm-monorepo.a filter=lfs diff=lfs merge=lfs -text

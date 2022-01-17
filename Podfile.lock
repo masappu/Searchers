@@ -6,15 +6,16 @@ PODS:
   - GoogleMaps/Maps (6.0.1):
     - GoogleMaps/Base
   - GooglePlaces (6.0.0)
-  - Realm (10.20.1):
-    - Realm/Headers (= 10.20.1)
-  - Realm/Headers (10.20.1)
-  - RealmSwift (10.20.1):
-    - Realm (= 10.20.1)
+  - Realm (10.21.1):
+    - Realm/Headers (= 10.21.1)
+  - Realm/Headers (10.21.1)
+  - RealmSwift (10.21.1):
+    - Realm (= 10.21.1)
   - SDWebImage (5.12.2):
     - SDWebImage/Core (= 5.12.2)
   - SDWebImage/Core (5.12.2)
   - SwiftyJSON (5.0.1)
+  - VideoSplashKit (1.2.1)
 
 DEPENDENCIES:
   - Alamofire
@@ -23,6 +24,7 @@ DEPENDENCIES:
   - RealmSwift
   - SDWebImage
   - SwiftyJSON
+  - VideoSplashKit
 
 SPEC REPOS:
   trunk:
@@ -33,16 +35,18 @@ SPEC REPOS:
     - RealmSwift
     - SDWebImage
     - SwiftyJSON
+    - VideoSplashKit
 
 SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
   GoogleMaps: c213fc2334b7374144cede914da779b99be0ab74
   GooglePlaces: c97d96ae68594acb64035c9ca9f26fbfc1d23af1
-  Realm: fac5ecd031fcb81171627b74944c885662d4b266
-  RealmSwift: 9b02d25acb46a14756bde9893abb99e2e3675923
+  Realm: 44b41c3ae39e3ecfded71a04434bfde066c7b317
+  RealmSwift: dbf9a4eb06e0c929d51c4ef2e8f951bca541feab
   SDWebImage: 240e5c12b592fb1268c1d03b8c90d90e8c2ffe82
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
+  VideoSplashKit: 9d5670948cfb0be15262d973cedbfd3faecddcad
 
-PODFILE CHECKSUM: 20e8c852bf210d6d8d58646af94c46747f1a92fd
+PODFILE CHECKSUM: 9e2b53d79fad8a74ba539fb9204f0fc564fb2365
 
 COCOAPODS: 1.11.2
