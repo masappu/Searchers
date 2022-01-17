@@ -23,6 +23,7 @@
 		86514DF627914CE0003839DF /* GourmandAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86514DF527914CE0003839DF /* GourmandAPIModel.swift */; };
 		86514DF827914CF4003839DF /* TravelAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86514DF727914CF4003839DF /* TravelAPIModel.swift */; };
 		871D95462791DAE500AA05F3 /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871D95452791DAE500AA05F3 /* CellType.swift */; };
+		871D95482793E90800AA05F3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 871D95472793E90800AA05F3 /* CoreLocation.framework */; };
 		87717DB2278DD97A00AD966C /* GourmandSearchDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87717DB1278DD97A00AD966C /* GourmandSearchDataModel.swift */; };
 		87717DB4278DDA0200AD966C /* PlaceSearchDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87717DB3278DDA0200AD966C /* PlaceSearchDataModel.swift */; };
 		87717DB6278DDC8F00AD966C /* DateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87717DB5278DDC8F00AD966C /* DateModel.swift */; };
@@ -84,6 +85,7 @@
 		86514DF527914CE0003839DF /* GourmandAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GourmandAPIModel.swift; sourceTree = "<group>"; };
 		86514DF727914CF4003839DF /* TravelAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelAPIModel.swift; sourceTree = "<group>"; };
 		871D95452791DAE500AA05F3 /* CellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellType.swift; sourceTree = "<group>"; };
+		871D95472793E90800AA05F3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		87717DB1278DD97A00AD966C /* GourmandSearchDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GourmandSearchDataModel.swift; sourceTree = "<group>"; };
 		87717DB3278DDA0200AD966C /* PlaceSearchDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchDataModel.swift; sourceTree = "<group>"; };
 		87717DB5278DDC8F00AD966C /* DateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateModel.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				871D95482793E90800AA05F3 /* CoreLocation.framework in Frameworks */,
 				C0F0D02932466EB2F5332F9E /* Pods_Seachers.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -178,6 +181,7 @@
 		840095A7B1C94F6C57977F12 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				871D95472793E90800AA05F3 /* CoreLocation.framework */,
 				02AC76828558B154338808DE /* Pods_Seachers.framework */,
 			);
 			name = Frameworks;
