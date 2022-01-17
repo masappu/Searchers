@@ -16,8 +16,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="282AE7D5-28D5-4410-89F7-2E530D43D0BC" translatesAutoresizingMaskIntoConstraints="NO" id="80S-Kc-ALT">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M1a-xl-N7d">
-                                <rect key="frame" x="55.5" y="461.5" width="303" height="73"/>
+                                <rect key="frame" x="52" y="436" width="303" height="105"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemTealColor"/>
                                 <state key="normal" title="Button"/>
@@ -31,7 +35,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fnd-lv-8yB">
-                                <rect key="frame" x="55.5" y="624" width="303" height="73"/>
+                                <rect key="frame" x="56" y="597" width="303" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <state key="normal" title="Button"/>
@@ -45,7 +49,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4D-9d-icM">
-                                <rect key="frame" x="55.5" y="310" width="303" height="73"/>
+                                <rect key="frame" x="56" y="280" width="303" height="103"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                 <state key="normal" title="Button"/>
@@ -59,10 +63,13 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3S8-Wf-2kg">
-                                <rect key="frame" x="180" y="775" width="234" height="33.5"/>
+                                <rect key="frame" x="124" y="770" width="234" height="33.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="お気に入り一覧へ">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" red="0.96620899439999997" green="0.95541689149999998" blue="0.22871650330000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </backgroundConfiguration>
                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="16"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -81,6 +88,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="c8f-9I-bgO"/>
+                    <connections>
+                        <outlet property="BackgroundImage" destination="80S-Kc-ALT" id="R0y-XV-666"/>
+                        <outlet property="FavoriteButtom" destination="3S8-Wf-2kg" id="f61-dU-t1S"/>
+                        <outlet property="GourmandButtom" destination="M1a-xl-N7d" id="ssb-QZ-S7A"/>
+                        <outlet property="NetShoppingButtom" destination="i4D-9d-icM" id="l5s-cY-txq"/>
+                        <outlet property="TravelButtom" destination="fnd-lv-8yB" id="TDR-15-Nks"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -146,6 +160,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="282AE7D5-28D5-4410-89F7-2E530D43D0BC" width="511" height="1028"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

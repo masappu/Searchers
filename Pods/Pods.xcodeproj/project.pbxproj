@@ -1013,7 +1013,7 @@
 		F3E6CA71CBEDB294BA1C3D5414FC1BFE /* PersistedProperty.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PersistedProperty.swift; path = RealmSwift/PersistedProperty.swift; sourceTree = "<group>"; };
 		F468784EB30F19DA3D7E7E561E5D2F84 /* SDImageIOAnimatedCoderInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageIOAnimatedCoderInternal.h; path = SDWebImage/Private/SDImageIOAnimatedCoderInternal.h; sourceTree = "<group>"; };
 		F517192AAF4845E5D91E2CA024592E07 /* RLMRealmUtil.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMRealmUtil.mm; path = Realm/RLMRealmUtil.mm; sourceTree = "<group>"; };
-		F5D1981367EB42596B6B6E6B7AD1B91D /* Pods-Seachers */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Seachers"; path = Pods_Seachers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5D1981367EB42596B6B6E6B7AD1B91D /* Pods_Seachers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Seachers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6668EBF2D180498235A3B139FFE7F79 /* SDWebImageDownloaderDecryptor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDownloaderDecryptor.h; path = SDWebImage/Core/SDWebImageDownloaderDecryptor.h; sourceTree = "<group>"; };
 		F6BCFE4E6B26130DF153E7C8E961E68A /* SDWebImageOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageOperation.h; path = SDWebImage/Core/SDWebImageOperation.h; sourceTree = "<group>"; };
 		F846AE787090591EA297D3CAEC534D76 /* RLMApp_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMApp_Private.h; path = include/RLMApp_Private.h; sourceTree = "<group>"; };
@@ -1287,7 +1287,7 @@
 			isa = PBXGroup;
 			children = (
 				5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */,
-				F5D1981367EB42596B6B6E6B7AD1B91D /* Pods-Seachers */,
+				F5D1981367EB42596B6B6E6B7AD1B91D /* Pods_Seachers.framework */,
 				921BE4A82C4A7A5C72A0C6F8B8FEF200 /* Realm */,
 				437919EE08EC6BFCCBAC3BD346309742 /* RealmSwift */,
 				B0B214D775196BA7CA8E17E53048A493 /* SDWebImage */,
@@ -1970,7 +1970,7 @@
 			);
 			name = "Pods-Seachers";
 			productName = Pods_Seachers;
-			productReference = F5D1981367EB42596B6B6E6B7AD1B91D /* Pods-Seachers */;
+			productReference = F5D1981367EB42596B6B6E6B7AD1B91D /* Pods_Seachers.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		3847153A6E5EEFB86565BA840768F429 /* SDWebImage */ = {
