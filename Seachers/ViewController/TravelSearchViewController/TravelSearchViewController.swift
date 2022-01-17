@@ -17,16 +17,14 @@ class TravelSearchViewController: UIViewController {
     
     @IBAction func goPlaceSearchVC(_ sender: Any) {
         let storyboard = UIStoryboard(name: "PlaceSearch", bundle: nil)
-        let navigationController = storyboard.instantiateInitialViewController() as! UINavigationController
-        let placeSearchVC = navigationController.topViewController as! PlaceSearchViewController
+        let placeSearchVC = storyboard.instantiateInitialViewController() as! PlaceSearchViewController
         self.navigationController?.pushViewController(placeSearchVC, animated: true)
     }
     
     
     @IBAction func goMapView(_ sender: Any) {
         let storyboard = UIStoryboard(name: "MapView", bundle: nil)
-        let navigationController = storyboard.instantiateInitialViewController() as! UINavigationController
-        let mapVC = navigationController.topViewController as! MapViewController
+        let mapVC = storyboard.instantiateInitialViewController() as! MapViewController
         self.navigationController?.pushViewController(mapVC, animated: true)
     }
     

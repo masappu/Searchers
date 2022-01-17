@@ -16,15 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="何する？" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GcB-Ct-dwp">
-                                <rect key="frame" x="78" y="100" width="259" height="53"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M1a-xl-N7d">
-                                <rect key="frame" x="56" y="412" width="303" height="73"/>
+                                <rect key="frame" x="55.5" y="461.5" width="303" height="73"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemTealColor"/>
                                 <state key="normal" title="Button"/>
@@ -34,11 +27,11 @@
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="goGourmadSearchVC:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xur-FO-3AA"/>
+                                    <segue destination="9sO-bf-NuV" kind="show" id="10I-J7-SpQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fnd-lv-8yB">
-                                <rect key="frame" x="56" y="561" width="303" height="73"/>
+                                <rect key="frame" x="55.5" y="624" width="303" height="73"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <state key="normal" title="Button"/>
@@ -48,11 +41,11 @@
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="goTravelSearchVC:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KmX-6j-odJ"/>
+                                    <segue destination="1ih-Ae-ijh" kind="show" id="oSe-gt-XLf"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4D-9d-icM">
-                                <rect key="frame" x="56" y="253" width="303" height="73"/>
+                                <rect key="frame" x="55.5" y="310" width="303" height="73"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                 <state key="normal" title="Button"/>
@@ -62,20 +55,27 @@
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="goNetShoppingVC:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ggK-AE-ejc"/>
+                                    <segue destination="CL6-j1-Jri" kind="show" id="3WN-pA-8hj"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3S8-Wf-2kg">
-                                <rect key="frame" x="180" y="775" width="234" height="50"/>
+                                <rect key="frame" x="180" y="775" width="234" height="33.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="お気に入り一覧へ">
                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="16"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="goFavView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mtq-MJ-zzZ"/>
+                                    <segue destination="Aea-Rf-4Dg" kind="show" id="HKK-QB-CYl"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="何する？" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GcB-Ct-dwp">
+                                <rect key="frame" x="77.5" y="142" width="259" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -85,6 +85,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="97.767857142857139"/>
+        </scene>
+        <!--NetShopping-->
+        <scene sceneID="4gh-XL-SSB">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NetShopping" id="CL6-j1-Jri" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="wYk-JG-JEw"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U43-oG-3ja" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1712" y="25"/>
+        </scene>
+        <!--GourmandSearch-->
+        <scene sceneID="7E8-vW-lgJ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="GourmandSearch" id="9sO-bf-NuV" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="FSn-a2-RMe"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gx3-hj-5US" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1732" y="82"/>
+        </scene>
+        <!--PlaceSearch-->
+        <scene sceneID="Szs-ns-6HG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PlaceSearch" id="1ih-Ae-ijh" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="fgM-qO-JZe"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BlS-ce-nJ9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1710" y="115"/>
+        </scene>
+        <!--FavView-->
+        <scene sceneID="hjT-yj-rIP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FavView" id="Aea-Rf-4Dg" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="zdj-CF-2Xa"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AUi-ns-HaK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1691" y="173"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0wY-E9-eCT">

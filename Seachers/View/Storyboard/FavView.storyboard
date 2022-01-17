@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Fav Of Travel View Controller-->
+        <!--Item-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController id="Y6W-OH-hqX" customClass="FavOfTravelViewController" customModule="Seachers" customModuleProvider="target" sceneMemberID="viewController">
@@ -27,13 +27,14 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="DXp-47-wLv"/>
                     <navigationItem key="navigationItem" id="D5r-av-vkS"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="854" y="1335"/>
+            <point key="canvasLocation" x="787" y="1076"/>
         </scene>
-        <!--Fav Of Gourmand View Controller-->
+        <!--Item-->
         <scene sceneID="gKC-Fu-5hs">
             <objects>
                 <viewController id="Oyh-Sa-Ijd" customClass="FavOfGourmandViewController" customModule="Seachers" customModuleProvider="target" sceneMemberID="viewController">
@@ -52,13 +53,14 @@
                         <viewLayoutGuide key="safeArea" id="h3Y-vv-DgN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="n9Q-QL-FP2"/>
                     <navigationItem key="navigationItem" id="paI-pQ-jFM"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZIf-uD-Dof" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-365" y="1335"/>
+            <point key="canvasLocation" x="787" y="327"/>
         </scene>
-        <!--Fav Of Net Shopping View Controller-->
+        <!--Item-->
         <scene sceneID="ieS-uH-5gp">
             <objects>
                 <viewController storyboardIdentifier="favOfNetShoppingVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5eQ-Km-Uxq" customClass="FavOfNetShoppingViewController" customModule="Seachers" customModuleProvider="target" sceneMemberID="viewController">
@@ -77,11 +79,12 @@
                         <viewLayoutGuide key="safeArea" id="KHJ-w6-FXc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="nEG-Rq-GPM"/>
                     <navigationItem key="navigationItem" id="tcX-iG-Ew7"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="egZ-F4-KmL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1497.1014492753625" y="1334.5982142857142"/>
+            <point key="canvasLocation" x="788" y="-346"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="1tG-pb-hd0">
@@ -93,75 +96,17 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="vq5-ty-BhX" kind="relationship" relationship="viewControllers" id="Tma-O4-e9k"/>
-                        <segue destination="xw9-kO-KnL" kind="relationship" relationship="viewControllers" id="VvW-zP-3HB"/>
-                        <segue destination="pRO-vl-KIG" kind="relationship" relationship="viewControllers" id="Obc-MQ-kAX"/>
+                        <segue destination="5eQ-Km-Uxq" kind="relationship" relationship="viewControllers" id="o0l-At-Lhv"/>
+                        <segue destination="Oyh-Sa-Ijd" kind="relationship" relationship="viewControllers" id="Kog-CU-4d0"/>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="viewControllers" id="6BN-Qa-Mfh"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="buP-1w-fBp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-365" y="-131"/>
-        </scene>
-        <!--ネット通販-->
-        <scene sceneID="xcp-cO-mIC">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vq5-ty-BhX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="ネット通販" image="cart" catalog="system" id="9sO-Ok-0PJ"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="q7J-gJ-Ybx">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="5eQ-Km-Uxq" kind="relationship" relationship="rootViewController" id="6JZ-tw-5AL"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="poj-OZ-Xyp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1497.1014492753625" y="628.79464285714278"/>
-        </scene>
-        <!--グルメ-->
-        <scene sceneID="oKb-PF-4PD">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xw9-kO-KnL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="グルメ" id="Fdu-iO-MuS"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jHL-76-cQt">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Oyh-Sa-Ijd" kind="relationship" relationship="rootViewController" id="94k-Ui-pdb"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5wt-Mg-Ykq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-365" y="628"/>
-        </scene>
-        <!--旅行・宿-->
-        <scene sceneID="dSM-tK-4CJ">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pRO-vl-KIG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="旅行・宿" id="FkA-0H-5De"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Mk8-WG-eUp">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="eEU-Mc-Oq1"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="K8z-FA-Xfg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="853.62318840579712" y="626.78571428571422"/>
+            <point key="canvasLocation" x="-346" y="327"/>
         </scene>
     </scenes>
     <resources>
-        <image name="cart" catalog="system" width="128" height="102"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
