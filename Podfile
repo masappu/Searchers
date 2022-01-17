@@ -12,5 +12,5 @@ pod 'SwiftyJSON'
 pod 'Alamofire'
 pod 'SDWebImage'
 pod 'RealmSwift'
-pod 'VideoSplashKit', :inhibit_warnings => true
+pod 'VideoSplashKit'
 end
