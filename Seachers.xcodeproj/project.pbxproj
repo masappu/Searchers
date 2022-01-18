@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		220A0BEC278ADB79000F4AD1 /* TravelSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 220A0BEB278ADB79000F4AD1 /* TravelSearch.storyboard */; };
-		2276BDD0278D362C00DBB69A /* PlaceSearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2276BDCF278D362C00DBB69A /* PlaceSearchPresenter.swift */; };
-		22838C842791563C00562F67 /* PlaceSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22838C822791563C00562F67 /* PlaceSearchCell.swift */; };
-		22838C852791563C00562F67 /* PlaceSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22838C832791563C00562F67 /* PlaceSearchCell.xib */; };
-		22838C882791565A00562F67 /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22838C862791565A00562F67 /* PlaceCell.swift */; };
-		22838C892791565A00562F67 /* PlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22838C872791565A00562F67 /* PlaceCell.xib */; };
-		22838C8C279156B300562F67 /* DistanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22838C8A279156B300562F67 /* DistanceCell.swift */; };
-		22838C8D279156B300562F67 /* DistanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22838C8B279156B300562F67 /* DistanceCell.xib */; };
+		2241F6DB279717A50031E004 /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241F6DA279717A50031E004 /* PlaceCell.swift */; };
+		2241F6DD279717AE0031E004 /* PlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2241F6DC279717AE0031E004 /* PlaceCell.xib */; };
+		2241F6DF279717CD0031E004 /* PlaceSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241F6DE279717CD0031E004 /* PlaceSearchCell.swift */; };
+		2241F6E1279717D50031E004 /* PlaceSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2241F6E0279717D50031E004 /* PlaceSearchCell.xib */; };
+		2241F6E3279717E90031E004 /* DistanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241F6E2279717E90031E004 /* DistanceCell.swift */; };
+		2241F6E5279717EF0031E004 /* DistanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2241F6E4279717EF0031E004 /* DistanceCell.xib */; };
+		2241F6E7279718040031E004 /* PlaceSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241F6E6279718040031E004 /* PlaceSearchViewController.swift */; };
+		2241F6E92797180F0031E004 /* PlaceSearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241F6E82797180F0031E004 /* PlaceSearchPresenter.swift */; };
 		86514DEA278C0EC2003839DF /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86514DE9278C0EC2003839DF /* MapPresenter.swift */; };
 		86514DEF278DB217003839DF /* GourmandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86514DED278DB217003839DF /* GourmandCell.swift */; };
 		86514DF0278DB217003839DF /* GourmandCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86514DEE278DB217003839DF /* GourmandCell.xib */; };
@@ -39,7 +40,6 @@
 		87A49750278B653900D1D33A /* PlaceSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87A4974F278B653900D1D33A /* PlaceSearch.storyboard */; };
 		87A49752278B65E100D1D33A /* MapView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87A49751278B65E100D1D33A /* MapView.storyboard */; };
 		87A49755278B664500D1D33A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A49754278B664500D1D33A /* MapViewController.swift */; };
-		87A49757278B668000D1D33A /* PlaceSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A49756278B668000D1D33A /* PlaceSearchViewController.swift */; };
 		87A4975A278B671F00D1D33A /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A49759278B671E00D1D33A /* WebViewController.swift */; };
 		87A4975D278B678600D1D33A /* GourmandGenreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A4975C278B678600D1D33A /* GourmandGenreViewController.swift */; };
 		87A4975F278B6CE600D1D33A /* FavView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87A4975E278B6CE600D1D33A /* FavView.storyboard */; };
@@ -86,13 +86,14 @@
 /* Begin PBXFileReference section */
 		02AC76828558B154338808DE /* Pods_Seachers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Seachers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		220A0BEB278ADB79000F4AD1 /* TravelSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TravelSearch.storyboard; sourceTree = "<group>"; };
-		2276BDCF278D362C00DBB69A /* PlaceSearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchPresenter.swift; sourceTree = "<group>"; };
-		22838C822791563C00562F67 /* PlaceSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchCell.swift; sourceTree = "<group>"; };
-		22838C832791563C00562F67 /* PlaceSearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceSearchCell.xib; sourceTree = "<group>"; };
-		22838C862791565A00562F67 /* PlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
-		22838C872791565A00562F67 /* PlaceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceCell.xib; sourceTree = "<group>"; };
-		22838C8A279156B300562F67 /* DistanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceCell.swift; sourceTree = "<group>"; };
-		22838C8B279156B300562F67 /* DistanceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DistanceCell.xib; sourceTree = "<group>"; };
+		2241F6DA279717A50031E004 /* PlaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
+		2241F6DC279717AE0031E004 /* PlaceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceCell.xib; sourceTree = "<group>"; };
+		2241F6DE279717CD0031E004 /* PlaceSearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceSearchCell.swift; sourceTree = "<group>"; };
+		2241F6E0279717D50031E004 /* PlaceSearchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceSearchCell.xib; sourceTree = "<group>"; };
+		2241F6E2279717E90031E004 /* DistanceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceCell.swift; sourceTree = "<group>"; };
+		2241F6E4279717EF0031E004 /* DistanceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DistanceCell.xib; sourceTree = "<group>"; };
+		2241F6E6279718040031E004 /* PlaceSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceSearchViewController.swift; sourceTree = "<group>"; };
+		2241F6E82797180F0031E004 /* PlaceSearchPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceSearchPresenter.swift; sourceTree = "<group>"; };
 		246EEE1674E45709A3BAA599 /* Pods-Seachers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seachers.release.xcconfig"; path = "Target Support Files/Pods-Seachers/Pods-Seachers.release.xcconfig"; sourceTree = "<group>"; };
 		3A6F3AEA775E55F36E45865B /* Pods-Seachers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seachers.debug.xcconfig"; path = "Target Support Files/Pods-Seachers/Pods-Seachers.debug.xcconfig"; sourceTree = "<group>"; };
 		86514DE9278C0EC2003839DF /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
@@ -607,7 +608,6 @@
 		87A4974F278B653900D1D33A /* PlaceSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlaceSearch.storyboard; sourceTree = "<group>"; };
 		87A49751278B65E100D1D33A /* MapView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MapView.storyboard; sourceTree = "<group>"; };
 		87A49754278B664500D1D33A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		87A49756278B668000D1D33A /* PlaceSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchViewController.swift; sourceTree = "<group>"; };
 		87A49759278B671E00D1D33A /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		87A4975C278B678600D1D33A /* GourmandGenreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GourmandGenreViewController.swift; sourceTree = "<group>"; };
 		87A4975E278B6CE600D1D33A /* FavView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FavView.storyboard; sourceTree = "<group>"; };
@@ -657,8 +657,8 @@
 		220A0BE2278AB8A1000F4AD1 /* PlaceSearchViewController */ = {
 			isa = PBXGroup;
 			children = (
-				87A49756278B668000D1D33A /* PlaceSearchViewController.swift */,
-				2276BDCF278D362C00DBB69A /* PlaceSearchPresenter.swift */,
+				2241F6E6279718040031E004 /* PlaceSearchViewController.swift */,
+				2241F6E82797180F0031E004 /* PlaceSearchPresenter.swift */,
 			);
 			path = PlaceSearchViewController;
 			sourceTree = "<group>";
@@ -666,8 +666,8 @@
 		22838C8E279156BE00562F67 /* PlaceSearchCell */ = {
 			isa = PBXGroup;
 			children = (
-				22838C822791563C00562F67 /* PlaceSearchCell.swift */,
-				22838C832791563C00562F67 /* PlaceSearchCell.xib */,
+				2241F6DE279717CD0031E004 /* PlaceSearchCell.swift */,
+				2241F6E0279717D50031E004 /* PlaceSearchCell.xib */,
 			);
 			path = PlaceSearchCell;
 			sourceTree = "<group>";
@@ -675,8 +675,8 @@
 		22838C8F279156F400562F67 /* PlaceCell */ = {
 			isa = PBXGroup;
 			children = (
-				22838C862791565A00562F67 /* PlaceCell.swift */,
-				22838C872791565A00562F67 /* PlaceCell.xib */,
+				2241F6DA279717A50031E004 /* PlaceCell.swift */,
+				2241F6DC279717AE0031E004 /* PlaceCell.xib */,
 			);
 			path = PlaceCell;
 			sourceTree = "<group>";
@@ -684,8 +684,8 @@
 		22838C902791572000562F67 /* DistanceCell */ = {
 			isa = PBXGroup;
 			children = (
-				22838C8A279156B300562F67 /* DistanceCell.swift */,
-				22838C8B279156B300562F67 /* DistanceCell.xib */,
+				2241F6E2279717E90031E004 /* DistanceCell.swift */,
+				2241F6E4279717EF0031E004 /* DistanceCell.xib */,
 			);
 			path = DistanceCell;
 			sourceTree = "<group>";
@@ -1523,21 +1523,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2241F6E5279717EF0031E004 /* DistanceCell.xib in Resources */,
 				87A4977A278D657400D1D33A /* ReservationDateCell.xib in Resources */,
 				87A49750278B653900D1D33A /* PlaceSearch.storyboard in Resources */,
 				86514DF4278E7D06003839DF /* TravelCell.xib in Resources */,
+				2241F6DD279717AE0031E004 /* PlaceCell.xib in Resources */,
 				87A49770278D64A200D1D33A /* SelectDestinationCell.xib in Resources */,
 				87E10C7A278A9E00005AAA4A /* NetShopping.storyboard in Resources */,
 				87E10C6D278A9680005AAA4A /* LaunchScreen.storyboard in Resources */,
 				220A0BEC278ADB79000F4AD1 /* TravelSearch.storyboard in Resources */,
 				86514DF0278DB217003839DF /* GourmandCell.xib in Resources */,
 				87A4974E278B648F00D1D33A /* WebView.storyboard in Resources */,
-				22838C892791565A00562F67 /* PlaceCell.xib in Resources */,
-				22838C8D279156B300562F67 /* DistanceCell.xib in Resources */,
+				2241F6E1279717D50031E004 /* PlaceSearchCell.xib in Resources */,
 				87A4977F278D65F800D1D33A /* MemberCountCell.xib in Resources */,
 				87A49752278B65E100D1D33A /* MapView.storyboard in Resources */,
 				87E10C6A278A9680005AAA4A /* Assets.xcassets in Resources */,
-				22838C852791563C00562F67 /* PlaceSearchCell.xib in Resources */,
 				87E10C68278A967F005AAA4A /* Main.storyboard in Resources */,
 				87A49775278D64E400D1D33A /* SelectGenreCell.xib in Resources */,
 				87E10C80278AAA3A005AAA4A /* GourmandSearch.storyboard in Resources */,
@@ -1612,7 +1612,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22838C882791565A00562F67 /* PlaceCell.swift in Sources */,
 				86514DF3278E7D06003839DF /* TravelCell.swift in Sources */,
 				87A49768278B714F00D1D33A /* FavOfNetShoppingViewController.swift in Sources */,
 				CCC805A42793DCA1000AAE8F /* NetShoppingTableViewCell.swift in Sources */,
@@ -1621,28 +1620,29 @@
 				87A4974B278B536A00D1D33A /* TravelSearchViewController.swift in Sources */,
 				87A4975A278B671F00D1D33A /* WebViewController.swift in Sources */,
 				87E10C7E278A9EB4005AAA4A /* NetShoppingViewController.swift in Sources */,
-				2276BDD0278D362C00DBB69A /* PlaceSearchPresenter.swift in Sources */,
 				87717DB2278DD97A00AD966C /* GourmandSearchDataModel.swift in Sources */,
 				86514DF627914CE0003839DF /* GourmandAPIModel.swift in Sources */,
+				2241F6E92797180F0031E004 /* PlaceSearchPresenter.swift in Sources */,
 				87717DB6278DDC8F00AD966C /* DateModel.swift in Sources */,
 				87717DB4278DDA0200AD966C /* PlaceSearchDataModel.swift in Sources */,
 				86514DF827914CF4003839DF /* TravelAPIModel.swift in Sources */,
 				87A49782278D669400D1D33A /* GourmandSearchPresenter.swift in Sources */,
 				87A49747278B4DDA00D1D33A /* GourmandSearchViewController.swift in Sources */,
+				2241F6DB279717A50031E004 /* PlaceCell.swift in Sources */,
+				2241F6DF279717CD0031E004 /* PlaceSearchCell.swift in Sources */,
 				87E10C65278A967F005AAA4A /* HomeViewController.swift in Sources */,
 				87A49764278B712600D1D33A /* FavOfTravelViewController.swift in Sources */,
-				22838C842791563C00562F67 /* PlaceSearchCell.swift in Sources */,
 				87717DC427906C3200AD966C /* GourmandGenrePresenter.swift in Sources */,
 				87A4975D278B678600D1D33A /* GourmandGenreViewController.swift in Sources */,
-				87A49757278B668000D1D33A /* PlaceSearchViewController.swift in Sources */,
 				86514DEF278DB217003839DF /* GourmandCell.swift in Sources */,
 				87E10C61278A967F005AAA4A /* AppDelegate.swift in Sources */,
-				22838C8C279156B300562F67 /* DistanceCell.swift in Sources */,
+				2241F6E7279718040031E004 /* PlaceSearchViewController.swift in Sources */,
 				87E10C63278A967F005AAA4A /* SceneDelegate.swift in Sources */,
 				87717DC227906BFF00AD966C /* GourmandDataLoadModel.swift in Sources */,
 				87A4976F278D64A200D1D33A /* SelectDestinationCell.swift in Sources */,
 				871D95462791DAE500AA05F3 /* CellType.swift in Sources */,
 				87A49766278B713B00D1D33A /* FavOfGourmandViewController.swift in Sources */,
+				2241F6E3279717E90031E004 /* DistanceCell.swift in Sources */,
 				87A4977E278D65F800D1D33A /* MemberCountCell.swift in Sources */,
 				87A49755278B664500D1D33A /* MapViewController.swift in Sources */,
 				871D975127964C9500AA05F3 /* LocationModel.swift in Sources */,
