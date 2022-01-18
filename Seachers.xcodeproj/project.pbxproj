@@ -27,6 +27,7 @@
 		871D95612795BE9A00AA05F3 /* Pods_Seachers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 871D95582795BE9900AA05F3 /* Pods_Seachers.framework */; };
 		871D95622795BE9A00AA05F3 /* Pods_Seachers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 871D95582795BE9900AA05F3 /* Pods_Seachers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		871D95702795C00E00AA05F3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 871D95472793E90800AA05F3 /* CoreLocation.framework */; };
+		871D975127964C9500AA05F3 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871D975027964C9500AA05F3 /* LocationModel.swift */; };
 		87717DB2278DD97A00AD966C /* GourmandSearchDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87717DB1278DD97A00AD966C /* GourmandSearchDataModel.swift */; };
 		87717DB4278DDA0200AD966C /* PlaceSearchDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87717DB3278DDA0200AD966C /* PlaceSearchDataModel.swift */; };
 		87717DB6278DDC8F00AD966C /* DateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87717DB5278DDC8F00AD966C /* DateModel.swift */; };
@@ -594,6 +595,7 @@
 		871D974D2795C02100AA05F3 /* CoreAudioTypes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioTypes.framework; path = System/Library/Frameworks/CoreAudioTypes.framework; sourceTree = SDKROOT; };
 		871D974E2795C02100AA05F3 /* Vision.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Vision.framework; path = System/Library/Frameworks/Vision.framework; sourceTree = SDKROOT; };
 		871D974F2795C02100AA05F3 /* libcharset.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcharset.1.tbd; path = usr/lib/libcharset.1.tbd; sourceTree = SDKROOT; };
+		871D975027964C9500AA05F3 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		87717DB1278DD97A00AD966C /* GourmandSearchDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GourmandSearchDataModel.swift; sourceTree = "<group>"; };
 		87717DB3278DDA0200AD966C /* PlaceSearchDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchDataModel.swift; sourceTree = "<group>"; };
 		87717DB5278DDC8F00AD966C /* DateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateModel.swift; sourceTree = "<group>"; };
@@ -1386,6 +1388,7 @@
 				86514DF527914CE0003839DF /* GourmandAPIModel.swift */,
 				86514DF727914CF4003839DF /* TravelAPIModel.swift */,
 				871D95452791DAE500AA05F3 /* CellType.swift */,
+				871D975027964C9500AA05F3 /* LocationModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1642,6 +1645,7 @@
 				87A49766278B713B00D1D33A /* FavOfGourmandViewController.swift in Sources */,
 				87A4977E278D65F800D1D33A /* MemberCountCell.swift in Sources */,
 				87A49755278B664500D1D33A /* MapViewController.swift in Sources */,
+				871D975127964C9500AA05F3 /* LocationModel.swift in Sources */,
 				87A49779278D657400D1D33A /* ReservationDateCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
