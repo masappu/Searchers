@@ -6,8 +6,6 @@
 //
 
 import Foundation
-import CoreLocation
-
 
 protocol GourmandSearchInput{
     
@@ -63,20 +61,17 @@ protocol GourmandSearchOutput{
 
 final class GourmandSearchPresenter: GourmandSearchInput{
     
-    private var view:GourmandSearchOutput
-    private var model:LocationModel!
+    private var view:GourmandSearchOutput!
     var searchData: GourmandSearchDataModel = GourmandSearchDataModel()
     
     init(view:GourmandSearchOutput){
         self.view = view
-        let model = LocationModel(presenter: self)
-        self.model = model
     }
     
     func loadView(Data: GourmandSearchDataModel) {
         self.searchData = Data
-        self.model.requestAuthorization()
         self.view.setTableViewInfo()
+        self.view.reloadTableView()
     }
     
     func pushSearchButton() {
@@ -108,15 +103,6 @@ final class GourmandSearchPresenter: GourmandSearchInput{
         }else if index == 2{
             self.view.reloadDatePickerIsHidden()
         }
-    }
-    
-}
-
-extension GourmandSearchPresenter:LocaitonModelOutput{
-    
-    func completedRequestLocaiton(request: CLLocationCoordinate2D) {
-        self.searchData.place.locaitonAtCurrent = request
-        self.view.reloadTableView()
     }
     
 }
