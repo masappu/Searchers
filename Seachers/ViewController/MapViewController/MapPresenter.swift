@@ -12,13 +12,15 @@ protocol MapPresenterInput {
     
     func reloadData()
     var shopDataArray: [ShopDataDic]? {get set}
+    
 }
 
 protocol MapPresenterOutput {
     
     func reloadMap()
-    
     func reloadCollectionView()
+    func makePickerView()
+    func setupSearchBar()
     
 }
 
@@ -39,6 +41,8 @@ class MapPresenter: MapPresenterInput{
     
     func reloadData() {
         self.view.reloadCollectionView()
+        self.view.makePickerView()
+        self.view.setupSearchBar()
         gourmandAPIModel.setData()
     }
     

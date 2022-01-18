@@ -69,8 +69,8 @@ class GourmandAPIModel: GourmandAPIInput{
     //JSON解析を行う
     func setData(){
         
-        idoValue = 35.6954496
-        keidoValue = 139.7514154
+        idoValue = 35.828
+        keidoValue = 139.6903
         rangeCount = 2
         memberCount = 2
         
