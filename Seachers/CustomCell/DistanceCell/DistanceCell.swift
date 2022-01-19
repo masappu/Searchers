@@ -9,6 +9,9 @@ import UIKit
 
 class DistanceCell: UITableViewCell {
 
+    @IBOutlet weak var distanceLabel: UILabel!
+
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
