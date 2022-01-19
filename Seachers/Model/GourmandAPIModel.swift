@@ -69,8 +69,8 @@ class GourmandAPIModel: GourmandAPIInput{
     //JSON解析を行う
     func setData(gourmandSearchData:GourmandSearchDataModel,rangeCount:Int){
         
-        self.idoValue = gourmandSearchData.place.latitude!
-        self.keidoValue = gourmandSearchData.place.longitude!
+//        self.idoValue = gourmandSearchData.place.latitude!
+//        self.keidoValue = gourmandSearchData.place.longitude!
         self.rangeCount = 3
         self.memberCount = gourmandSearchData.memberCount
         for i in gourmandSearchData.genre{
