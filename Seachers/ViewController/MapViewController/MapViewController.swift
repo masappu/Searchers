@@ -189,7 +189,7 @@ extension MapViewController: MapPresenterOutput{
             let searchBar: UISearchBar = UISearchBar(frame: navigationBarFrame)
             self.searchBar = searchBar
             searchBar.delegate = self
-            searchBar.placeholder = "500m以内を検索中"
+//            searchBar.placeholder = "500m以内を検索中"
             searchBar.tintColor = UIColor.darkGray
             searchBar.keyboardType = UIKeyboardType.default
             searchBar.showsSearchResultsButton = true
@@ -224,6 +224,7 @@ extension MapViewController: UIPickerViewDelegate,UIPickerViewDataSource{
 
     @objc func doneButtonOfCategory(){
         presenter.requestDoneButtonOfCategory(text: searchBar.text!)
+        textFieldInsideSearchBar.endEditing(true)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
