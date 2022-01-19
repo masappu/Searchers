@@ -632,7 +632,7 @@
 		87E10C67278A967F005AAA4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		87E10C69278A9680005AAA4A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		87E10C6C278A9680005AAA4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		87E10C6E278A9680005AAA4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87E10C6E278A9680005AAA4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		87E10C79278A9E00005AAA4A /* NetShopping.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NetShopping.storyboard; sourceTree = "<group>"; };
 		87E10C7D278A9EB4005AAA4A /* NetShoppingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetShoppingViewController.swift; sourceTree = "<group>"; };
 		87E10C7F278AAA3A005AAA4A /* GourmandSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GourmandSearch.storyboard; sourceTree = "<group>"; };
