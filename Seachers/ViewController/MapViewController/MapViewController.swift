@@ -16,7 +16,6 @@ class MapViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var googleMap = GMSMapView()
-    var markers: [GMSMarker] = []
     var searchBar = UISearchBar()
     var pickerViewOfCategory = UIPickerView()
     var textFieldInsideSearchBar = UITextField()
@@ -56,11 +55,7 @@ class MapViewController: UIViewController {
 
 extension MapViewController: UICollectionViewDelegate{
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let x = Double(scrollView.contentOffset.x)
-        let indexCount = x / view.frame.width
-        let marker = markers[Int(indexCount)]
-        marker.tracksInfoWindowChanges = true
-        googleMap.selectedMarker = marker
+        presenter.requestScrollViewDidEndDecelerating(x: scrollView.contentOffset.x, width: view.frame.width)
     }
 }
 
@@ -124,11 +119,7 @@ extension MapViewController: UICollectionViewDelegateFlowLayout{
 extension MapViewController: GMSMapViewDelegate{
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        let index = presenter.shopDataArray?.firstIndex(where: { $0.key == marker.title })
-        collectionView.scrollToItem(at: IndexPath(row: index!, section: 0), at: .right, animated: true)
-        marker.tracksInfoWindowChanges = true //情報ウィンドウを自動的に更新するように設定する
-        googleMap.selectedMarker = marker //デフォルトで情報ウィンドウを表示
-        
+        presenter.requestMapViewDidTap(marker: marker)
         return true
     }
     
@@ -136,6 +127,17 @@ extension MapViewController: GMSMapViewDelegate{
 
 
 extension MapViewController: MapPresenterOutput{
+    
+    func responseMapViewDidTap(marker: GMSMarker, index: Int) {
+        collectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .right, animated: true)
+        marker.tracksInfoWindowChanges = true //情報ウィンドウを自動的に更新するように設定する
+        googleMap.selectedMarker = marker //デフォルトで情報ウィンドウを表示
+    }
+    
+    func responseScrollViewDidEndDecelerating(marker: GMSMarker) {
+        marker.tracksInfoWindowChanges = true
+        googleMap.selectedMarker = marker
+    }
     
     func setUpMap(idoValue:Double,keidoValue:Double) {
         googleMap.removeFromSuperview()
@@ -148,9 +150,10 @@ extension MapViewController: MapPresenterOutput{
         googleMap.delegate = self
         googleMap.isMyLocationEnabled = true
         googleMap.settings.myLocationButton = true
-        let shopDataArray = presenter.shopDataArray!
-        for shopDataDic in shopDataArray{
-            makeMarker(shopData: shopDataDic.value!)
+//        let shopDataArray = presenter.shopDataArray!
+        let markers = presenter.markers!
+        for marker in markers{
+            marker.map = googleMap
         }
         collectionView.reloadData()
     }
@@ -195,20 +198,6 @@ extension MapViewController: MapPresenterOutput{
             textFieldInsideSearchBar.inputAccessoryView = toolbarOfCategory
             
         }
-    }
-    
-    func makeMarker(shopData:ShopData) {
-        let latitude = shopData.latitude!
-        let longitude = shopData.longitude!
-        let title = shopData.name!
-        
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2DMake(latitude,longitude)
-        marker.appearAnimation = GMSMarkerAnimation.pop
-        marker.title = "\(title)"
-        marker.snippet = shopData.smallAreaName! + "/" + shopData.genreName!
-        marker.map = googleMap
-        markers.append(marker)
     }
     
     func setUpCollectionView() {
