@@ -4,10 +4,6 @@
 <dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>位置情報を必要とします。</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>位置情報を必要とします。</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>位置情報を必要とします。</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
