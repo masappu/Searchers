@@ -9,10 +9,12 @@ import Foundation
 
 protocol PlaceSearchPresenterInput{
     func loadView()
+    func searchButton()
 }
 
 protocol PlaceSearchPresenterOutput{
     func setTableViewInfo()
+    func reloadTableView()
 }
 
 class PlaceSearchPresenter: PlaceSearchPresenterInput{
@@ -24,6 +26,11 @@ class PlaceSearchPresenter: PlaceSearchPresenterInput{
     }
     
     func loadView() {
+        self.view.setTableViewInfo()
+        self.view.reloadTableView()
+    }
+    
+    func searchButton(){
         
     }
 }
