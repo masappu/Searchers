@@ -71,7 +71,7 @@ class GourmandAPIModel: GourmandAPIInput{
         
         self.idoValue = gourmandSearchData.place.locaitonAtSearchPlace!.latitude
         self.keidoValue = gourmandSearchData.place.locaitonAtSearchPlace!.longitude
-        self.rangeCount = 3
+        self.rangeCount = rangeCount
         self.memberCount = gourmandSearchData.memberCount
         for i in gourmandSearchData.genre{
             self.genreString = genreString + "," + i.id
