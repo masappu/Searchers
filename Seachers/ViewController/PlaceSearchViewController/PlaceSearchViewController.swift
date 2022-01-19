@@ -88,10 +88,11 @@ extension PlaceSearchViewController: UITableViewDelegate, UITableViewDataSource{
             cell.distanceLabel.text = "○○○○m　以内"
             return cell
         }
+        
     }
 }
 
 // MARK: - GMSAutocompleteViewController
 extension PlaceSearchViewController: GMSAutocompleteViewController{
-    
+
 }

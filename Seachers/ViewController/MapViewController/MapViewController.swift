@@ -16,11 +16,9 @@ class MapViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var googleMap = GMSMapView()
-    var markers: [GMSMarker] = []
     var searchBar = UISearchBar()
     var pickerViewOfCategory = UIPickerView()
     var textFieldInsideSearchBar = UITextField()
-    let categoryArray = ["300", "500", "1000", "2000", "3000"]
     var locationManager = CLLocationManager()
     let toolbarOfCategory = UIToolbar()
     var gourmandSearchData = GourmandSearchDataModel()
@@ -42,7 +40,6 @@ class MapViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        presenter.loadMap(idoValue: 35.828, keidoValue: 139.6903, rangeCount: 2, memberCount: 2)
         presenter.loadMap(gourmandSearchData: gourmandSearchData)
         presenter.configureSubViews()
     }
@@ -55,13 +52,11 @@ class MapViewController: UIViewController {
 }
 
 extension MapViewController: UICollectionViewDelegate{
+    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let x = Double(scrollView.contentOffset.x)
-        let indexCount = x / view.frame.width
-        let marker = markers[Int(indexCount)]
-        marker.tracksInfoWindowChanges = true
-        googleMap.selectedMarker = marker
+        presenter.requestScrollViewDidEndDecelerating(x: scrollView.contentOffset.x, width: view.frame.width)
     }
+    
 }
 
 extension MapViewController: UICollectionViewDataSource{
@@ -124,11 +119,7 @@ extension MapViewController: UICollectionViewDelegateFlowLayout{
 extension MapViewController: GMSMapViewDelegate{
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        let index = presenter.shopDataArray?.firstIndex(where: { $0.key == marker.title })
-        collectionView.scrollToItem(at: IndexPath(row: index!, section: 0), at: .right, animated: true)
-        marker.tracksInfoWindowChanges = true //情報ウィンドウを自動的に更新するように設定する
-        googleMap.selectedMarker = marker //デフォルトで情報ウィンドウを表示
-        
+        presenter.requestMapViewDidTap(marker: marker)
         return true
     }
     
@@ -136,6 +127,24 @@ extension MapViewController: GMSMapViewDelegate{
 
 
 extension MapViewController: MapPresenterOutput{
+  
+    func responseMapViewDidTap(marker: GMSMarker, index: Int) {
+        collectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .right, animated: true)
+        marker.tracksInfoWindowChanges = true //情報ウィンドウを自動的に更新するように設定する
+        googleMap.selectedMarker = marker //デフォルトで情報ウィンドウを表示
+    }
+    
+    func responseScrollViewDidEndDecelerating(marker: GMSMarker) {
+        marker.tracksInfoWindowChanges = true
+        googleMap.selectedMarker = marker
+    }
+    
+    func responseDoneButtonOfCategory(rangeCount: Int) {
+        textFieldInsideSearchBar.endEditing(true)
+        searchBar.placeholder = "\(searchBar.text!)mを検索中"
+        searchBar.text = searchBar.text! + "m"
+        presenter.reloadMap(gourmandSearchData: gourmandSearchData, rangeCount: rangeCount)
+    }
     
     func setUpMap(idoValue:Double,keidoValue:Double) {
         googleMap.removeFromSuperview()
@@ -148,9 +157,10 @@ extension MapViewController: MapPresenterOutput{
         googleMap.delegate = self
         googleMap.isMyLocationEnabled = true
         googleMap.settings.myLocationButton = true
-        let shopDataArray = presenter.shopDataArray!
-        for shopDataDic in shopDataArray{
-            makeMarker(shopData: shopDataDic.value!)
+//        let shopDataArray = presenter.shopDataArray!
+        let markers = presenter.markers!
+        for marker in markers{
+            marker.map = googleMap
         }
         collectionView.reloadData()
     }
@@ -197,20 +207,6 @@ extension MapViewController: MapPresenterOutput{
         }
     }
     
-    func makeMarker(shopData:ShopData) {
-        let latitude = shopData.latitude!
-        let longitude = shopData.longitude!
-        let title = shopData.name!
-        
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2DMake(latitude,longitude)
-        marker.appearAnimation = GMSMarkerAnimation.pop
-        marker.title = "\(title)"
-        marker.snippet = shopData.smallAreaName! + "/" + shopData.genreName!
-        marker.map = googleMap
-        markers.append(marker)
-    }
-    
     func setUpCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -227,12 +223,7 @@ extension MapViewController: MapPresenterOutput{
 extension MapViewController: UIPickerViewDelegate,UIPickerViewDataSource{
 
     @objc func doneButtonOfCategory(){
-        textFieldInsideSearchBar.endEditing(true)
-        searchBar.placeholder = "\(searchBar.text!)mを検索中"
-        let rangeCount = categoryArray.firstIndex(of: "\(searchBar.text!)")! + 1
-        searchBar.text = searchBar.text! + "m"
-//        presenter.reloadMap(idoValue: 35.8155543, keidoValue: 139.7043617, rangeCount: firstIndex, memberCount: 2)
-        presenter.reloadMap(gourmandSearchData: gourmandSearchData, rangeCount: rangeCount)
+        presenter.requestDoneButtonOfCategory(text: searchBar.text!)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -240,16 +231,16 @@ extension MapViewController: UIPickerViewDelegate,UIPickerViewDataSource{
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return categoryArray.count
+        return presenter.categoryArray.count
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        textFieldInsideSearchBar.text = categoryArray[row]
-        return categoryArray[row]
+        textFieldInsideSearchBar.text = presenter.categoryArray[row]
+        return presenter.categoryArray[row]
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.textFieldInsideSearchBar.text = categoryArray[row]
+        self.textFieldInsideSearchBar.text = presenter.categoryArray[row]
     }
 
 }
@@ -257,22 +248,18 @@ extension MapViewController: UIPickerViewDelegate,UIPickerViewDataSource{
 extension MapViewController: UISearchBarDelegate{
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        //キャンセルボタンを表示
         searchBar.setShowsCancelButton(true, animated: true)
         return true
     }
     
     //検索バーのキャンセルがタップされた時
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        //キャンセルボタンを非表示
         searchBar.showsCancelButton = false
-        //キーボードを閉じる
         searchBar.resignFirstResponder()
     }
     
     //検索バーでEnterが押された時
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        //Labelに入力した値を設定
         self.searchBar.placeholder = "\(searchBar.text)mを検索中"
     }
 
