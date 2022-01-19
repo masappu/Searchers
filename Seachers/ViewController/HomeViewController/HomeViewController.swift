@@ -32,7 +32,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         let fade = CATransition()
-        fade.duration = 1
+        fade.duration = 3
         fade.timingFunction = CAMediaTimingFunction(name: .default)
         fade.type = CATransitionType.fade
         BackgroundImage.layer.add(fade, forKey: "fade")
@@ -111,7 +111,7 @@ class HomeViewController: UIViewController {
     }
     
                         func startAnimate() {
-                                UIView.animate(withDuration: 2.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 10, options: .curveEaseIn, animations: { [self] in
+                            UIView.animate(withDuration: 2.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 10, options: .curveEaseIn, animations: { [self] in
                                     
                                     
                                 }, completion: nil)
