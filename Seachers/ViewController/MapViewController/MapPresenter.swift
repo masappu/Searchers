@@ -10,17 +10,20 @@ import Foundation
 
 protocol MapPresenterInput {
     
-    func reloadData()
+    func loadMap(gourmandSearchData:GourmandSearchDataModel)
+    func reloadMap(gourmandSearchData:GourmandSearchDataModel,rangeCount:Int)
+    func configureSubViews()
     var shopDataArray: [ShopDataDic]? {get set}
     
 }
 
 protocol MapPresenterOutput {
     
-    func reloadMap()
-    func reloadCollectionView()
-    func makePickerView()
-    func setupSearchBar()
+    func setUpMap(idoValue:Double,keidoValue:Double)
+    func setUpLocationManager()
+    func setUpCollectionView()
+    func setUpPickerView()
+    func setUpSearchBar()
     
 }
 
@@ -39,22 +42,31 @@ class MapPresenter: MapPresenterInput{
         self.travelAPIModel = TravelAPIModel()
     }
     
-    func reloadData() {
-        self.view.reloadCollectionView()
-        self.view.makePickerView()
-        self.view.setupSearchBar()
-        gourmandAPIModel.setData()
+    func loadMap(gourmandSearchData:GourmandSearchDataModel) {
+        self.view.setUpLocationManager()
+        gourmandAPIModel.setData(gourmandSearchData: gourmandSearchData, rangeCount: 3)
+    }
+    
+    func reloadMap(gourmandSearchData:GourmandSearchDataModel,rangeCount:Int) {
+        self.view.setUpLocationManager()
+        gourmandAPIModel.setData(gourmandSearchData: gourmandSearchData, rangeCount: rangeCount)
+    }
+    
+    func configureSubViews() {
+        self.view.setUpPickerView()
+        self.view.setUpSearchBar()
+        self.view.setUpCollectionView()
     }
     
 }
 
 extension MapPresenter: GourmandAPIOutput{
     
-    func resultAPIData(shopDataArray: [ShopDataDic]) {
+    func resultAPIData(shopDataArray: [ShopDataDic], idoValue: Double, keidoValue: Double) {
         self.shopDataArray = shopDataArray
-        self.view.reloadMap()
+        self.view.setUpMap(idoValue:idoValue,keidoValue:keidoValue)
     }
-
+    
 }
 
 extension MapPresenter: TravelAPIOutput{

@@ -11,11 +11,12 @@ import SwiftyJSON
 
 
 protocol GourmandAPIInput{
-    func setData()
+    func setData(gourmandSearchData:GourmandSearchDataModel,rangeCount:Int)
+    var shopDataArray: [ShopDataDic] {get set}
 }
 
 protocol GourmandAPIOutput{
-    func resultAPIData(shopDataArray: [ShopDataDic])
+    func resultAPIData(shopDataArray: [ShopDataDic],idoValue:Double,keidoValue:Double)
 }
 
 struct HTTPResponse: Decodable {
@@ -31,7 +32,6 @@ struct HTTPResponse: Decodable {
 }
 
 struct ShopData {
-    
     var smallAreaName:String?
     var latitude:Double?
     var longitude:Double?
@@ -41,7 +41,6 @@ struct ShopData {
     var shop_image:String?
     var url:String?
     var lunch:String?
-     
 }
 
 struct ShopDataDic{
@@ -60,6 +59,7 @@ class GourmandAPIModel: GourmandAPIInput{
     var keidoValue = Double()
     var rangeCount = Int()
     var memberCount = Int()
+    var genreString = String()
     var shopDataArray = [ShopDataDic]()
     
     init(presenter:GourmandAPIOutput){
@@ -67,47 +67,50 @@ class GourmandAPIModel: GourmandAPIInput{
     }
     
     //JSON解析を行う
-    func setData(){
+    func setData(gourmandSearchData:GourmandSearchDataModel,rangeCount:Int){
         
-        idoValue = 35.828
-        keidoValue = 139.6903
-        rangeCount = 2
-        memberCount = 2
+        self.idoValue = gourmandSearchData.place.latitude!
+        self.keidoValue = gourmandSearchData.place.longitude!
+        self.rangeCount = 3
+        self.memberCount = gourmandSearchData.memberCount
+        for i in gourmandSearchData.genre{
+            self.genreString = genreString + "," + i.id
+        }
+        
         
         //urlエンコーディング
-        let urlString = "https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=\(apikey)&lat=\(idoValue)&lng=\(keidoValue)&range=\(rangeCount)&count=50&party_capacity=\(memberCount)&format=json"
-//        let encodeUrlString:String = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-
+        let urlString = "https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=\(apikey)&lat=\(idoValue)&lng=\(keidoValue)&range=\(rangeCount)&genre=\(genreString)&count=50&party_capacity=\(memberCount)&format=json"
+        //        let encodeUrlString:String = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        
         AF.request(urlString, method: .get, parameters: nil, encoding: JSONEncoding.default).responseDecodable(of: HTTPResponse.self) { [self] response in
-
             
             print(response.debugDescription)
             switch response.result{
-            
+                
             case.success:
                 do{
                     let json:JSON = try JSON(data: response.data!)
                     var totalHitCount = json["results"]["results_available"].int
                     print("totalHitcount")
                     print(totalHitCount)
-                        if totalHitCount! > 50{
-                            totalHitCount = 50
-                        }
+                    if totalHitCount! > 50{
+                        totalHitCount = 50
+                    }
                     
                     print(totalHitCount)
                     
                     for i in 0...totalHitCount! - 1{
                         
                         if  json["results"]["shop"][i]["small_area"]["name"].isEmpty == true &&
-                            json["results"]["shop"][i]["lat"].isEmpty == true &&
-                            json["results"]["shop"][i]["lng"].isEmpty == true &&
-                            json["results"]["shop"][i]["genre"]["name"].isEmpty == true &&
-                            json["results"]["shop"][i]["budget"]["average"].isEmpty == true &&
-                            json["results"]["shop"][i]["urls"]["pc"] != "" &&
-                            json["results"]["shop"][i]["name"] != "" &&
-                            json["results"]["shop"][i]["photo"]["mobile"]["l"] != "" &&
-                            json["results"]["shop"][i]["lunch"] != "" {
-
+                                json["results"]["shop"][i]["lat"].isEmpty == true &&
+                                json["results"]["shop"][i]["lng"].isEmpty == true &&
+                                json["results"]["shop"][i]["genre"]["name"].isEmpty == true &&
+                                json["results"]["shop"][i]["budget"]["average"].isEmpty == true &&
+                                json["results"]["shop"][i]["urls"]["pc"] != "" &&
+                                json["results"]["shop"][i]["name"] != "" &&
+                                json["results"]["shop"][i]["photo"]["mobile"]["l"] != "" &&
+                                json["results"]["shop"][i]["lunch"] != "" {
+                            
                             let shopData = ShopData(smallAreaName: json["results"]["shop"][i]["small_area"]["name"].string,
                                                     latitude: json["results"]["shop"][i]["lat"].double!,
                                                     longitude: json["results"]["shop"][i]["lng"].double!,
@@ -125,7 +128,7 @@ class GourmandAPIModel: GourmandAPIInput{
                             print("何かしらが空です")
                         }
                     }
-                    self.presenter.resultAPIData(shopDataArray: shopDataArray)
+                    self.presenter.resultAPIData(shopDataArray: shopDataArray, idoValue: self.idoValue, keidoValue: self.keidoValue)
                     
                 }catch{
                     print("エラーです")

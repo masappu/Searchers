@@ -160,7 +160,7 @@
                 <outlet property="shopImageView" destination="oE3-4J-oyA" id="Ec5-lR-51k"/>
                 <outlet property="shopNameLabel" destination="zU4-Da-ScP" id="pMn-lY-L2p"/>
             </connections>
-            <point key="canvasLocation" x="-71" y="84"/>
+            <point key="canvasLocation" x="-71.014492753623188" y="83.705357142857139"/>
         </collectionViewCell>
     </objects>
     <resources>
