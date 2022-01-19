@@ -10,31 +10,67 @@ import Foundation
 
 protocol MapPresenterInput {
     
-    func reloadData()
-    //    var data: VideoModel? {get set}
+    func loadMap(gourmandSearchData:GourmandSearchDataModel)
+    func reloadMap(gourmandSearchData:GourmandSearchDataModel,rangeCount:Int)
+    func configureSubViews()
+    var shopDataArray: [ShopDataDic]? {get set}
+    
 }
 
 protocol MapPresenterOutput {
     
-    func reloadMap()
+    func setUpMap(idoValue:Double,keidoValue:Double)
+    func setUpLocationManager()
+    func setUpCollectionView()
+    func setUpPickerView()
+    func setUpSearchBar()
     
 }
 
 class MapPresenter: MapPresenterInput{
     
-//    var data: VideoModel?
+    var shopDataArray: [ShopDataDic]?
     
     private var view: MapPresenterOutput!
-    private var model: MapPresenterInput!
+    private var gourmandAPIModel: GourmandAPIInput!
+    private var travelAPIModel: TravelAPIInput!
     
     init(view: MapViewController) {
         self.view = view
-//        self.model = model
+        let gourmandAPIModel = GourmandAPIModel(presenter: self)
+        self.gourmandAPIModel = gourmandAPIModel
+        self.travelAPIModel = TravelAPIModel()
     }
     
-    func reloadData() {
-        self.view.reloadMap()
+    func loadMap(gourmandSearchData:GourmandSearchDataModel) {
+        self.view.setUpLocationManager()
+        gourmandAPIModel.setData(gourmandSearchData: gourmandSearchData, rangeCount: 3)
     }
+    
+    func reloadMap(gourmandSearchData:GourmandSearchDataModel,rangeCount:Int) {
+        self.view.setUpLocationManager()
+        gourmandAPIModel.setData(gourmandSearchData: gourmandSearchData, rangeCount: rangeCount)
+    }
+    
+    func configureSubViews() {
+        self.view.setUpPickerView()
+        self.view.setUpSearchBar()
+        self.view.setUpCollectionView()
+    }
+    
+}
+
+extension MapPresenter: GourmandAPIOutput{
+    
+    func resultAPIData(shopDataArray: [ShopDataDic], idoValue: Double, keidoValue: Double) {
+        self.shopDataArray = shopDataArray
+        self.view.setUpMap(idoValue:idoValue,keidoValue:keidoValue)
+    }
+    
+}
+
+extension MapPresenter: TravelAPIOutput{
+    
     
     
 }

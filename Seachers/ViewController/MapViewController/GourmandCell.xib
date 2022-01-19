@@ -25,13 +25,15 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VYR-nI-bUT">
                                         <rect key="frame" x="314.5" y="8" width="43.5" height="31"/>
-                                        <color key="backgroundColor" red="0.3449250935" green="1" blue="0.35691490669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="3ck-f5-TeF"/>
                                             <constraint firstAttribute="width" constant="43.5" id="9Hi-JA-d8r"/>
                                         </constraints>
+                                        <color key="tintColor" systemColor="systemYellowColor"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="fav"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="bookmark" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
+                                        </buttonConfiguration>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="30V-qF-OPB">
                                         <rect key="frame" x="4" y="19" width="352" height="115"/>
@@ -89,7 +91,7 @@
                                                                     <constraint firstAttribute="height" constant="35" id="ldw-Vc-v8R"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="○○○○円〜○○○○円" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqO-Up-qbc">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="あり" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqO-Up-qbc">
                                                                 <rect key="frame" x="45" y="0.0" width="180" height="35"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="180" id="7Qi-Sd-J5L"/>
@@ -111,8 +113,11 @@
                                             <constraint firstAttribute="height" constant="23" id="X4Y-ma-ntV"/>
                                             <constraint firstAttribute="width" constant="273" id="p8E-Fy-gyk"/>
                                         </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="予算・詳細の確認"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="予算・詳細の確認">
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="16"/>
+                                        </buttonConfiguration>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -146,14 +151,25 @@
                 <constraint firstAttribute="bottom" secondItem="S5w-Et-zhe" secondAttribute="bottom" id="iX8-CP-g8v"/>
             </constraints>
             <connections>
+                <outlet property="area_genreLabel" destination="Fgp-sF-4IS" id="hqB-Qy-dls"/>
+                <outlet property="averageBudgetLabel" destination="DbE-ct-FYK" id="Hwb-3N-8tn"/>
+                <outlet property="detailButton" destination="hCd-zd-3g6" id="B1O-Bk-J8b"/>
+                <outlet property="favButton" destination="VYR-nI-bUT" id="yyZ-eb-9by"/>
                 <outlet property="gourmandView" destination="0G8-Ol-RVi" id="Hwu-hI-86f"/>
+                <outlet property="lunchLabel" destination="aqO-Up-qbc" id="V5o-kt-m9u"/>
+                <outlet property="shopImageView" destination="oE3-4J-oyA" id="Ec5-lR-51k"/>
+                <outlet property="shopNameLabel" destination="zU4-Da-ScP" id="pMn-lY-L2p"/>
             </connections>
-            <point key="canvasLocation" x="-20.289855072463769" y="83.705357142857139"/>
+            <point key="canvasLocation" x="-71.014492753623188" y="83.705357142857139"/>
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="bookmark" catalog="system" width="112" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
