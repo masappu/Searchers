@@ -19,8 +19,8 @@ protocol MapPresenterInput {
     func requestDoneButtonOfCategory(text: String)
     
     var shopDataArray: [ShopDataDic]? {get set}
-    var markers: [GMSMarker]? {get set}
-    var categoryArray: [String]{get set}
+    var markers: [GMSMarker] {get set}
+    var categoryArray: [String] {get set}
     
 }
 
@@ -40,7 +40,7 @@ protocol MapPresenterOutput {
 class MapPresenter: MapPresenterInput{
 
     var categoryArray: [String]
-    var markers: [GMSMarker]?
+    var markers: [GMSMarker]
     var shopDataArray: [ShopDataDic]?
     
     private var view: MapPresenterOutput!
@@ -48,6 +48,7 @@ class MapPresenter: MapPresenterInput{
     private var travelAPIModel: TravelAPIInput!
     
     init(view: MapViewController) {
+        self.markers = []
         self.categoryArray = ["300", "500", "1000", "2000", "3000"]
         self.view = view
         let gourmandAPIModel = GourmandAPIModel(presenter: self)
@@ -57,7 +58,7 @@ class MapPresenter: MapPresenterInput{
     
     func requestScrollViewDidEndDecelerating(x:Double,width:Double) {
         let indexCount = x / width
-        let marker = markers![Int(indexCount)]
+        let marker = markers[Int(indexCount)]
         self.view.responseScrollViewDidEndDecelerating(marker: marker)
     }
     
@@ -94,10 +95,10 @@ extension MapPresenter: GourmandAPIOutput{
     func resultAPIData(shopDataArray: [ShopDataDic], idoValue: Double, keidoValue: Double) {
         
         self.shopDataArray = shopDataArray
-        self.view.setUpMap(idoValue:idoValue,keidoValue:keidoValue)
         for shopDataDic in shopDataArray{
             makeMarker(shopData: shopDataDic.value!)
         }
+        self.view.setUpMap(idoValue:idoValue,keidoValue:keidoValue)
     }
     
     func makeMarker(shopData:ShopData) {
@@ -110,7 +111,7 @@ extension MapPresenter: GourmandAPIOutput{
         marker.appearAnimation = GMSMarkerAnimation.pop
         marker.title = "\(title)"
         marker.snippet = shopData.smallAreaName! + "/" + shopData.genreName!
-        markers!.append(marker)
+        markers.append(marker)
     }
     
 }
