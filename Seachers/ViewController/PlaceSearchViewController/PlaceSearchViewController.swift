@@ -13,7 +13,6 @@ class PlaceSearchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private var presenter: PlaceSearchPresenterInput!
-    var GMSAutocompleteViewController = GMSAutocompleteViewController
     
     func inject(presenter:PlaceSearchPresenterInput){
         self.presenter = presenter
@@ -92,6 +91,5 @@ extension PlaceSearchViewController: UITableViewDelegate, UITableViewDataSource{
 }
 
 // MARK: - GMSAutocompleteViewController
-extension PlaceSearchViewController: GMSAutocompleteViewController{
-    
-}
+
+
