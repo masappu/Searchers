@@ -40,7 +40,6 @@ class MapViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        presenter.loadMap(idoValue: 35.828, keidoValue: 139.6903, rangeCount: 2, memberCount: 2)
         presenter.loadMap(gourmandSearchData: gourmandSearchData)
         presenter.configureSubViews()
     }
@@ -53,9 +52,11 @@ class MapViewController: UIViewController {
 }
 
 extension MapViewController: UICollectionViewDelegate{
+    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         presenter.requestScrollViewDidEndDecelerating(x: scrollView.contentOffset.x, width: view.frame.width)
     }
+    
 }
 
 extension MapViewController: UICollectionViewDataSource{
@@ -126,7 +127,7 @@ extension MapViewController: GMSMapViewDelegate{
 
 
 extension MapViewController: MapPresenterOutput{
-    
+  
     func responseMapViewDidTap(marker: GMSMarker, index: Int) {
         collectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .right, animated: true)
         marker.tracksInfoWindowChanges = true //情報ウィンドウを自動的に更新するように設定する
@@ -136,6 +137,13 @@ extension MapViewController: MapPresenterOutput{
     func responseScrollViewDidEndDecelerating(marker: GMSMarker) {
         marker.tracksInfoWindowChanges = true
         googleMap.selectedMarker = marker
+    }
+    
+    func responseDoneButtonOfCategory(rangeCount: Int) {
+        textFieldInsideSearchBar.endEditing(true)
+        searchBar.placeholder = "\(searchBar.text!)mを検索中"
+        searchBar.text = searchBar.text! + "m"
+        presenter.reloadMap(gourmandSearchData: gourmandSearchData, rangeCount: rangeCount)
     }
     
     func setUpMap(idoValue:Double,keidoValue:Double) {
@@ -215,12 +223,7 @@ extension MapViewController: MapPresenterOutput{
 extension MapViewController: UIPickerViewDelegate,UIPickerViewDataSource{
 
     @objc func doneButtonOfCategory(){
-        textFieldInsideSearchBar.endEditing(true)
-        searchBar.placeholder = "\(searchBar.text!)mを検索中"
-        let rangeCount = categoryArray.firstIndex(of: "\(searchBar.text!)")! + 1
-        searchBar.text = searchBar.text! + "m"
-//        presenter.reloadMap(idoValue: 35.8155543, keidoValue: 139.7043617, rangeCount: firstIndex, memberCount: 2)
-        presenter.reloadMap(gourmandSearchData: gourmandSearchData, rangeCount: rangeCount)
+        presenter.requestDoneButtonOfCategory(text: searchBar.text!)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -245,22 +248,18 @@ extension MapViewController: UIPickerViewDelegate,UIPickerViewDataSource{
 extension MapViewController: UISearchBarDelegate{
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        //キャンセルボタンを表示
         searchBar.setShowsCancelButton(true, animated: true)
         return true
     }
     
     //検索バーのキャンセルがタップされた時
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        //キャンセルボタンを非表示
         searchBar.showsCancelButton = false
-        //キーボードを閉じる
         searchBar.resignFirstResponder()
     }
     
     //検索バーでEnterが押された時
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        //Labelに入力した値を設定
         self.searchBar.placeholder = "\(searchBar.text)mを検索中"
     }
 
