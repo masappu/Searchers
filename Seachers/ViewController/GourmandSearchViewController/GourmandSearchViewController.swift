@@ -109,7 +109,6 @@ extension GourmandSearchViewController:GourmandSearchOutput{
         let gourmandGenreVC = self.storyboard?.instantiateViewController(withIdentifier: "gourmandGenreVC") as! GourmandGenreViewController
         gourmandGenreVC.popVC = self
         gourmandGenreVC.selecteGenres = selectedGenres
-        print(selectedGenres)
         self.navigationController?.pushViewController(gourmandGenreVC, animated: true)
     }
 
@@ -138,7 +137,7 @@ extension GourmandSearchViewController:UITableViewDelegate,UITableViewDataSource
         case .selectDestinationCell:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType!.cellIdentifier) as! SelectDestinationCell
             let placeLabel = cell.contentView.viewWithTag(1) as! UILabel
-            placeLabel.text = self.searchDate.place.name
+            placeLabel.text = self.presenter.searchData.place.name
             return cell
         case .selectGenreCell:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType!.cellIdentifier) as! SelectGenreCell
