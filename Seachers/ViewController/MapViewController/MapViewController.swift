@@ -158,7 +158,7 @@ extension MapViewController: MapPresenterOutput{
         googleMap.isMyLocationEnabled = true
         googleMap.settings.myLocationButton = true
 //        let shopDataArray = presenter.shopDataArray!
-        let markers = presenter.markers!
+        let markers = presenter.markers
         for marker in markers{
             marker.map = googleMap
         }
