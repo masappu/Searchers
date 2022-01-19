@@ -16,6 +16,8 @@ protocol MapPresenterInput {
     func configureSubViews()
     func requestScrollViewDidEndDecelerating(x:Double,width:Double)
     func requestMapViewDidTap(marker:GMSMarker)
+    func requestDoneButtonOfCategory(text: String)
+    
     var shopDataArray: [ShopDataDic]? {get set}
     var markers: [GMSMarker]? {get set}
     var categoryArray: [String]{get set}
@@ -31,6 +33,7 @@ protocol MapPresenterOutput {
     func setUpSearchBar()
     func responseScrollViewDidEndDecelerating(marker: GMSMarker)
     func responseMapViewDidTap(marker: GMSMarker,index: Int)
+    func responseDoneButtonOfCategory(rangeCount:Int)
     
 }
 
@@ -63,6 +66,10 @@ class MapPresenter: MapPresenterInput{
         self.view.responseMapViewDidTap(marker: marker,index: index!)
     }
     
+    func requestDoneButtonOfCategory(text: String) {
+        let rangeCount = categoryArray.firstIndex(of: "\(text)")! + 1
+        self.view.responseDoneButtonOfCategory(rangeCount: rangeCount)
+    }
     
     func loadMap(gourmandSearchData:GourmandSearchDataModel) {
         self.view.setUpLocationManager()
