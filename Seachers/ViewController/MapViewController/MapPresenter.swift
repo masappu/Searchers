@@ -18,6 +18,7 @@ protocol MapPresenterInput {
     func requestMapViewDidTap(marker:GMSMarker)
     var shopDataArray: [ShopDataDic]? {get set}
     var markers: [GMSMarker]? {get set}
+    var categoryArray: [String]{get set}
     
 }
 
@@ -35,7 +36,7 @@ protocol MapPresenterOutput {
 
 class MapPresenter: MapPresenterInput{
 
-    
+    var categoryArray: [String]
     var markers: [GMSMarker]?
     var shopDataArray: [ShopDataDic]?
     
@@ -44,6 +45,7 @@ class MapPresenter: MapPresenterInput{
     private var travelAPIModel: TravelAPIInput!
     
     init(view: MapViewController) {
+        self.categoryArray = ["300", "500", "1000", "2000", "3000"]
         self.view = view
         let gourmandAPIModel = GourmandAPIModel(presenter: self)
         self.gourmandAPIModel = gourmandAPIModel
