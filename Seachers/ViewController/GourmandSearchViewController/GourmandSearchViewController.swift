@@ -96,6 +96,7 @@ extension GourmandSearchViewController:GourmandSearchOutput{
     func transitionToMapView(Data: GourmandSearchDataModel) {
         let storyboard = UIStoryboard(name: "MapView", bundle: nil)
         let mapVC = storyboard.instantiateInitialViewController() as! MapViewController
+        mapVC.gourmandSearchData = Data
         self.navigationController?.pushViewController(mapVC, animated: true)
     }
 
