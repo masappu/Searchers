@@ -19,7 +19,6 @@ class MapViewController: UIViewController {
     var searchBar = UISearchBar()
     var pickerViewOfCategory = UIPickerView()
     var textFieldInsideSearchBar = UITextField()
-    let categoryArray = ["300", "500", "1000", "2000", "3000"]
     var locationManager = CLLocationManager()
     let toolbarOfCategory = UIToolbar()
     var gourmandSearchData = GourmandSearchDataModel()
@@ -229,16 +228,16 @@ extension MapViewController: UIPickerViewDelegate,UIPickerViewDataSource{
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return categoryArray.count
+        return presenter.categoryArray.count
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        textFieldInsideSearchBar.text = categoryArray[row]
-        return categoryArray[row]
+        textFieldInsideSearchBar.text = presenter.categoryArray[row]
+        return presenter.categoryArray[row]
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.textFieldInsideSearchBar.text = categoryArray[row]
+        self.textFieldInsideSearchBar.text = presenter.categoryArray[row]
     }
 
 }
