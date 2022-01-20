@@ -34,7 +34,6 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let presenter = MapPresenter(view: self)
         inject(presenter: presenter)
     }

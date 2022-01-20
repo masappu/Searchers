@@ -77,6 +77,7 @@ final class GourmandSearchPresenter: GourmandSearchInput{
         self.searchData = Data
         self.model.requestAuthorization()
         self.view.setTableViewInfo()
+        self.view.reloadTableView()
     }
     
     func pushSearchButton() {
@@ -116,7 +117,6 @@ extension GourmandSearchPresenter:LocaitonModelOutput{
     
     func completedRequestLocaiton(request: CLLocationCoordinate2D) {
         self.searchData.place.locaitonAtCurrent = request
-        self.view.reloadTableView()
     }
     
 }
