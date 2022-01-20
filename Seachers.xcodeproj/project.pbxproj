@@ -35,6 +35,7 @@
 		871D975127964C9500AA05F3 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871D975027964C9500AA05F3 /* LocationModel.swift */; };
 		871D97562798237E00AA05F3 /* ChoosingGenreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871D97542798237E00AA05F3 /* ChoosingGenreCell.swift */; };
 		871D97572798237E00AA05F3 /* ChoosingGenreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 871D97552798237E00AA05F3 /* ChoosingGenreCell.xib */; };
+		8765A2E927998B3C0030429C /* IntrinsicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765A2E827998B3C0030429C /* IntrinsicCollectionView.swift */; };
 		87717DB2278DD97A00AD966C /* GourmandSearchDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87717DB1278DD97A00AD966C /* GourmandSearchDataModel.swift */; };
 		87717DB4278DDA0200AD966C /* PlaceSearchDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87717DB3278DDA0200AD966C /* PlaceSearchDataModel.swift */; };
 		87717DB6278DDC8F00AD966C /* DateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87717DB5278DDC8F00AD966C /* DateModel.swift */; };
@@ -609,6 +610,7 @@
 		871D975027964C9500AA05F3 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		871D97542798237E00AA05F3 /* ChoosingGenreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosingGenreCell.swift; sourceTree = "<group>"; };
 		871D97552798237E00AA05F3 /* ChoosingGenreCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChoosingGenreCell.xib; sourceTree = "<group>"; };
+		8765A2E827998B3C0030429C /* IntrinsicCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntrinsicCollectionView.swift; sourceTree = "<group>"; };
 		87717DB1278DD97A00AD966C /* GourmandSearchDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GourmandSearchDataModel.swift; sourceTree = "<group>"; };
 		87717DB3278DDA0200AD966C /* PlaceSearchDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchDataModel.swift; sourceTree = "<group>"; };
 		87717DB5278DDC8F00AD966C /* DateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateModel.swift; sourceTree = "<group>"; };
@@ -1350,6 +1352,7 @@
 			children = (
 				871D97542798237E00AA05F3 /* ChoosingGenreCell.swift */,
 				871D97552798237E00AA05F3 /* ChoosingGenreCell.xib */,
+				8765A2E827998B3C0030429C /* IntrinsicCollectionView.swift */,
 			);
 			path = SelectedView;
 			sourceTree = "<group>";
@@ -1643,6 +1646,7 @@
 				87717DB2278DD97A00AD966C /* GourmandSearchDataModel.swift in Sources */,
 				86514DF627914CE0003839DF /* GourmandAPIModel.swift in Sources */,
 				22CD02CF2799496F006A2B5C /* roomData.swift in Sources */,
+				8765A2E927998B3C0030429C /* IntrinsicCollectionView.swift in Sources */,
 				2241F6E92797180F0031E004 /* PlaceSearchPresenter.swift in Sources */,
 				87717DB6278DDC8F00AD966C /* DateModel.swift in Sources */,
 				87717DB4278DDA0200AD966C /* PlaceSearchDataModel.swift in Sources */,
