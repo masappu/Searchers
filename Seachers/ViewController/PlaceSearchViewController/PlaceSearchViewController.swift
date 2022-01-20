@@ -92,10 +92,4 @@ extension PlaceSearchViewController: UITableViewDelegate, UITableViewDataSource{
 }
 
 // MARK: - GMSAutocompleteViewController
-<<<<<<< HEAD
 
-=======
-//extension PlaceSearchViewController: GMSAutocompleteViewController{
-//
-//}
->>>>>>> working
