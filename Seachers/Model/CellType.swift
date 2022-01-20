@@ -28,3 +28,15 @@ enum GourmandSearchCellType: Int, CaseIterable, CellType{
         }
     }
 }
+
+enum MapCellType: Int, CaseIterable, CellType{
+    case gourmandCell
+    case travelCell
+
+    var cellIdentifier: String{
+        switch self {
+        case .gourmandCell: return "GourmandCell"
+        case .travelCell: return "TravelCell"
+        }
+    }
+}

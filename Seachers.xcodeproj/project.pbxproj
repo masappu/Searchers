@@ -23,12 +23,15 @@
 		86514DF4278E7D06003839DF /* TravelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86514DF2278E7D05003839DF /* TravelCell.xib */; };
 		86514DF627914CE0003839DF /* GourmandAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86514DF527914CE0003839DF /* GourmandAPIModel.swift */; };
 		86514DF827914CF4003839DF /* TravelAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86514DF727914CF4003839DF /* TravelAPIModel.swift */; };
+		86E8F1D02797FA0300AD667B /* RealmData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8F1CF2797FA0300AD667B /* RealmData.swift */; };
 		871D95462791DAE500AA05F3 /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871D95452791DAE500AA05F3 /* CellType.swift */; };
 		871D95482793E90800AA05F3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 871D95472793E90800AA05F3 /* CoreLocation.framework */; };
 		871D95612795BE9A00AA05F3 /* Pods_Seachers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 871D95582795BE9900AA05F3 /* Pods_Seachers.framework */; };
 		871D95622795BE9A00AA05F3 /* Pods_Seachers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 871D95582795BE9900AA05F3 /* Pods_Seachers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		871D95702795C00E00AA05F3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 871D95472793E90800AA05F3 /* CoreLocation.framework */; };
 		871D975127964C9500AA05F3 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871D975027964C9500AA05F3 /* LocationModel.swift */; };
+		871D97562798237E00AA05F3 /* ChoosingGenreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871D97542798237E00AA05F3 /* ChoosingGenreCell.swift */; };
+		871D97572798237E00AA05F3 /* ChoosingGenreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 871D97552798237E00AA05F3 /* ChoosingGenreCell.xib */; };
 		87717DB2278DD97A00AD966C /* GourmandSearchDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87717DB1278DD97A00AD966C /* GourmandSearchDataModel.swift */; };
 		87717DB4278DDA0200AD966C /* PlaceSearchDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87717DB3278DDA0200AD966C /* PlaceSearchDataModel.swift */; };
 		87717DB6278DDC8F00AD966C /* DateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87717DB5278DDC8F00AD966C /* DateModel.swift */; };
@@ -103,6 +106,7 @@
 		86514DF2278E7D05003839DF /* TravelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TravelCell.xib; sourceTree = "<group>"; };
 		86514DF527914CE0003839DF /* GourmandAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GourmandAPIModel.swift; sourceTree = "<group>"; };
 		86514DF727914CF4003839DF /* TravelAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelAPIModel.swift; sourceTree = "<group>"; };
+		86E8F1CF2797FA0300AD667B /* RealmData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmData.swift; sourceTree = "<group>"; };
 		871D95452791DAE500AA05F3 /* CellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellType.swift; sourceTree = "<group>"; };
 		871D95472793E90800AA05F3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		871D95492795BC9100AA05F3 /* VideoSplashKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VideoSplashKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -597,6 +601,8 @@
 		871D974E2795C02100AA05F3 /* Vision.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Vision.framework; path = System/Library/Frameworks/Vision.framework; sourceTree = SDKROOT; };
 		871D974F2795C02100AA05F3 /* libcharset.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcharset.1.tbd; path = usr/lib/libcharset.1.tbd; sourceTree = SDKROOT; };
 		871D975027964C9500AA05F3 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		871D97542798237E00AA05F3 /* ChoosingGenreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosingGenreCell.swift; sourceTree = "<group>"; };
+		871D97552798237E00AA05F3 /* ChoosingGenreCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChoosingGenreCell.xib; sourceTree = "<group>"; };
 		87717DB1278DD97A00AD966C /* GourmandSearchDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GourmandSearchDataModel.swift; sourceTree = "<group>"; };
 		87717DB3278DDA0200AD966C /* PlaceSearchDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchDataModel.swift; sourceTree = "<group>"; };
 		87717DB5278DDC8F00AD966C /* DateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateModel.swift; sourceTree = "<group>"; };
@@ -630,7 +636,7 @@
 		87E10C67278A967F005AAA4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		87E10C69278A9680005AAA4A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		87E10C6C278A9680005AAA4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		87E10C6E278A9680005AAA4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87E10C6E278A9680005AAA4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		87E10C79278A9E00005AAA4A /* NetShopping.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NetShopping.storyboard; sourceTree = "<group>"; };
 		87E10C7D278A9EB4005AAA4A /* NetShoppingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetShoppingViewController.swift; sourceTree = "<group>"; };
 		87E10C7F278AAA3A005AAA4A /* GourmandSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GourmandSearch.storyboard; sourceTree = "<group>"; };
@@ -1334,6 +1340,8 @@
 		87A49780278D660B00D1D33A /* SelectedView */ = {
 			isa = PBXGroup;
 			children = (
+				871D97542798237E00AA05F3 /* ChoosingGenreCell.swift */,
+				871D97552798237E00AA05F3 /* ChoosingGenreCell.xib */,
 			);
 			path = SelectedView;
 			sourceTree = "<group>";
@@ -1389,6 +1397,7 @@
 				86514DF727914CF4003839DF /* TravelAPIModel.swift */,
 				871D95452791DAE500AA05F3 /* CellType.swift */,
 				871D975027964C9500AA05F3 /* LocationModel.swift */,
+				86E8F1CF2797FA0300AD667B /* RealmData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1525,6 +1534,7 @@
 			files = (
 				2241F6E5279717EF0031E004 /* DistanceCell.xib in Resources */,
 				87A4977A278D657400D1D33A /* ReservationDateCell.xib in Resources */,
+				871D97572798237E00AA05F3 /* ChoosingGenreCell.xib in Resources */,
 				87A49750278B653900D1D33A /* PlaceSearch.storyboard in Resources */,
 				86514DF4278E7D06003839DF /* TravelCell.xib in Resources */,
 				2241F6DD279717AE0031E004 /* PlaceCell.xib in Resources */,
@@ -1625,6 +1635,8 @@
 				2241F6E92797180F0031E004 /* PlaceSearchPresenter.swift in Sources */,
 				87717DB6278DDC8F00AD966C /* DateModel.swift in Sources */,
 				87717DB4278DDA0200AD966C /* PlaceSearchDataModel.swift in Sources */,
+				86E8F1D02797FA0300AD667B /* RealmData.swift in Sources */,
+				871D97562798237E00AA05F3 /* ChoosingGenreCell.swift in Sources */,
 				86514DF827914CF4003839DF /* TravelAPIModel.swift in Sources */,
 				87A49782278D669400D1D33A /* GourmandSearchPresenter.swift in Sources */,
 				87A49747278B4DDA00D1D33A /* GourmandSearchViewController.swift in Sources */,

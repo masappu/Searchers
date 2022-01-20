@@ -6,39 +6,35 @@
 //
 
 import UIKit
+import GooglePlaces
 
 class PlaceSearchViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    
     private var presenter: PlaceSearchPresenterInput!
+    
     func inject(presenter:PlaceSearchPresenterInput){
         self.presenter = presenter
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         presenter.loadView()
+        self.navigationItem.title = "目的地"
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func searchButton(_ sender: UIButton){
+        self.presenter.searchButton()
     }
-    */
 
 }
 
-// MARK: - Navigation
+// MARK: - PlaceSearchPresenterOutput
 extension PlaceSearchViewController: PlaceSearchPresenterOutput{
     
     func setTableViewInfo() {
@@ -48,6 +44,11 @@ extension PlaceSearchViewController: PlaceSearchPresenterOutput{
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
+    func reloadTableView(){
+        
+    }
+    
 }
 
 // MARK: - TableView
@@ -75,6 +76,7 @@ extension PlaceSearchViewController: UITableViewDelegate, UITableViewDataSource{
         
         if indexPath.section == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "PlaceSearchCell", for: indexPath) as! PlaceSearchCell
+            cell.button.addTarget(self, action: #selector(self.searchButton(_:)), for: .touchUpInside)
             return cell
         }else if indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "PlaceCell", for: indexPath) as! PlaceCell
@@ -85,7 +87,9 @@ extension PlaceSearchViewController: UITableViewDelegate, UITableViewDataSource{
             cell.distanceLabel.text = "○○○○m　以内"
             return cell
         }
+        
     }
-    
-    
 }
+
+// MARK: - GMSAutocompleteViewController
+

@@ -7,14 +7,22 @@
 
 import UIKit
 import GoogleMaps
+import SDWebImage
 
 
 class MapViewController: UIViewController {
     
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
     var googleMap = GMSMapView()
-    var markers: [GMSMarker] = []
+    var searchBar = UISearchBar()
+    var pickerViewOfCategory = UIPickerView()
+    var textFieldInsideSearchBar = UITextField()
+    var locationManager = CLLocationManager()
+    let toolbarOfCategory = UIToolbar()
+    var gourmandSearchData = GourmandSearchDataModel()
+
     
     private var presenter: MapPresenterInput!
     
@@ -25,26 +33,19 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let model = MapModel()
         let presenter = MapPresenter(view: self)
         inject(presenter: presenter)
-        
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        collectionView.collectionViewLayout = layout
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.isPagingEnabled = true
-        collectionView.register(UINib(nibName: "GourmandCell", bundle: nil), forCellWithReuseIdentifier: "GourmandCell")
-        collectionView.register(UINib(nibName: "TravelCell", bundle: nil), forCellWithReuseIdentifier: "TravelCell")
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        presenter.reloadData()
-        
+        presenter.loadMap(gourmandSearchData: gourmandSearchData)
+        presenter.configureSubViews()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        textFieldInsideSearchBar.endEditing(true)
     }
     
     
@@ -52,24 +53,47 @@ class MapViewController: UIViewController {
 
 extension MapViewController: UICollectionViewDelegate{
     
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        presenter.requestScrollViewDidEndDecelerating(x: scrollView.contentOffset.x, width: view.frame.width)
+    }
+    
 }
 
 extension MapViewController: UICollectionViewDataSource{
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        if presenter.shopDataArray == nil{
+            return 0
+        }else{
+            return presenter.shopDataArray!.count
+        }
     }
-    
+
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GourmandCell", for: indexPath) as! GourmandCell
-        
+        let shopImageView = cell.shopImageView
+        let area_genreLabel = cell.area_genreLabel
+        let shopNameLabel = cell.shopNameLabel
+        let averageBudgetLabel = cell.averageBudgetLabel
+        let lunchLabel = cell.lunchLabel
+        let favButton = cell.favButton
+        let detailButton = cell.detailButton
+
+        let shopDataArray = presenter.shopDataArray!
+
+        shopImageView?.sd_setImage(with: URL(string: shopDataArray[indexPath.row].value!.shop_image!), completed: nil)
+        area_genreLabel?.text = shopDataArray[indexPath.row].value!.smallAreaName! + "/" + shopDataArray[indexPath.row].value!.genreName!
+        shopNameLabel?.text = shopDataArray[indexPath.row].value!.name
+        averageBudgetLabel?.text = shopDataArray[indexPath.row].value!.budgetAverage
+        lunchLabel?.text = shopDataArray[indexPath.row].value!.lunch
+
         return cell
     }
-    
+
 }
 
 extension MapViewController: UICollectionViewDelegateFlowLayout{
@@ -95,13 +119,7 @@ extension MapViewController: UICollectionViewDelegateFlowLayout{
 extension MapViewController: GMSMapViewDelegate{
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        
-//        collectionView.scrollToItem(at: IndexPath(row: 2, section: 0), at: .right, animated: true)
-        print(marker.title)
-        
-        marker.tracksInfoWindowChanges = true //情報ウィンドウを自動的に更新するように設定する
-        googleMap.selectedMarker = marker //デフォルトで情報ウィンドウを表示
-        
+        presenter.requestMapViewDidTap(marker: marker)
         return true
     }
     
@@ -109,36 +127,190 @@ extension MapViewController: GMSMapViewDelegate{
 
 
 extension MapViewController: MapPresenterOutput{
+  
+    func responseMapViewDidTap(marker: GMSMarker, index: Int) {
+        collectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .right, animated: true)
+        marker.tracksInfoWindowChanges = true //情報ウィンドウを自動的に更新するように設定する
+        googleMap.selectedMarker = marker //デフォルトで情報ウィンドウを表示
+    }
     
-    func setupMap() {
-        let camera = GMSCameraPosition.camera(withLatitude: 35.68154,longitude: 139.752498, zoom: 15)
+    func responseScrollViewDidEndDecelerating(marker: GMSMarker) {
+        marker.tracksInfoWindowChanges = true
+        googleMap.selectedMarker = marker
+    }
+    
+    func responseDoneButtonOfCategory(rangeCount: Int) {
+        textFieldInsideSearchBar.endEditing(true)
+        searchBar.placeholder = "\(searchBar.text!)mを検索中"
+        searchBar.text = searchBar.text! + "m"
+        presenter.reloadMap(gourmandSearchData: gourmandSearchData, rangeCount: rangeCount)
+    }
+    
+    func setUpMap(idoValue:Double,keidoValue:Double) {
+        googleMap.removeFromSuperview()
+        searchBar.text = ""
+        let camera = GMSCameraPosition.camera(withLatitude: idoValue,longitude: keidoValue, zoom: 15)
         let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height), camera: camera)
         self.googleMap = mapView
         self.view.addSubview(googleMap)
         self.view.sendSubviewToBack(googleMap)
         googleMap.delegate = self
-        
-        let lat = [35.68154,35.6954496]
-        let log = [139.752498,139.7514154]
-        let title = ["皇居","九段下駅"]
+        googleMap.isMyLocationEnabled = true
+        googleMap.settings.myLocationButton = true
+//        let shopDataArray = presenter.shopDataArray!
+        let markers = presenter.markers!
+        for marker in markers{
+            marker.map = googleMap
+        }
+        collectionView.reloadData()
+    }
+    
+    func setUpLocationManager(){
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        locationManager.distanceFilter = 10
+        locationManager.startUpdatingLocation()
+    }
+   
+    func setUpPickerView(){
+        pickerViewOfCategory.delegate = self
+        pickerViewOfCategory.dataSource = self
 
-        for i in 0..<2{
-            makeMarker(lat: lat[i], log: log[i], title: title[i])
+        //カテゴリーのピッカーの生成
+        let buttonItemOfCategory = UIBarButtonItem(title: "決定", style: .done, target: self, action: #selector(doneButtonOfCategory))
+        toolbarOfCategory.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44)
+        toolbarOfCategory.setItems([buttonItemOfCategory], animated: true)
+    }
+    
+    func setUpSearchBar() {
+        if let navigationBarFrame = navigationController?.navigationBar.bounds {
+//            let frame = CGRect(x: 0, y: 0, width: 100, height: 20)
+            let searchBar: UISearchBar = UISearchBar(frame: navigationBarFrame)
+            self.searchBar = searchBar
+            searchBar.delegate = self
+            searchBar.placeholder = "500m以内を検索中"
+            searchBar.tintColor = UIColor.darkGray
+            searchBar.keyboardType = UIKeyboardType.default
+            searchBar.showsSearchResultsButton = true
+            navigationItem.titleView = searchBar
+            navigationItem.titleView?.frame = searchBar.frame
+            textFieldInsideSearchBar = (searchBar.value(forKey: "searchField") as? UITextField)!
+            textFieldInsideSearchBar.frame = CGRect(x: 0, y: 0, width: 40, height: 20)
+            textFieldInsideSearchBar.backgroundColor = UIColor(red: 100, green: 100, blue: 0, alpha: 0.2)
+            textFieldInsideSearchBar.layer.borderColor = UIColor.darkGray.cgColor
+            textFieldInsideSearchBar.layer.borderWidth = 0.5
+            textFieldInsideSearchBar.layer.cornerRadius = 7
+            textFieldInsideSearchBar.inputView = pickerViewOfCategory
+            textFieldInsideSearchBar.inputAccessoryView = toolbarOfCategory
+            
         }
     }
     
-    func makeMarker(lat: Double,log: Double,title: String) {
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2DMake(lat,log)
-        marker.appearAnimation = GMSMarkerAnimation.pop
-        marker.title = "\(title)"
-        marker.snippet = "Tokyo"
-        marker.map = googleMap
-    }
-    
-    func reloadMap() {
-        setupMap()
+    func setUpCollectionView() {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        collectionView.collectionViewLayout = layout
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.isPagingEnabled = true
+        collectionView.register(UINib(nibName: "GourmandCell", bundle: nil), forCellWithReuseIdentifier: "GourmandCell")
+        collectionView.register(UINib(nibName: "TravelCell", bundle: nil), forCellWithReuseIdentifier: "TravelCell")
     }
     
 }
 
+extension MapViewController: UIPickerViewDelegate,UIPickerViewDataSource{
+
+    @objc func doneButtonOfCategory(){
+        presenter.requestDoneButtonOfCategory(text: searchBar.text!)
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return presenter.categoryArray.count
+    }
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        textFieldInsideSearchBar.text = presenter.categoryArray[row]
+        return presenter.categoryArray[row]
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.textFieldInsideSearchBar.text = presenter.categoryArray[row]
+    }
+
+}
+
+extension MapViewController: UISearchBarDelegate{
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        searchBar.setShowsCancelButton(true, animated: true)
+        return true
+    }
+    
+    //検索バーのキャンセルがタップされた時
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.resignFirstResponder()
+    }
+    
+    //検索バーでEnterが押された時
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.placeholder = "\(searchBar.text)mを検索中"
+    }
+
+}
+
+extension MapViewController: CLLocationManagerDelegate{
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        // 端末の位置情報サービスがオンの場合
+        if CLLocationManager.locationServicesEnabled() {
+        // アプリの現在の認証ステータス
+        let status = manager.authorizationStatus
+
+        switch status {
+        case .authorizedAlways, .authorizedWhenInUse:
+            // 位置情報取得を開始
+            manager.startUpdatingLocation()
+        case .notDetermined:
+            // ユーザーに許可をリクエスト
+            manager.requestWhenInUseAuthorization()
+        case .denied:
+            break
+        case .restricted:
+            break
+
+        default:
+            break
+        }
+    // 端末の位置情報サービスがオフの場合
+    }else {
+//       Alert.okAlert(vc: self, title: "位置情報サービスを\nオンにして下さい", message: "「設定」アプリ ⇒「プライバシー」⇒「位置情報サービス」からオンにできます")
+    }
+ }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("daigolocations")
+        print(locations)
+//        let userLocation = locations.last
+//
+//        let camera = GMSCameraPosition.camera(withLatitude: userLocation!.coordinate.latitude,longitude: userLocation!.coordinate.latitude, zoom: 17.0)
+//        self.googleMap.animate(to: camera)
+
+        locationManager.stopUpdatingLocation()
+    }
+    
+}
+
+class scrollView: UIScrollView {
+// 
+//    override func touchesBegan(touches: Set, withEvent event: UIEvent) {
+//        superview?.touchesBegan(touches, withEvent: event)
+//    }
+// 
+}
