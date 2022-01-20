@@ -6,3 +6,21 @@
 //
 
 import Foundation
+
+
+protocol TravelAPIInput{
+    
+    
+}
+
+protocol TravelAPIOutput{
+    
+    
+    
+}
+
+class TravelAPIModel: TravelAPIInput{
+    
+    
+    
+}
