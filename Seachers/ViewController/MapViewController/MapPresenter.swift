@@ -7,6 +7,7 @@
 
 import Foundation
 import GoogleMaps
+import RealmSwift
 
 
 protocol MapPresenterInput {
@@ -17,6 +18,7 @@ protocol MapPresenterInput {
     func requestScrollViewDidEndDecelerating(x:Double,width:Double)
     func requestMapViewDidTap(marker:GMSMarker)
     func requestDoneButtonOfCategory(text: String)
+    func addToFavoritesButton(indexPath:IndexPath)
     
     var shopDataArray: [ShopDataDic]? {get set}
     var markers: [GMSMarker] {get set}
@@ -34,10 +36,12 @@ protocol MapPresenterOutput {
     func responseScrollViewDidEndDecelerating(marker: GMSMarker)
     func responseMapViewDidTap(marker: GMSMarker,index: Int)
     func responseDoneButtonOfCategory(rangeCount:Int)
+    func addToFavorites(indexPath: IndexPath)
     
 }
 
 class MapPresenter: MapPresenterInput{
+    
 
     var categoryArray: [String]
     var markers: [GMSMarker]
@@ -70,6 +74,13 @@ class MapPresenter: MapPresenterInput{
     func requestDoneButtonOfCategory(text: String) {
         let rangeCount = categoryArray.firstIndex(of: "\(text)")! + 1
         self.view.responseDoneButtonOfCategory(rangeCount: rangeCount)
+    }
+    
+    func addToFavoritesButton(indexPath:IndexPath){
+        let realm = try! Realm()
+        let favShopData = realm.objects(favShopData.self)
+//        let favShop = favShopData()
+        self.view.addToFavorites(indexPath: indexPath)
     }
     
     func loadMap(gourmandSearchData:GourmandSearchDataModel) {

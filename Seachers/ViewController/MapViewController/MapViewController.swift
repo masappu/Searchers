@@ -48,6 +48,17 @@ class MapViewController: UIViewController {
         textFieldInsideSearchBar.endEditing(true)
     }
     
+    @objc func doneButtonOfCategory(){
+        presenter.requestDoneButtonOfCategory(text: searchBar.text!)
+        textFieldInsideSearchBar.endEditing(true)
+    }
+    
+    @objc func addToFavoritesButton(_ sender: UIButton){
+        let cell = sender.superview?.superview as! UICollectionViewCell
+        let indexPath = collectionView.indexPath(for: cell)
+        presenter.addToFavoritesButton(indexPath: indexPath!)
+    }
+    
     
 }
 
@@ -90,6 +101,8 @@ extension MapViewController: UICollectionViewDataSource{
         shopNameLabel?.text = shopDataArray[indexPath.row].value!.name
         averageBudgetLabel?.text = shopDataArray[indexPath.row].value!.budgetAverage
         lunchLabel?.text = shopDataArray[indexPath.row].value!.lunch
+        favButton!.addTarget(self, action: #selector(addToFavoritesButton(_:)), for: .touchUpInside)
+
 
         return cell
     }
@@ -127,6 +140,10 @@ extension MapViewController: GMSMapViewDelegate{
 
 
 extension MapViewController: MapPresenterOutput{
+    
+    func addToFavorites(indexPath: IndexPath) {
+        <#code#>
+    }
   
     func responseMapViewDidTap(marker: GMSMarker, index: Int) {
         collectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .right, animated: true)
@@ -221,11 +238,6 @@ extension MapViewController: MapPresenterOutput{
 }
 
 extension MapViewController: UIPickerViewDelegate,UIPickerViewDataSource{
-
-    @objc func doneButtonOfCategory(){
-        presenter.requestDoneButtonOfCategory(text: searchBar.text!)
-        textFieldInsideSearchBar.endEditing(true)
-    }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
