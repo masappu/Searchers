@@ -16,6 +16,9 @@
 		2241F6E5279717EF0031E004 /* DistanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2241F6E4279717EF0031E004 /* DistanceCell.xib */; };
 		2241F6E7279718040031E004 /* PlaceSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241F6E6279718040031E004 /* PlaceSearchViewController.swift */; };
 		2241F6E92797180F0031E004 /* PlaceSearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241F6E82797180F0031E004 /* PlaceSearchPresenter.swift */; };
+		22CD02CF2799496F006A2B5C /* roomData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CD02CE2799496F006A2B5C /* roomData.swift */; };
+		22CD02D1279949C0006A2B5C /* peopleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CD02D0279949C0006A2B5C /* peopleData.swift */; };
+		22CD02D3279949E4006A2B5C /* 名無しのファイル.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CD02D2279949E4006A2B5C /* 名無しのファイル.swift */; };
 		86514DEA278C0EC2003839DF /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86514DE9278C0EC2003839DF /* MapPresenter.swift */; };
 		86514DEF278DB217003839DF /* GourmandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86514DED278DB217003839DF /* GourmandCell.swift */; };
 		86514DF0278DB217003839DF /* GourmandCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86514DEE278DB217003839DF /* GourmandCell.xib */; };
@@ -97,6 +100,9 @@
 		2241F6E4279717EF0031E004 /* DistanceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DistanceCell.xib; sourceTree = "<group>"; };
 		2241F6E6279718040031E004 /* PlaceSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceSearchViewController.swift; sourceTree = "<group>"; };
 		2241F6E82797180F0031E004 /* PlaceSearchPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceSearchPresenter.swift; sourceTree = "<group>"; };
+		22CD02CE2799496F006A2B5C /* roomData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = roomData.swift; sourceTree = "<group>"; };
+		22CD02D0279949C0006A2B5C /* peopleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = peopleData.swift; sourceTree = "<group>"; };
+		22CD02D2279949E4006A2B5C /* 名無しのファイル.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "名無しのファイル.swift"; sourceTree = "<group>"; };
 		246EEE1674E45709A3BAA599 /* Pods-Seachers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seachers.release.xcconfig"; path = "Target Support Files/Pods-Seachers/Pods-Seachers.release.xcconfig"; sourceTree = "<group>"; };
 		3A6F3AEA775E55F36E45865B /* Pods-Seachers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seachers.debug.xcconfig"; path = "Target Support Files/Pods-Seachers/Pods-Seachers.debug.xcconfig"; sourceTree = "<group>"; };
 		86514DE9278C0EC2003839DF /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
@@ -1202,6 +1208,8 @@
 				87717DB1278DD97A00AD966C /* GourmandSearchDataModel.swift */,
 				87717DB3278DDA0200AD966C /* PlaceSearchDataModel.swift */,
 				87717DB5278DDC8F00AD966C /* DateModel.swift */,
+				22CD02CE2799496F006A2B5C /* roomData.swift */,
+				22CD02D0279949C0006A2B5C /* peopleData.swift */,
 			);
 			path = struct;
 			sourceTree = "<group>";
@@ -1398,6 +1406,7 @@
 				871D95452791DAE500AA05F3 /* CellType.swift */,
 				871D975027964C9500AA05F3 /* LocationModel.swift */,
 				86E8F1CF2797FA0300AD667B /* RealmData.swift */,
+				22CD02D2279949E4006A2B5C /* 名無しのファイル.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1625,6 +1634,7 @@
 				86514DF3278E7D06003839DF /* TravelCell.swift in Sources */,
 				87A49768278B714F00D1D33A /* FavOfNetShoppingViewController.swift in Sources */,
 				CCC805A42793DCA1000AAE8F /* NetShoppingTableViewCell.swift in Sources */,
+				22CD02D1279949C0006A2B5C /* peopleData.swift in Sources */,
 				87A49774278D64E400D1D33A /* SelectGenreCell.swift in Sources */,
 				86514DEA278C0EC2003839DF /* MapPresenter.swift in Sources */,
 				87A4974B278B536A00D1D33A /* TravelSearchViewController.swift in Sources */,
@@ -1632,6 +1642,7 @@
 				87E10C7E278A9EB4005AAA4A /* NetShoppingViewController.swift in Sources */,
 				87717DB2278DD97A00AD966C /* GourmandSearchDataModel.swift in Sources */,
 				86514DF627914CE0003839DF /* GourmandAPIModel.swift in Sources */,
+				22CD02CF2799496F006A2B5C /* roomData.swift in Sources */,
 				2241F6E92797180F0031E004 /* PlaceSearchPresenter.swift in Sources */,
 				87717DB6278DDC8F00AD966C /* DateModel.swift in Sources */,
 				87717DB4278DDA0200AD966C /* PlaceSearchDataModel.swift in Sources */,
@@ -1645,6 +1656,7 @@
 				87E10C65278A967F005AAA4A /* HomeViewController.swift in Sources */,
 				87A49764278B712600D1D33A /* FavOfTravelViewController.swift in Sources */,
 				87717DC427906C3200AD966C /* GourmandGenrePresenter.swift in Sources */,
+				22CD02D3279949E4006A2B5C /* 名無しのファイル.swift in Sources */,
 				87A4975D278B678600D1D33A /* GourmandGenreViewController.swift in Sources */,
 				86514DEF278DB217003839DF /* GourmandCell.swift in Sources */,
 				87E10C61278A967F005AAA4A /* AppDelegate.swift in Sources */,
