@@ -13,7 +13,7 @@ class PlaceSearchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private var presenter: PlaceSearchPresenterInput!
-    var GMSAutocompleteViewController = GMSAutocompleteViewController
+//    var GMSAutocompleteViewController = GMSAutocompleteViewController
     
     func inject(presenter:PlaceSearchPresenterInput){
         self.presenter = presenter
@@ -77,7 +77,7 @@ extension PlaceSearchViewController: UITableViewDelegate, UITableViewDataSource{
         
         if indexPath.section == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "PlaceSearchCell", for: indexPath) as! PlaceSearchCell
-            cell.button.addTarget(self, action: #selector(self.searchButton(_:)), for: .touchUpInside)
+//            cell.button.addTarget(self, action: #selector(self.searchButton(_:)), for: .touchUpInside)
             return cell
         }else if indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "PlaceCell", for: indexPath) as! PlaceCell
@@ -92,6 +92,6 @@ extension PlaceSearchViewController: UITableViewDelegate, UITableViewDataSource{
 }
 
 // MARK: - GMSAutocompleteViewController
-extension PlaceSearchViewController: GMSAutocompleteViewController{
-    
-}
+//extension PlaceSearchViewController: GMSAutocompleteViewController{
+//
+//}
