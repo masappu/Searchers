@@ -23,7 +23,6 @@ class MapViewController: UIViewController {
     let toolbarOfCategory = UIToolbar()
     var gourmandSearchData = GourmandSearchDataModel()
 
-    
     private var presenter: MapPresenterInput!
     
     func inject(presenter: MapPresenter) {
@@ -101,7 +100,7 @@ extension MapViewController: UICollectionViewDataSource{
         averageBudgetLabel?.text = shopDataArray[indexPath.row].value!.budgetAverage
         lunchLabel?.text = shopDataArray[indexPath.row].value!.lunch
         favButton!.addTarget(self, action: #selector(addToFavoritesButton(_:)), for: .touchUpInside)
-
+        favButton?.setImage(UIImage(named: shopDataArray[indexPath.row].value!.favShop), for: .normal)
 
         return cell
     }
@@ -141,7 +140,7 @@ extension MapViewController: GMSMapViewDelegate{
 extension MapViewController: MapPresenterOutput{
     
     func addToFavorites(indexPath: IndexPath) {
-        <#code#>
+        collectionView.reloadItems(at: [indexPath])
     }
   
     func responseMapViewDidTap(marker: GMSMarker, index: Int) {
@@ -219,7 +218,6 @@ extension MapViewController: MapPresenterOutput{
             textFieldInsideSearchBar.layer.cornerRadius = 7
             textFieldInsideSearchBar.inputView = pickerViewOfCategory
             textFieldInsideSearchBar.inputAccessoryView = toolbarOfCategory
-            
         }
     }
     

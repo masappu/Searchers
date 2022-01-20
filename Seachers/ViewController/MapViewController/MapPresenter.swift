@@ -50,6 +50,7 @@ class MapPresenter: MapPresenterInput{
     private var view: MapPresenterOutput!
     private var gourmandAPIModel: GourmandAPIInput!
     private var travelAPIModel: TravelAPIInput!
+    let realm = try! Realm()
     
     init(view: MapViewController) {
         self.markers = []
@@ -77,9 +78,19 @@ class MapPresenter: MapPresenterInput{
     }
     
     func addToFavoritesButton(indexPath:IndexPath){
-        let realm = try! Realm()
-        let favShopData = realm.objects(favShopData.self)
-//        let favShop = favShopData()
+        let selectedShopData = shopDataArray![indexPath.row].value!
+        let favShop = favShopData(smallAreaName: selectedShopData.smallAreaName!,
+                                  latitude: selectedShopData.latitude!,
+                                  longitude: selectedShopData.longitude!,
+                                  genreName: selectedShopData.genreName!,
+                                  budgetAverage: selectedShopData.budgetAverage!,
+                                  name: selectedShopData.name!,
+                                  shop_image: selectedShopData.shop_image!,
+                                  url: selectedShopData.url!,
+                                  lunch: selectedShopData.lunch!)
+        try! realm.write {
+            realm.add(favShop)
+        }
         self.view.addToFavorites(indexPath: indexPath)
     }
     
@@ -105,9 +116,14 @@ extension MapPresenter: GourmandAPIOutput{
     
     func resultAPIData(shopDataArray: [ShopDataDic], idoValue: Double, keidoValue: Double) {
         
+        let favShopData = realm.objects(favShopData.self)
         self.shopDataArray = shopDataArray
         for shopDataDic in shopDataArray{
             makeMarker(shopData: shopDataDic.value!)
+        }
+        for favShop in favShopData{
+            let index = self.shopDataArray!.firstIndex(where: { $0.key == favShop.name })
+            self.shopDataArray![index!].value?.favorite = true
         }
         self.view.setUpMap(idoValue:idoValue,keidoValue:keidoValue)
     }
