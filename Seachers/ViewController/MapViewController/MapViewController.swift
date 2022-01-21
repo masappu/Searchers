@@ -22,8 +22,8 @@ class MapViewController: UIViewController {
     var locationManager = CLLocationManager()
     let toolbarOfCategory = UIToolbar()
     var gourmandSearchData = GourmandSearchDataModel()
+    var previousVCString = String()
 
-    
     private var presenter: MapPresenterInput!
     
     func inject(presenter: MapPresenter) {
@@ -34,6 +34,7 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         let presenter = MapPresenter(view: self)
         inject(presenter: presenter)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,6 +46,24 @@ class MapViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         textFieldInsideSearchBar.endEditing(true)
+    }
+    
+    @objc func doneButtonOfCategory(){
+        presenter.requestDoneButtonOfCategory(text: searchBar.text!)
+        textFieldInsideSearchBar.endEditing(true)
+    }
+    
+    @objc func addToFavoritesButton(_ sender: UIButton){
+        print(sender.superview?.superview?.superview?.superview)
+        let cell = sender.superview?.superview?.superview?.superview as! UICollectionViewCell
+        let indexPath = collectionView.indexPath(for: cell)
+        presenter.addToFavoritesButton(indexPath: indexPath!)
+    }
+    
+    @objc func goToWebVCButton(_ sender: UIButton){
+        let cell = sender.superview?.superview?.superview?.superview as! UICollectionViewCell
+        let indexPath = collectionView.indexPath(for: cell)
+        presenter.goToWebVCButton(indexPath: indexPath!)
     }
     
     
@@ -59,13 +78,10 @@ extension MapViewController: UICollectionViewDelegate{
 }
 
 extension MapViewController: UICollectionViewDataSource{
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if presenter.shopDataArray == nil{
-            return 0
-        }else{
-            return presenter.shopDataArray!.count
-        }
+        
+        return presenter.shopDataArray!.count
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -74,21 +90,18 @@ extension MapViewController: UICollectionViewDataSource{
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GourmandCell", for: indexPath) as! GourmandCell
-        let shopImageView = cell.shopImageView
-        let area_genreLabel = cell.area_genreLabel
-        let shopNameLabel = cell.shopNameLabel
-        let averageBudgetLabel = cell.averageBudgetLabel
-        let lunchLabel = cell.lunchLabel
-        let favButton = cell.favButton
-        let detailButton = cell.detailButton
-
         let shopDataArray = presenter.shopDataArray!
 
-        shopImageView?.sd_setImage(with: URL(string: shopDataArray[indexPath.row].value!.shop_image!), completed: nil)
-        area_genreLabel?.text = shopDataArray[indexPath.row].value!.smallAreaName! + "/" + shopDataArray[indexPath.row].value!.genreName!
-        shopNameLabel?.text = shopDataArray[indexPath.row].value!.name
-        averageBudgetLabel?.text = shopDataArray[indexPath.row].value!.budgetAverage
-        lunchLabel?.text = shopDataArray[indexPath.row].value!.lunch
+        cell.shopImageView?.sd_setImage(with: URL(string: shopDataArray[indexPath.row].value!.shop_image!), completed: nil)
+        cell.area_genreLabel?.text = shopDataArray[indexPath.row].value!.smallAreaName! + "/" + shopDataArray[indexPath.row].value!.genreName!
+        cell.shopNameLabel?.text = shopDataArray[indexPath.row].value!.name
+        cell.averageBudgetLabel?.text = shopDataArray[indexPath.row].value!.budgetAverage
+        cell.lunchLabel?.text = shopDataArray[indexPath.row].value!.lunch
+        cell.favButton!.addTarget(self, action: #selector(addToFavoritesButton(_:)), for: .touchUpInside)
+        cell.favButton?.setImage(UIImage(systemName: shopDataArray[indexPath.row].value!.favShop), for: .normal)
+        cell.detailButton.addTarget(self, action: #selector(goToWebVCButton(_:)), for: .touchUpInside)
+        print(shopDataArray[indexPath.row])
+        print(shopDataArray[indexPath.row].value!.favShop)
 
         return cell
     }
@@ -126,6 +139,25 @@ extension MapViewController: GMSMapViewDelegate{
 
 
 extension MapViewController: MapPresenterOutput{
+    func setUpLocationManager() {
+        
+    }
+    
+    
+    func goToWebVC(url: String) {
+        let storyboard = UIStoryboard(name: "WebView", bundle: nil)
+        let webVC = storyboard.instantiateViewController(withIdentifier: "webVC") as! WebViewController
+        webVC.url = url
+        self.present(webVC, animated: true, completion: nil)
+    }
+ 
+    func addToFavorites(indexPath: IndexPath) {
+        collectionView.reloadItems(at: [indexPath])
+    }
+    
+    func responseJudgementVc() {
+        
+    }
   
     func responseMapViewDidTap(marker: GMSMarker, index: Int) {
         collectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .right, animated: true)
@@ -157,19 +189,11 @@ extension MapViewController: MapPresenterOutput{
         googleMap.isMyLocationEnabled = true
         googleMap.settings.myLocationButton = true
 //        let shopDataArray = presenter.shopDataArray!
-        let markers = presenter.markers!
+        let markers = presenter.markers
         for marker in markers{
             marker.map = googleMap
         }
         collectionView.reloadData()
-    }
-    
-    func setUpLocationManager(){
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-        locationManager.distanceFilter = 10
-        locationManager.startUpdatingLocation()
     }
    
     func setUpPickerView(){
@@ -188,7 +212,7 @@ extension MapViewController: MapPresenterOutput{
             let searchBar: UISearchBar = UISearchBar(frame: navigationBarFrame)
             self.searchBar = searchBar
             searchBar.delegate = self
-            searchBar.placeholder = "500m以内を検索中"
+//            searchBar.placeholder = "500m以内を検索中"
             searchBar.tintColor = UIColor.darkGray
             searchBar.keyboardType = UIKeyboardType.default
             searchBar.showsSearchResultsButton = true
@@ -202,7 +226,6 @@ extension MapViewController: MapPresenterOutput{
             textFieldInsideSearchBar.layer.cornerRadius = 7
             textFieldInsideSearchBar.inputView = pickerViewOfCategory
             textFieldInsideSearchBar.inputAccessoryView = toolbarOfCategory
-            
         }
     }
     
@@ -220,10 +243,6 @@ extension MapViewController: MapPresenterOutput{
 }
 
 extension MapViewController: UIPickerViewDelegate,UIPickerViewDataSource{
-
-    @objc func doneButtonOfCategory(){
-        presenter.requestDoneButtonOfCategory(text: searchBar.text!)
-    }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -259,52 +278,52 @@ extension MapViewController: UISearchBarDelegate{
     
     //検索バーでEnterが押された時
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        self.searchBar.placeholder = "\(searchBar.text)mを検索中"
+        self.searchBar.placeholder = "\(searchBar.text!)mを検索中"
     }
 
 }
 
-extension MapViewController: CLLocationManagerDelegate{
-    
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        // 端末の位置情報サービスがオンの場合
-        if CLLocationManager.locationServicesEnabled() {
-        // アプリの現在の認証ステータス
-        let status = manager.authorizationStatus
-
-        switch status {
-        case .authorizedAlways, .authorizedWhenInUse:
-            // 位置情報取得を開始
-            manager.startUpdatingLocation()
-        case .notDetermined:
-            // ユーザーに許可をリクエスト
-            manager.requestWhenInUseAuthorization()
-        case .denied:
-            break
-        case .restricted:
-            break
-
-        default:
-            break
-        }
-    // 端末の位置情報サービスがオフの場合
-    }else {
-//       Alert.okAlert(vc: self, title: "位置情報サービスを\nオンにして下さい", message: "「設定」アプリ ⇒「プライバシー」⇒「位置情報サービス」からオンにできます")
-    }
- }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("daigolocations")
-        print(locations)
-//        let userLocation = locations.last
+//extension MapViewController: CLLocationManagerDelegate{
+//    
+//    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+//        // 端末の位置情報サービスがオンの場合
+//        if CLLocationManager.locationServicesEnabled() {
+//        // アプリの現在の認証ステータス
+//        let status = manager.authorizationStatus
 //
-//        let camera = GMSCameraPosition.camera(withLatitude: userLocation!.coordinate.latitude,longitude: userLocation!.coordinate.latitude, zoom: 17.0)
-//        self.googleMap.animate(to: camera)
-
-        locationManager.stopUpdatingLocation()
-    }
-    
-}
+//        switch status {
+//        case .authorizedAlways, .authorizedWhenInUse:
+//            // 位置情報取得を開始
+//            manager.startUpdatingLocation()
+//        case .notDetermined:
+//            // ユーザーに許可をリクエスト
+//            manager.requestWhenInUseAuthorization()
+//        case .denied:
+//            break
+//        case .restricted:
+//            break
+//
+//        default:
+//            break
+//        }
+//    // 端末の位置情報サービスがオフの場合
+//    }else {
+////       Alert.okAlert(vc: self, title: "位置情報サービスを\nオンにして下さい", message: "「設定」アプリ ⇒「プライバシー」⇒「位置情報サービス」からオンにできます")
+//    }
+// }
+//    
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        print("daigolocations")
+//        print(locations)
+////        let userLocation = locations.last
+////
+////        let camera = GMSCameraPosition.camera(withLatitude: userLocation!.coordinate.latitude,longitude: userLocation!.coordinate.latitude, zoom: 17.0)
+////        self.googleMap.animate(to: camera)
+//
+//        locationManager.stopUpdatingLocation()
+//    }
+//    
+//}
 
 class scrollView: UIScrollView {
 // 

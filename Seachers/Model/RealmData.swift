@@ -6,3 +6,16 @@
 //
 
 import Foundation
+import RealmSwift
+
+class favShopData: Object{
+    @objc dynamic var smallAreaName:String = ""
+    @objc dynamic var latitude:Double = 0.0
+    @objc dynamic var longitude:Double = 0.0
+    @objc dynamic var genreName:String = ""
+    @objc dynamic var budgetAverage:String = ""
+    @objc dynamic var name:String = ""
+    @objc dynamic var shop_image:String = ""
+    @objc dynamic var url:String = ""
+    @objc dynamic var lunch:String = ""
+}

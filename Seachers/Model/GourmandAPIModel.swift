@@ -41,6 +41,13 @@ struct ShopData {
     var shop_image:String?
     var url:String?
     var lunch:String?
+    var favorite:Bool?
+    var favShop:String{
+        switch favorite!{
+        case true: return "bookmark.fill"
+        case false: return "bookmark"
+        }
+    }
 }
 
 struct ShopDataDic{
@@ -69,12 +76,15 @@ class GourmandAPIModel: GourmandAPIInput{
     //JSON解析を行う
     func setData(gourmandSearchData:GourmandSearchDataModel,rangeCount:Int){
         
-        self.idoValue = gourmandSearchData.place.locaitonAtSearchPlace!.latitude
-        self.keidoValue = gourmandSearchData.place.locaitonAtSearchPlace!.longitude
-        self.rangeCount = 3
+//        self.idoValue = gourmandSearchData.place.locaitonAtSearchPlace!.latitude
+//        self.keidoValue = gourmandSearchData.place.locaitonAtSearchPlace!.longitude
+        self.idoValue = 35.8155543
+        self.keidoValue = 139.7043617
+        self.rangeCount = rangeCount
         self.memberCount = gourmandSearchData.memberCount
         for i in gourmandSearchData.genre{
             self.genreString = genreString + "," + i.id
+            print(genreString)
         }
         
         
@@ -119,7 +129,8 @@ class GourmandAPIModel: GourmandAPIInput{
                                                     name: json["results"]["shop"][i]["name"].string,
                                                     shop_image: json["results"]["shop"][i]["photo"]["mobile"]["l"].string,
                                                     url: json["results"]["shop"][i]["urls"]["pc"].string,
-                                                    lunch: json["results"]["shop"][i]["lunch"].string)
+                                                    lunch: json["results"]["shop"][i]["lunch"].string,
+                                                    favorite: false)
                             
                             shopDataArray.append(ShopDataDic(key: json["results"]["shop"][i]["name"].string!, value: shopData))
                             print(self.shopDataArray.debugDescription)
