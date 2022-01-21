@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="282AE7D5-28D5-4410-89F7-2E530D43D0BC" translatesAutoresizingMaskIntoConstraints="NO" id="80S-Kc-ALT">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="80S-Kc-ALT">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3S8-Wf-2kg">
@@ -211,7 +211,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="282AE7D5-28D5-4410-89F7-2E530D43D0BC" width="511" height="1028"/>
         <image name="airplane" catalog="system" width="128" height="115"/>
         <image name="cart" catalog="system" width="128" height="102"/>
         <image name="fork.knife" catalog="system" width="92" height="128"/>
