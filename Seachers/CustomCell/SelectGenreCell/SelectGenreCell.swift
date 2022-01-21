@@ -63,18 +63,12 @@ extension SelectGenreCell: UICollectionViewDelegate, UICollectionViewDataSource{
         cell.label.text = self.dataSource!.searchData.genre[indexPath.row].name
         cell.deleteButton.addTarget(self, action: #selector(deleteButton(_:)), for: .touchUpInside)
         
+        if indexPath.row == self.dataSource.searchData.genre.count - 1{
+            self.collectionViewHeight.constant = self.collectionView.intrinsicContentSize.height
+        }
+        
         return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row == self.dataSource.searchData.genre.count - 1{
-            self.collectionView.layoutIfNeeded()
-            self.collectionViewHeight.constant = self.collectionView.intrinsicContentSize.height
-            print(self.collectionViewHeight.constant)
-            self.view.requestTableViewLayoutRebuilding()
-        }
-    }
-    
 }
 
 extension SelectGenreCell:GourmandSearchViewOutput{
@@ -95,9 +89,8 @@ extension SelectGenreCell:GourmandSearchViewOutput{
     
     
     func reloadData() {
-        self.collectionView.reloadData()
         self.collectionView.layoutIfNeeded()
+        self.collectionView.reloadData()
         self.collectionViewHeight.constant = self.collectionView.intrinsicContentSize.height
-        self.view.requestTableViewLayoutRebuilding()
     }
 }

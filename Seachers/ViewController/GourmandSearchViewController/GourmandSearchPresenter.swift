@@ -17,6 +17,9 @@ protocol GourmandSearchInput{
     //viewの構築のタイミングを通知する
     func loadView(Data:GourmandSearchDataModel)
     
+    //selectGenreCellの構築のタイミングを通知する
+    func loadSelectGenreCell() -> String
+    
     //「検索する」ボタンタップを通知する
     func pushSearchButton()
     
@@ -50,6 +53,9 @@ protocol GourmandSearchOutput{
     //selectGenreCellの表示変更を指示
     func reloadSelectGenreCell(at indexPaths:[IndexPath])
     
+    //tableViewのreloadRows()の実行を指示
+    func reloadTableViewCell(at IndexPaths:[IndexPath])
+    
     //memberCountLabelの表示切り替えの指示
     func reloadMemberCountLabel()
     
@@ -72,7 +78,7 @@ protocol GourmandSearchOutput{
 final class GourmandSearchPresenter: GourmandSearchInput{
     
     private var view:GourmandSearchOutput
-    private var model:LocationModel!
+    private var model:LocaitonModelInput!
     var searchData: GourmandSearchDataModel = GourmandSearchDataModel()
     
     init(view:GourmandSearchOutput){
@@ -88,6 +94,14 @@ final class GourmandSearchPresenter: GourmandSearchInput{
         self.view.reloadTableView()
     }
     
+    func loadSelectGenreCell() -> String {
+        if self.searchData.genre.count == 0{
+            return "noData"
+        }else{
+            return "exitingData"
+        }
+    }
+    
     func pushSearchButton() {
         self.view.transitionToMapView(Data: self.searchData)
     }
@@ -96,8 +110,13 @@ final class GourmandSearchPresenter: GourmandSearchInput{
         guard row >= 0 && row < self.searchData.genre.count else { return }
         self.searchData.genre.remove(at: row)
         
-        let indexPath = IndexPath(row: row, section: 0)
-        self.view.reloadSelectGenreCell(at: [indexPath])
+        if self.searchData.genre.count == 0{
+            let indexPaths = [IndexPath(row: 0, section: 1)]
+            self.view.reloadTableViewCell(at: indexPaths)
+        }else{
+            let indexPaths = [IndexPath(row: row, section: 0)]
+            self.view.reloadSelectGenreCell(at: indexPaths)
+        }
     }
     
     func pushPlusButton() {
