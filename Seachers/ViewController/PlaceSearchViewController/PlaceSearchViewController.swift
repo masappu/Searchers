@@ -10,7 +10,10 @@ import GooglePlaces
 
 class PlaceSearchViewController: UIViewController {
 
+    
     @IBOutlet weak var tableView: UITableView!
+    
+    let autocompleteController = GMSAutocompleteViewController()
     
     private var presenter: PlaceSearchPresenterInput!
     
@@ -20,6 +23,9 @@ class PlaceSearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let presenter = PlaceSearchPresenter(view:self)
+        inject(presenter: presenter)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,28 +37,37 @@ class PlaceSearchViewController: UIViewController {
     @objc func searchButton(_ sender: UIButton){
         self.presenter.searchButton()
     }
+    
 
 }
 
 // MARK: - PlaceSearchPresenterOutput
 extension PlaceSearchViewController: PlaceSearchPresenterOutput{
     
+    
     func setTableViewInfo() {
+        tableView.delegate = self
+        tableView.dataSource = self
         tableView.register(UINib(nibName: "PlaceSearchCell", bundle: nil), forCellReuseIdentifier: "PlaceSearchCell")
         tableView.register(UINib(nibName: "PlaceCell", bundle: nil), forCellReuseIdentifier: "PlaceCell")
         tableView.register(UINib(nibName: "DistanceCell", bundle: nil), forCellReuseIdentifier: "DistanceCell")
-        tableView.delegate = self
-        tableView.dataSource = self
     }
     
     func reloadTableView(){
-        
+        tableView.reloadData()
     }
+    
+    func startGooglePlaces() {
+        autocompleteController.delegate = self
+        self.present(autocompleteController, animated: true, completion: nil)
+    }
+    
     
 }
 
 // MARK: - TableView
 extension PlaceSearchViewController: UITableViewDelegate, UITableViewDataSource{
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
@@ -87,9 +102,31 @@ extension PlaceSearchViewController: UITableViewDelegate, UITableViewDataSource{
             cell.distanceLabel.text = "○○○○m　以内"
             return cell
         }
-        
     }
+    
+    
 }
 
 // MARK: - GMSAutocompleteViewController
+extension PlaceSearchViewController: GMSAutocompleteViewControllerDelegate{
+    
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
+        print("Error: ", error)
+    }
+    
+    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+        self.dismiss(animated: true, completion: nil)
 
+    }
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didSelect prediction: GMSAutocompletePrediction) -> Bool {
+        true
+    }
+    
+    
+}

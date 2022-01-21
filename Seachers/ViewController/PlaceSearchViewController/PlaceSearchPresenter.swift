@@ -15,9 +15,10 @@ protocol PlaceSearchPresenterInput{
 protocol PlaceSearchPresenterOutput{
     func setTableViewInfo()
     func reloadTableView()
+    func startGooglePlaces()
 }
 
-class PlaceSearchPresenter: PlaceSearchPresenterInput{
+final class PlaceSearchPresenter: PlaceSearchPresenterInput{
     
     private var view: PlaceSearchPresenterOutput!
     
@@ -31,6 +32,6 @@ class PlaceSearchPresenter: PlaceSearchPresenterInput{
     }
     
     func searchButton(){
-        
+        self.view.startGooglePlaces()
     }
 }
