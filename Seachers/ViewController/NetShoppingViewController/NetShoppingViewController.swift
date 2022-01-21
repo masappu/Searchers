@@ -31,73 +31,10 @@ class NetShoppingViewController: UIViewController,UISearchBarDelegate,NetShoppin
         // Do any additional setup after loading the view.
     }
     
-    var urlString:String?
-    var apikey = "e06e2a5afcf14b52139c1fb6c58e9dbc"
-    var pageCount = Int()
-    var urlArray = [String]()
-    var imageStringArray = [String]()
-    var nameStringArray = [String]()
-    var priceIntArray = [Int]()
-    var productDataArray = [productData]()
-    var doneCatchDataProtocol:DoneCatchDataProtocol?
     
    
     
-    //JSON解析を行う
-    
-    func setData(){
-        
-        //urlエンコーディング
-        let encordeUrlString:String = urlString!.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        
-        
-        AF.request(encordeUrlString, method: .get, parameters: nil, encoding: JSONEncoding.default).responseJSON { [self] (response) in
-
-            print(response.debugDescription)
-            
-            switch response.result{
-            
-            case .success:
-                do{
-                    let json:JSON = try JSON(data: response.data!)
-                    print(json.debugDescription)
-                    var totalHitCount = json["pageCount"].int
-                    if totalHitCount! > 50{
-                        totalHitCount = 50
-                    }
-                    
-                    
-                    for i in 0...pageCount - 1{
-                     
-                        if json["Products"][i]["minPrice"] != "" && json["Products"][i]["productName"] != "" && json["Products"][i]["productUrlMobile"] != "" && json["Products"][i]["name"] != "" && json["Products"][i]["smallImageUrl"] != ""{
-                         
-//                            let productData =  json["Products"][i]["minPrice"].int, name:json["Products"][i]["productName"].string , url: json["Products"][i]["productUrlMobile"].string, product_image: json["Products"][i]["smallImageUrl"].string)
-                        
-                          //  self.productDataArray.append(productData)
-                            print(self.productDataArray.debugDescription)
-                            
-                        }else{
-                            
-                            print("何かしらが空です")
-                            
-                        }
-                    }
-                    self.doneCatchDataProtocol?.catchData(arrayData: self.productDataArray, resultCount: self.productDataArray.count)
-                    
-                }catch{
-                    
-                    print("エラーです")
-                }
-            break
-                
-            case .failure:break
-            
-            }
-        
-        }
-        
-        
-    }
+   
     
     //検索バーの設置
     func setSearchBar() {
@@ -108,7 +45,7 @@ class NetShoppingViewController: UIViewController,UISearchBarDelegate,NetShoppin
             //デリゲート
             searchBar.delegate = self
             //プレースホルダー
-            searchBar.placeholder = "ユーザーを検索"
+            searchBar.placeholder = "商品を検索"
             //検索バーのスタイル
             searchBar.autocapitalizationType = UITextAutocapitalizationType.none
             //NavigationTitleが置かれる場所に検索バーを設置
@@ -139,7 +76,7 @@ class NetShoppingViewController: UIViewController,UISearchBarDelegate,NetShoppin
         //Labelに入力した値を設定
         Label.text = searchBar.text as! String
         
-        let urlString = "https://app.rakuten.co.jp/services/api/Product/Search/20170426?format=json&keyword=\(searchBar.text)&applicationId=\(apikey)"
+       
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
