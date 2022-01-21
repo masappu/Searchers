@@ -28,7 +28,7 @@ struct productData {
     
 }
 
-class NetShoppingAPIModel: NetShoppingAPIInput{
+class NetShoppingAPIModel: NetShoppingAPIModelInput{
     
     var presenter:NetShoppingAPIModelOutput
 
@@ -44,8 +44,8 @@ class NetShoppingAPIModel: NetShoppingAPIInput{
     var keywordString = String()
 
     
-    init(presenter:NetShoppingAPIOutput){
-        self.presenter = presenter
+  init(presenter:NetShoppingAPIModelOutput){
+      self.presenter = presenter
     }
     
     //JSON解析を行う
@@ -94,7 +94,7 @@ class NetShoppingAPIModel: NetShoppingAPIInput{
                             
                         }
                     }
-                    self.presenter?.catchData(arrayData: self.productDataArray, resultCount: self.productDataArray.count)
+//                    self.presenter?.catchData(arrayData: self.productDataArray, resultCount: self.productDataArray.count)
                     
                 }catch{
                     
