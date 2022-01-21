@@ -22,6 +22,7 @@ class MapViewController: UIViewController {
     var locationManager = CLLocationManager()
     let toolbarOfCategory = UIToolbar()
     var gourmandSearchData = GourmandSearchDataModel()
+    var previousVCString = String()
 
     private var presenter: MapPresenterInput!
     
