@@ -31,8 +31,8 @@ enum GourmandSearchCellType: Int, CaseIterable, CellType{
 }
 
 enum SelectGenreCellType:String ,CaseIterable,CellType{
-    case selectGenreCell = "true"
-    case nonSelectGenreCell = "false"
+    case selectGenreCell = "exitingData"
+    case nonSelectGenreCell = "noData"
     
     var cellIdentifier: String{
         switch self {
