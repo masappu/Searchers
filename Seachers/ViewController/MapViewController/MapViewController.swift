@@ -52,7 +52,8 @@ class MapViewController: UIViewController {
     }
     
     @objc func addToFavoritesButton(_ sender: UIButton){
-        let cell = sender.superview?.superview as! UICollectionViewCell
+        print(sender.superview?.superview?.superview?.superview)
+        let cell = sender.superview?.superview?.superview?.superview as! UICollectionViewCell
         let indexPath = collectionView.indexPath(for: cell)
         presenter.addToFavoritesButton(indexPath: indexPath!)
     }
@@ -69,13 +70,10 @@ extension MapViewController: UICollectionViewDelegate{
 }
 
 extension MapViewController: UICollectionViewDataSource{
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if presenter.shopDataArray == nil{
-            return 0
-        }else{
-            return presenter.shopDataArray!.count
-        }
+        
+        return presenter.shopDataArray!.count
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -100,7 +98,9 @@ extension MapViewController: UICollectionViewDataSource{
         averageBudgetLabel?.text = shopDataArray[indexPath.row].value!.budgetAverage
         lunchLabel?.text = shopDataArray[indexPath.row].value!.lunch
         favButton!.addTarget(self, action: #selector(addToFavoritesButton(_:)), for: .touchUpInside)
-        favButton?.setImage(UIImage(named: shopDataArray[indexPath.row].value!.favShop), for: .normal)
+        favButton?.setImage(UIImage(systemName: shopDataArray[indexPath.row].value!.favShop), for: .normal)
+        print(shopDataArray[indexPath.row])
+        print(shopDataArray[indexPath.row].value!.favShop)
 
         return cell
     }
@@ -138,9 +138,13 @@ extension MapViewController: GMSMapViewDelegate{
 
 
 extension MapViewController: MapPresenterOutput{
-    
+ 
     func addToFavorites(indexPath: IndexPath) {
         collectionView.reloadItems(at: [indexPath])
+    }
+    
+    func responseJudgementVc() {
+        
     }
   
     func responseMapViewDidTap(marker: GMSMarker, index: Int) {
