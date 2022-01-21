@@ -1,16 +1,14 @@
 //
-//  PlaceCell.swift
+//  RoomTableViewCell.swift
 //  Seachers
 //
-//  Created by 都甲裕希 on 2022/01/14.
+//  Created by 都甲裕希 on 2022/01/21.
 //
 
 import UIKit
 
-class PlaceCell: UITableViewCell {
+class RoomTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var placeLabel: UILabel!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -18,8 +16,9 @@ class PlaceCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        placeLabel.numberOfLines = 0
+
         // Configure the view for the selected state
     }
     
 }
+
