@@ -12,6 +12,8 @@ class SelectGenreCell: UITableViewCell{
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
+    
+    
     private var view:GourmandSearchViewInput!
     private var dataSource:GourmandSearchInput!
     
@@ -36,6 +38,7 @@ class SelectGenreCell: UITableViewCell{
     private func setConfiguration(){
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.layer.cornerRadius = 10
         collectionView.register(UINib(nibName: "ChoosingGenreCell", bundle: nil), forCellWithReuseIdentifier: "choosingGenreCell")
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
@@ -95,7 +98,6 @@ extension SelectGenreCell:GourmandSearchViewOutput{
         self.collectionView.reloadData()
         self.collectionView.layoutIfNeeded()
         self.collectionViewHeight.constant = self.collectionView.intrinsicContentSize.height
-        print(self.collectionViewHeight.constant)
         self.view.requestTableViewLayoutRebuilding()
     }
 }
