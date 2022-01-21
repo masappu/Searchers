@@ -18,16 +18,4 @@ class favShopData: Object{
     @objc dynamic var shop_image:String = ""
     @objc dynamic var url:String = ""
     @objc dynamic var lunch:String = ""
-//
-//    init(smallAreaName:String,latitude:Double,longitude:Double,genreName:String,budgetAverage:String,name:String,shop_image:String,url:String,lunch:String){
-//        self.smallAreaName = smallAreaName
-//        self.latitude = latitude
-//        self.longitude = longitude
-//        self.genreName = genreName
-//        self.budgetAverage = budgetAverage
-//        self.name = name
-//        self.shop_image = shop_image
-//        self.url = url
-//        self.lunch = lunch
-//    }
 }
