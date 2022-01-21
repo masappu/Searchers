@@ -8,6 +8,7 @@
 import Foundation
 import GoogleMaps
 import RealmSwift
+import CoreLocation
 
 
 protocol MapPresenterInput {
@@ -20,31 +21,35 @@ protocol MapPresenterInput {
     func requestMapViewDidTap(marker:GMSMarker)
     func requestDoneButtonOfCategory(text: String)
     func addToFavoritesButton(indexPath:IndexPath)
+    func goToWebVCButton(indexPath:IndexPath)
     
     var shopDataArray: [ShopDataDic]? {get set}
     var markers: [GMSMarker] {get set}
     var categoryArray: [String] {get set}
     var previousVcString:String {get set}
+    var currentLocation:CLLocationCoordinate2D {get set}
     
 }
 
 protocol MapPresenterOutput {
     
     func setUpMap(idoValue:Double,keidoValue:Double)
-    func setUpLocationManager()
     func setUpCollectionView()
     func setUpPickerView()
     func setUpSearchBar()
+    func setUpLocationManager()
 //    func responseJudgementVc()
     func responseScrollViewDidEndDecelerating(marker: GMSMarker)
     func responseMapViewDidTap(marker: GMSMarker,index: Int)
     func responseDoneButtonOfCategory(rangeCount:Int)
     func addToFavorites(indexPath: IndexPath)
+    func goToWebVC(url:String)
     
 }
 
 class MapPresenter: MapPresenterInput{
-
+    
+    var currentLocation: CLLocationCoordinate2D = CLLocationCoordinate2D()
     var previousVcString: String
     var categoryArray: [String]
     var markers: [GMSMarker]
@@ -53,13 +58,17 @@ class MapPresenter: MapPresenterInput{
     private var view: MapPresenterOutput!
     private var gourmandAPIModel: GourmandAPIInput!
     private var travelAPIModel: TravelAPIInput!
+    private var locationModel: LocationModel!
     
     init(view: MapViewController) {
         self.markers = []
         self.categoryArray = ["300", "500", "1000", "2000", "3000"]
         self.previousVcString = ""
+        self.shopDataArray = []
         self.view = view
         let gourmandAPIModel = GourmandAPIModel(presenter: self)
+        let locationModel = LocationModel(presenter: self)
+        self.locationModel = locationModel
         self.gourmandAPIModel = gourmandAPIModel
         self.travelAPIModel = TravelAPIModel()
     }
@@ -113,6 +122,11 @@ class MapPresenter: MapPresenterInput{
             self.view.addToFavorites(indexPath: indexPath)
         }
 
+    }
+    
+    func goToWebVCButton(indexPath: IndexPath) {
+        let url = self.shopDataArray![indexPath.row].value?.url
+        self.view.goToWebVC(url: url!)
     }
     
     func loadMap(gourmandSearchData:GourmandSearchDataModel) {
@@ -170,5 +184,13 @@ extension MapPresenter: GourmandAPIOutput{
 extension MapPresenter: TravelAPIOutput{
     
     
+    
+}
+
+extension MapPresenter: LocaitonModelOutput{
+    
+    func completedRequestLocaiton(request: CLLocationCoordinate2D) {
+        
+    }
     
 }
