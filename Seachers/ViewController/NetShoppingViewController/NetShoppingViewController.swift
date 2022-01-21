@@ -9,7 +9,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-struct ShopData {
+struct productData {
     
     var url:String?
     var name:String?
@@ -22,13 +22,14 @@ struct ShopData {
 protocol DoneCatchDataProtocol {
     
     //規則を決める
-    func catchData(arrayData:Array<ShopData>,resultCount:Int)
+    func catchData(arrayData:Array<productData>,resultCount:Int)
     
 }
 
 class NetShoppingViewController: UIViewController,UISearchBarDelegate {
 
     @IBOutlet weak var Label: UILabel!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,19 +40,16 @@ class NetShoppingViewController: UIViewController,UISearchBarDelegate {
     }
     
     var urlString:String?
-    var shopDataArray = [ShopData]()
+    var apikey = "e06e2a5afcf14b52139c1fb6c58e9dbc"
+    var pageCount = Int()
+    var urlArray = [String]()
+    var imageStringArray = [String]()
+    var nameStringArray = [String]()
+    var priceIntArray = [Int]()
+    var productDataArray = [productData]()
     var doneCatchDataProtocol:DoneCatchDataProtocol?
     
-    //ViewControllerから値を受け取る
-    init(url:String){
-        
-        urlString = url
-
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+   
     
     //JSON解析を行う
     
@@ -61,7 +59,7 @@ class NetShoppingViewController: UIViewController,UISearchBarDelegate {
         let encordeUrlString:String = urlString!.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         
         
-        AF.request(encordeUrlString, method: .get, parameters: nil, encoding: JSONEncoding.default).responseJSON { (response) in
+        AF.request(encordeUrlString, method: .get, parameters: nil, encoding: JSONEncoding.default).responseJSON { [self] (response) in
 
             print(response.debugDescription)
             
@@ -71,20 +69,20 @@ class NetShoppingViewController: UIViewController,UISearchBarDelegate {
                 do{
                     let json:JSON = try JSON(data: response.data!)
                     print(json.debugDescription)
-                    var totalHitCount = json["total_hit_count"].int
+                    var totalHitCount = json["pageCount"].int
                     if totalHitCount! > 50{
                         totalHitCount = 50
                     }
                     
                     
-                    for i in 0...totalHitCount! - 1{
+                    for i in 0...pageCount - 1{
                      
-                        if json["rest"][i]["latitude"] != "" && json["rest"][i]["longitude"] != "" && json["rest"][i]["url"] != "" && json["rest"][i]["name"] != "" && json["rest"][i]["tel"] != "" && json["rest"][i]["image_url"]["shop_image1"] != ""{
+                        if json["Products"][i]["minPrice"] != "" && json["Products"][i]["productName"] != "" && json["Products"][i]["productUrlMobile"] != "" && json["Products"][i]["name"] != "" && json["Products"][i]["smallImageUrl"] != ""{
                          
-                            let shopData =  json["rest"][i]["url"].string, name:json["rest"][i]["name"].string , tel: json["rest"][i]["tel"].string, shop_image: json["rest"][i]["image_url"]["shop_image1"].string)
+//                            let productData =  json["Products"][i]["minPrice"].int, name:json["Products"][i]["productName"].string , url: json["Products"][i]["productUrlMobile"].string, product_image: json["Products"][i]["smallImageUrl"].string)
                         
-                            self.shopDataArray.append(shopData)
-                            print(self.shopDataArray.debugDescription)
+                          //  self.productDataArray.append(productData)
+                            print(self.productDataArray.debugDescription)
                             
                         }else{
                             
@@ -96,7 +94,7 @@ class NetShoppingViewController: UIViewController,UISearchBarDelegate {
                     }
                     
                     
-                    self.doneCatchDataProtocol?.catchData(arrayData: self.shopDataArray, resultCount: self.shopDataArray.count)
+                    self.doneCatchDataProtocol?.catchData(arrayData: self.productDataArray, resultCount: self.productDataArray.count)
                     
                 }catch{
                     
@@ -152,6 +150,8 @@ class NetShoppingViewController: UIViewController,UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         //Labelに入力した値を設定
         Label.text = searchBar.text as! String
+        
+        let urlString = "https://app.rakuten.co.jp/services/api/Product/Search/20170426?format=json&keyword=\(searchBar.text)&applicationId=\(apikey)"
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
