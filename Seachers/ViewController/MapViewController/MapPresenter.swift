@@ -36,7 +36,6 @@ protocol MapPresenterOutput {
     func setUpCollectionView()
     func setUpPickerView()
     func setUpSearchBar()
-    func setUpLocationManager()
     func responseScrollViewDidEndDecelerating(marker: GMSMarker)
     func responseMapViewDidTap(marker: GMSMarker,index: Int)
     func responseDoneButtonOfCategory(rangeCount:Int)
@@ -56,7 +55,7 @@ class MapPresenter: MapPresenterInput{
     private var view: MapPresenterOutput!
     private var gourmandAPIModel: GourmandAPIInput!
     private var travelAPIModel: TravelAPIInput!
-    private var locationModel: LocationModel!
+    private var locationModel: LocaitonModelInput!
     
     init(view: MapViewController) {
         self.markers = []
@@ -115,7 +114,6 @@ class MapPresenter: MapPresenterInput{
             shopDataArray![indexPath.row].value?.favorite! = false
             self.view.addToFavorites(indexPath: indexPath)
         }
-
     }
     
     func goToWebVCButton(indexPath: IndexPath) {
@@ -124,12 +122,10 @@ class MapPresenter: MapPresenterInput{
     }
     
     func loadMap(gourmandSearchData:GourmandSearchDataModel) {
-        self.view.setUpLocationManager()
         gourmandAPIModel.setData(gourmandSearchData: gourmandSearchData, rangeCount: 3)
     }
     
     func reloadMap(gourmandSearchData:GourmandSearchDataModel,rangeCount:Int) {
-        self.view.setUpLocationManager()
         gourmandAPIModel.setData(gourmandSearchData: gourmandSearchData, rangeCount: rangeCount)
     }
     
