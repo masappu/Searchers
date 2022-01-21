@@ -80,6 +80,7 @@
 		CCC805A52793DCA1000AAE8F /* NetShoppingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCC805A32793DCA1000AAE8F /* NetShoppingTableViewCell.xib */; };
 		CCC805A9279ACD54000AAE8F /* productData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC805A8279ACD54000AAE8F /* productData.swift */; };
 		CCC805AB279ACD85000AAE8F /* NetShoppingAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC805AA279ACD85000AAE8F /* NetShoppingAPIModel.swift */; };
+		CCC805AD279B245D000AAE8F /* NetShoppingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC805AC279B245D000AAE8F /* NetShoppingPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -663,6 +664,7 @@
 		CCC805A32793DCA1000AAE8F /* NetShoppingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NetShoppingTableViewCell.xib; path = Seachers/CustomCell/NetShopppingCell/NetShoppingTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		CCC805A8279ACD54000AAE8F /* productData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = productData.swift; path = Seachers/ViewController/NetShoppingViewController/productData.swift; sourceTree = SOURCE_ROOT; };
 		CCC805AA279ACD85000AAE8F /* NetShoppingAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetShoppingAPIModel.swift; path = Seachers/ViewController/NetShoppingViewController/NetShoppingAPIModel.swift; sourceTree = SOURCE_ROOT; };
+		CCC805AC279B245D000AAE8F /* NetShoppingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetShoppingPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1431,11 +1433,11 @@
 				87717DC127906BFF00AD966C /* GourmandDataLoadModel.swift */,
 				86514DF527914CE0003839DF /* GourmandAPIModel.swift */,
 				86514DF727914CF4003839DF /* TravelAPIModel.swift */,
+				CCC805AA279ACD85000AAE8F /* NetShoppingAPIModel.swift */,
 				871D95452791DAE500AA05F3 /* CellType.swift */,
 				871D975027964C9500AA05F3 /* LocationModel.swift */,
 				86E8F1CF2797FA0300AD667B /* RealmData.swift */,
 				22CD02D2279949E4006A2B5C /* 名無しのファイル.swift */,
-				CCC805AA279ACD85000AAE8F /* NetShoppingAPIModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1486,6 +1488,7 @@
 			isa = PBXGroup;
 			children = (
 				87E10C7D278A9EB4005AAA4A /* NetShoppingViewController.swift */,
+				CCC805AC279B245D000AAE8F /* NetShoppingPresenter.swift */,
 			);
 			path = NetShoppingViewController;
 			sourceTree = "<group>";
@@ -1676,6 +1679,7 @@
 				22CD02CF2799496F006A2B5C /* roomData.swift in Sources */,
 				8765A2E927998B3C0030429C /* IntrinsicCollectionView.swift in Sources */,
 				2241F6E92797180F0031E004 /* PlaceSearchPresenter.swift in Sources */,
+				CCC805AD279B245D000AAE8F /* NetShoppingPresenter.swift in Sources */,
 				CCC805AB279ACD85000AAE8F /* NetShoppingAPIModel.swift in Sources */,
 				87717DB6278DDC8F00AD966C /* DateModel.swift in Sources */,
 				87717DB4278DDA0200AD966C /* PlaceSearchDataModel.swift in Sources */,
