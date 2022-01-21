@@ -47,7 +47,7 @@
             <connections>
                 <outlet property="button" destination="XFk-tH-oyI" id="bXt-xq-qic"/>
             </connections>
-            <point key="canvasLocation" x="199.27536231884059" y="123.88392857142857"/>
+            <point key="canvasLocation" x="198.55072463768118" y="123.88392857142857"/>
         </tableViewCell>
     </objects>
 </document>
