@@ -76,6 +76,8 @@
 		C0F0D02932466EB2F5332F9E /* Pods_Seachers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02AC76828558B154338808DE /* Pods_Seachers.framework */; };
 		CCC805A42793DCA1000AAE8F /* NetShoppingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC805A22793DCA1000AAE8F /* NetShoppingTableViewCell.swift */; };
 		CCC805A52793DCA1000AAE8F /* NetShoppingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCC805A32793DCA1000AAE8F /* NetShoppingTableViewCell.xib */; };
+		CCC805A9279ACD54000AAE8F /* productData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC805A8279ACD54000AAE8F /* productData.swift */; };
+		CCC805AB279ACD85000AAE8F /* NetShoppingAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC805AA279ACD85000AAE8F /* NetShoppingAPIModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -655,6 +657,8 @@
 		87E10C82278ADD89005AAA4A /* GourmandSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GourmandSearchViewController.swift; sourceTree = "<group>"; };
 		CCC805A22793DCA1000AAE8F /* NetShoppingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetShoppingTableViewCell.swift; path = Seachers/CustomCell/NetShopppingCell/NetShoppingTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		CCC805A32793DCA1000AAE8F /* NetShoppingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NetShoppingTableViewCell.xib; path = Seachers/CustomCell/NetShopppingCell/NetShoppingTableViewCell.xib; sourceTree = SOURCE_ROOT; };
+		CCC805A8279ACD54000AAE8F /* productData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = productData.swift; path = Seachers/ViewController/NetShoppingViewController/productData.swift; sourceTree = SOURCE_ROOT; };
+		CCC805AA279ACD85000AAE8F /* NetShoppingAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetShoppingAPIModel.swift; path = Seachers/ViewController/NetShoppingViewController/NetShoppingAPIModel.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1225,6 +1229,7 @@
 				87717DB5278DDC8F00AD966C /* DateModel.swift */,
 				22CD02CE2799496F006A2B5C /* roomData.swift */,
 				22CD02D0279949C0006A2B5C /* peopleData.swift */,
+				CCC805A8279ACD54000AAE8F /* productData.swift */,
 			);
 			path = struct;
 			sourceTree = "<group>";
@@ -1424,6 +1429,7 @@
 				871D975027964C9500AA05F3 /* LocationModel.swift */,
 				86E8F1CF2797FA0300AD667B /* RealmData.swift */,
 				22CD02D2279949E4006A2B5C /* 名無しのファイル.swift */,
+				CCC805AA279ACD85000AAE8F /* NetShoppingAPIModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1663,6 +1669,7 @@
 				22CD02CF2799496F006A2B5C /* roomData.swift in Sources */,
 				8765A2E927998B3C0030429C /* IntrinsicCollectionView.swift in Sources */,
 				2241F6E92797180F0031E004 /* PlaceSearchPresenter.swift in Sources */,
+				CCC805AB279ACD85000AAE8F /* NetShoppingAPIModel.swift in Sources */,
 				87717DB6278DDC8F00AD966C /* DateModel.swift in Sources */,
 				87717DB4278DDA0200AD966C /* PlaceSearchDataModel.swift in Sources */,
 				86E8F1D02797FA0300AD667B /* RealmData.swift in Sources */,
@@ -1675,6 +1682,7 @@
 				87E10C65278A967F005AAA4A /* HomeViewController.swift in Sources */,
 				22CD02D6279AAB24006A2B5C /* RoomTableViewCell.swift in Sources */,
 				87A49764278B712600D1D33A /* FavOfTravelViewController.swift in Sources */,
+				CCC805A9279ACD54000AAE8F /* productData.swift in Sources */,
 				87717DC427906C3200AD966C /* GourmandGenrePresenter.swift in Sources */,
 				22CD02D3279949E4006A2B5C /* 名無しのファイル.swift in Sources */,
 				87A4975D278B678600D1D33A /* GourmandGenreViewController.swift in Sources */,
