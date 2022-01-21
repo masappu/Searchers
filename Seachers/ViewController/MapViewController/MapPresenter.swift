@@ -55,7 +55,7 @@ class MapPresenter: MapPresenterInput{
     private var view: MapPresenterOutput!
     private var gourmandAPIModel: GourmandAPIInput!
     private var travelAPIModel: TravelAPIInput!
-    private var locationModel: LocaitonModelInput!
+    private var locationModel: LocationModelInput!
     
     init(view: MapViewController) {
         self.markers = []
@@ -177,7 +177,7 @@ extension MapPresenter: TravelAPIOutput{
     
 }
 
-extension MapPresenter: LocaitonModelOutput{
+extension MapPresenter: LocationModelOutput{
     
     func completedRequestLocaiton(request: CLLocationCoordinate2D) {
         
