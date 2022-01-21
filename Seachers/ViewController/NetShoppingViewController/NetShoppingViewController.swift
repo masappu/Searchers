@@ -9,15 +9,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-struct productData {
-    
-    var url:String?
-    var name:String?
-    var price:String?
-    var product_image:String?
-    
-    
-}
+
 
 protocol DoneCatchDataProtocol {
     
@@ -26,7 +18,7 @@ protocol DoneCatchDataProtocol {
     
 }
 
-class NetShoppingViewController: UIViewController,UISearchBarDelegate {
+class NetShoppingViewController: UIViewController,UISearchBarDelegate,NetShoppingAPIModelOutput {
 
     @IBOutlet weak var Label: UILabel!
 
@@ -89,11 +81,7 @@ class NetShoppingViewController: UIViewController,UISearchBarDelegate {
                             print("何かしらが空です")
                             
                         }
-                        
-                        
                     }
-                    
-                    
                     self.doneCatchDataProtocol?.catchData(arrayData: self.productDataArray, resultCount: self.productDataArray.count)
                     
                 }catch{

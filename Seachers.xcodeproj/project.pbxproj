@@ -1425,11 +1425,11 @@
 				87717DC127906BFF00AD966C /* GourmandDataLoadModel.swift */,
 				86514DF527914CE0003839DF /* GourmandAPIModel.swift */,
 				86514DF727914CF4003839DF /* TravelAPIModel.swift */,
+				CCC805AA279ACD85000AAE8F /* NetShoppingAPIModel.swift */,
 				871D95452791DAE500AA05F3 /* CellType.swift */,
 				871D975027964C9500AA05F3 /* LocationModel.swift */,
 				86E8F1CF2797FA0300AD667B /* RealmData.swift */,
 				22CD02D2279949E4006A2B5C /* 名無しのファイル.swift */,
-				CCC805AA279ACD85000AAE8F /* NetShoppingAPIModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
