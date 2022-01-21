@@ -8,14 +8,14 @@
 import Foundation
 import CoreLocation
 
-protocol LocaitonModelInput{
+protocol LocationModelInput{
     
     //位置情報取得のタイミングを通知する。
     func requestAuthorization()
     
 }
 
-protocol LocaitonModelOutput{
+protocol LocationModelOutput{
     
     //位置情報取得完了を通知し、データを渡す。
     func completedRequestLocaiton(request:CLLocationCoordinate2D)
@@ -24,7 +24,7 @@ protocol LocaitonModelOutput{
 
 
 
-class LocationModel:NSObject,LocaitonModelInput{
+class LocationModel:NSObject,LocationModelInput{
     
     private var locationManager:CLLocationManager! {
         let locaitonInfo = CLLocationManager()
@@ -34,13 +34,13 @@ class LocationModel:NSObject,LocaitonModelInput{
         locaitonInfo.activityType = .fitness
         return locaitonInfo
     }
-    private var presenter:LocaitonModelOutput!
+    private var presenter:LocationModelOutput!
     
     override init() {
         super.init()
     }
     
-    required public init(presenter:LocaitonModelOutput) {
+    required public init(presenter:LocationModelOutput) {
         self.presenter = presenter
     }
     
