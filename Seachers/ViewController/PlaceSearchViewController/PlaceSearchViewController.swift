@@ -13,8 +13,8 @@ class PlaceSearchViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    let autocompleteController = GMSAutocompleteViewController()
-    
+    var autocompleteController = GMSAutocompleteViewController()
+    private var placeDataModel: PlaceDataModel!
     private var presenter: PlaceSearchPresenterInput!
     
     func inject(presenter:PlaceSearchPresenterInput){
@@ -62,6 +62,11 @@ extension PlaceSearchViewController: PlaceSearchPresenterOutput{
         self.present(autocompleteController, animated: true, completion: nil)
     }
     
+    func AutocompleteControllerDismiss(selectedData: PlaceDataModel) {
+        self.placeDataModel = selectedData
+        self.dismiss(animated: true, completion: nil)
+        tableView.reloadData()
+    }
     
 }
 
@@ -91,11 +96,15 @@ extension PlaceSearchViewController: UITableViewDelegate, UITableViewDataSource{
         
         if indexPath.section == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "PlaceSearchCell", for: indexPath) as! PlaceSearchCell
-//            cell.button.addTarget(self, action: #selector(self.searchButton(_:)), for: .touchUpInside)
+            cell.button.addTarget(self, action: #selector(self.searchButton(_:)), for: .touchUpInside)
             return cell
         }else if indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "PlaceCell", for: indexPath) as! PlaceCell
-            cell.placeLabel.text = "未選択"
+            if placeDataModel == nil{
+                cell.placeLabel.text = "未経験"
+            }else{
+                cell.placeLabel.text = placeDataModel.name
+            }
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "DistanceCell", for: indexPath) as! DistanceCell
@@ -112,7 +121,10 @@ extension PlaceSearchViewController: GMSAutocompleteViewControllerDelegate{
     
     
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        self.dismiss(animated: true, completion: nil)
+        print("************")
+        print(place)
+        let placeData = PlaceDataModel(name: place.name!, latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
+        self.presenter.searchData(Data: placeData)
     }
     
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {

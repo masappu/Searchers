@@ -10,17 +10,21 @@ import Foundation
 protocol PlaceSearchPresenterInput{
     func loadView()
     func searchButton()
+    func searchData(Data:PlaceDataModel)
 }
 
 protocol PlaceSearchPresenterOutput{
     func setTableViewInfo()
     func reloadTableView()
     func startGooglePlaces()
+    func AutocompleteControllerDismiss(selectedData: PlaceDataModel)
 }
 
 final class PlaceSearchPresenter: PlaceSearchPresenterInput{
     
+    
     private var view: PlaceSearchPresenterOutput!
+    var placeDataModel: PlaceDataModel!
     
     init(view:PlaceSearchPresenterOutput){
         self.view = view
@@ -34,4 +38,9 @@ final class PlaceSearchPresenter: PlaceSearchPresenterInput{
     func searchButton(){
         self.view.startGooglePlaces()
     }
+    
+    func searchData(Data:PlaceDataModel) {
+        self.view.AutocompleteControllerDismiss(selectedData: Data)
+    }
+    
 }
