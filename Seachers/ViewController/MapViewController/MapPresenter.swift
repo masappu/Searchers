@@ -15,6 +15,7 @@ protocol MapPresenterInput {
     func loadMap(gourmandSearchData:GourmandSearchDataModel)
     func reloadMap(gourmandSearchData:GourmandSearchDataModel,rangeCount:Int)
     func configureSubViews()
+    func requestJudgementVc()
     func requestScrollViewDidEndDecelerating(x:Double,width:Double)
     func requestMapViewDidTap(marker:GMSMarker)
     func requestDoneButtonOfCategory(text: String)
@@ -23,6 +24,7 @@ protocol MapPresenterInput {
     var shopDataArray: [ShopDataDic]? {get set}
     var markers: [GMSMarker] {get set}
     var categoryArray: [String] {get set}
+    var previousVcString:String {get set}
     
 }
 
@@ -33,6 +35,7 @@ protocol MapPresenterOutput {
     func setUpCollectionView()
     func setUpPickerView()
     func setUpSearchBar()
+    func responseJudgementVc()
     func responseScrollViewDidEndDecelerating(marker: GMSMarker)
     func responseMapViewDidTap(marker: GMSMarker,index: Int)
     func responseDoneButtonOfCategory(rangeCount:Int)
@@ -41,8 +44,8 @@ protocol MapPresenterOutput {
 }
 
 class MapPresenter: MapPresenterInput{
-    
 
+    var previousVcString: String
     var categoryArray: [String]
     var markers: [GMSMarker]
     var shopDataArray: [ShopDataDic]?
@@ -50,15 +53,19 @@ class MapPresenter: MapPresenterInput{
     private var view: MapPresenterOutput!
     private var gourmandAPIModel: GourmandAPIInput!
     private var travelAPIModel: TravelAPIInput!
-    let realm = try! Realm()
     
     init(view: MapViewController) {
         self.markers = []
         self.categoryArray = ["300", "500", "1000", "2000", "3000"]
+        self.previousVcString = ""
         self.view = view
         let gourmandAPIModel = GourmandAPIModel(presenter: self)
         self.gourmandAPIModel = gourmandAPIModel
         self.travelAPIModel = TravelAPIModel()
+    }
+    
+    func requestJudgementVc() {
+        self.view.responseJudgementVc()
     }
     
     func requestScrollViewDidEndDecelerating(x:Double,width:Double) {
@@ -78,20 +85,34 @@ class MapPresenter: MapPresenterInput{
     }
     
     func addToFavoritesButton(indexPath:IndexPath){
+        let realm = try! Realm()
         let selectedShopData = shopDataArray![indexPath.row].value!
-        let favShop = favShopData(smallAreaName: selectedShopData.smallAreaName!,
-                                  latitude: selectedShopData.latitude!,
-                                  longitude: selectedShopData.longitude!,
-                                  genreName: selectedShopData.genreName!,
-                                  budgetAverage: selectedShopData.budgetAverage!,
-                                  name: selectedShopData.name!,
-                                  shop_image: selectedShopData.shop_image!,
-                                  url: selectedShopData.url!,
-                                  lunch: selectedShopData.lunch!)
-        try! realm.write {
-            realm.add(favShop)
+        let registeredFavShopData = realm.objects(favShopData.self).filter("name == '\(selectedShopData.name!)'")
+        print(registeredFavShopData)
+        let favShop = favShopData()
+        
+        if shopDataArray![indexPath.row].value?.favorite! == false{
+            favShop.latitude = selectedShopData.latitude!
+            favShop.longitude = selectedShopData.longitude!
+            favShop.genreName = selectedShopData.genreName!
+            favShop.budgetAverage = selectedShopData.budgetAverage!
+            favShop.name = selectedShopData.name!
+            favShop.shop_image = selectedShopData.shop_image!
+            favShop.url = selectedShopData.url!
+            favShop.lunch = selectedShopData.lunch!
+            try! realm.write {
+                realm.add(favShop)
+            }
+            shopDataArray![indexPath.row].value?.favorite! = true
+            self.view.addToFavorites(indexPath: indexPath)
+        }else{
+            try! realm.write {
+                realm.delete(registeredFavShopData)
+            }
+            shopDataArray![indexPath.row].value?.favorite! = false
+            self.view.addToFavorites(indexPath: indexPath)
         }
-        self.view.addToFavorites(indexPath: indexPath)
+
     }
     
     func loadMap(gourmandSearchData:GourmandSearchDataModel) {
@@ -115,15 +136,18 @@ class MapPresenter: MapPresenterInput{
 extension MapPresenter: GourmandAPIOutput{
     
     func resultAPIData(shopDataArray: [ShopDataDic], idoValue: Double, keidoValue: Double) {
-        
+        let realm = try! Realm()
         let favShopData = realm.objects(favShopData.self)
+        print(favShopData)
         self.shopDataArray = shopDataArray
         for shopDataDic in shopDataArray{
             makeMarker(shopData: shopDataDic.value!)
         }
         for favShop in favShopData{
-            let index = self.shopDataArray!.firstIndex(where: { $0.key == favShop.name })
-            self.shopDataArray![index!].value?.favorite = true
+            guard let index = self.shopDataArray!.firstIndex(where: { $0.key == favShop.name }) else{
+                return
+            }
+            self.shopDataArray![index].value?.favorite = true
         }
         self.view.setUpMap(idoValue:idoValue,keidoValue:keidoValue)
     }

@@ -23,18 +23,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0G8-Ol-RVi">
                                 <rect key="frame" x="20.5" y="13.5" width="359" height="173"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VYR-nI-bUT">
-                                        <rect key="frame" x="314.5" y="8" width="43.5" height="31"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="31" id="3ck-f5-TeF"/>
-                                            <constraint firstAttribute="width" constant="43.5" id="9Hi-JA-d8r"/>
-                                        </constraints>
-                                        <color key="tintColor" systemColor="systemYellowColor"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="bookmark" catalog="system">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
-                                        </buttonConfiguration>
-                                    </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="30V-qF-OPB">
                                         <rect key="frame" x="4" y="19" width="352" height="115"/>
                                         <subviews>
@@ -119,17 +107,29 @@
                                             <fontDescription key="titleFontDescription" type="boldSystem" pointSize="16"/>
                                         </buttonConfiguration>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VYR-nI-bUT">
+                                        <rect key="frame" x="315" y="4" width="43.5" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="31" id="3ck-f5-TeF"/>
+                                            <constraint firstAttribute="width" constant="43.5" id="9Hi-JA-d8r"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="systemYellowColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="bookmark" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
+                                        </buttonConfiguration>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="173" id="7yL-Xa-0GP"/>
+                                    <constraint firstItem="VYR-nI-bUT" firstAttribute="top" secondItem="0G8-Ol-RVi" secondAttribute="top" constant="4" id="9SG-Sb-WVz"/>
                                     <constraint firstItem="30V-qF-OPB" firstAttribute="leading" secondItem="0G8-Ol-RVi" secondAttribute="leading" constant="4" id="BTt-xF-x6y"/>
                                     <constraint firstAttribute="bottom" secondItem="hCd-zd-3g6" secondAttribute="bottom" constant="8" id="cZ1-3T-2Am"/>
                                     <constraint firstItem="hCd-zd-3g6" firstAttribute="top" secondItem="30V-qF-OPB" secondAttribute="bottom" constant="8" symbolic="YES" id="cm5-84-xbR"/>
-                                    <constraint firstAttribute="trailing" secondItem="VYR-nI-bUT" secondAttribute="trailing" constant="1" id="dMr-ts-LXN"/>
-                                    <constraint firstItem="VYR-nI-bUT" firstAttribute="top" secondItem="0G8-Ol-RVi" secondAttribute="top" constant="8" id="hOD-tS-p8H"/>
                                     <constraint firstAttribute="trailing" secondItem="30V-qF-OPB" secondAttribute="trailing" constant="3" id="ikm-pr-Ec5"/>
                                     <constraint firstItem="hCd-zd-3g6" firstAttribute="centerX" secondItem="0G8-Ol-RVi" secondAttribute="centerX" id="laZ-8w-QSK"/>
+                                    <constraint firstAttribute="trailing" secondItem="VYR-nI-bUT" secondAttribute="trailing" constant="0.5" id="y6Z-61-fuF"/>
                                 </constraints>
                             </view>
                         </subviews>
