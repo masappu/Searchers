@@ -7,8 +7,32 @@
 
 import UIKit
 
-class GourmandSearchViewController: UIViewController {
+protocol GourmandSearchViewInput{
 
+    //tableViewのframe更新を要求する
+    func requestTableViewLayoutRebuilding()
+    
+    //GenreデータのdeleteButtonタップを通知する
+    func pushDeleteButton(at row:Int)
+    
+}
+
+protocol GourmandSearchViewOutput{
+    
+    //collectionView構築のタイミングを指示
+    func loadCollectionView()
+    
+    //collectionViewのdeleteRows()の実行を指示する
+    func reloadDeleteRows(at indexPaths:[IndexPath])
+    
+    //collectionViewのreloadData()の実行を指示する
+    func reloadData()
+    
+}
+
+
+class GourmandSearchViewController: UIViewController {
+    
     @IBOutlet weak var tableView: UITableView!
     var searchDate = GourmandSearchDataModel()
 
@@ -16,17 +40,21 @@ class GourmandSearchViewController: UIViewController {
     private var PickerCell:ReservationDateCell?
     private var memberCountCell:MemberCountCell?
     private var presenter:GourmandSearchInput!
+    private var selectGenreCell:GourmandSearchViewOutput!
 
-    func inject(presenter:GourmandSearchInput){
+    func injectPresenter(presenter:GourmandSearchInput){
         self.presenter = presenter
+    }
+    
+    func injectSelectGenreCell(cell:GourmandSearchViewOutput){
+        self.selectGenreCell = cell
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let presenter = GourmandSearchPresenter(view: self)
-        inject(presenter: presenter)
-        self.searchDate = GourmandSearchDataModel()
-        self.navigationItem.title = "グルメ検索"
+        injectPresenter(presenter: presenter)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -49,7 +77,6 @@ class GourmandSearchViewController: UIViewController {
     @objc func datePickerValueDidChange(){
         self.presenter.datePickerValueChange(date: (self.PickerCell?.datePicker.date)!)
     }
-
 }
 
 extension GourmandSearchViewController:GourmandSearchOutput{
@@ -64,9 +91,17 @@ extension GourmandSearchViewController:GourmandSearchOutput{
         tableView.register(UINib(nibName: "ReservationDateCell", bundle: nil), forCellReuseIdentifier: "reservationDateCell")
         tableView.register(UINib(nibName: "MemberCountCell", bundle: nil), forCellReuseIdentifier: "mamberCountCell")
     }
+    
+    func setNavigationControllerInfo() {
+        self.navigationItem.title = "グルメ検索"
+    }
 
     func reloadTableView() {
         self.tableView.reloadData()
+    }
+    
+    func reloadSelectGenreCell(at indexPaths: [IndexPath]) {
+        self.selectGenreCell.reloadDeleteRows(at: indexPaths)
     }
 
     func reloadMemberCountLabel() {
@@ -146,8 +181,10 @@ extension GourmandSearchViewController:UITableViewDelegate,UITableViewDataSource
             return cell
         case .selectGenreCell:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType!.cellIdentifier) as! SelectGenreCell
-            cell.configure(data: self.presenter.searchData.genre)
-            
+            cell.inject(view: self, dataSource: self.presenter)
+            self.injectSelectGenreCell(cell: cell)
+            self.selectGenreCell.loadCollectionView()
+            self.tableView.layoutIfNeeded()
             return cell
         case .reservationDateCell:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType!.cellIdentifier) as! ReservationDateCell
@@ -172,5 +209,15 @@ extension GourmandSearchViewController:UITableViewDelegate,UITableViewDataSource
     }
 }
 
-
-
+extension GourmandSearchViewController:GourmandSearchViewInput{
+    
+    func requestTableViewLayoutRebuilding() {
+        self.tableView.beginUpdates()
+        self.tableView.layoutIfNeeded()
+        self.tableView.endUpdates()
+    }
+    
+    func pushDeleteButton(at row: Int) {
+        self.presenter.deleteGenreData(indexPath: row)
+    }
+}
