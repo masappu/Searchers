@@ -10,18 +10,17 @@ import UIKit
 class ChoosingGenreCell: UICollectionViewCell {
     
     @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var view: UIView!
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var stackView: UIStackView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         activationSelfSizing()
-        
+        self.stackView.layer.cornerRadius = 9
     }
     
     
     private func activationSelfSizing() {
-        // iOS12 のときに Self-sizing が有効にならない対策
         contentView.translatesAutoresizingMaskIntoConstraints = false
         let leftConstraint = contentView.leftAnchor.constraint(equalTo: leftAnchor)
         let rightConstraint = contentView.rightAnchor.constraint(equalTo: rightAnchor)
