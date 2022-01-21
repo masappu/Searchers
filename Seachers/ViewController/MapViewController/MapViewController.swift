@@ -42,7 +42,6 @@ class MapViewController: UIViewController {
         
         presenter.loadMap(gourmandSearchData: gourmandSearchData)
         presenter.configureSubViews()
-        previousVCString = "GourmandSearchViewController"
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
