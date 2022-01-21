@@ -7,7 +7,7 @@
 
 import UIKit
 
-class nonSelectGenreCell: UITableViewCell {
+class NonSelectGenreCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
