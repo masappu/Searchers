@@ -28,3 +28,10 @@ struct PlaceSearchDataModel{
     }
 }
 
+struct PlaceDataModel{
+    var name:String
+    var latitude:Double
+    var longitude:Double
+    
+}
+
