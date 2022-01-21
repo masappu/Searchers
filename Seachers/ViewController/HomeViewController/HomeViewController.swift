@@ -64,7 +64,7 @@ class HomeViewController: UIViewController {
 //        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: player.currentItem, queue: .main) { [self] (notification) in
 //                    self.player.seek(to: .zero)
 //                    self.player.play()
-//
+
                     //ボタンアニメーション
                     NSLayoutConstraint.activate([
                         NetShoppingButtom.widthAnchor.constraint(equalToConstant: 300),
@@ -154,5 +154,6 @@ class HomeViewController: UIViewController {
 
     
 }
+
 
 

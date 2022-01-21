@@ -131,6 +131,10 @@ extension GourmandSearchViewController:UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellType = GourmandSearchCellType(rawValue: indexPath.section)
@@ -142,6 +146,8 @@ extension GourmandSearchViewController:UITableViewDelegate,UITableViewDataSource
             return cell
         case .selectGenreCell:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType!.cellIdentifier) as! SelectGenreCell
+            cell.configure(data: self.presenter.searchData.genre)
+            
             return cell
         case .reservationDateCell:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType!.cellIdentifier) as! ReservationDateCell
