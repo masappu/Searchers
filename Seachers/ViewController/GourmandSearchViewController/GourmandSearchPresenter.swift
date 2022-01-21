@@ -66,7 +66,7 @@ protocol GourmandSearchOutput{
     func reloadDatePickerIsHidden()
     
     //MapViewへの遷移を指示する
-    func transitionToMapView(Data:GourmandSearchDataModel)
+    func transitionToMapView(Data:GourmandSearchDataModel, previousVCString:String)
     
     //PlaceSearchViewへの遷移を指示する
     func transitionToPlaceSearchVIew()
@@ -78,7 +78,8 @@ protocol GourmandSearchOutput{
 final class GourmandSearchPresenter: GourmandSearchInput{
     
     private var view:GourmandSearchOutput
-    private var model:LocaitonModelInput!
+    private var model:LocationModelInput!
+    private let previousVCString = "GourmandSearchViewController"
     var searchData: GourmandSearchDataModel = GourmandSearchDataModel()
     
     init(view:GourmandSearchOutput){
@@ -103,7 +104,7 @@ final class GourmandSearchPresenter: GourmandSearchInput{
     }
     
     func pushSearchButton() {
-        self.view.transitionToMapView(Data: self.searchData)
+        self.view.transitionToMapView(Data: self.searchData, previousVCString: self.previousVCString)
     }
     
     func deleteGenreData(indexPath row: Int) {
@@ -148,7 +149,7 @@ final class GourmandSearchPresenter: GourmandSearchInput{
     
 }
 
-extension GourmandSearchPresenter:LocaitonModelOutput{
+extension GourmandSearchPresenter:LocationModelOutput{
     
     func completedRequestLocaiton(request: CLLocationCoordinate2D) {
         self.searchData.place.locaitonAtCurrent = request
