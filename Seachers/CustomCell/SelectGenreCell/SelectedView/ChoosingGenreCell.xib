@@ -4,35 +4,56 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="choosingGenreCell" reuseIdentifier="" id="gTV-IL-0wX" customClass="ChoosingGenreCell" customModule="Seachers" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="59" height="19"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" restorationIdentifier="choosingGenreCell" reuseIdentifier="" id="gTV-IL-0wX" customClass="ChoosingGenreCell" customModule="Seachers" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="118" height="19"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="59" height="19"/>
+                <rect key="frame" x="0.0" y="0.0" width="118" height="19"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MEK-on-NHC">
-                        <rect key="frame" x="0.0" y="0.0" width="59" height="19"/>
+                        <rect key="frame" x="0.0" y="0.0" width="118" height="19"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CY8-Gi-gGw">
-                                <rect key="frame" x="10" y="5" width="39" height="9"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M4D-kO-tra">
+                                <rect key="frame" x="0.0" y="0.0" width="118" height="19"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CY8-Gi-gGw" customClass="PaddingLabel" customModule="Seachers" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="98" height="19"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="67E-gq-qA8">
+                                        <rect key="frame" x="98" y="0.0" width="20" height="19"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="Glf-gq-k0g"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="multiply.circle" catalog="system" title="">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="font">
+                                                <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                            </preferredSymbolConfiguration>
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="19" id="pm0-7e-hU8"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemGray2Color"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="CY8-Gi-gGw" secondAttribute="bottom" constant="5" id="1vu-Rl-is4"/>
-                            <constraint firstAttribute="trailing" secondItem="CY8-Gi-gGw" secondAttribute="trailing" constant="10" id="NNU-8u-7iL"/>
-                            <constraint firstItem="CY8-Gi-gGw" firstAttribute="top" secondItem="MEK-on-NHC" secondAttribute="top" constant="5" id="pXd-gh-K1x"/>
-                            <constraint firstItem="CY8-Gi-gGw" firstAttribute="leading" secondItem="MEK-on-NHC" secondAttribute="leading" constant="10" id="zv6-ag-vTn"/>
+                            <constraint firstAttribute="bottom" secondItem="M4D-kO-tra" secondAttribute="bottom" id="ah1-rS-KvL"/>
+                            <constraint firstAttribute="trailing" secondItem="M4D-kO-tra" secondAttribute="trailing" id="enI-jf-XTH"/>
+                            <constraint firstItem="M4D-kO-tra" firstAttribute="top" secondItem="MEK-on-NHC" secondAttribute="top" id="hqc-ba-xwY"/>
+                            <constraint firstItem="M4D-kO-tra" firstAttribute="leading" secondItem="MEK-on-NHC" secondAttribute="leading" id="wCr-xx-0bd"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -44,17 +65,16 @@
                 <constraint firstItem="MEK-on-NHC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="tH5-a1-FQH"/>
                 <constraint firstAttribute="bottom" secondItem="MEK-on-NHC" secondAttribute="bottom" id="toc-l7-Kxo"/>
             </constraints>
-            <size key="customSize" width="59" height="19"/>
+            <size key="customSize" width="118" height="19"/>
             <connections>
+                <outlet property="deleteButton" destination="67E-gq-qA8" id="2kk-Ou-H0l"/>
                 <outlet property="label" destination="CY8-Gi-gGw" id="2bv-En-CYn"/>
-                <outlet property="view" destination="MEK-on-NHC" id="UQB-5c-U6z"/>
+                <outlet property="stackView" destination="M4D-kO-tra" id="JhS-Br-LK8"/>
             </connections>
-            <point key="canvasLocation" x="74.637681159420296" y="35.15625"/>
+            <point key="canvasLocation" x="117.39130434782609" y="35.15625"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <image name="multiply.circle" catalog="system" width="128" height="121"/>
     </resources>
 </document>
