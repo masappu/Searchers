@@ -42,9 +42,9 @@ enum SelectGenreCellType:String ,CaseIterable,CellType{
     }
 }
 
-enum MapCellType: Int, CaseIterable, CellType{
-    case gourmandCell
-    case travelCell
+enum MapCellType: String, CaseIterable, CellType{
+    case gourmandCell = "GourmandSearchViewController"
+    case travelCell = "TravelSearchViewController"
 
     var cellIdentifier: String{
         switch self {
