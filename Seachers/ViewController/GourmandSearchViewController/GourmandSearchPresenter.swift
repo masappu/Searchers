@@ -20,6 +20,9 @@ protocol GourmandSearchInput{
     //「検索する」ボタンタップを通知する
     func pushSearchButton()
     
+    //Genreのデリートボタンのタップを通知する
+    func deleteGenreData(indexPath row: Int)
+    
     //プラスボタンのタップを通知する
     func pushPlusButton()
     
@@ -39,8 +42,13 @@ protocol GourmandSearchOutput{
     //tableViewの設定構築を指示
     func setTableViewInfo()
     
+    func setNavigationControllerInfo()
+    
     //tableViewの構築を指示する
     func reloadTableView()
+    
+    //selectGenreCellの表示変更を指示
+    func reloadSelectGenreCell(at indexPaths:[IndexPath])
     
     //memberCountLabelの表示切り替えの指示
     func reloadMemberCountLabel()
@@ -82,6 +90,14 @@ final class GourmandSearchPresenter: GourmandSearchInput{
     
     func pushSearchButton() {
         self.view.transitionToMapView(Data: self.searchData)
+    }
+    
+    func deleteGenreData(indexPath row: Int) {
+        guard row >= 0 && row < self.searchData.genre.count else { return }
+        self.searchData.genre.remove(at: row)
+        
+        let indexPath = IndexPath(row: row, section: 0)
+        self.view.reloadSelectGenreCell(at: [indexPath])
     }
     
     func pushPlusButton() {
