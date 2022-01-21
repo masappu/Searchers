@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 protocol CellType{
     //cellを一元管理する変数
@@ -25,6 +26,18 @@ enum GourmandSearchCellType: Int, CaseIterable, CellType{
         case .selectGenreCell: return "selectGenreCell"
         case .reservationDateCell: return "reservationDateCell"
         case .mamberCountCell: return "mamberCountCell"
+        }
+    }
+}
+
+enum SelectGenreCellType:String ,CaseIterable,CellType{
+    case selectGenreCell = "exitingData"
+    case nonSelectGenreCell = "noData"
+    
+    var cellIdentifier: String{
+        switch self {
+        case .selectGenreCell: return "selectGenreCell"
+        case .nonSelectGenreCell:return "nonSelectGenreCell"
         }
     }
 }
