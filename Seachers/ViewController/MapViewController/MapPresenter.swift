@@ -16,7 +16,6 @@ protocol MapPresenterInput {
     func loadMap(gourmandSearchData:GourmandSearchDataModel)
     func reloadMap(gourmandSearchData:GourmandSearchDataModel,rangeCount:Int)
     func configureSubViews()
-//    func requestJudgementVc()
     func requestScrollViewDidEndDecelerating(x:Double,width:Double)
     func requestMapViewDidTap(marker:GMSMarker)
     func requestDoneButtonOfCategory(text: String)
@@ -38,7 +37,6 @@ protocol MapPresenterOutput {
     func setUpPickerView()
     func setUpSearchBar()
     func setUpLocationManager()
-//    func responseJudgementVc()
     func responseScrollViewDidEndDecelerating(marker: GMSMarker)
     func responseMapViewDidTap(marker: GMSMarker,index: Int)
     func responseDoneButtonOfCategory(rangeCount:Int)
@@ -72,11 +70,7 @@ class MapPresenter: MapPresenterInput{
         self.gourmandAPIModel = gourmandAPIModel
         self.travelAPIModel = TravelAPIModel()
     }
-//    
-//    func requestJudgementVc() {
-//        self.view.responseJudgementVc()
-//    }
-//    
+
     func requestScrollViewDidEndDecelerating(x:Double,width:Double) {
         let indexCount = x / width
         let marker = markers[Int(indexCount)]
