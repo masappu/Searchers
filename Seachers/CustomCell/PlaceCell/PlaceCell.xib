@@ -19,8 +19,8 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未選択" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V0a-mt-d12">
                         <rect key="frame" x="181" y="37" width="52" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="Cyy-z3-5aS"/>
-                            <constraint firstAttribute="width" constant="52" id="Exe-LS-TXs"/>
+                            <constraint firstAttribute="height" constant="21" id="PAP-MO-O5N"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="52" id="r0L-RQ-Jcu"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -28,10 +28,8 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="V0a-mt-d12" secondAttribute="bottom" constant="37" id="0FK-BQ-Axq"/>
-                    <constraint firstItem="V0a-mt-d12" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="181" id="A4I-Tp-cJy"/>
-                    <constraint firstItem="V0a-mt-d12" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="37" id="GlP-fI-p4m"/>
-                    <constraint firstAttribute="trailing" secondItem="V0a-mt-d12" secondAttribute="trailing" constant="181" id="b99-tz-n6y"/>
+                    <constraint firstItem="V0a-mt-d12" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="0OP-7f-1zh"/>
+                    <constraint firstItem="V0a-mt-d12" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="FPw-7t-ys6"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
