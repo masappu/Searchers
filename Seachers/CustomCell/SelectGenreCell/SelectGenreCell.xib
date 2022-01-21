@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,19 +16,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="390" height="124"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ジャンル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="onO-co-Q1G">
-                        <rect key="frame" x="20" y="0.0" width="69.5" height="40"/>
-                        <color key="backgroundColor" systemColor="systemBrownColor"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="40" id="1ee-hU-7lF"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="nFa-Tg-pky" customClass="IntrinsicCollectionView" customModule="Seachers" customModuleProvider="target">
                         <rect key="frame" x="20" y="55" width="350" height="62"/>
-                        <color key="backgroundColor" systemColor="tintColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="62" id="Yif-5Z-TyF"/>
                         </constraints>
@@ -41,7 +30,10 @@
                         </collectionViewFlowLayout>
                     </collectionView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uce-oM-kI9">
-                        <rect key="frame" x="316" y="2" width="54" height="36.5"/>
+                        <rect key="frame" x="316.5" y="10" width="53.5" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="35" id="RJr-Me-dly"/>
+                        </constraints>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" image="chevron.right.circle" catalog="system" title="">
                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="font">
@@ -50,17 +42,27 @@
                             <color key="baseForegroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </buttonConfiguration>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ジャンル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="onO-co-Q1G">
+                        <rect key="frame" x="20" y="0.0" width="69.5" height="40"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="YTG-IB-TgL"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <viewLayoutGuide key="safeArea" id="lRP-8o-Tpv"/>
                 <constraints>
-                    <constraint firstItem="lRP-8o-Tpv" firstAttribute="trailing" secondItem="Uce-oM-kI9" secondAttribute="trailing" constant="20" id="KJo-N4-xNI"/>
-                    <constraint firstItem="onO-co-Q1G" firstAttribute="leading" secondItem="lRP-8o-Tpv" secondAttribute="leading" constant="20" id="Ljr-6E-I9Z"/>
+                    <constraint firstItem="onO-co-Q1G" firstAttribute="top" secondItem="lRP-8o-Tpv" secondAttribute="top" id="2GY-2w-pAt"/>
+                    <constraint firstItem="Uce-oM-kI9" firstAttribute="top" secondItem="lRP-8o-Tpv" secondAttribute="top" constant="10" id="OQO-dP-BPF"/>
+                    <constraint firstItem="onO-co-Q1G" firstAttribute="leading" secondItem="lRP-8o-Tpv" secondAttribute="leading" constant="20" id="Ovg-6G-A3v"/>
                     <constraint firstItem="lRP-8o-Tpv" firstAttribute="trailing" secondItem="nFa-Tg-pky" secondAttribute="trailing" constant="20" id="RRh-go-91S"/>
-                    <constraint firstItem="onO-co-Q1G" firstAttribute="top" secondItem="lRP-8o-Tpv" secondAttribute="top" id="TQM-Lu-faa"/>
+                    <constraint firstItem="lRP-8o-Tpv" firstAttribute="trailing" secondItem="Uce-oM-kI9" secondAttribute="trailing" constant="20" id="VBB-xO-hn5"/>
                     <constraint firstItem="nFa-Tg-pky" firstAttribute="leading" secondItem="lRP-8o-Tpv" secondAttribute="leading" constant="20" id="VCh-6J-edQ"/>
-                    <constraint firstItem="nFa-Tg-pky" firstAttribute="top" secondItem="onO-co-Q1G" secondAttribute="bottom" constant="15" id="Wpy-nA-CAn"/>
+                    <constraint firstItem="nFa-Tg-pky" firstAttribute="top" secondItem="lRP-8o-Tpv" secondAttribute="top" constant="55" id="iG5-eF-Zw7"/>
                     <constraint firstItem="lRP-8o-Tpv" firstAttribute="bottom" secondItem="nFa-Tg-pky" secondAttribute="bottom" constant="7" id="nhJ-LC-YAO"/>
-                    <constraint firstItem="Uce-oM-kI9" firstAttribute="centerY" secondItem="onO-co-Q1G" secondAttribute="centerY" id="rHb-ss-qSS"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -68,16 +70,10 @@
                 <outlet property="collectionView" destination="nFa-Tg-pky" id="1zb-gp-wRs"/>
                 <outlet property="collectionViewHeight" destination="Yif-5Z-TyF" id="Qdf-5r-Cio"/>
             </connections>
-            <point key="canvasLocation" x="411.59420289855075" y="-101.78571428571428"/>
+            <point key="canvasLocation" x="-146" y="-29"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="chevron.right.circle" catalog="system" width="128" height="121"/>
-        <systemColor name="systemBrownColor">
-            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>
