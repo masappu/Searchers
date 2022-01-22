@@ -43,6 +43,7 @@ class PlaceSearchViewController: UIViewController {
 
 // MARK: - PlaceSearchPresenterOutput
 extension PlaceSearchViewController: PlaceSearchPresenterOutput{
+
     
     
     func setTableViewInfo() {

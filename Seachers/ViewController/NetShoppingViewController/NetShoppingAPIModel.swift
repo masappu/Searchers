@@ -10,21 +10,23 @@ import Alamofire
 import SwiftyJSON
 
 protocol NetShoppingAPIModelInput{
+    func setData(keyword:String)
     
     var productDataArray:[productData] {get set}
     
 }
 
 protocol NetShoppingAPIModelOutput{
-    
+    func resultAPIData(productDataArray:[productData])
 }
 
 struct productData {
     
     var url:String?
     var name:String?
-    var price:String?
+    var price:Int?
     var product_image:String?
+    var favorite:Bool?
     
 }
 
@@ -33,15 +35,15 @@ class NetShoppingAPIModel: NetShoppingAPIModelInput{
     var presenter:NetShoppingAPIModelOutput
 
     var urlString:String?
-    var apikey = "e06e2a5afcf14b52139c1fb6c58e9dbc"
+//    var apikey = "e06e2a5afcf14b52139c1fb6c58e9dbc"
+    var apikey = "1072027207911802205"
     var pageCount = Int()
 //    var urlArray = [String]()
 //    var imageStringArray = [String]()
 //    var nameStringArray = [String]()
 //    var priceIntArray = [Int]()
     var productDataArray = [productData]()
-    var doneCatchDataProtocol:DoneCatchDataProtocol?
-    var keywordString = String()
+//    var keywordString = String()
 
     
   init(presenter:NetShoppingAPIModelOutput){
@@ -50,11 +52,11 @@ class NetShoppingAPIModel: NetShoppingAPIModelInput{
     
     //JSON解析を行う
     
-    func setData(){
+    func setData(keyword:String){
         
         //urlエンコーディング
         
-        let urlString = "https://app.rakuten.co.jp/services/api/Product/Search/20170426?format=json&keyword=\(keywordString)&applicationId=\(apikey)"
+        let urlString = "https://app.rakuten.co.jp/services/api/Product/Search/20170426?format=json&keyword=\(keyword)&applicationId=\(apikey)"
         
         let encordeUrlString:String = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         
@@ -69,19 +71,20 @@ class NetShoppingAPIModel: NetShoppingAPIModelInput{
                 do{
                     let json:JSON = try JSON(data: response.data!)
                     print(json.debugDescription)
-                    var totalHitCount = json["pageCount"].int
+                    var totalHitCount = json["count"].int
                     if totalHitCount! > 50{
                         totalHitCount = 50
                     }
                     
                     
-                    for i in 0...pageCount - 1{
+                    for i in 0...totalHitCount! - 1{
                      
                         if json["Products"][i]["Product"]["minPrice"] != "" && json["Products"][i]["Product"]["productName"] != "" && json["Products"][i]["Product"]["productUrlMobile"] != "" &&  json["Products"][i]["Product"]["smallImageUrl"] != ""{
+
                             
                             let productData = productData(url: json["Products"][i]["Product"]["productUrlMobile"].string,
                                                           name: json["Products"][i]["Product"]["productUrlMobile"].string,
-                                                          price: json["Products"][i]["Product"]["minPrice"].string,
+                                                          price: json["Products"][i]["Product"]["minPrice"].int,
                                                           product_image: json["Products"][i]["Product"]["smallImageUrl"].string)
                             
 
@@ -94,7 +97,7 @@ class NetShoppingAPIModel: NetShoppingAPIModelInput{
                             
                         }
                     }
-//                    self.presenter?.catchData(arrayData: self.productDataArray, resultCount: self.productDataArray.count)
+                    self.presenter.resultAPIData(productDataArray: productDataArray)
                     
                 }catch{
                     
