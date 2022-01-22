@@ -1227,6 +1227,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		86E8F1D3279C037F00AD667B /* GourmandCell */ = {
+			isa = PBXGroup;
+			children = (
+				86514DED278DB217003839DF /* GourmandCell.swift */,
+				86514DEE278DB217003839DF /* GourmandCell.xib */,
+			);
+			path = GourmandCell;
+			sourceTree = "<group>";
+		};
+		86E8F1D4279C039C00AD667B /* TravelCell */ = {
+			isa = PBXGroup;
+			children = (
+				86514DF1278E7D05003839DF /* TravelCell.swift */,
+				86514DF2278E7D05003839DF /* TravelCell.xib */,
+			);
+			path = TravelCell;
+			sourceTree = "<group>";
+		};
 		87717DB0278DD95F00AD966C /* struct */ = {
 			isa = PBXGroup;
 			children = (
@@ -1270,10 +1288,6 @@
 			children = (
 				87A49754278B664500D1D33A /* MapViewController.swift */,
 				86514DE9278C0EC2003839DF /* MapPresenter.swift */,
-				86514DED278DB217003839DF /* GourmandCell.swift */,
-				86514DEE278DB217003839DF /* GourmandCell.xib */,
-				86514DF1278E7D05003839DF /* TravelCell.swift */,
-				86514DF2278E7D05003839DF /* TravelCell.xib */,
 			);
 			path = MapViewController;
 			sourceTree = "<group>";
@@ -1322,6 +1336,8 @@
 		87A4976B278D63DE00D1D33A /* CustomCell */ = {
 			isa = PBXGroup;
 			children = (
+				86E8F1D4279C039C00AD667B /* TravelCell */,
+				86E8F1D3279C037F00AD667B /* GourmandCell */,
 				CCC805A62793DCB6000AAE8F /* NetShopppingCell */,
 				87A4977B278D659E00D1D33A /* MenberCountCell */,
 				87A49776278D64E900D1D33A /* ReservationDateCell */,
