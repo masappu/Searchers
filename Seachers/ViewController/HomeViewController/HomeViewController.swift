@@ -76,7 +76,7 @@ class HomeViewController: UIViewController {
                         ])
         
         ShoppingImage.layer.shadowColor = UIColor.black.cgColor
-        ShoppingImage.layer.shadowOpacity = 0.8 //濃さ
+        ShoppingImage.layer.shadowOpacity = 0.4 //濃さ
         ShoppingImage.layer.shadowRadius = 5.0 //ぼかし量
         ShoppingImage.layer.shadowOffset = CGSize(width: 8.0, height: 8.0) //方向
         GourmandImage.layer.shadowColor = UIColor.black.cgColor
