@@ -30,10 +30,15 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="iey-14-eke">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="iey-14-eke" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="0RF-23-Owy"/>
+                            <constraint firstItem="iey-14-eke" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="Mx5-OI-hEr"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="9By-kX-89q" secondAttribute="bottom" constant="64" id="XAA-8V-hcD"/>
                             <constraint firstItem="9By-kX-89q" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="jUU-nY-ERb"/>
                             <constraint firstItem="9By-kX-89q" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="zsO-9w-izr"/>
@@ -41,6 +46,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="RTq-5W-ybX"/>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="iey-14-eke" id="Ndo-SH-ckg"/>
                         <outlet property="collectionView" destination="9By-kX-89q" id="Nno-bZ-5TW"/>
                     </connections>
                 </viewController>
