@@ -106,6 +106,7 @@ class MapPresenter: MapPresenterInput{
         if shopDataArray![indexPath.row].favorite == false{
             favShop.latitude = selectedShopData.shopData.latitude!
             favShop.longitude = selectedShopData.shopData.longitude!
+            favShop.smallAreaName = selectedShopData.shopData.smallAreaName!
             favShop.genreName = selectedShopData.shopData.genreName!
             favShop.budgetAverage = selectedShopData.shopData.budgetAverage!
             favShop.name = selectedShopData.shopData.name!
