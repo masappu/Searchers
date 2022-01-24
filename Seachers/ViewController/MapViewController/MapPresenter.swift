@@ -41,6 +41,8 @@ protocol MapPresenterOutput {
     func responseDoneButtonOfCategory(rangeCount:Int)
     func addToFavorites(indexPath: IndexPath)
     func goToWebVC(url:String)
+    func indicatorViewStart()
+    func indicatorViewStop()
     
 }
 
@@ -130,10 +132,15 @@ class MapPresenter: MapPresenterInput{
     }
     
     func loadMap(gourmandSearchData:GourmandSearchDataModel) {
+        self.view.indicatorViewStart()
         gourmandAPIModel.setData(gourmandSearchData: gourmandSearchData, rangeCount: 3)
     }
     
     func reloadMap(gourmandSearchData:GourmandSearchDataModel,rangeCount:Int) {
+        self.view.indicatorViewStart()
+        self.shopDataArray = []
+        self.markers = []
+        
         gourmandAPIModel.setData(gourmandSearchData: gourmandSearchData, rangeCount: rangeCount)
     }
     
@@ -150,12 +157,12 @@ extension MapPresenter: GourmandAPIOutput{
     func resultAPIData(shopDataArray: [ShopData], idoValue: Double, keidoValue: Double) {
         let realm = try! Realm()
         let favShopData = realm.objects(favShopData.self)
-        
+        print(shopDataArray.count)
         if shopDataArray.isEmpty == true{
             self.view.setUpMap(idoValue:idoValue,keidoValue:keidoValue)
+            self.view.indicatorViewStop()
         }else{
             for shopData in shopDataArray{
-                print(favShopData)
                 self.shopDataArray?.append(ShopDataToView(shopData: shopData))
                 makeMarker(shopData: shopData)
             }
@@ -165,6 +172,7 @@ extension MapPresenter: GourmandAPIOutput{
                 }
             }
             self.view.setUpMap(idoValue:idoValue,keidoValue:keidoValue)
+            self.view.indicatorViewStop()
         }
     }
     

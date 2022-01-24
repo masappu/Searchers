@@ -52,6 +52,7 @@ class GourmandAPIModel: GourmandAPIInput{
     //JSON解析を行う
     func setData(gourmandSearchData:GourmandSearchDataModel,rangeCount:Int){
         
+        self.shopDataArray = []
         self.idoValue = gourmandSearchData.place.locaitonAtSearchPlace!.latitude
         self.keidoValue = gourmandSearchData.place.locaitonAtSearchPlace!.longitude
         self.rangeCount = rangeCount
@@ -60,6 +61,8 @@ class GourmandAPIModel: GourmandAPIInput{
             self.genreString = genreString + "," + i.id
             print(genreString)
         }
+        
+        print(rangeCount)
         
         let urlString = "https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=\(apikey)&lat=\(idoValue)&lng=\(keidoValue)&range=\(rangeCount)&genre=\(genreString)&count=100&party_capacity=\(memberCount)&format=json"
         //        let encodeUrlString:String = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
@@ -105,7 +108,6 @@ class GourmandAPIModel: GourmandAPIInput{
                                                         lunch: json["results"]["shop"][i]["lunch"].string)
                                 
                                 shopDataArray.append(shopData)
-                                print(self.shopDataArray.debugDescription)
                                 
                             }else{
                                 print("何かしらが空です")
