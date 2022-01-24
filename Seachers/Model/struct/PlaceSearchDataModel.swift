@@ -32,6 +32,6 @@ struct PlaceDataModel{
     var name:String
     var latitude:Double
     var longitude:Double
-    
+    var distance:String
 }
 

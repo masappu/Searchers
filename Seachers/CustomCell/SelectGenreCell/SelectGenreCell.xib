@@ -70,7 +70,7 @@
                 <outlet property="collectionView" destination="nFa-Tg-pky" id="1zb-gp-wRs"/>
                 <outlet property="collectionViewHeight" destination="Yif-5Z-TyF" id="Qdf-5r-Cio"/>
             </connections>
-            <point key="canvasLocation" x="-146" y="-29"/>
+            <point key="canvasLocation" x="-146.37681159420291" y="-29.464285714285712"/>
         </tableViewCell>
     </objects>
     <resources>
