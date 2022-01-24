@@ -13,6 +13,7 @@ import SDWebImage
 class MapViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     var googleMap = GMSMapView()
     var searchBar = UISearchBar()
@@ -146,6 +147,16 @@ extension MapViewController: GMSMapViewDelegate{
 
 extension MapViewController: MapPresenterOutput{
     
+    func indicatorViewStart() {
+        activityIndicatorView.isHidden = false
+        activityIndicatorView.startAnimating()
+    }
+    
+    func indicatorViewStop() {
+        activityIndicatorView.isHidden = true
+        activityIndicatorView.stopAnimating()
+    }
+    
     func goToWebVC(url: String) {
         let storyboard = UIStoryboard(name: "WebView", bundle: nil)
         let webVC = storyboard.instantiateViewController(withIdentifier: "webVC") as! WebViewController
@@ -188,6 +199,8 @@ extension MapViewController: MapPresenterOutput{
         googleMap.settings.myLocationButton = true
         
         let markers = presenter.markers
+        print("daigodaigo")
+        print(markers.count)
         for marker in markers{
             marker.map = googleMap
         }
