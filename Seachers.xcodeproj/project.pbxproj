@@ -30,6 +30,9 @@
 		86514DF627914CE0003839DF /* GourmandAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86514DF527914CE0003839DF /* GourmandAPIModel.swift */; };
 		86514DF827914CF4003839DF /* TravelAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86514DF727914CF4003839DF /* TravelAPIModel.swift */; };
 		86E8F1D02797FA0300AD667B /* RealmData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8F1CF2797FA0300AD667B /* RealmData.swift */; };
+		86E8F1D6279E92EB00AD667B /* FavOfGourmandPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8F1D5279E92EB00AD667B /* FavOfGourmandPresenter.swift */; };
+		86E8F1DA279E932F00AD667B /* FavOfTravelPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8F1D9279E932F00AD667B /* FavOfTravelPresenter.swift */; };
+		86E8F1DC279E935C00AD667B /* FavOfNetShoppingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8F1DB279E935C00AD667B /* FavOfNetShoppingPresenter.swift */; };
 		871D95462791DAE500AA05F3 /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871D95452791DAE500AA05F3 /* CellType.swift */; };
 		871D95482793E90800AA05F3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 871D95472793E90800AA05F3 /* CoreLocation.framework */; };
 		871D95612795BE9A00AA05F3 /* Pods_Seachers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 871D95582795BE9900AA05F3 /* Pods_Seachers.framework */; };
@@ -125,6 +128,9 @@
 		86514DF527914CE0003839DF /* GourmandAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GourmandAPIModel.swift; sourceTree = "<group>"; };
 		86514DF727914CF4003839DF /* TravelAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelAPIModel.swift; sourceTree = "<group>"; };
 		86E8F1CF2797FA0300AD667B /* RealmData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmData.swift; sourceTree = "<group>"; };
+		86E8F1D5279E92EB00AD667B /* FavOfGourmandPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavOfGourmandPresenter.swift; sourceTree = "<group>"; };
+		86E8F1D9279E932F00AD667B /* FavOfTravelPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavOfTravelPresenter.swift; sourceTree = "<group>"; };
+		86E8F1DB279E935C00AD667B /* FavOfNetShoppingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavOfNetShoppingPresenter.swift; sourceTree = "<group>"; };
 		871D95452791DAE500AA05F3 /* CellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellType.swift; sourceTree = "<group>"; };
 		871D95472793E90800AA05F3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		871D95492795BC9100AA05F3 /* VideoSplashKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VideoSplashKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1316,6 +1322,7 @@
 			isa = PBXGroup;
 			children = (
 				87A49767278B714F00D1D33A /* FavOfNetShoppingViewController.swift */,
+				86E8F1DB279E935C00AD667B /* FavOfNetShoppingPresenter.swift */,
 			);
 			path = FavOfNetShoppingViewController;
 			sourceTree = "<group>";
@@ -1324,6 +1331,7 @@
 			isa = PBXGroup;
 			children = (
 				87A49765278B713B00D1D33A /* FavOfGourmandViewController.swift */,
+				86E8F1D5279E92EB00AD667B /* FavOfGourmandPresenter.swift */,
 			);
 			path = FavOfGourmandViewController;
 			sourceTree = "<group>";
@@ -1332,6 +1340,7 @@
 			isa = PBXGroup;
 			children = (
 				87A49763278B712600D1D33A /* FavOfTravelViewController.swift */,
+				86E8F1D9279E932F00AD667B /* FavOfTravelPresenter.swift */,
 			);
 			path = FavOfTravelViewController;
 			sourceTree = "<group>";
@@ -1697,6 +1706,7 @@
 				86514DF627914CE0003839DF /* GourmandAPIModel.swift in Sources */,
 				22CD02CF2799496F006A2B5C /* roomData.swift in Sources */,
 				8765A2E927998B3C0030429C /* IntrinsicCollectionView.swift in Sources */,
+				86E8F1DA279E932F00AD667B /* FavOfTravelPresenter.swift in Sources */,
 				2241F6E92797180F0031E004 /* PlaceSearchPresenter.swift in Sources */,
 				CCC805AD279B245D000AAE8F /* NetShoppingPresenter.swift in Sources */,
 				CCC805AB279ACD85000AAE8F /* NetShoppingAPIModel.swift in Sources */,
@@ -1714,6 +1724,7 @@
 				22CD02D6279AAB24006A2B5C /* RoomTableViewCell.swift in Sources */,
 				87A49764278B712600D1D33A /* FavOfTravelViewController.swift in Sources */,
 				CCC805A9279ACD54000AAE8F /* productData.swift in Sources */,
+				86E8F1D6279E92EB00AD667B /* FavOfGourmandPresenter.swift in Sources */,
 				87717DC427906C3200AD966C /* GourmandGenrePresenter.swift in Sources */,
 				22CD02D3279949E4006A2B5C /* 名無しのファイル.swift in Sources */,
 				87A4975D278B678600D1D33A /* GourmandGenreViewController.swift in Sources */,
@@ -1731,6 +1742,7 @@
 				87A49755278B664500D1D33A /* MapViewController.swift in Sources */,
 				871D975127964C9500AA05F3 /* LocationModel.swift in Sources */,
 				87A49779278D657400D1D33A /* ReservationDateCell.swift in Sources */,
+				86E8F1DC279E935C00AD667B /* FavOfNetShoppingPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
