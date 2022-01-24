@@ -22,7 +22,7 @@ protocol MapPresenterInput {
     func addToFavoritesButton(indexPath:IndexPath)
     func goToWebVCButton(indexPath:IndexPath)
     
-    var shopDataArray: [ShopDataDic]? {get set}
+    var shopDataArray: [ShopDataToView]? {get set}
     var markers: [GMSMarker] {get set}
     var categoryArray: [String] {get set}
     var previousVcString:String {get set}
@@ -44,13 +44,24 @@ protocol MapPresenterOutput {
     
 }
 
+struct ShopDataToView {
+    var shopData: ShopData
+    var favorite:Bool = false
+    var favShop:String{
+        switch favorite{
+        case true: return "bookmark.fill"
+        case false: return "bookmark"
+        }
+    }
+}
+
 class MapPresenter: MapPresenterInput{
     
     var currentLocation: CLLocationCoordinate2D = CLLocationCoordinate2D()
-    var previousVcString: String
-    var categoryArray: [String]
-    var markers: [GMSMarker]
-    var shopDataArray: [ShopDataDic]?
+    var previousVcString: String = ""
+    var categoryArray: [String] = ["300", "500", "1000", "2000", "3000"]
+    var markers: [GMSMarker] = []
+    var shopDataArray: [ShopDataToView]?
     
     private var view: MapPresenterOutput!
     private var gourmandAPIModel: GourmandAPIInput!
@@ -58,9 +69,6 @@ class MapPresenter: MapPresenterInput{
     private var locationModel: LocationModelInput!
     
     init(view: MapViewController) {
-        self.markers = []
-        self.categoryArray = ["300", "500", "1000", "2000", "3000"]
-        self.previousVcString = ""
         self.shopDataArray = []
         self.view = view
         let gourmandAPIModel = GourmandAPIModel(presenter: self)
@@ -77,7 +85,7 @@ class MapPresenter: MapPresenterInput{
     }
     
     func requestMapViewDidTap(marker:GMSMarker) {
-        let index = shopDataArray?.firstIndex(where: { $0.key == marker.title })
+        let index = shopDataArray?.firstIndex(where: { $0.shopData.name == marker.title })
         self.view.responseMapViewDidTap(marker: marker,index: index!)
     }
     
@@ -88,36 +96,36 @@ class MapPresenter: MapPresenterInput{
     
     func addToFavoritesButton(indexPath:IndexPath){
         let realm = try! Realm()
-        let selectedShopData = shopDataArray![indexPath.row].value!
-        let registeredFavShopData = realm.objects(favShopData.self).filter("name == '\(selectedShopData.name!)'")
+        let selectedShopData = shopDataArray![indexPath.row]
+        let registeredFavShopData = realm.objects(favShopData.self).filter("name == '\(selectedShopData.shopData.name!)'")
         print(registeredFavShopData)
         let favShop = favShopData()
         
-        if shopDataArray![indexPath.row].value?.favorite! == false{
-            favShop.latitude = selectedShopData.latitude!
-            favShop.longitude = selectedShopData.longitude!
-            favShop.genreName = selectedShopData.genreName!
-            favShop.budgetAverage = selectedShopData.budgetAverage!
-            favShop.name = selectedShopData.name!
-            favShop.shop_image = selectedShopData.shop_image!
-            favShop.url = selectedShopData.url!
-            favShop.lunch = selectedShopData.lunch!
+        if shopDataArray![indexPath.row].favorite == false{
+            favShop.latitude = selectedShopData.shopData.latitude!
+            favShop.longitude = selectedShopData.shopData.longitude!
+            favShop.genreName = selectedShopData.shopData.genreName!
+            favShop.budgetAverage = selectedShopData.shopData.budgetAverage!
+            favShop.name = selectedShopData.shopData.name!
+            favShop.shop_image = selectedShopData.shopData.shop_image!
+            favShop.url = selectedShopData.shopData.url!
+            favShop.lunch = selectedShopData.shopData.lunch!
             try! realm.write {
                 realm.add(favShop)
             }
-            shopDataArray![indexPath.row].value?.favorite! = true
+            shopDataArray![indexPath.row].favorite = true
             self.view.addToFavorites(indexPath: indexPath)
         }else{
             try! realm.write {
                 realm.delete(registeredFavShopData)
             }
-            shopDataArray![indexPath.row].value?.favorite! = false
+            shopDataArray![indexPath.row].favorite = false
             self.view.addToFavorites(indexPath: indexPath)
         }
     }
     
     func goToWebVCButton(indexPath: IndexPath) {
-        let url = self.shopDataArray![indexPath.row].value?.url
+        let url = self.shopDataArray![indexPath.row].shopData.url
         self.view.goToWebVC(url: url!)
     }
     
@@ -139,21 +147,25 @@ class MapPresenter: MapPresenterInput{
 
 extension MapPresenter: GourmandAPIOutput{
     
-    func resultAPIData(shopDataArray: [ShopDataDic], idoValue: Double, keidoValue: Double) {
+    func resultAPIData(shopDataArray: [ShopData], idoValue: Double, keidoValue: Double) {
         let realm = try! Realm()
         let favShopData = realm.objects(favShopData.self)
-        print(favShopData)
-        self.shopDataArray = shopDataArray
-        for shopDataDic in shopDataArray{
-            makeMarker(shopData: shopDataDic.value!)
-        }
-        for favShop in favShopData{
-            guard let index = self.shopDataArray!.firstIndex(where: { $0.key == favShop.name }) else{
-                return
+        
+        if shopDataArray.isEmpty == true{
+            self.view.setUpMap(idoValue:idoValue,keidoValue:keidoValue)
+        }else{
+            for shopData in shopDataArray{
+                print(favShopData)
+                self.shopDataArray?.append(ShopDataToView(shopData: shopData))
+                makeMarker(shopData: shopData)
             }
-            self.shopDataArray![index].value?.favorite = true
+            for favShop in favShopData{
+                if let index = self.shopDataArray!.firstIndex(where: { $0.shopData.name == favShop.name }) {
+                    self.shopDataArray![index].favorite = true
+                }
+            }
+            self.view.setUpMap(idoValue:idoValue,keidoValue:keidoValue)
         }
-        self.view.setUpMap(idoValue:idoValue,keidoValue:keidoValue)
     }
     
     func makeMarker(shopData:ShopData) {
