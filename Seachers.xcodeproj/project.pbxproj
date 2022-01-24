@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		220A0BEC278ADB79000F4AD1 /* TravelSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 220A0BEB278ADB79000F4AD1 /* TravelSearch.storyboard */; };
+		222308C6279E743000D561AF /* TravelSearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222308C5279E743000D561AF /* TravelSearchPresenter.swift */; };
 		2241F6DB279717A50031E004 /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241F6DA279717A50031E004 /* PlaceCell.swift */; };
 		2241F6DD279717AE0031E004 /* PlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2241F6DC279717AE0031E004 /* PlaceCell.xib */; };
 		2241F6DF279717CD0031E004 /* PlaceSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241F6DE279717CD0031E004 /* PlaceSearchCell.swift */; };
@@ -100,6 +101,7 @@
 /* Begin PBXFileReference section */
 		02AC76828558B154338808DE /* Pods_Seachers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Seachers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		220A0BEB278ADB79000F4AD1 /* TravelSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TravelSearch.storyboard; sourceTree = "<group>"; };
+		222308C5279E743000D561AF /* TravelSearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSearchPresenter.swift; sourceTree = "<group>"; };
 		2241F6DA279717A50031E004 /* PlaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
 		2241F6DC279717AE0031E004 /* PlaceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceCell.xib; sourceTree = "<group>"; };
 		2241F6DE279717CD0031E004 /* PlaceSearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceSearchCell.swift; sourceTree = "<group>"; };
@@ -1279,6 +1281,7 @@
 			isa = PBXGroup;
 			children = (
 				87A4974A278B536A00D1D33A /* TravelSearchViewController.swift */,
+				222308C5279E743000D561AF /* TravelSearchPresenter.swift */,
 			);
 			path = TravelSearchViewController;
 			sourceTree = "<group>";
@@ -1703,6 +1706,7 @@
 				871D97562798237E00AA05F3 /* ChoosingGenreCell.swift in Sources */,
 				86514DF827914CF4003839DF /* TravelAPIModel.swift in Sources */,
 				87A49782278D669400D1D33A /* GourmandSearchPresenter.swift in Sources */,
+				222308C6279E743000D561AF /* TravelSearchPresenter.swift in Sources */,
 				87A49747278B4DDA00D1D33A /* GourmandSearchViewController.swift in Sources */,
 				2241F6DB279717A50031E004 /* PlaceCell.swift in Sources */,
 				2241F6DF279717CD0031E004 /* PlaceSearchCell.swift in Sources */,
