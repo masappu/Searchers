@@ -13,8 +13,7 @@ import CoreLocation
 
 protocol MapPresenterInput {
     
-    func loadMap(gourmandSearchData:GourmandSearchDataModel)// あとで消す
-    func reloadMap(gourmandSearchData:GourmandSearchDataModel,rangeCount:Int)
+    func reloadData(gourmandSearchData:GourmandSearchDataModel,rangeCount:Int,previousVCString:String)
     func configureSubViews()
     func requestScrollViewDidEndDecelerating(x:Double,width:Double)
     func requestMapViewDidTap(marker:GMSMarker)
@@ -23,9 +22,9 @@ protocol MapPresenterInput {
     func goToWebVCButton(indexPath:IndexPath)
     
     var shopDataArray: [ShopDataToView]? { get set }
+    var travelDataArray: [travelDataToView]? { get set }
     var markers: [GMSMarker] { get set }
     var categoryArray: [String] { get set }
-    var previousVcString:String { get set }
     var currentLocation:CLLocationCoordinate2D { get set }
     var previousVCString:String { get set }
     
@@ -58,12 +57,24 @@ struct ShopDataToView {
     }
 }
 
+struct travelDataToView{
+    var travelData: TravelData
+    var favorite:Bool = false
+    var favShop: String{
+        switch favorite{
+        case true: return "bookmark.fill"
+        case false: return "bookmark"
+        }
+    }
+}
+
 class MapPresenter: MapPresenterInput{
+    
     var currentLocation: CLLocationCoordinate2D = CLLocationCoordinate2D()
-    var previousVcString: String = ""
     var categoryArray: [String] = ["300", "500", "1000", "2000", "3000"]
     var markers: [GMSMarker] = []
     var shopDataArray: [ShopDataToView]?
+    var travelDataArray: [travelDataToView]?
     var previousVCString: String = ""
     
     private var view: MapPresenterOutput!
@@ -88,8 +99,13 @@ class MapPresenter: MapPresenterInput{
     }
     
     func requestMapViewDidTap(marker:GMSMarker) {
-        let index = (shopDataArray?.firstIndex(where: { $0.shopData.name == marker.title }))!
-        self.view.responseMapViewDidTap(marker: marker,index: index)
+        if previousVCString == "GourmandSearchViewController"{
+            let index = (shopDataArray?.firstIndex(where: { $0.shopData.name == marker.title }))!
+            self.view.responseMapViewDidTap(marker: marker,index: index)
+        }else{
+//            let index = (travelDataArray?.firstIndex(where: { $0.travelData.name == marker.title }))!
+//            self.view.responseMapViewDidTap(marker: marker,index: index)
+        }
     }
     
     func requestDoneButtonOfCategory(text: String) {
@@ -98,53 +114,33 @@ class MapPresenter: MapPresenterInput{
     }
     
     func addToFavoritesButton(indexPath:IndexPath){
-        let realm = try! Realm()
-        let selectedShopData = shopDataArray![indexPath.row]
-        
-        let registeredFavShopData = realm.objects(favShopData.self).filter("name == '\(selectedShopData.shopData.name!)'")
-        print(registeredFavShopData)
-        let favShop = favShopData()
-        
-        if shopDataArray![indexPath.row].favorite == false{
-            favShop.latitude = selectedShopData.shopData.latitude!
-            favShop.longitude = selectedShopData.shopData.longitude!
-            favShop.smallAreaName = selectedShopData.shopData.smallAreaName!
-            favShop.genreName = selectedShopData.shopData.genreName!
-            favShop.budgetAverage = selectedShopData.shopData.budgetAverage!
-            favShop.name = selectedShopData.shopData.name!
-            favShop.shop_image = selectedShopData.shopData.shop_image!
-            favShop.url = selectedShopData.shopData.url!
-            favShop.lunch = selectedShopData.shopData.lunch!
-            try! realm.write {
-                realm.add(favShop)
-            }
-            shopDataArray![indexPath.row].favorite = true
-            self.view.addToFavorites(indexPath: indexPath)
+        if previousVCString == "GourmandSearchViewController"{
+            addToMapFavorites(indexPath:indexPath)
         }else{
-            try! realm.write {
-                realm.delete(registeredFavShopData)
-            }
-            shopDataArray![indexPath.row].favorite = false
-            self.view.addToFavorites(indexPath: indexPath)
+            addToTravelFavorites(indexPath: indexPath)
         }
     }
-    
+   
     func goToWebVCButton(indexPath: IndexPath) {
-        let url = self.shopDataArray![indexPath.row].shopData.url
-        self.view.goToWebVC(url: url!)
+        var url = String()
+        if previousVCString == "GourmandSearchViewController"{
+            url = self.shopDataArray![indexPath.row].shopData.url!
+        }else{
+            
+        }
+        self.view.goToWebVC(url: url)
     }
     
-    func loadMap(gourmandSearchData:GourmandSearchDataModel) {
+    func reloadData(gourmandSearchData:GourmandSearchDataModel,rangeCount:Int,previousVCString:String) {
+        self.previousVCString = previousVCString
         self.view.indicatorViewStart()
-        gourmandAPIModel.setData(gourmandSearchData: gourmandSearchData, rangeCount: 3)
-    }
-    
-    func reloadMap(gourmandSearchData:GourmandSearchDataModel,rangeCount:Int) {
-        self.view.indicatorViewStart()
-        self.shopDataArray = []
         self.markers = []
-        
-        gourmandAPIModel.setData(gourmandSearchData: gourmandSearchData, rangeCount: rangeCount)
+        if previousVCString == "GourmandSearchViewController"{
+            self.shopDataArray = []
+            gourmandAPIModel.setData(gourmandSearchData: gourmandSearchData, rangeCount: rangeCount)
+        }else{
+            self.travelDataArray = []
+        }
     }
     
     func configureSubViews() {
@@ -196,14 +192,115 @@ extension MapPresenter: GourmandAPIOutput{
 
 extension MapPresenter: TravelAPIOutput{
     
-    
-    
+//    func resultAPIData(shopDataArray: [ShopData], idoValue: Double, keidoValue: Double) {
+//        let realm = try! Realm()
+//        let favShopData = realm.objects(favShopData.self)
+//        print(shopDataArray.count)
+//        if shopDataArray.isEmpty == true{
+//            self.view.setUpMap(idoValue:idoValue,keidoValue:keidoValue)
+//            self.view.indicatorViewStop()
+//        }else{
+//            for shopData in shopDataArray{
+//                self.shopDataArray?.append(ShopDataToView(shopData: shopData))
+//                makeMarker(shopData: shopData)
+//            }
+//            for favShop in favShopData{
+//                if let index = self.shopDataArray!.firstIndex(where: { $0.shopData.name == favShop.name }) {
+//                    self.shopDataArray![index].favorite = true
+//                }
+//            }
+//            self.view.setUpMap(idoValue:idoValue,keidoValue:keidoValue)
+//            self.view.indicatorViewStop()
+//        }
+//    }
+//
+//    func makeMarker(shopData:TravelData) {
+//        let latitude = shopData.latitude!
+//        let longitude = shopData.longitude!
+//        let title = shopData.name!
+//
+//        let marker = GMSMarker()
+//        marker.position = CLLocationCoordinate2DMake(latitude,longitude)
+//        marker.appearAnimation = GMSMarkerAnimation.pop
+//        marker.title = "\(title)"
+//        marker.snippet = shopData.smallAreaName! + "/" + shopData.genreName!
+//        markers.append(marker)
+//    }
+//
 }
 
 extension MapPresenter: LocationModelOutput{
     
     func completedRequestLocaiton(request: CLLocationCoordinate2D) {
         
+    }
+    
+}
+
+extension MapPresenter{
+    
+    func addToMapFavorites(indexPath:IndexPath){
+        let realm = try! Realm()
+        let selectedShopData = shopDataArray![indexPath.row]
+        
+        let registeredFavShopData = realm.objects(favShopData.self).filter("name == '\(selectedShopData.shopData.name!)'")
+        print(registeredFavShopData)
+        let favShop = favShopData()
+        
+        if shopDataArray![indexPath.row].favorite == false{
+            favShop.latitude = selectedShopData.shopData.latitude!
+            favShop.longitude = selectedShopData.shopData.longitude!
+            favShop.smallAreaName = selectedShopData.shopData.smallAreaName!
+            favShop.genreName = selectedShopData.shopData.genreName!
+            favShop.budgetAverage = selectedShopData.shopData.budgetAverage!
+            favShop.name = selectedShopData.shopData.name!
+            favShop.shop_image = selectedShopData.shopData.shop_image!
+            favShop.url = selectedShopData.shopData.url!
+            favShop.lunch = selectedShopData.shopData.lunch!
+            try! realm.write {
+                realm.add(favShop)
+            }
+            shopDataArray![indexPath.row].favorite = true
+            self.view.addToFavorites(indexPath: indexPath)
+        }else{
+            try! realm.write {
+                realm.delete(registeredFavShopData)
+            }
+            shopDataArray![indexPath.row].favorite = false
+            self.view.addToFavorites(indexPath: indexPath)
+        }
+    }
+    
+    func addToTravelFavorites(indexPath:IndexPath){
+        let realm = try! Realm()
+        let selectedShopData = shopDataArray![indexPath.row]
+        
+        let registeredFavShopData = realm.objects(favShopData.self).filter("name == '\(selectedShopData.shopData.name!)'")
+        print(registeredFavShopData)
+        let favShop = favShopData()
+        
+        if shopDataArray![indexPath.row].favorite == false{
+            favShop.latitude = selectedShopData.shopData.latitude!
+            favShop.longitude = selectedShopData.shopData.longitude!
+            favShop.smallAreaName = selectedShopData.shopData.smallAreaName!
+            favShop.genreName = selectedShopData.shopData.genreName!
+            favShop.budgetAverage = selectedShopData.shopData.budgetAverage!
+            favShop.name = selectedShopData.shopData.name!
+            favShop.shop_image = selectedShopData.shopData.shop_image!
+            favShop.url = selectedShopData.shopData.url!
+            favShop.lunch = selectedShopData.shopData.lunch!
+            try! realm.write {
+                realm.add(favShop)
+            }
+            shopDataArray![indexPath.row].favorite = true
+            self.view.addToFavorites(indexPath: indexPath)
+        }else{
+            try! realm.write {
+                realm.delete(registeredFavShopData)
+            }
+            shopDataArray![indexPath.row].favorite = false
+            self.view.addToFavorites(indexPath: indexPath)
+        }
     }
     
 }

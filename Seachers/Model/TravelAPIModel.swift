@@ -19,6 +19,10 @@ protocol TravelAPIOutput{
     
 }
 
+struct TravelData:Decodable{
+    
+}
+
 class TravelAPIModel: TravelAPIInput{
     
     
