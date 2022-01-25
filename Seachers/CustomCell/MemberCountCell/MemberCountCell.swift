@@ -17,6 +17,11 @@ class MemberCountCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.plusButton.addTarget(self, action: #selector(touchDown(_:)), for: .touchDown)
+        self.plusButton.addTarget(self, action: #selector(touchUpOutside(_:)), for: .touchUpOutside)
+        
+        self.minusButton.addTarget(self, action: #selector(touchDown(_:)), for: .touchDown)
+        self.minusButton.addTarget(self, action: #selector(touchUpOutside(_:)), for: .touchUpOutside)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -25,4 +30,11 @@ class MemberCountCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @objc func touchDown(_ sender:UIButton){
+        
+    }
+
+    @objc func touchUpOutside(_ sender:UIButton){
+        
+    }
 }
