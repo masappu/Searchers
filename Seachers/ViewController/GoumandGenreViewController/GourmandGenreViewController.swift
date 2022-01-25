@@ -10,7 +10,7 @@ import UIKit
 protocol GourmandGenreViewOutput{
 
     //値を渡しのためのメソッド
-    func passData(data:[GenreModel])
+    func passData(data:[GenreViewModel])
     
 }
 
@@ -19,7 +19,7 @@ class GourmandGenreViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     private var presenter:GourmandGenrePresenterInput?
      var popVC:GourmandGenreViewOutput?
-    var selecteGenres = [GenreModel]()
+    var selecteGenres = [GenreViewModel]()
     
     func inject(presenter:GourmandGenrePresenterInput){
         self.presenter = presenter
@@ -69,7 +69,7 @@ extension GourmandGenreViewController:GourmandGenrePresenterOutput{
         self.tableView.reloadRows(at: indexArray, with: .fade)
     }
     
-    func goBack(selectedData: [GenreModel]) {
+    func goBack(selectedData: [GenreViewModel]) {
         self.popVC?.passData(data: selectedData)
         self.navigationController?.popViewController(animated: true)
     }

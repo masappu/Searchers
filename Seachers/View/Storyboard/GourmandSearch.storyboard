@@ -17,10 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Qd2-jj-OK9">
-                                <rect key="frame" x="0.0" y="44" width="414" height="727"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CeF-gm-5G1">
                                 <rect key="frame" x="0.0" y="771" width="414" height="125"/>
                                 <subviews>
@@ -49,19 +45,24 @@
                                     <constraint firstItem="Z3k-IC-ewr" firstAttribute="centerY" secondItem="CeF-gm-5G1" secondAttribute="centerY" id="vjW-W3-Pnn"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Qd2-jj-OK9">
+                                <rect key="frame" x="0.0" y="44" width="414" height="727"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="separatorColor" red="0.042924910519345445" green="0.29397551546391754" blue="0.067350682279812599" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <inset key="separatorInset" minX="25" minY="0.0" maxX="25" maxY="0.0"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Qd2-jj-OK9" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="2Ry-ch-wdA"/>
+                            <constraint firstItem="Qd2-jj-OK9" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="3CC-8L-Nj2"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Qd2-jj-OK9" secondAttribute="trailing" id="9nT-Dp-E2j"/>
                             <constraint firstItem="CeF-gm-5G1" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="F8Y-Zl-UEi"/>
-                            <constraint firstItem="CeF-gm-5G1" firstAttribute="top" secondItem="Qd2-jj-OK9" secondAttribute="bottom" id="ZR4-Xv-HJd"/>
-                            <constraint firstItem="CeF-gm-5G1" firstAttribute="top" secondItem="Qd2-jj-OK9" secondAttribute="bottom" id="bGV-MX-dAS"/>
-                            <constraint firstItem="Qd2-jj-OK9" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="eG7-Ef-1WR"/>
+                            <constraint firstItem="Qd2-jj-OK9" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="UjU-nr-Upq"/>
                             <constraint firstItem="CeF-gm-5G1" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="eOB-1x-2ot"/>
                             <constraint firstItem="CeF-gm-5G1" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="fQ0-RH-4vr"/>
                             <constraint firstAttribute="bottom" secondItem="CeF-gm-5G1" secondAttribute="bottom" id="mre-gm-q20"/>
-                            <constraint firstItem="Qd2-jj-OK9" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="qAu-97-4Qi"/>
+                            <constraint firstItem="CeF-gm-5G1" firstAttribute="top" secondItem="Qd2-jj-OK9" secondAttribute="bottom" id="y7h-w3-uyi"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gbq-v9-p15"/>

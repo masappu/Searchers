@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TravelCell" id="PL1-1s-Uzl" customClass="TravelCell" customModule="Seachers" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TravelCell" id="PL1-1s-Uzl" customClass="GourmandCell" customModule="Seachers" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="400" height="200"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -23,6 +23,16 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lza-W7-QGu">
                                 <rect key="frame" x="20.5" y="13.5" width="359" height="173"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Wg-Ia-U6q">
+                                        <rect key="frame" x="314.5" y="8" width="43.5" height="31"/>
+                                        <color key="backgroundColor" red="0.3449250935" green="1" blue="0.35691490669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="43.5" id="RiU-he-KcI"/>
+                                            <constraint firstAttribute="height" constant="31" id="sJh-SL-aQv"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="fav"/>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gP8-UJ-nFm">
                                         <rect key="frame" x="43" y="142" width="273" height="23"/>
                                         <color key="backgroundColor" red="0.3449250935" green="1" blue="0.35691490669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -81,31 +91,18 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Wg-Ia-U6q">
-                                        <rect key="frame" x="301" y="12" width="50" height="38"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="TMW-v6-gcQ"/>
-                                            <constraint firstAttribute="height" constant="38" id="ecn-ho-qmK"/>
-                                        </constraints>
-                                        <color key="tintColor" systemColor="systemYellowColor"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="bookmark" catalog="system" title="">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
-                                        </buttonConfiguration>
-                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="9Wg-Ia-U6q" firstAttribute="top" secondItem="lza-W7-QGu" secondAttribute="top" constant="12" id="3dE-f9-Zey"/>
+                                    <constraint firstItem="9Wg-Ia-U6q" firstAttribute="top" secondItem="lza-W7-QGu" secondAttribute="top" constant="8" id="6Pn-xZ-97J"/>
                                     <constraint firstAttribute="bottom" secondItem="gP8-UJ-nFm" secondAttribute="bottom" constant="8" id="JAz-Hf-9GQ"/>
                                     <constraint firstAttribute="height" constant="173" id="Rik-7U-Va3"/>
                                     <constraint firstAttribute="width" constant="359" id="Scs-2C-E7g"/>
+                                    <constraint firstAttribute="trailing" secondItem="9Wg-Ia-U6q" secondAttribute="trailing" constant="1" id="e3y-SW-50K"/>
                                     <constraint firstItem="gP8-UJ-nFm" firstAttribute="centerX" secondItem="lza-W7-QGu" secondAttribute="centerX" id="rPr-yK-29x"/>
-                                    <constraint firstAttribute="trailing" secondItem="9Wg-Ia-U6q" secondAttribute="trailing" constant="8" id="tF8-Wv-izS"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="lza-W7-QGu" firstAttribute="centerX" secondItem="OfC-sU-8Ti" secondAttribute="centerX" id="084-M6-pF3"/>
                             <constraint firstItem="lza-W7-QGu" firstAttribute="centerY" secondItem="OfC-sU-8Ti" secondAttribute="centerY" id="9VE-fI-CxE"/>
@@ -120,25 +117,12 @@
                 <constraint firstAttribute="bottom" secondItem="OfC-sU-8Ti" secondAttribute="bottom" id="gGL-qK-rpR"/>
                 <constraint firstAttribute="trailing" secondItem="OfC-sU-8Ti" secondAttribute="trailing" id="o9O-oR-R8R"/>
             </constraints>
-            <connections>
-                <outlet property="area_genreLabel" destination="G6a-aU-3kS" id="Zch-Gg-OLt"/>
-                <outlet property="detailButton" destination="gP8-UJ-nFm" id="PRL-5S-2SA"/>
-                <outlet property="favButton" destination="9Wg-Ia-U6q" id="NUG-8Z-riU"/>
-                <outlet property="imageView" destination="ilp-f8-rI3" id="ex7-2M-H2g"/>
-                <outlet property="nameLabel" destination="wKs-jD-cuC" id="MAC-G2-E0A"/>
-                <outlet property="priceLabel" destination="PAj-99-YMB" id="5Fy-3b-sMV"/>
-                <outlet property="travelView" destination="lza-W7-QGu" id="cYh-3w-D6z"/>
-            </connections>
             <point key="canvasLocation" x="179.71014492753625" y="152.67857142857142"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="bookmark" catalog="system" width="112" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
