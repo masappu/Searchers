@@ -10,10 +10,14 @@ import Foundation
 
 protocol TravelSearchPresenterInput{
     func loadView()
+    func didSelectCell(indexPath_row:Int, indexPath_section:Int)
 }
 
 protocol TravelSearchPresenterOutput{
     func setTableViewInfo()
+    func transitionToPlaceSearchView()
+    func datePickerOfCheckInIsHidden()
+    func datePickerOfCheckOutIsHidden()
 }
 
 final class TravelSearchPresenter: TravelSearchPresenterInput{
@@ -26,5 +30,17 @@ final class TravelSearchPresenter: TravelSearchPresenterInput{
     
     func loadView() {
         self.view.setTableViewInfo()
+    }
+    
+    func didSelectCell(indexPath_row: Int, indexPath_section:Int) {
+        if indexPath_section == 0{
+            self.view.transitionToPlaceSearchView()
+        }else if indexPath_section == 1{
+            if indexPath_row == 0{
+                self.view.datePickerOfCheckInIsHidden()
+            }else{
+                self.view.datePickerOfCheckOutIsHidden()
+            }
+        }
     }
 }
