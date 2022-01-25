@@ -69,7 +69,7 @@ protocol GourmandSearchOutput{
     func transitionToMapView(Data:GourmandSearchDataModel, previousVCString:String)
     
     //PlaceSearchViewへの遷移を指示する
-    func transitionToPlaceSearchVIew()
+    func transitionToPlaceSearchView()
     
     //GourmandGenreViewへの遷移を指示する
     func transitionToGourmandGenreView(selectedGenres:[GenreViewModel])
@@ -139,7 +139,7 @@ final class GourmandSearchPresenter: GourmandSearchInput{
     
     func didSelsctCell(index: Int) {
         if index == 0{
-            self.view.transitionToPlaceSearchVIew()
+            self.view.transitionToPlaceSearchView()
         }else if index == 1{
             self.view.transitionToGourmandGenreView(selectedGenres: self.searchData.genre)
         }else if index == 2{
