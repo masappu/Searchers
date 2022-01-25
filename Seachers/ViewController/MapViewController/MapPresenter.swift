@@ -13,7 +13,7 @@ import CoreLocation
 
 protocol MapPresenterInput {
     
-    func loadMap(gourmandSearchData:GourmandSearchDataModel)
+    func loadMap(gourmandSearchData:GourmandSearchDataModel)// あとで消す
     func reloadMap(gourmandSearchData:GourmandSearchDataModel,rangeCount:Int)
     func configureSubViews()
     func requestScrollViewDidEndDecelerating(x:Double,width:Double)
@@ -22,11 +22,12 @@ protocol MapPresenterInput {
     func addToFavoritesButton(indexPath:IndexPath)
     func goToWebVCButton(indexPath:IndexPath)
     
-    var shopDataArray: [ShopDataToView]? {get set}
-    var markers: [GMSMarker] {get set}
-    var categoryArray: [String] {get set}
-    var previousVcString:String {get set}
-    var currentLocation:CLLocationCoordinate2D {get set}
+    var shopDataArray: [ShopDataToView]? { get set }
+    var markers: [GMSMarker] { get set }
+    var categoryArray: [String] { get set }
+    var previousVcString:String { get set }
+    var currentLocation:CLLocationCoordinate2D { get set }
+    var previousVCString:String { get set }
     
 }
 
@@ -58,12 +59,12 @@ struct ShopDataToView {
 }
 
 class MapPresenter: MapPresenterInput{
-    
     var currentLocation: CLLocationCoordinate2D = CLLocationCoordinate2D()
     var previousVcString: String = ""
     var categoryArray: [String] = ["300", "500", "1000", "2000", "3000"]
     var markers: [GMSMarker] = []
     var shopDataArray: [ShopDataToView]?
+    var previousVCString: String = ""
     
     private var view: MapPresenterOutput!
     private var gourmandAPIModel: GourmandAPIInput!
@@ -87,8 +88,8 @@ class MapPresenter: MapPresenterInput{
     }
     
     func requestMapViewDidTap(marker:GMSMarker) {
-        let index = shopDataArray?.firstIndex(where: { $0.shopData.name == marker.title })
-        self.view.responseMapViewDidTap(marker: marker,index: index!)
+        let index = (shopDataArray?.firstIndex(where: { $0.shopData.name == marker.title }))!
+        self.view.responseMapViewDidTap(marker: marker,index: index)
     }
     
     func requestDoneButtonOfCategory(text: String) {
@@ -99,6 +100,7 @@ class MapPresenter: MapPresenterInput{
     func addToFavoritesButton(indexPath:IndexPath){
         let realm = try! Realm()
         let selectedShopData = shopDataArray![indexPath.row]
+        
         let registeredFavShopData = realm.objects(favShopData.self).filter("name == '\(selectedShopData.shopData.name!)'")
         print(registeredFavShopData)
         let favShop = favShopData()

@@ -41,6 +41,7 @@ class MapViewController: UIViewController {
         
         presenter.loadMap(gourmandSearchData: gourmandSearchData)
         presenter.configureSubViews()
+        presenter.previousVCString = previousVCString
     }
 
     @objc func doneButtonOfCategory(){
