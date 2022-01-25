@@ -10,13 +10,13 @@ import Foundation
 protocol GourmandGenrePresenterInput{
     
     //View構築のためのGenreデータを保持する変数
-    var allGenreData:[GenreModel] {get set}
+    var allGenreData:[GenreViewModel] {get set}
     
     //Viewの選択中のGenreデータを保持する変数
-    var selectedGenres:[GenreModel] {get set}
+    var selectedGenres:[GenreViewModel] {get set}
     
     //View構築のタイミングを通知する
-    func loadView(selectedDate:[GenreModel])
+    func loadView(selectedDate:[GenreViewModel])
     
     //selectedButton（Genreの選択）を通知する
     func pushSelectedButton(indexPath:IndexPath)
@@ -44,26 +44,28 @@ protocol GourmandGenrePresenterOutput{
     func reloadSelectedButton(at indexArray:[IndexPath])
     
     //前画面に戻る指示
-    func goBack(selectedData:[GenreModel])
+    func goBack(selectedData:[GenreViewModel])
     
 }
+
+
 
 final class GourmandGenrePresenter:GourmandGenrePresenterInput{
     
     private var view:GourmandGenrePresenterOutput
-    private var model:GourmandGenreModelInput!
+    private var model:GourmandGenreAPIModelInput!
     private let url = "https://webservice.recruit.co.jp/hotpepper/genre/v1/?key="
     private let key = "28d7568c4dcea09f"
-    internal var selectedGenres: [GenreModel] = []
-    var allGenreData: [GenreModel] = []
+    internal var selectedGenres: [GenreViewModel] = []
+    var allGenreData: [GenreViewModel] = []
     
     init(view:GourmandGenrePresenterOutput){
         self.view = view
-        let model = GourmandDataLoadModel(presenter: self)
+        let model = GourmandGenreAPIModel(presenter: self)
         self.model = model
     }
     
-    func loadView(selectedDate:[GenreModel]) {
+    func loadView(selectedDate:[GenreViewModel]) {
         self.selectedGenres = selectedDate
         self.view.setTableViewInfo()
         self.view.setNavigationItemInfo()
@@ -99,12 +101,12 @@ final class GourmandGenrePresenter:GourmandGenrePresenterInput{
     }
 }
 
-extension GourmandGenrePresenter:GourmandGenreModelOutput{
+extension GourmandGenrePresenter:GourmandGenreAPIModelOutput{
     
-    func completedGourmandGenreData(data: [GenreModel]) {
+    func completedGourmandGenreData(data: [GenreAPIModel]) {
         let getData = data
         for item in getData{
-            var newItem = GenreModel()
+            var newItem = GenreViewModel()
             newItem.id = item.id
             newItem.name = item.name
             if self.selectedGenres.first(where: { $0.name.contains(item.name)}) == nil{
