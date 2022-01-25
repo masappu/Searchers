@@ -53,3 +53,43 @@ enum MapCellType: String, CaseIterable, CellType{
         }
     }
 }
+
+enum TravelSearchCellType: Int, CaseIterable, CellType{
+    case selectDestinationCell
+    case reservationDateCell
+    case roomTableViewCell
+    
+    var cellIdentifier: String{
+        switch self {
+        case .selectDestinationCell: return "selectDestinationCell"
+        case .reservationDateCell: return "reservationDateCell"
+        case .roomTableViewCell: return "roomTableViewCell"
+        }
+    }
+}
+
+enum ReservationDateCellType: Int, CaseIterable, CellType{
+    case checkInCell
+    case checkOutCell
+    
+    var cellIdentifier: String{
+        switch self {
+        case .checkInCell: return "reservationDateCell"
+        case .checkOutCell: return "reservationDateCell"
+        }
+    }
+}
+
+enum RoomTableViewCellType: Int, CaseIterable, CellType{
+    case roomTableViewCell
+    case numberOfroomsCountCell
+    case numberOfmamberCountCell
+    
+    var cellIdentifier: String{
+        switch self {
+        case .roomTableViewCell: return "roomTableViewCell"
+        case .numberOfroomsCountCell: return "mamberCountCell"
+        case .numberOfmamberCountCell: return "mamberCountCell"
+        }
+    }
+}
