@@ -34,7 +34,6 @@ protocol GourmandSearchViewOutput{
 class GourmandSearchViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    var searchDate = GourmandSearchDataModel()
     
     private var isDatePickerShowing = false
     private var PickerCell:ReservationDateCell?
@@ -59,7 +58,7 @@ class GourmandSearchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        presenter.loadView(Data: self.searchDate)
+        presenter.loadView()
     }
     
     @IBAction func goMapView(_ sender: Any) {
@@ -90,11 +89,12 @@ extension GourmandSearchViewController:GourmandSearchOutput{
         tableView.register(UINib(nibName: "SelectGenreCell", bundle: nil), forCellReuseIdentifier: "selectGenreCell")
         tableView.register(UINib(nibName: "NonSelectGenreCell", bundle: nil), forCellReuseIdentifier: "nonSelectGenreCell")
         tableView.register(UINib(nibName: "ReservationDateCell", bundle: nil), forCellReuseIdentifier: "reservationDateCell")
-        tableView.register(UINib(nibName: "MemberCountCell", bundle: nil), forCellReuseIdentifier: "mamberCountCell")
+        tableView.register(UINib(nibName: "MemberCountCell", bundle: nil), forCellReuseIdentifier: "memberCountCell")
         
     }
     
     func setNavigationControllerInfo() {
+        self.navigationItem.titleView?.tintColor = .green
         self.navigationItem.title = "グルメ検索"
     }
     
@@ -143,13 +143,13 @@ extension GourmandSearchViewController:GourmandSearchOutput{
         self.navigationController?.pushViewController(mapVC, animated: true)
     }
     
-    func transitionToPlaceSearchVIew() {
+    func transitionToPlaceSearchView() {
         let storyboard = UIStoryboard(name: "PlaceSearch", bundle: nil)
         let placeSearchVC = storyboard.instantiateInitialViewController() as! PlaceSearchViewController
         self.navigationController?.pushViewController(placeSearchVC, animated: true)
     }
     
-    func transitionToGourmandGenreView(selectedGenres:[GenreModel]) {
+    func transitionToGourmandGenreView(selectedGenres:[GenreViewModel]) {
         let gourmandGenreVC = self.storyboard?.instantiateViewController(withIdentifier: "gourmandGenreVC") as! GourmandGenreViewController
         gourmandGenreVC.popVC = self
         gourmandGenreVC.selecteGenres = selectedGenres
@@ -160,8 +160,8 @@ extension GourmandSearchViewController:GourmandSearchOutput{
 
 extension GourmandSearchViewController:GourmandGenreViewOutput{
     
-    func passData(data: [GenreModel]) {
-        self.searchDate.genre = data
+    func passData(data: [GenreViewModel]) {
+        self.presenter.searchData.genre = data
     }
 }
 
@@ -188,21 +188,14 @@ extension GourmandSearchViewController:UITableViewDelegate,UITableViewDataSource
             placeLabel.text = self.presenter.searchData.place.name
             return cell
         case .selectGenreCell:
-            let dataIsEmpty = self.presenter.loadSelectGenreCell()
-            let selectGenreCellType = SelectGenreCellType(rawValue: dataIsEmpty)
-            switch (selectGenreCellType)! {
-            case.selectGenreCell:
-                let cell = tableView.dequeueReusableCell(withIdentifier: selectGenreCellType!.cellIdentifier) as! SelectGenreCell
-                cell.inject(view: self, dataSource: self.presenter)
-                self.injectSelectGenreCell(cell: cell)
-                self.selectGenreCell.loadCollectionView()
-                return cell
-            case.nonSelectGenreCell:
-                let cell = tableView.dequeueReusableCell(withIdentifier: selectGenreCellType!.cellIdentifier) as! NonSelectGenreCell
-                return cell
-            }
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellType!.cellIdentifier) as! SelectGenreCell
+            cell.inject(view: self, dataSource: self.presenter)
+            self.injectSelectGenreCell(cell: cell)
+            self.selectGenreCell.loadCollectionView()
+            return cell
         case .reservationDateCell:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType!.cellIdentifier) as! ReservationDateCell
+            cell.selectionStyle = .none
             self.PickerCell = cell
             self.PickerCell!.rserevationDateLabel.text = self.presenter.searchData.date.dateString
             self.PickerCell?.datePicker.date = self.presenter.searchData.date.date
