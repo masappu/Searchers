@@ -14,7 +14,6 @@ class NetShoppingViewController: UIViewController {
     
     
     @IBOutlet weak var tableView: UITableView!
-    
     private var presenter:NetShoppingPresenterInput!
     
     func inject(presenter:NetShoppingPresenter){
@@ -26,9 +25,7 @@ class NetShoppingViewController: UIViewController {
         
         let presenter = NetShoppingPresenter(view: self)
         inject(presenter: presenter)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(UINib(nibName: "NetShoppingTableViewCell", bundle: nil), forCellReuseIdentifier: "NetShoppingCell")
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,6 +38,12 @@ class NetShoppingViewController: UIViewController {
         
         self.view.endEditing(true)
         
+    }
+    
+    @objc func addToFavoritesButton(_ sender: UIButton) {
+        let cell = sender.superview?.superview as! UITableViewCell
+        let indexPath = tableView.indexPath(for: cell)
+        presenter.addToFavoritesButton(indexPath: indexPath!)
     }
 
 }
@@ -71,12 +74,15 @@ extension NetShoppingViewController: UISearchBarDelegate{
 
 extension NetShoppingViewController: NetShoppingPresenterOutput{
    
-    func addToFavoritesButton(_ sender: UIButton) {
-        print(sender.superview?.superview?.superview?.superview)
-        let cell = sender.superview?.superview?.superview?.superview as! UITableViewCell
-        let indexPath = tableView.indexPath(for: cell)
-      //  presenter.addToFavoritesButton(indexPath: indexPath!)
+    func goToWeb(url: String) {
+        let storyboard = UIStoryboard(name: "WebView", bundle: nil)
+        let webVC = storyboard.instantiateViewController(withIdentifier: "webVC") as! WebViewController
+        webVC.url = url
+        self.present(webVC, animated: true, completion: nil)
     }
+    
+   
+
     
     func goToWebBotton(_ sender: UIButton) {
         let cell = sender.superview?.superview?.superview?.superview as! UITableViewCell
@@ -84,9 +90,14 @@ extension NetShoppingViewController: NetShoppingPresenterOutput{
      //   presenter.goToWebVCButton(indexPath: indexPath!)
     }
     
+    func addToFavorites(indexPath: IndexPath) {
+        tableView.reloadRows(at: [indexPath], with: .fade)
+    }
     
     func setTableViewInfo() {
-        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: "NetShoppingTableViewCell", bundle: nil), forCellReuseIdentifier: "NetShoppingCell")
     }
     
     func reloadTableView() {
@@ -122,50 +133,45 @@ extension NetShoppingViewController: UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-//        if section == 0 {
-//            return 1
-//        }else{
 
+        if section == 0 {
+            return 1
+       }else{
+           print("データの個数：\(presenter.productDataArray.count)")
            return presenter.productDataArray.count
-        //}
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NetShoppingCell", for: indexPath) as! NetShoppingTableViewCell
-        
+        print("section：\(indexPath.section),row:\(indexPath.row)")
         let productDataArray = presenter.productDataArray
         
-        cell.ProductImage?.sd_setImage(with: URL(string: productDataArray[indexPath.row].product_image!), completed: nil)
-        cell.NameLabel?.text = productDataArray[indexPath.row].name!
-        cell.PriceLabel.text = String(productDataArray[indexPath.row].price!)
-        cell.FavoriteButtom.addTarget(self, action: #selector(method), for: .touchUpInside)
+        cell.ProductImage?.sd_setImage(with: URL(string: productDataArray[indexPath.row].NetShoppingData.product_image!), completed: nil)
+        cell.NameLabel?.text = productDataArray[indexPath.row].NetShoppingData.name!
+        cell.PriceLabel.text = String(productDataArray[indexPath.row].NetShoppingData.price!)
+        cell.FavoriteButtom.addTarget(self, action: #selector(addToFavoritesButton(_:)), for: .touchUpInside)
+        cell.FavoriteButtom.imageView?.image = UIImage(systemName: productDataArray[indexPath.row].favProduct)
         
         return cell
     }
     
-    func tableViewfooter(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 18))
-        let label = UILabel(frame: CGRect(x: 20, y: 20, width: 50, height: 50))
-        label.text = "TEST TEXT"
-        label.textColor = UIColor.red
-        self.view.addSubview(view)
-        return view
-    }
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
-    //ヘッダーにするビューを生成
-            let view = UIView()
-            view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 100)
-            view.backgroundColor = UIColor.red
-    //ヘッダーに追加するラベルを生成
-            let headerLabel = UILabel()
-            headerLabel.frame =  CGRect(x: 0, y: 1, width: self.view.frame.size.width, height: 25)
-            headerLabel.text = "最安値"
-            headerLabel.textColor = UIColor.white
-            headerLabel.textAlignment = NSTextAlignment.center
-            view.addSubview(headerLabel)
-    return view
+        if section == 0{
+            //ヘッダーにするビューを生成
+                    let view = UIView()
+                    view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 100)
+                    view.backgroundColor = UIColor.red
+            //ヘッダーに追加するラベルを生成
+                    let headerLabel = UILabel()
+                    headerLabel.frame =  CGRect(x: 0, y: 1, width: self.view.frame.size.width, height: 25)
+                    headerLabel.text = "最安値"
+                    headerLabel.textColor = UIColor.white
+                    headerLabel.textAlignment = NSTextAlignment.center
+                    view.addSubview(headerLabel)
+            return view
+        }
+            return nil
         }
     
 }
