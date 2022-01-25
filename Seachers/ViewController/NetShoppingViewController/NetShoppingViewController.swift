@@ -8,53 +8,47 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import SDWebImage
 
-
-
-protocol DoneCatchDataProtocol {
+class NetShoppingViewController: UIViewController {
     
-    //規則を決める
-    func catchData(arrayData:Array<productData>,resultCount:Int)
     
-}
-
-class NetShoppingViewController: UIViewController,UISearchBarDelegate,NetShoppingAPIModelOutput {
-
-    @IBOutlet weak var Label: UILabel!
-
+    @IBOutlet weak var tableView: UITableView!
+    private var presenter:NetShoppingPresenterInput!
+    
+    func inject(presenter:NetShoppingPresenter){
+        self.presenter = presenter
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setSearchBar()
+        let presenter = NetShoppingPresenter(view: self)
+        inject(presenter: presenter)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        presenter.viewWillApper()
+    }
+ 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.view.endEditing(true)
+        
+    }
+    
+    @objc func addToFavoritesButton(_ sender: UIButton) {
+        let cell = sender.superview?.superview as! UITableViewCell
+        let indexPath = tableView.indexPath(for: cell)
+        presenter.addToFavoritesButton(indexPath: indexPath!)
+    }
 
-        // Do any additional setup after loading the view.
-    }
-    
-    
-   
-    
-   
-    
-    //検索バーの設置
-    func setSearchBar() {
-        // NavigationBarにSearchBarをセット
-        if let navigationBarFrame = self.navigationController?.navigationBar.bounds {
-            //NavigationBarに適したサイズの検索バーを設置
-            let searchBar: UISearchBar = UISearchBar(frame: navigationBarFrame)
-            //デリゲート
-            searchBar.delegate = self
-            //プレースホルダー
-            searchBar.placeholder = "商品を検索"
-            //検索バーのスタイル
-            searchBar.autocapitalizationType = UITextAutocapitalizationType.none
-            //NavigationTitleが置かれる場所に検索バーを設置
-            navigationItem.titleView = searchBar
-            //NavigationTitleのサイズを検索バーと同じにする
-            navigationItem.titleView?.frame = searchBar.frame
-        }
-    }
-    
+}
+
+extension NetShoppingViewController: UISearchBarDelegate{
     //検索バーで入力する時
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         //キャンセルボタンを表示
@@ -73,27 +67,111 @@ class NetShoppingViewController: UIViewController,UISearchBarDelegate,NetShoppin
     
     //検索バーでEnterが押された時
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        //Labelに入力した値を設定
-        Label.text = searchBar.text as! String
-        
-       
+        presenter.searchBarSearchButtonClicked(keyword: searchBar.text!)
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        self.view.endEditing(true)
-        
-        
-        
-    }
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension NetShoppingViewController: NetShoppingPresenterOutput{
+   
+    func goToWeb(url: String) {
+        let storyboard = UIStoryboard(name: "WebView", bundle: nil)
+        let webVC = storyboard.instantiateViewController(withIdentifier: "webVC") as! WebViewController
+        webVC.url = url
+        self.present(webVC, animated: true, completion: nil)
     }
-    */
+    
+   
 
+    
+    func goToWebBotton(_ sender: UIButton) {
+        let cell = sender.superview?.superview?.superview?.superview as! UITableViewCell
+        let indexPath = tableView.indexPath(for: cell)
+     //   presenter.goToWebVCButton(indexPath: indexPath!)
+    }
+    
+    func addToFavorites(indexPath: IndexPath) {
+        tableView.reloadRows(at: [indexPath], with: .fade)
+    }
+    
+    func setTableViewInfo() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: "NetShoppingTableViewCell", bundle: nil), forCellReuseIdentifier: "NetShoppingCell")
+    }
+    
+    func reloadTableView() {
+        tableView.reloadData()
+    }
+    
+    
+    
+    func setSearchBar() {
+        // NavigationBarにSearchBarをセット
+        if let navigationBarFrame = self.navigationController?.navigationBar.bounds {
+            //NavigationBarに適したサイズの検索バーを設置
+            let searchBar: UISearchBar = UISearchBar(frame: navigationBarFrame)
+            //デリゲート
+            searchBar.delegate = self
+            //プレースホルダー
+            searchBar.placeholder = "商品を検索"
+            //検索バーのスタイル
+            searchBar.autocapitalizationType = UITextAutocapitalizationType.none
+            //NavigationTitleが置かれる場所に検索バーを設置
+            navigationItem.titleView = searchBar
+            //NavigationTitleのサイズを検索バーと同じにする
+            navigationItem.titleView?.frame = searchBar.frame
+        }
+    }
+    
+}
+
+extension NetShoppingViewController: UITableViewDelegate,UITableViewDataSource{
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+        if section == 0 {
+            return 1
+       }else{
+           print("データの個数：\(presenter.productDataArray.count)")
+           return presenter.productDataArray.count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NetShoppingCell", for: indexPath) as! NetShoppingTableViewCell
+        print("section：\(indexPath.section),row:\(indexPath.row)")
+        let productDataArray = presenter.productDataArray
+        
+        cell.ProductImage?.sd_setImage(with: URL(string: productDataArray[indexPath.row].NetShoppingData.product_image!), completed: nil)
+        cell.NameLabel?.text = productDataArray[indexPath.row].NetShoppingData.name!
+        cell.PriceLabel.text = String(productDataArray[indexPath.row].NetShoppingData.price!)
+        cell.FavoriteButtom.addTarget(self, action: #selector(addToFavoritesButton(_:)), for: .touchUpInside)
+        cell.FavoriteButtom.imageView?.image = UIImage(systemName: productDataArray[indexPath.row].favProduct)
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
+        if section == 0{
+            //ヘッダーにするビューを生成
+                    let view = UIView()
+                    view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 100)
+                    view.backgroundColor = UIColor.red
+            //ヘッダーに追加するラベルを生成
+                    let headerLabel = UILabel()
+                    headerLabel.frame =  CGRect(x: 0, y: 1, width: self.view.frame.size.width, height: 25)
+                    headerLabel.text = "最安値"
+                    headerLabel.textColor = UIColor.white
+                    headerLabel.textAlignment = NSTextAlignment.center
+                    view.addSubview(headerLabel)
+            return view
+        }
+            return nil
+        }
+    
 }
