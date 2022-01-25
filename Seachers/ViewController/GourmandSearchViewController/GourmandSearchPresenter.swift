@@ -72,7 +72,7 @@ protocol GourmandSearchOutput{
     func transitionToPlaceSearchVIew()
     
     //GourmandGenreViewへの遷移を指示する
-    func transitionToGourmandGenreView(selectedGenres:[GenreModel])
+    func transitionToGourmandGenreView(selectedGenres:[GenreViewModel])
 }
 
 final class GourmandSearchPresenter: GourmandSearchInput{
@@ -81,6 +81,7 @@ final class GourmandSearchPresenter: GourmandSearchInput{
     private var model:LocationModelInput!
     private let previousVCString = "GourmandSearchViewController"
     var searchData: GourmandSearchDataModel = GourmandSearchDataModel()
+    
     
     init(view:GourmandSearchOutput){
         self.view = view

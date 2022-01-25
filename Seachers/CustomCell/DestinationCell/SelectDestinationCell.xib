@@ -17,58 +17,78 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yRf-SM-XZ8">
-                        <rect key="frame" x="0.0" y="25" width="350" height="80"/>
+                        <rect key="frame" x="30" y="25" width="320" height="70"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HDb-T1-FZJ">
-                                <rect key="frame" x="0.0" y="0.0" width="350" height="25"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="25"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目的地" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R1P-OX-1XP">
-                                        <rect key="frame" x="0.0" y="0.0" width="55" height="25"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="55" id="eGx-ap-Y5r"/>
+                                            <constraint firstAttribute="width" constant="70" id="CDd-yO-u57"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="：検索範囲を300mに設定中" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vdk-45-q92">
-                                        <rect key="frame" x="55" y="0.0" width="295" height="25"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <rect key="frame" x="70" y="0.0" width="250" height="25"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <viewLayoutGuide key="safeArea" id="Hp7-d0-xiR"/>
                                 <constraints>
-                                    <constraint firstItem="Vdk-45-q92" firstAttribute="leading" secondItem="R1P-OX-1XP" secondAttribute="trailing" id="JrZ-hD-tmK"/>
-                                    <constraint firstAttribute="height" constant="25" id="kMw-dT-L0K"/>
+                                    <constraint firstAttribute="height" constant="25" id="Lde-SZ-DnU"/>
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未選択" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dzn-bz-InE">
-                                <rect key="frame" x="0.0" y="55" width="350" height="15"/>
+                                <rect key="frame" x="0.0" y="55" width="320" height="15"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="eDJ-Ct-Wnc"/>
+                                    <constraint firstAttribute="height" constant="15" id="MDw-1u-2so"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Dzn-bz-InE" secondAttribute="bottom" constant="10" id="BXt-OE-Wd7"/>
-                            <constraint firstItem="Dzn-bz-InE" firstAttribute="top" secondItem="HDb-T1-FZJ" secondAttribute="bottom" constant="30" id="xnb-0g-xhm"/>
+                            <constraint firstItem="HDb-T1-FZJ" firstAttribute="leading" secondItem="yRf-SM-XZ8" secondAttribute="leading" id="9In-vL-OMw"/>
+                            <constraint firstAttribute="trailing" secondItem="HDb-T1-FZJ" secondAttribute="trailing" id="Rej-mI-aiR"/>
+                            <constraint firstAttribute="height" constant="70" id="eAE-Xa-dTm"/>
+                            <constraint firstItem="Dzn-bz-InE" firstAttribute="top" secondItem="HDb-T1-FZJ" secondAttribute="bottom" constant="30" id="eRh-XZ-azr"/>
+                            <constraint firstAttribute="bottom" secondItem="Dzn-bz-InE" secondAttribute="bottom" id="epZ-0s-6F4"/>
+                            <constraint firstAttribute="trailing" secondItem="Dzn-bz-InE" secondAttribute="trailing" id="gSF-ak-l9R"/>
+                            <constraint firstItem="Dzn-bz-InE" firstAttribute="leading" secondItem="yRf-SM-XZ8" secondAttribute="leading" id="gXG-t2-g20"/>
+                            <constraint firstItem="HDb-T1-FZJ" firstAttribute="top" secondItem="yRf-SM-XZ8" secondAttribute="top" id="mbv-ip-bCb"/>
                         </constraints>
                     </stackView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="7Ss-bk-dFr">
+                        <rect key="frame" x="320.5" y="54.5" width="29.5" height="41.5"/>
+                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="JjD-QK-x10"/>
+                        </constraints>
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
+                            <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                        </preferredSymbolConfiguration>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="yRf-SM-XZ8" secondAttribute="trailing" constant="40" id="0ip-4k-p5k"/>
-                    <constraint firstItem="yRf-SM-XZ8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="NIh-5N-q9q"/>
-                    <constraint firstAttribute="bottom" secondItem="yRf-SM-XZ8" secondAttribute="bottom" constant="15" id="ipx-mW-nDO"/>
-                    <constraint firstItem="yRf-SM-XZ8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="rIv-v0-ztj"/>
+                    <constraint firstAttribute="trailing" secondItem="yRf-SM-XZ8" secondAttribute="trailing" constant="40" id="27c-0b-yZj"/>
+                    <constraint firstItem="yRf-SM-XZ8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="5Tp-m1-OsL"/>
+                    <constraint firstItem="yRf-SM-XZ8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="7Ng-11-8Tk"/>
+                    <constraint firstItem="7Ss-bk-dFr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="50" id="Gj0-m7-AgU"/>
+                    <constraint firstAttribute="trailing" secondItem="7Ss-bk-dFr" secondAttribute="trailing" constant="40" id="qzz-QR-9L1"/>
+                    <constraint firstAttribute="bottom" secondItem="yRf-SM-XZ8" secondAttribute="bottom" constant="25" id="ym7-BZ-ZVq"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <point key="canvasLocation" x="-128.98550724637681" y="88.392857142857139"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="chevron.right" catalog="system" width="96" height="128"/>
+    </resources>
 </document>
