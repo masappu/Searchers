@@ -12,10 +12,26 @@ class SelectGenreCell: UITableViewCell{
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
-    
+    @IBOutlet weak var selectLabel: UILabel!
     
     private var view:GourmandSearchViewInput!
     private var dataSource:GourmandSearchInput!
+    private var selectGenreCellLabel:UILabel{
+        switch self.dataSource.searchData.genre.isEmpty{
+        case true:
+            let label = UILabel()
+            label.text = "未選択"
+            label.font = .systemFont(ofSize: 16, weight: .regular)
+            label.textColor = .darkGray
+            return label
+        case false:
+            let label = UILabel()
+            label.text = "選択中"
+            label.font = .systemFont(ofSize: 16, weight: .bold)
+            label.textColor = .systemGreen
+            return label
+        }
+    }
     
     func inject(view:GourmandSearchViewInput,dataSource:GourmandSearchInput){
         self.view = view
@@ -42,6 +58,17 @@ class SelectGenreCell: UITableViewCell{
         collectionView.register(UINib(nibName: "ChoosingGenreCell", bundle: nil), forCellWithReuseIdentifier: "choosingGenreCell")
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        }
+        
+        switch self.dataSource.searchData.genre.isEmpty{
+        case true:
+            self.selectLabel.text = "未選択"
+            self.selectLabel.font = .systemFont(ofSize: 16, weight: .regular)
+            self.selectLabel.textColor = .darkGray
+        case false:
+            self.selectLabel.text = "選択中"
+            self.selectLabel.font = .systemFont(ofSize: 16, weight: .bold)
+            self.selectLabel.textColor = .systemGreen
         }
     }
     
