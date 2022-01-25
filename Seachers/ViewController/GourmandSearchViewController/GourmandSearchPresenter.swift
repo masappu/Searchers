@@ -15,7 +15,7 @@ protocol GourmandSearchInput{
     var searchData:GourmandSearchDataModel {get set}
     
     //viewの構築のタイミングを通知する
-    func loadView(Data:GourmandSearchDataModel)
+    func loadView()
     
     //selectGenreCellの構築のタイミングを通知する
     func loadSelectGenreCell() -> String
@@ -89,8 +89,7 @@ final class GourmandSearchPresenter: GourmandSearchInput{
         self.model = model
     }
     
-    func loadView(Data: GourmandSearchDataModel) {
-        self.searchData = Data
+    func loadView() {
         self.model.requestAuthorization()
         self.view.setTableViewInfo()
         self.view.reloadTableView()
@@ -127,7 +126,7 @@ final class GourmandSearchPresenter: GourmandSearchInput{
     }
     
     func pushMinusButton() {
-        if self.searchData.memberCount > 0{
+        if self.searchData.memberCount > 1{
             self.searchData.memberCount -= 1
         }
         self.view.reloadTableView()

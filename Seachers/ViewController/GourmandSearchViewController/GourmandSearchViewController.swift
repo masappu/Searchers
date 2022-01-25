@@ -34,7 +34,6 @@ protocol GourmandSearchViewOutput{
 class GourmandSearchViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    var searchDate = GourmandSearchDataModel()
     
     private var isDatePickerShowing = false
     private var PickerCell:ReservationDateCell?
@@ -59,7 +58,7 @@ class GourmandSearchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        presenter.loadView(Data: self.searchDate)
+        presenter.loadView()
     }
     
     @IBAction func goMapView(_ sender: Any) {
@@ -162,7 +161,7 @@ extension GourmandSearchViewController:GourmandSearchOutput{
 extension GourmandSearchViewController:GourmandGenreViewOutput{
     
     func passData(data: [GenreViewModel]) {
-        self.searchDate.genre = data
+        self.presenter.searchData.genre = data
     }
 }
 
