@@ -143,7 +143,7 @@ extension GourmandSearchViewController:GourmandSearchOutput{
         self.navigationController?.pushViewController(mapVC, animated: true)
     }
     
-    func transitionToPlaceSearchVIew() {
+    func transitionToPlaceSearchView() {
         let storyboard = UIStoryboard(name: "PlaceSearch", bundle: nil)
         let placeSearchVC = storyboard.instantiateInitialViewController() as! PlaceSearchViewController
         self.navigationController?.pushViewController(placeSearchVC, animated: true)
