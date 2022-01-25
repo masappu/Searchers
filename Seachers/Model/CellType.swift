@@ -77,8 +77,8 @@ enum RoomTableViewCellType: Int, CaseIterable, CellType{
     var cellIdentifier: String{
         switch self {
         case .roomTableViewCell: return "roomTableViewCell"
-        case .numberOfroomsCountCell: return "mamberCountCell"
-        case .numberOfmamberCountCell: return "mamberCountCell"
+        case .numberOfroomsCountCell: return "memberCountCell"
+        case .numberOfmamberCountCell: return "memberCountCell"
         }
     }
 }

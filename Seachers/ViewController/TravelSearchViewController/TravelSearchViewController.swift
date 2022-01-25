@@ -13,6 +13,9 @@ class TravelSearchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private var presenter: TravelSearchPresenterInput!
+    private var datePicker: ReservationDateCell!
+    private var datePickerCheckInShowing = false
+    private var datePickerCheckOutShowing = false
     
     func inject(presenter:TravelSearchPresenterInput){
         self.presenter = presenter
@@ -62,9 +65,36 @@ extension TravelSearchViewController: TravelSearchPresenterOutput{
         tableView.register(UINib(nibName: "SelectDestinationCell", bundle: nil), forCellReuseIdentifier: "selectDestinationCell")
         tableView.register(UINib(nibName: "ReservationDateCell", bundle: nil), forCellReuseIdentifier: "reservationDateCell")
         tableView.register(UINib(nibName: "RoomTableViewCell", bundle: nil), forCellReuseIdentifier: "roomTableViewCell")
-        tableView.register(UINib(nibName: "MemberCountCell", bundle: nil), forCellReuseIdentifier: "mamberCountCell")
+        tableView.register(UINib(nibName: "MemberCountCell", bundle: nil), forCellReuseIdentifier: "memberCountCell")
     }
     
+    func transitionToPlaceSearchView() {
+        let storyboard = UIStoryboard(name: "PlaceSearch", bundle: nil)
+        let placeSearchVC = storyboard.instantiateInitialViewController() as! PlaceSearchViewController
+        self.navigationController?.pushViewController(placeSearchVC, animated: true)
+    }
+    
+    func datePickerOfCheckInIsHidden() {
+        self.tableView.beginUpdates()
+        if datePickerCheckInShowing{
+            datePicker.hidePicker()
+        }else{
+            datePicker.showPicker()
+        }
+        self.datePickerCheckInShowing.toggle()
+        self.tableView.endUpdates()
+    }
+    
+    func datePickerOfCheckOutIsHidden() {
+        self.tableView.beginUpdates()
+        if datePickerCheckOutShowing{
+            datePicker.hidePicker()
+        }else{
+            datePicker.showPicker()
+        }
+        self.datePickerCheckOutShowing.toggle()
+        self.tableView.endUpdates()
+    }
     
 }
 
@@ -99,9 +129,11 @@ extension TravelSearchViewController: UITableViewDelegate, UITableViewDataSource
             switch (cellType)! {
             case .checkInCell:
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellType!.cellIdentifier) as! ReservationDateCell
+                self.datePicker = cell
                 return cell
             case .checkOutCell:
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellType!.cellIdentifier) as! ReservationDateCell
+                self.datePicker = cell
                 return cell
             }
         case .roomTableViewCell:
@@ -111,8 +143,6 @@ extension TravelSearchViewController: UITableViewDelegate, UITableViewDataSource
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellType!.cellIdentifier) as! RoomTableViewCell
                 return cell
             case .numberOfroomsCountCell:
-                print("%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
-                print(cellType!.cellIdentifier)
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellType!.cellIdentifier) as! MemberCountCell
                 return cell
             case .numberOfmamberCountCell:
@@ -120,6 +150,10 @@ extension TravelSearchViewController: UITableViewDelegate, UITableViewDataSource
                 return cell
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.presenter.didSelectCell(indexPath_row: indexPath.row, indexPath_section: indexPath.section)
     }
     
     
