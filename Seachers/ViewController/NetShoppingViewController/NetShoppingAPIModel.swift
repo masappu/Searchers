@@ -26,8 +26,6 @@ struct productData {
     var name:String?
     var price:Int?
     var product_image:String?
-    var favorite:Bool?
-    
 }
 
 class NetShoppingAPIModel: NetShoppingAPIModelInput{
@@ -35,15 +33,10 @@ class NetShoppingAPIModel: NetShoppingAPIModelInput{
     var presenter:NetShoppingAPIModelOutput
 
     var urlString:String?
-//    var apikey = "e06e2a5afcf14b52139c1fb6c58e9dbc"
     var apikey = "1072027207911802205"
     var pageCount = Int()
-//    var urlArray = [String]()
-//    var imageStringArray = [String]()
-//    var nameStringArray = [String]()
-//    var priceIntArray = [Int]()
     var productDataArray = [productData]()
-//    var keywordString = String()
+
 
     
   init(presenter:NetShoppingAPIModelOutput){
@@ -83,7 +76,7 @@ class NetShoppingAPIModel: NetShoppingAPIModelInput{
 
                             
                             let productData = productData(url: json["Products"][i]["Product"]["productUrlMobile"].string,
-                                                          name: json["Products"][i]["Product"]["productUrlMobile"].string,
+                                                          name: json["Products"][i]["Product"]["productName"].string,
                                                           price: json["Products"][i]["Product"]["minPrice"].int,
                                                           product_image: json["Products"][i]["Product"]["smallImageUrl"].string)
                             
