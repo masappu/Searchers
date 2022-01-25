@@ -107,13 +107,14 @@ extension PlaceSearchViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0{
-            return 80
-        }else if indexPath.section == 1{
-            return 170
-        }else{
-            return 400
-        }
+//        if indexPath.section == 0{
+//            return 80
+//        }else if indexPath.section == 1{
+//            return 170
+//        }else{
+//            return 400
+//        }
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
