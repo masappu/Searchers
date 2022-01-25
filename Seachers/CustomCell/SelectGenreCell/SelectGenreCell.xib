@@ -55,7 +55,7 @@
                         </preferredSymbolConfiguration>
                     </imageView>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="nFa-Tg-pky" customClass="IntrinsicCollectionView" customModule="Seachers" customModuleProvider="target">
-                        <rect key="frame" x="30" y="120" width="330" height="60"/>
+                        <rect key="frame" x="30" y="115" width="330" height="60"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="60" id="UCV-b0-XkG"/>
@@ -70,12 +70,12 @@
                 </subviews>
                 <viewLayoutGuide key="safeArea" id="lRP-8o-Tpv"/>
                 <constraints>
-                    <constraint firstItem="nFa-Tg-pky" firstAttribute="bottom" secondItem="lRP-8o-Tpv" secondAttribute="bottom" id="4YX-72-LKe"/>
                     <constraint firstItem="dw9-SY-SJV" firstAttribute="top" secondItem="lRP-8o-Tpv" secondAttribute="top" constant="25" id="4zJ-HD-afn"/>
                     <constraint firstItem="nFa-Tg-pky" firstAttribute="leading" secondItem="lRP-8o-Tpv" secondAttribute="leading" constant="30" id="68p-kv-4iY"/>
+                    <constraint firstItem="lRP-8o-Tpv" firstAttribute="bottom" secondItem="nFa-Tg-pky" secondAttribute="bottom" constant="5" id="6JA-At-wZW"/>
                     <constraint firstItem="lRP-8o-Tpv" firstAttribute="trailing" secondItem="dEL-Km-Lqi" secondAttribute="trailing" constant="40" id="92X-ZM-6Sv"/>
                     <constraint firstItem="dw9-SY-SJV" firstAttribute="leading" secondItem="lRP-8o-Tpv" secondAttribute="leading" constant="30" id="DwZ-7J-Wyy"/>
-                    <constraint firstItem="nFa-Tg-pky" firstAttribute="top" secondItem="lRP-8o-Tpv" secondAttribute="top" constant="120" id="Hna-gO-Ihp"/>
+                    <constraint firstItem="nFa-Tg-pky" firstAttribute="top" secondItem="lRP-8o-Tpv" secondAttribute="top" constant="115" id="Hna-gO-Ihp"/>
                     <constraint firstItem="dEL-Km-Lqi" firstAttribute="top" secondItem="lRP-8o-Tpv" secondAttribute="top" constant="50" id="MqT-v5-VMy"/>
                     <constraint firstItem="lRP-8o-Tpv" firstAttribute="trailing" secondItem="nFa-Tg-pky" secondAttribute="trailing" constant="30" id="x6R-6e-LtN"/>
                     <constraint firstItem="lRP-8o-Tpv" firstAttribute="trailing" secondItem="dw9-SY-SJV" secondAttribute="trailing" constant="70" id="zGM-cu-jsj"/>
@@ -87,7 +87,7 @@
                 <outlet property="collectionViewHeight" destination="UCV-b0-XkG" id="H9K-gI-cSm"/>
                 <outlet property="selectLabel" destination="gB4-EI-gxP" id="3wr-qZ-LNt"/>
             </connections>
-            <point key="canvasLocation" x="-136.23188405797103" y="16.40625"/>
+            <point key="canvasLocation" x="-136.23188405797103" y="16.071428571428569"/>
         </tableViewCell>
     </objects>
     <resources>
