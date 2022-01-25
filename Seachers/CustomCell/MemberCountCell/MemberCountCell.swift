@@ -13,6 +13,7 @@ class MemberCountCell: UITableViewCell {
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var minusButton: UIButton!
     
+    let buttonAnimat = ButtonAnimatedModel(animatType: .countCellButton)
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,10 +32,12 @@ class MemberCountCell: UITableViewCell {
     }
     
     @objc func touchDown(_ sender:UIButton){
-        
+        self.buttonAnimat.startAnimation(sender: sender)
     }
 
     @objc func touchUpOutside(_ sender:UIButton){
-        
+        self.buttonAnimat.endAnimation(sender: sender)
     }
+    
+
 }
