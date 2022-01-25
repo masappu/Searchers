@@ -12,8 +12,8 @@ import SDWebImage
 
 class MapViewController: UIViewController {
     
-    
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     var googleMap = GMSMapView()
     var searchBar = UISearchBar()
@@ -34,27 +34,22 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         let presenter = MapPresenter(view: self)
         inject(presenter: presenter)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        presenter.loadMap(gourmandSearchData: gourmandSearchData)
+        presenter.reloadData(gourmandSearchData:gourmandSearchData,rangeCount:3,previousVCString:previousVCString)
         presenter.configureSubViews()
+        presenter.previousVCString = previousVCString
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        textFieldInsideSearchBar.endEditing(true)
-    }
-    
+
     @objc func doneButtonOfCategory(){
         presenter.requestDoneButtonOfCategory(text: searchBar.text!)
         textFieldInsideSearchBar.endEditing(true)
     }
     
     @objc func addToFavoritesButton(_ sender: UIButton){
-        print(sender.superview?.superview?.superview?.superview)
         let cell = sender.superview?.superview?.superview?.superview as! UICollectionViewCell
         let indexPath = collectionView.indexPath(for: cell)
         presenter.addToFavoritesButton(indexPath: indexPath!)
@@ -65,7 +60,6 @@ class MapViewController: UIViewController {
         let indexPath = collectionView.indexPath(for: cell)
         presenter.goToWebVCButton(indexPath: indexPath!)
     }
-    
     
 }
 
@@ -100,16 +94,14 @@ extension MapViewController: UICollectionViewDataSource{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(cellType!.cellIdentifier)", for: indexPath) as! GourmandCell
             let shopDataArray = presenter.shopDataArray!
 
-            cell.shopImageView?.sd_setImage(with: URL(string: shopDataArray[indexPath.row].value!.shop_image!), completed: nil)
-            cell.area_genreLabel?.text = shopDataArray[indexPath.row].value!.smallAreaName! + "/" + shopDataArray[indexPath.row].value!.genreName!
-            cell.shopNameLabel?.text = shopDataArray[indexPath.row].value!.name
-            cell.averageBudgetLabel?.text = shopDataArray[indexPath.row].value!.budgetAverage
-            cell.lunchLabel?.text = shopDataArray[indexPath.row].value!.lunch
+            cell.shopImageView?.sd_setImage(with: URL(string: shopDataArray[indexPath.row].shopData.shop_image!), completed: nil)
+            cell.area_genreLabel?.text = shopDataArray[indexPath.row].shopData.smallAreaName! + "/" + shopDataArray[indexPath.row].shopData.genreName!
+            cell.shopNameLabel?.text = shopDataArray[indexPath.row].shopData.name
+            cell.averageBudgetLabel?.text = shopDataArray[indexPath.row].shopData.budgetAverage
+            cell.lunchLabel?.text = shopDataArray[indexPath.row].shopData.lunch
             cell.favButton!.addTarget(self, action: #selector(addToFavoritesButton(_:)), for: .touchUpInside)
-            cell.favButton?.setImage(UIImage(systemName: shopDataArray[indexPath.row].value!.favShop), for: .normal)
+            cell.favButton?.setImage(UIImage(systemName: shopDataArray[indexPath.row].favShop), for: .normal)
             cell.detailButton.addTarget(self, action: #selector(goToWebVCButton(_:)), for: .touchUpInside)
-            print(shopDataArray[indexPath.row])
-            print(shopDataArray[indexPath.row].value!.favShop)
 
             return cell
         case .travelCell:
@@ -147,9 +139,24 @@ extension MapViewController: GMSMapViewDelegate{
         return true
     }
     
+    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        searchBar.text = ""
+        textFieldInsideSearchBar.endEditing(true)
+    }
+    
 }
 
 extension MapViewController: MapPresenterOutput{
+    
+    func indicatorViewStart() {
+        activityIndicatorView.isHidden = false
+        activityIndicatorView.startAnimating()
+    }
+    
+    func indicatorViewStop() {
+        activityIndicatorView.isHidden = true
+        activityIndicatorView.stopAnimating()
+    }
     
     func goToWebVC(url: String) {
         let storyboard = UIStoryboard(name: "WebView", bundle: nil)
@@ -177,7 +184,7 @@ extension MapViewController: MapPresenterOutput{
         textFieldInsideSearchBar.endEditing(true)
         searchBar.placeholder = "\(searchBar.text!)mを検索中"
         searchBar.text = searchBar.text! + "m"
-        presenter.reloadMap(gourmandSearchData: gourmandSearchData, rangeCount: rangeCount)
+        presenter.reloadData(gourmandSearchData: gourmandSearchData, rangeCount: rangeCount,previousVCString:previousVCString)
     }
     
     func setUpMap(idoValue:Double,keidoValue:Double) {
@@ -191,8 +198,10 @@ extension MapViewController: MapPresenterOutput{
         googleMap.delegate = self
         googleMap.isMyLocationEnabled = true
         googleMap.settings.myLocationButton = true
-//        let shopDataArray = presenter.shopDataArray!
+        
         let markers = presenter.markers
+        print("daigodaigo")
+        print(markers.count)
         for marker in markers{
             marker.map = googleMap
         }
@@ -203,7 +212,6 @@ extension MapViewController: MapPresenterOutput{
         pickerViewOfCategory.delegate = self
         pickerViewOfCategory.dataSource = self
 
-        //カテゴリーのピッカーの生成
         let buttonItemOfCategory = UIBarButtonItem(title: "決定", style: .done, target: self, action: #selector(doneButtonOfCategory))
         toolbarOfCategory.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44)
         toolbarOfCategory.setItems([buttonItemOfCategory], animated: true)
@@ -211,7 +219,6 @@ extension MapViewController: MapPresenterOutput{
     
     func setUpSearchBar() {
         if let navigationBarFrame = navigationController?.navigationBar.bounds {
-//            let frame = CGRect(x: 0, y: 0, width: 100, height: 20)
             let searchBar: UISearchBar = UISearchBar(frame: navigationBarFrame)
             self.searchBar = searchBar
             searchBar.delegate = self
@@ -279,10 +286,5 @@ extension MapViewController: UISearchBarDelegate{
         searchBar.resignFirstResponder()
     }
     
-    //検索バーでEnterが押された時
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        self.searchBar.placeholder = "\(searchBar.text!)mを検索中"
-    }
-
 }
 

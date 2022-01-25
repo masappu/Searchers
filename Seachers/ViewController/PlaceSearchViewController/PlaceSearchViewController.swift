@@ -14,8 +14,10 @@ class PlaceSearchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var autocompleteController = GMSAutocompleteViewController()
-    private var placeDataModel: PlaceDataModel!
+    var placeSearchDataModel = PlaceSearchDataModel()
     private var presenter: PlaceSearchPresenterInput!
+    private var pickerView: DistanceCell?
+    private var isPickerViewShowing = false
     
     func inject(presenter:PlaceSearchPresenterInput){
         self.presenter = presenter
@@ -26,11 +28,12 @@ class PlaceSearchViewController: UIViewController {
         
         let presenter = PlaceSearchPresenter(view:self)
         inject(presenter: presenter)
+   
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        presenter.loadView()
+        presenter.loadView(Data: self.placeSearchDataModel)
         self.navigationItem.title = "目的地"
     }
     
@@ -38,6 +41,8 @@ class PlaceSearchViewController: UIViewController {
         self.presenter.searchButton()
     }
     
+    @IBAction func doneButton(_ sender: Any) {
+    }
 
 }
 
@@ -45,10 +50,11 @@ class PlaceSearchViewController: UIViewController {
 extension PlaceSearchViewController: PlaceSearchPresenterOutput{
 
     
-    
     func setTableViewInfo() {
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.rowHeight = UITableView.automaticDimension
+
         tableView.register(UINib(nibName: "PlaceSearchCell", bundle: nil), forCellReuseIdentifier: "PlaceSearchCell")
         tableView.register(UINib(nibName: "PlaceCell", bundle: nil), forCellReuseIdentifier: "PlaceCell")
         tableView.register(UINib(nibName: "DistanceCell", bundle: nil), forCellReuseIdentifier: "DistanceCell")
@@ -63,10 +69,27 @@ extension PlaceSearchViewController: PlaceSearchPresenterOutput{
         self.present(autocompleteController, animated: true, completion: nil)
     }
     
-    func AutocompleteControllerDismiss(selectedData: PlaceDataModel) {
-        self.placeDataModel = selectedData
+    func AutocompleteControllerDismiss(selectedData: PlaceSearchDataModel) {
+        self.placeSearchDataModel = selectedData
         self.dismiss(animated: true, completion: nil)
         tableView.reloadData()
+    }
+    
+    func pickerViewIsHidden() {
+        self.tableView.beginUpdates()
+        if isPickerViewShowing{
+            pickerView?.hidePicker()
+        }else{
+            pickerView?.showPicker()
+        }
+        self.isPickerViewShowing.toggle()
+        self.tableView.endUpdates()
+    }
+    
+    func reloadDistanceLabel() {
+        self.tableView.beginUpdates()
+        pickerView?.distanceLabel.text = String(self.presenter.placeData.searchRange) + "m 以内"
+        self.tableView.endUpdates()
     }
     
 }
@@ -84,13 +107,14 @@ extension PlaceSearchViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0{
-            return 80
-        }else if indexPath.section == 1{
-            return 170
-        }else{
-            return 50
-        }
+//        if indexPath.section == 0{
+//            return 80
+//        }else if indexPath.section == 1{
+//            return 170
+//        }else{
+//            return 400
+//        }
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -101,17 +125,19 @@ extension PlaceSearchViewController: UITableViewDelegate, UITableViewDataSource{
             return cell
         }else if indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "PlaceCell", for: indexPath) as! PlaceCell
-            if placeDataModel == nil{
-                cell.placeLabel.text = "未経験"
-            }else{
-                cell.placeLabel.text = placeDataModel.name
-            }
+                cell.placeLabel.text = placeSearchDataModel.name
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "DistanceCell", for: indexPath) as! DistanceCell
-            cell.distanceLabel.text = "○○○○m　以内"
+            self.pickerView = cell
+            cell.inject(presenter: self.presenter)
+            cell.distanceLabel.text = String(placeSearchDataModel.searchRange) + "m 以内"
             return cell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.presenter.didSelectCell(index: indexPath.section)
     }
     
     
@@ -122,10 +148,7 @@ extension PlaceSearchViewController: GMSAutocompleteViewControllerDelegate{
     
     
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        print("************")
-        print(place)
-        let placeData = PlaceDataModel(name: place.name!, latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
-        self.presenter.searchData(Data: placeData)
+        self.presenter.searchData(name: place.name!, longitude: place.coordinate.longitude, latitude: place.coordinate.latitude)
     }
     
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
