@@ -80,7 +80,7 @@ class DistanceCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSourc
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         distanceLabel.text = list[row]
-        self.presenter.didSelectPickerData(Data: list[row])
+        self.presenter.didSelectPickerData(selectedData: list[row])
     }
     
 }
