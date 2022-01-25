@@ -48,7 +48,7 @@ class PlaceSearchViewController: UIViewController {
 
 // MARK: - PlaceSearchPresenterOutput
 extension PlaceSearchViewController: PlaceSearchPresenterOutput{
-   
+
     
     func setTableViewInfo() {
         tableView.delegate = self
