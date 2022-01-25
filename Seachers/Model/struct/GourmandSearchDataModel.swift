@@ -10,20 +10,19 @@ import UIKit
 
 struct GourmandSearchDataModel{
     var place:PlaceSearchDataModel
-    var genre:[GenreModel]
+    var genre:[GenreViewModel]
     var date:DateModel
     var memberCount:Int
     
     init(){
         self.place = PlaceSearchDataModel()
-        self.genre = [GenreModel]()
+        self.genre = [GenreViewModel]()
         self.date = DateModel()
         memberCount = 2
     }
 }
 
-
-struct GenreModel{
+struct GenreViewModel{
     var name:String
     var id:String
     var selected:Bool
@@ -45,5 +44,6 @@ struct GenreModel{
         self.selected = false
     }
 }
+
 
 
