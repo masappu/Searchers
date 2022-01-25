@@ -25,22 +25,11 @@ enum GourmandSearchCellType: Int, CaseIterable, CellType{
         case .selectDestinationCell: return "selectDestinationCell"
         case .selectGenreCell: return "selectGenreCell"
         case .reservationDateCell: return "reservationDateCell"
-        case .mamberCountCell: return "mamberCountCell"
+        case .mamberCountCell: return "memberCountCell"
         }
     }
 }
 
-enum SelectGenreCellType:String ,CaseIterable,CellType{
-    case selectGenreCell = "exitingData"
-    case nonSelectGenreCell = "noData"
-    
-    var cellIdentifier: String{
-        switch self {
-        case .selectGenreCell: return "selectGenreCell"
-        case .nonSelectGenreCell:return "nonSelectGenreCell"
-        }
-    }
-}
 
 enum MapCellType: String, CaseIterable, CellType{
     case gourmandCell = "GourmandSearchViewController"
