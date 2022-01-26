@@ -8,6 +8,10 @@
 import UIKit
 import GooglePlaces
 
+protocol PlaceSearchViewOutput{
+    func passData(Data:PlaceSearchDataModel)
+}
+
 class PlaceSearchViewController: UIViewController {
 
     
@@ -15,6 +19,7 @@ class PlaceSearchViewController: UIViewController {
     
     var autocompleteController = GMSAutocompleteViewController()
     var placeSearchDataModel = PlaceSearchDataModel()
+    var placeSearchViewOutput: PlaceSearchViewOutput!
     private var presenter: PlaceSearchPresenterInput!
     private var pickerView: DistanceCell?
     private var isPickerViewShowing = false
@@ -42,6 +47,7 @@ class PlaceSearchViewController: UIViewController {
     }
     
     @IBAction func doneButton(_ sender: Any) {
+        self.presenter.pushDoneButton()
     }
 
 }
@@ -92,6 +98,13 @@ extension PlaceSearchViewController: PlaceSearchPresenterOutput{
         self.tableView.endUpdates()
     }
     
+    func goBack(selectedData: PlaceSearchDataModel) {
+        print("&&&&&&&&&&&&&&&&&&&")
+        print(selectedData)
+//        self.placeSearchViewOutput.passData(Data: selectedData)
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 }
 
 // MARK: - TableView
@@ -107,13 +120,6 @@ extension PlaceSearchViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if indexPath.section == 0{
-//            return 80
-//        }else if indexPath.section == 1{
-//            return 170
-//        }else{
-//            return 400
-//        }
         return UITableView.automaticDimension
     }
     

@@ -14,7 +14,8 @@ protocol PlaceSearchPresenterInput{
     func searchButton()
     func searchData(name:String,longitude:Double,latitude:Double)
     func didSelectCell(index:Int)
-    func didSelectPickerData(Data:String)
+    func didSelectPickerData(selectedData:String)
+    func pushDoneButton()
 }
 
 protocol PlaceSearchPresenterOutput{
@@ -25,6 +26,7 @@ protocol PlaceSearchPresenterOutput{
     func AutocompleteControllerDismiss(selectedData: PlaceSearchDataModel)
     func pickerViewIsHidden()
     func reloadDistanceLabel()
+    func goBack(selectedData:PlaceSearchDataModel)
 }
 
 final class PlaceSearchPresenter: PlaceSearchPresenterInput{
@@ -48,8 +50,11 @@ final class PlaceSearchPresenter: PlaceSearchPresenterInput{
     
     func searchData(name: String, longitude: Double, latitude: Double) {
         self.placeData.name = name
+        print("$$$$$$$$$$$$$$$$$$")
+        print(longitude)
         self.placeData.locaitonAtSearchPlace?.longitude = longitude
         self.placeData.locaitonAtSearchPlace?.latitude = latitude
+        print(placeData)
         self.view.AutocompleteControllerDismiss(selectedData: placeData)
     }
     
@@ -59,9 +64,13 @@ final class PlaceSearchPresenter: PlaceSearchPresenterInput{
         }
     }
     
-    func didSelectPickerData(Data: String) {
-        self.placeData.searchRange = Int(Data)!
+    func didSelectPickerData(selectedData: String) {
+        self.placeData.searchRange = Int(selectedData)!
         self.view.reloadDistanceLabel()
+    }
+    
+    func pushDoneButton() {
+        self.view.goBack(selectedData: self.placeData)
     }
     
 }
