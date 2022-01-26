@@ -15,35 +15,25 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var TravelButtom: UIButton!
     @IBOutlet weak var FavoriteButtom: UIButton!
     @IBOutlet weak var BackgroundImage: UIImageView!
-    @IBOutlet weak var ShoppingImage: UIImageView!
-    @IBOutlet weak var GourmandImage: UIImageView!
-    @IBOutlet weak var TravelImage: UIImageView!
+    @IBOutlet weak var shoppingImage: UIImageView!
+    @IBOutlet weak var gourmandImage: UIImageView!
+    @IBOutlet weak var travelImage: UIImageView!
     
     
   
     
-    var player = AVPlayer()
-        let path = Bundle.main.path(forResource: "Sample", ofType: "mov")
-    
-    let image = UIImage(named: "")
-    let a = [UIImage(named: "")]
+//    var player = AVPlayer()
+//        let path = Bundle.main.path(forResource: "Sample", ofType: "mov")
+//
+//    let image = UIImage(named: "")
+//    let a = [UIImage(named: "")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let fade = CATransition()
-        fade.duration = 3
-        fade.timingFunction = CAMediaTimingFunction(name: .default)
-        fade.type = CATransitionType.fade
-        BackgroundImage.layer.add(fade, forKey: "fade")
-        
         NetShoppingButtom.layer.cornerRadius = 20
-        
         GourmandButtom.layer.cornerRadius = 20
-        
         TravelButtom.layer.cornerRadius = 20
-        
-        FavoriteButtom.layer.borderWidth = 1
         FavoriteButtom.layer.cornerRadius = 10
         
         //背景動画のやつ
@@ -75,34 +65,39 @@ class HomeViewController: UIViewController {
                         TravelButtom.heightAnchor.constraint(equalToConstant: 40)
                         ])
         
-        ShoppingImage.layer.shadowColor = UIColor.black.cgColor
-        ShoppingImage.layer.shadowOpacity = 0.4 //濃さ
-        ShoppingImage.layer.shadowRadius = 5.0 //ぼかし量
-        ShoppingImage.layer.shadowOffset = CGSize(width: 8.0, height: 8.0) //方向
-        GourmandImage.layer.shadowColor = UIColor.black.cgColor
-        GourmandImage.layer.shadowOpacity = 0.8
-        GourmandImage.layer.shadowRadius = 5.0
-        GourmandImage.layer.shadowOffset = CGSize(width: 8.0, height: 8.0)
-        TravelImage.layer.shadowColor = UIColor.black.cgColor
-        TravelImage.layer.shadowOpacity = 0.8
-        TravelImage.layer.shadowRadius = 5.0
-        TravelImage.layer.shadowOffset = CGSize(width: 8.0, height: 8.0)
-        NetShoppingButtom.layer.shadowColor = UIColor.black.cgColor
-        NetShoppingButtom.layer.shadowOpacity = 0.8
-        NetShoppingButtom.layer.shadowRadius = 5.0
-        NetShoppingButtom.layer.shadowOffset = CGSize(width: 8.0, height: 8.0)
-        GourmandButtom.layer.shadowColor = UIColor.black.cgColor
-        GourmandButtom.layer.shadowOpacity = 0.8
-        GourmandButtom.layer.shadowRadius = 5.0
-        GourmandButtom.layer.shadowOffset = CGSize(width: 8.0, height: 8.0)
-        TravelButtom.layer.shadowColor = UIColor.black.cgColor
-        TravelButtom.layer.shadowOpacity = 0.8
-        TravelButtom.layer.shadowRadius = 5.0
-        TravelButtom.layer.shadowOffset = CGSize(width: 8.0, height: 8.0)
-        FavoriteButtom.layer.shadowColor = UIColor.black.cgColor
-        FavoriteButtom.layer.shadowOpacity = 0.8
-        FavoriteButtom.layer.shadowRadius = 5.0
-        FavoriteButtom.layer.shadowOffset = CGSize(width: 8.0, height: 8.0)
+//        shoppingImage.layer.shadowColor = UIColor.black.cgColor
+//        shoppingImage.layer.shadowOpacity = 0.8 //濃さ
+//        shoppingImage.layer.shadowRadius = 1.5 //ぼかし量
+//        shoppingImage.layer.shadowOffset = CGSize(width: 4.0, height: 4.0) //方向
+        shoppingImage.layer.cornerRadius = shoppingImage.frame.size.width * 0.5
+        shoppingImage.clipsToBounds = true
+        
+//        gourmandImage.layer.shadowColor = UIColor.black.cgColor
+//        gourmandImage.layer.shadowOpacity = 0.8
+//        gourmandImage.layer.shadowRadius = 1.5
+//        gourmandImage.layer.shadowOffset = CGSize(width: 4.0, height: 4.0)
+        gourmandImage.layer.cornerRadius = gourmandImage.frame.size.width * 0.5
+        gourmandImage.clipsToBounds = true
+      
+        travelImage.layer.cornerRadius = travelImage.frame.size.width * 0.5
+        travelImage.clipsToBounds = true
+        
+//        NetShoppingButtom.layer.shadowColor = UIColor.black.cgColor
+//        NetShoppingButtom.layer.shadowOpacity = 0.4
+//        NetShoppingButtom.layer.shadowRadius = 1.5
+//        NetShoppingButtom.layer.shadowOffset = CGSize(width: 4.0, height: 4.0)
+//        GourmandButtom.layer.shadowColor = UIColor.black.cgColor
+//        GourmandButtom.layer.shadowOpacity = 0.4
+//        GourmandButtom.layer.shadowRadius = 1.5
+//        GourmandButtom.layer.shadowOffset = CGSize(width: 4.0, height: 4.0)
+//        TravelButtom.layer.shadowColor = UIColor.black.cgColor
+//        TravelButtom.layer.shadowOpacity = 0.4
+//        TravelButtom.layer.shadowRadius = 1.5
+//        TravelButtom.layer.shadowOffset = CGSize(width: 4.0, height: 4.0)
+//        FavoriteButtom.layer.shadowColor = UIColor.black.cgColor
+//        FavoriteButtom.layer.shadowOpacity = 0.4
+//        FavoriteButtom.layer.shadowRadius = 1.5
+//        FavoriteButtom.layer.shadowOffset = CGSize(width: 4.0, height: 4.0)
         
         
                         prepareForAnimation()
@@ -124,9 +119,9 @@ class HomeViewController: UIViewController {
                                     self.GourmandButtom.layer.setAffineTransform(CGAffineTransform.identity)
                                     self.TravelButtom.layer.opacity = 1
                                     self.TravelButtom.layer.setAffineTransform(CGAffineTransform.identity)
-                                    self.ShoppingImage.layer.opacity = 1
-                                    self.GourmandImage.layer.opacity = 1
-                                    self.TravelImage.layer.opacity = 1
+                                    self.shoppingImage.layer.opacity = 1
+                                    self.gourmandImage.layer.opacity = 1
+                                    self.travelImage.layer.opacity = 1
                          
                                 }, completion: nil)
                             }
@@ -136,24 +131,26 @@ class HomeViewController: UIViewController {
         NetShoppingButtom.layer.opacity = 0
         GourmandButtom.layer.opacity = 0
         TravelButtom.layer.opacity = 0
-        ShoppingImage.layer.opacity = 0
-        GourmandImage.layer.opacity = 0
-        TravelImage.layer.opacity = 0
+        shoppingImage.layer.opacity = 0
+        gourmandImage.layer.opacity = 0
+        travelImage.layer.opacity = 0
         
             
         NetShoppingButtom.layer.setAffineTransform(CGAffineTransform.init(translationX: 0, y: 30))
         GourmandButtom.layer.setAffineTransform(CGAffineTransform .init(translationX: 0, y: 60))
         TravelButtom.layer.setAffineTransform(CGAffineTransform .init(translationX: 0, y: 60))
         
-        ShoppingImage.layer.setAffineTransform(CGAffineTransform.init(scaleX: 0.8, y: 0.8))
-        GourmandImage.layer.setAffineTransform(CGAffineTransform.init(scaleX: 0.8, y: 0.8))
-        TravelImage.layer.setAffineTransform(CGAffineTransform.init(scaleX: 0.8, y: 0.8))
+        shoppingImage.layer.setAffineTransform(CGAffineTransform.init(scaleX: 0.8, y: 0.8))
+        gourmandImage.layer.setAffineTransform(CGAffineTransform.init(scaleX: 0.8, y: 0.8))
+        travelImage.layer.setAffineTransform(CGAffineTransform.init(scaleX: 0.8, y: 0.8))
         }
- 
+    
+}
+    
     
 
     
-}
+
 
 
 
