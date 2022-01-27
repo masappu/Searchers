@@ -12,26 +12,30 @@ import SwiftyJSON
 
 protocol TravelAPIInput{
     
-    
+    func requestData(searchData:TravelSearchDataModel,hits:Int,page:Int)
 }
 
 protocol TravelAPIOutput{
     
-    
+    func completedTravelAPIData(data:[HotelBasicInfo],pagingInfo:PagingInfo)
+    func requestfailed(error:Error)
     
 }
 
-struct TravelData:Decodable{
+struct TravelAPIDecoder:Codable{
     var pagingInfo:PagingInfo
-    var hotels:[HotelInfo]
+    var hotels:[Hotels]
 }
 
-struct getData:Decodable{
-    var pagingInfo:[PagingInfo]
-    var hotels:[Hotel]
+struct Hotels:Codable{
+    var hotel:[Hotel]
 }
 
-struct PagingInfo:Decodable{
+struct Hotel:Codable{
+    var hotelBasicInfo:HotelBasicInfo
+}
+
+struct PagingInfo:Codable{
     var recordCount:Int
     var pageCount:Int
     var page:Int
@@ -39,39 +43,24 @@ struct PagingInfo:Decodable{
     var last:Int
 }
 
-struct Hotel:Decodable{
-    var hotel:[HotelBasicInfo]
+struct HotelBasicInfo:Codable{
+    var hotelName:String?
+    var planListUrl:String?
+    var hotelMinCharge:Int?
+    var address1:String?
+    var nearestStation:String?
+    var hotelImageUrl:String?
 }
 
-struct HotelBasicInfo:Decodable{
-    var hotelBasicInfo:HotelInfo
-}
 
-struct HotelInfo:Decodable{
-    var hotelName:String
-    var planListUrl:String
-    var hotelMinCharge:Int
-    var address1:String
-    var nearestStation:String
-    var hotelImageUrl:String
-}
-
-struct TravelsearchDataModel{
-    var passData:PassData
-    let elements:String
-    let datumType:Int
+struct TravelRequestParameterModel{
+    let searchData:PassData
     let hits:Int
     let page:Int
-    let sort:String
-    let apiKey = "1072027207911802205"
-    init(){
-        self.passData = PassData()
-        self.elements = "hotelName%2CplanListUrl%2Caddress1%2CnearestStation%2ChotelMinCharge%2ChotelImageUrl%2CrecordCount%2CpageCount%2Cpage%2Cfirst%2Clast"
-        self.datumType = 1
-        self.hits = 30
-        self.page = 1
-        self.sort = "%2BroomCharge"
-    }
+    let elements:String  = "hotelName%2CplanListUrl%2Caddress1%2CnearestStation%2ChotelMinCharge%2ChotelImageUrl%2CrecordCount%2CpageCount%2Cpage%2Cfirst%2Clast"
+    let datumType:Int = 1
+    let sort:String = "%2BroomCharge"
+    let apiKey:String = "1072027207911802205"
 }
 
 struct PassData{
@@ -95,21 +84,29 @@ struct PassData{
 
 class TravelAPIModel: TravelAPIInput{
     
-    func getData(){
-        let searchData = TravelsearchDataModel()
-        let urlString = "https://app.rakuten.co.jp/services/api/Travel/VacantHotelSearch/20170426?format=json&checkinDate=\(searchData.passData.checkInDate)&checkoutDate=\(searchData.passData.checkOutDate)&elements=\(searchData.elements)&adultNum=\(searchData.passData.adultNum)&roomNum=\(searchData.passData.roomNum)&latitude=\(searchData.passData.latitude)&longitude=\(searchData.passData.longitude)&searchRadius=\(searchData.passData.searchRadius)&datumType=\(searchData.datumType)&hits=\(searchData.hits)&page=\(searchData.page)&sort=\(searchData.sort)&applicationId=\(searchData.apiKey)"
+    private var presenter:TravelAPIOutput
+    
+    init(presenter:TravelAPIOutput){
+        self.presenter = presenter
+    }
+    
+    func requestData(searchData:TravelSearchDataModel,hits:Int,page:Int){
+        let parameters = TravelRequestParameterModel(searchData: PassData(),hits: hits,page: page)
+        let urlString = "https://app.rakuten.co.jp/services/api/Travel/VacantHotelSearch/20170426?format=json&checkinDate=\(parameters.searchData.checkInDate)&checkoutDate=\(parameters.searchData.checkOutDate)&elements=\(parameters.elements)&adultNum=\(parameters.searchData.adultNum)&roomNum=\(parameters.searchData.roomNum)&latitude=\(parameters.searchData.latitude)&longitude=\(parameters.searchData.longitude)&searchRadius=\(parameters.searchData.searchRadius)&datumType=\(parameters.datumType)&hits=\(parameters.hits)&page=\(parameters.page)&sort=\(parameters.sort)&applicationId=\(parameters.apiKey)"
         
-        AF.request(urlString, method: .get, parameters: nil, encoding: JSONEncoding.default).responseDecodable(of: TravelData.self) { [self] response in
-//            print(response.debugDescription)
+        AF.request(urlString, method: .get, parameters: nil, encoding: JSONEncoding.default).responseDecodable(of: TravelAPIDecoder.self) { [self] response in
             switch response.result{
-            case.success(let hotelInfo):
-                print(hotelInfo)
+            case.success(let travelData):
+                var passData:[HotelBasicInfo] = []
+                for item in travelData.hotels{
+                    passData.append(item.hotel[0].hotelBasicInfo)
+                }
+                presenter.completedTravelAPIData(data: passData, pagingInfo: travelData.pagingInfo)
                 break
             case .failure(let error):
-                print(error)
+                presenter.requestfailed(error: error)
                 break
             }
         }
-        
     }
 }
