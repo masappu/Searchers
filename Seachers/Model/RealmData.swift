@@ -26,3 +26,14 @@ class favProductData: Object{
     @objc dynamic var url:String = ""
     @objc dynamic var price:Int = 0
 }
+
+class favHotelData: Object{
+    @objc dynamic var hotelName:String = ""
+    @objc dynamic var latitude:Double = 0.0
+    @objc dynamic var longitude:Double = 0.0
+    @objc dynamic var planListUrl:String = ""
+    @objc dynamic var hotelMinCharge:Int = 0
+    @objc dynamic var area:String = ""
+    @objc dynamic var nearestStation:String = ""
+    @objc dynamic var hotelImageUrl:String = ""
+}

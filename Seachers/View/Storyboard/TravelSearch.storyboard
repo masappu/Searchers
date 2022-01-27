@@ -28,6 +28,9 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="検索する"/>
+                                <connections>
+                                    <action selector="goMapView:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="8N9-wR-gr3"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
