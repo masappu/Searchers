@@ -37,14 +37,6 @@ class TravelSearchViewController: UIViewController {
     }
     
     
-    
-    @IBAction func goPlaceSearchVC(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "PlaceSearch", bundle: nil)
-        let placeSearchVC = storyboard.instantiateInitialViewController() as! PlaceSearchViewController
-        self.navigationController?.pushViewController(placeSearchVC, animated: true)
-    }
-    
-    
     @IBAction func goMapView(_ sender: Any) {
         let storyboard = UIStoryboard(name: "MapView", bundle: nil)
         let mapVC = storyboard.instantiateInitialViewController() as! MapViewController
@@ -104,6 +96,7 @@ extension TravelSearchViewController: TravelSearchPresenterOutput{
         let storyboard = UIStoryboard(name: "PlaceSearch", bundle: nil)
         let placeSearchVC = storyboard.instantiateInitialViewController() as! PlaceSearchViewController
         self.navigationController?.pushViewController(placeSearchVC, animated: true)
+        
     }
     
     func datePickerOfCheckInIsHidden() {
