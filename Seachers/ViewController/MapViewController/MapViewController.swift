@@ -41,7 +41,7 @@ class MapViewController: UIViewController {
         
         presenter.previousVCString = previousVCString
         presenter.reloadData(gourmandSearchData:gourmandSearchData,rangeCount:3)
-//        presenter.configureSubViews()
+        presenter.configureSubViews()
     }
 
     @objc func doneButtonOfCategory(){
@@ -79,7 +79,7 @@ extension MapViewController: UICollectionViewDataSource{
         case .gourmandCell:
             return presenter.shopDataArray!.count
         case .travelCell:
-            return 1 //（仮）
+            return presenter.travelDataArray.count
         }
     }
 
