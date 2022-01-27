@@ -20,6 +20,7 @@ class DistanceCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSourc
     }
     
     let list = ["300", "500", "1000", "2000", "3000"]
+    
     static let compressedHeight: CGFloat = 90
     static let expandedHeight: CGFloat = 250
     
