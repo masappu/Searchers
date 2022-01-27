@@ -29,6 +29,12 @@ class GourmandCell: UICollectionViewCell {
         gourmandView.layer.shadowOpacity = 0.2
         gourmandView.layer.shadowRadius = 3
         
+        detailButton.layer.cornerRadius = 10
+        detailButton.layer.masksToBounds = false
+        detailButton.layer.shadowOffset = CGSize(width: 1, height: 3)
+        detailButton.layer.shadowOpacity = 0.2
+        detailButton.layer.shadowRadius = 3
+        
         detailButton.layer.cornerRadius = 5
         // Initialization code
     }
