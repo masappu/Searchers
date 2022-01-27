@@ -10,11 +10,15 @@ import Foundation
 protocol HomeViewPresenterInput{
     var tableViewData:[TableViewData] {get set}
     func viewDidLoad()
+    func didSelectCell(indexPath:IndexPath)
 }
 
 protocol HomeViewPresenterOutput{
     func setTableViewInfo()
     func reloadTableView()
+    func trasitonToNetShoppingVC()
+    func transitionToGourmandSearchVC()
+    func transitionToTravelSearchVC()
 }
 
 struct TableViewData{
@@ -54,4 +58,13 @@ class HomeViewPresenter:HomeViewPresenterInput{
         view.reloadTableView()
     }
     
+    func didSelectCell(indexPath: IndexPath) {
+        if indexPath.row == 0{
+            view.trasitonToNetShoppingVC()
+        }else if indexPath.row == 1{
+            view.transitionToGourmandSearchVC()
+        }else if indexPath.row == 2{
+            view.transitionToTravelSearchVC()
+        }
+    }
 }
