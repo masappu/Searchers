@@ -99,9 +99,7 @@ extension PlaceSearchViewController: PlaceSearchPresenterOutput{
     }
     
     func goBack(selectedData: PlaceSearchDataModel) {
-        print("&&&&&&&&&&&&&&&&&&&")
-        print(selectedData)
-//        self.placeSearchViewOutput.passData(Data: selectedData)
+        self.placeSearchViewOutput?.passData(Data: selectedData)
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -131,10 +129,12 @@ extension PlaceSearchViewController: UITableViewDelegate, UITableViewDataSource{
             return cell
         }else if indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "PlaceCell", for: indexPath) as! PlaceCell
-                cell.placeLabel.text = placeSearchDataModel.name
+            cell.selectionStyle = .none
+            cell.placeLabel.text = placeSearchDataModel.name
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "DistanceCell", for: indexPath) as! DistanceCell
+            cell.selectionStyle = .none
             self.pickerView = cell
             cell.inject(presenter: self.presenter)
             cell.distanceLabel.text = String(placeSearchDataModel.searchRange) + "m 以内"
@@ -154,7 +154,7 @@ extension PlaceSearchViewController: GMSAutocompleteViewControllerDelegate{
     
     
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        self.presenter.searchData(name: place.name!, longitude: place.coordinate.longitude, latitude: place.coordinate.latitude)
+        self.presenter.searchData(name: place.name!, place: place.coordinate)
     }
     
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {

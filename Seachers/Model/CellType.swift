@@ -45,40 +45,40 @@ enum MapCellType: String, CaseIterable, CellType{
 
 enum TravelSearchCellType: Int, CaseIterable, CellType{
     case selectDestinationCell
-    case reservationDateCell
-    case roomTableViewCell
+    case checkCell
+    case roomAndMemberCell
     
     var cellIdentifier: String{
         switch self {
         case .selectDestinationCell: return "selectDestinationCell"
-        case .reservationDateCell: return "reservationDateCell"
-        case .roomTableViewCell: return "roomTableViewCell"
+        case .checkCell: return "checkCell"
+        case .roomAndMemberCell: return "roomAndmemberCell"
         }
     }
 }
 
-enum ReservationDateCellType: Int, CaseIterable, CellType{
+enum CheckCellType: Int, CaseIterable, CellType{
     case checkInCell
     case checkOutCell
     
     var cellIdentifier: String{
         switch self {
-        case .checkInCell: return "reservationDateCell"
-        case .checkOutCell: return "reservationDateCell"
+        case .checkInCell: return "checkInCell"
+        case .checkOutCell: return "checkOutCell"
         }
     }
 }
 
-enum RoomTableViewCellType: Int, CaseIterable, CellType{
-    case roomTableViewCell
+enum RoomAndMemberCellType: Int, CaseIterable, CellType{
+    case roomAndMemberCell
     case numberOfroomsCountCell
-    case numberOfmamberCountCell
+    case numberOfmemberCountCell
     
     var cellIdentifier: String{
         switch self {
-        case .roomTableViewCell: return "roomTableViewCell"
-        case .numberOfroomsCountCell: return "memberCountCell"
-        case .numberOfmamberCountCell: return "memberCountCell"
+        case .roomAndMemberCell: return "roomAndMemberCell"
+        case .numberOfroomsCountCell: return "roomCountOfTravelCell"
+        case .numberOfmemberCountCell: return "memberCountOfTravelCell"
         }
     }
 }

@@ -7,10 +7,10 @@
 
 import UIKit
 
-class RoomTableViewCell: UITableViewCell {
+class RoomAndMemberCell: UITableViewCell {
     
-    @IBOutlet weak var numberOfPeople: UILabel!
-    @IBOutlet weak var numberOfRooms: UILabel!
+    @IBOutlet weak var memberCountLabel: UILabel!
+    @IBOutlet weak var roomCountLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
