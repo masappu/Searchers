@@ -17,7 +17,7 @@ protocol TravelAPIInput{
 
 protocol TravelAPIOutput{
     
-    func completedTravelAPIData(data:[HotelBasicInfo],pagingInfo:PagingInfo)
+    func completedTravelAPIData(data:[HotelsData],pagingInfo:PagingInfo)
     func requestfailed(error:Error)
     
 }
@@ -48,16 +48,59 @@ struct HotelBasicInfo:Codable{
     var planListUrl:String?
     var hotelMinCharge:Int?
     var address1:String?
+    var latitude:Double?
+    var longitude:Double?
     var nearestStation:String?
     var hotelImageUrl:String?
 }
 
+struct HotelsData{
+    var hotelName = String()
+    var planListUrl = String()
+    var latitude = Double()
+    var longitude = Double()
+    var hotelMinCharge = Int()
+    var area = String()
+    var nearestStation = String()
+    var hotelImageUrl = String()
+    
+    init(origin data:HotelBasicInfo){
+        self.hotelName = data.hotelName!
+        self.planListUrl = data.planListUrl!
+        self.latitude = data.latitude!
+        self.longitude = data.longitude!
+        
+        if data.hotelMinCharge == nil{
+            self.hotelMinCharge = 0
+        }else{
+            self.hotelMinCharge = data.hotelMinCharge!
+        }
+        
+        if data.address1 == nil{
+            self.area = "-"
+        }else{
+            self.area = data.address1!
+        }
+        
+        if data.nearestStation == nil{
+            self.nearestStation = "-"
+        }else{
+            self.nearestStation = data.nearestStation!
+        }
+        
+        if data.hotelImageUrl == nil{
+            self.hotelImageUrl = "http://www.shoshinsha-design.com/wp-content/uploads/2020/05/noimage-760x460.png"
+        }else{
+            self.hotelImageUrl = data.hotelImageUrl!
+        }
+    }
+}
 
 struct TravelRequestParameterModel{
     let searchData:PassData
     let hits:Int
     let page:Int
-    let elements:String  = "hotelName%2CplanListUrl%2Caddress1%2CnearestStation%2ChotelMinCharge%2ChotelImageUrl%2CrecordCount%2CpageCount%2Cpage%2Cfirst%2Clast"
+    let elements:String  = "hotelName%2CplanListUrl%2Caddress1%2CnearestStation%2ChotelMinCharge%2ChotelImageUrl%2CrecordCount%2CpageCount%2Cpage%2Cfirst%2Clast%2Clatitude%2Clongitude"
     let datumType:Int = 1
     let sort:String = "%2BroomCharge"
     let apiKey:String = "1072027207911802205"
@@ -97,9 +140,12 @@ class TravelAPIModel: TravelAPIInput{
         AF.request(urlString, method: .get, parameters: nil, encoding: JSONEncoding.default).responseDecodable(of: TravelAPIDecoder.self) { [self] response in
             switch response.result{
             case.success(let travelData):
-                var passData:[HotelBasicInfo] = []
+                var passData:[HotelsData] = []
                 for item in travelData.hotels{
-                    passData.append(item.hotel[0].hotelBasicInfo)
+                    if item.hotel[0].hotelBasicInfo.longitude != nil || item.hotel[0].hotelBasicInfo.latitude != nil || item.hotel[0].hotelBasicInfo.hotelName != nil || item.hotel[0].hotelBasicInfo.planListUrl != nil{
+                        let newItem = HotelsData(origin: item.hotel[0].hotelBasicInfo)
+                        passData.append(newItem)
+                    }
                 }
                 presenter.completedTravelAPIData(data: passData, pagingInfo: travelData.pagingInfo)
                 break
