@@ -12,21 +12,21 @@ class HomeViewController: UIViewController {
 
     @IBOutlet weak var FavoriteButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    private var presenter:HomeViewPresenterInput!
+
+    private let itemColor: [UIColor] = [.blue,.orange,.green]
     
-    
-    
-    
-  
-    
-//    var player = AVPlayer()
-//        let path = Bundle.main.path(forResource: "Sample", ofType: "mov")
-//
-//    let image = UIImage(named: "")
-//    let a = [UIImage(named: "")]
+    func inject(presenter:HomeViewPresenterInput){
+        self.presenter = presenter
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.presenter = HomeViewPresenter(view: self)
+        
+        
+        presenter.viewDidLoad()
         FavoriteButton.layer.cornerRadius = 10
 
 //                    //ボタンアニメーション
@@ -96,11 +96,50 @@ class HomeViewController: UIViewController {
 //        }
 //
 }
+}
+extension HomeViewController:UITableViewDelegate,UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.presenter.tableViewData.count
+    }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
+        let iconImage = cell.contentView.viewWithTag(2) as! UIImageView
+        let cirleColorImage = cell.contentView.viewWithTag(1) as! UIImageView
+        let goToSearchButton = cell.contentView.viewWithTag(3) as! UIButton
+        let underLineView = cell.contentView.viewWithTag(4)!
+        
+        goToSearchButton.titleLabel?.text = presenter.tableViewData[indexPath.row].goToSearchButtonName
+        iconImage.image = UIImage(systemName: self.presenter.tableViewData[indexPath.row].iconStringID)
+        iconImage.tintColor = .white
+        cirleColorImage.backgroundColor = self.itemColor[indexPath.row]
+        
+        underLineView.backgroundColor? = self.itemColor[indexPath.row]
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
+
+        
+}
     
 
+extension HomeViewController:HomeViewPresenterOutput{
+    func setTableViewInfo() {
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+    }
     
-
+    func reloadTableView() {
+        tableView.reloadData()
+    }
+    
+    
+    
+}
 
 
 
