@@ -8,7 +8,12 @@
 import UIKit
 
 class RoomCountOfTravelCell: UITableViewCell {
-
+    
+    
+    @IBOutlet weak var roomCountLabel: UILabel!
+    @IBOutlet weak var plusButton: UIButton!
+    @IBOutlet weak var minusButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

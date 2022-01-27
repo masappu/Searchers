@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import CoreLocation
 
 protocol PlaceSearchPresenterInput{
     
     var placeData:PlaceSearchDataModel {get set}
     func loadView(Data:PlaceSearchDataModel)
     func searchButton()
-    func searchData(name:String,longitude:Double,latitude:Double)
+    func searchData(name:String,place: CLLocationCoordinate2D)
     func didSelectCell(index:Int)
     func didSelectPickerData(selectedData:String)
     func pushDoneButton()
@@ -48,13 +49,9 @@ final class PlaceSearchPresenter: PlaceSearchPresenterInput{
         self.view.startGooglePlaces()
     }
     
-    func searchData(name: String, longitude: Double, latitude: Double) {
+    func searchData(name: String, place: CLLocationCoordinate2D) {
         self.placeData.name = name
-        print("$$$$$$$$$$$$$$$$$$")
-        print(longitude)
-        self.placeData.locaitonAtSearchPlace?.longitude = longitude
-        self.placeData.locaitonAtSearchPlace?.latitude = latitude
-        print(placeData)
+        self.placeData.locaitonAtSearchPlace = place
         self.view.AutocompleteControllerDismiss(selectedData: placeData)
     }
     

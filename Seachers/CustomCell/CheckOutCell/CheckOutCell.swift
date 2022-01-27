@@ -8,16 +8,49 @@
 import UIKit
 
 class CheckOutCell: UITableViewCell {
-
+    
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var conteinerViewHeight: NSLayoutConstraint!
+    
+    static let compressedHeight:CGFloat = 55
+    static let expandedHeight:CGFloat = 150
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        conteinerViewHeight.constant = CheckOutCell.compressedHeight
+        datePicker.isHidden = true
+        datePicker.alpha = 0
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+    }
+    
+    func showPicker(){
+        guard datePicker.isHidden else {return}
+        
+        // セルの高さの制約の値を変更して、Pickerが見えるようにする
+        conteinerViewHeight.constant = CheckOutCell.expandedHeight
+        datePicker.isHidden = false
+        UIView.animate(withDuration: 0.25) {
+            self.datePicker.alpha = 1
+            self.layoutIfNeeded()
+        }
+    }
+    
+    func hidePicker() {
+        guard !datePicker.isHidden else { return }
+        
+        // セルの高さの制約の値を変更して、Pickerが隠れるようにする
+        conteinerViewHeight.constant = CheckOutCell.compressedHeight
+        UIView.animate(withDuration: 0.25, animations: {
+            self.datePicker.alpha = 0
+            self.layoutIfNeeded()
+        }, completion: { _ in
+            self.datePicker.isHidden = true
+        })
     }
     
 }
