@@ -93,7 +93,7 @@ class MapPresenter: MapPresenterInput{
         self.locationModel = locationModel
         self.gourmandAPIModel = gourmandAPIModel
     }
-
+    
     func requestScrollViewDidEndDecelerating(x:Double,width:Double) {
         let indexCount = x / width
         let marker = markers[Int(indexCount)]
@@ -122,7 +122,7 @@ class MapPresenter: MapPresenterInput{
             addToTravelFavorites(indexPath: indexPath)
         }
     }
-   
+    
     func goToWebVCButton(indexPath: IndexPath) {
         var url = String()
         if previousVCString == "GourmandSearchViewController"{
@@ -209,7 +209,7 @@ extension MapPresenter: TravelAPIOutput{
                     self.travelDataArray[index].favorite = true
                 }
             }
-            self.view.setUpMap(idoValue:self.searchPlaceLocation.latitude,keidoValue:self.searchPlaceLocation.latitude)
+            self.view.setUpMap(idoValue:35.6809591,keidoValue:139.7673068)
             self.view.indicatorViewStop()
         }
     }
@@ -217,13 +217,13 @@ extension MapPresenter: TravelAPIOutput{
     func requestfailed(error: Error) {
         print("エラー：\(error)")
     }
-
+    
     func makeMarker(shopData:HotelsData) {
         print(shopData)
         let latitude = shopData.latitude
         let longitude = shopData.longitude
         let title = shopData.hotelName
-
+        
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2DMake(latitude,longitude)
         marker.appearAnimation = GMSMarkerAnimation.pop
@@ -231,7 +231,7 @@ extension MapPresenter: TravelAPIOutput{
         marker.snippet = shopData.area + "/" + shopData.nearestStation
         markers.append(marker)
     }
-
+    
 }
 
 extension MapPresenter: LocationModelOutput{
@@ -280,10 +280,10 @@ extension MapPresenter{
         let realm = try! Realm()
         let selectedShopData = travelDataArray[indexPath.row]
         
-        let registeredFavShopData = realm.objects(favHotelData.self).filter("name == '\(selectedShopData.travelData.hotelName)'")
+        let registeredFavShopData = realm.objects(favHotelData.self).filter("hotelName == '\(selectedShopData.travelData.hotelName)'")
         let favHotel = favHotelData()
         
-        if shopDataArray![indexPath.row].favorite == false{
+        if travelDataArray[indexPath.row].favorite == false{
             favHotel.hotelName = selectedShopData.travelData.hotelName
             favHotel.latitude = selectedShopData.travelData.latitude
             favHotel.longitude = selectedShopData.travelData.longitude
@@ -295,13 +295,13 @@ extension MapPresenter{
             try! realm.write {
                 realm.add(favHotel)
             }
-            shopDataArray![indexPath.row].favorite = true
+            travelDataArray[indexPath.row].favorite = true
             self.view.addToFavorites(indexPath: indexPath)
         }else{
             try! realm.write {
                 realm.delete(registeredFavShopData)
             }
-            shopDataArray![indexPath.row].favorite = false
+            travelDataArray[indexPath.row].favorite = false
             self.view.addToFavorites(indexPath: indexPath)
         }
     }
