@@ -106,21 +106,25 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
         let iconImage = cell.contentView.viewWithTag(2) as! UIImageView
         let cirleColorImage = cell.contentView.viewWithTag(1) as! UIImageView
-        let goToSearchButton = cell.contentView.viewWithTag(3) as! UIButton
+        let titleLabel = cell.contentView.viewWithTag(3) as! UILabel
         let underLineView = cell.contentView.viewWithTag(4)!
-        
-        goToSearchButton.titleLabel?.text = presenter.tableViewData[indexPath.row].goToSearchButtonName
+        titleLabel.text = presenter.tableViewData[indexPath.row].goToSearchButtonName
         iconImage.image = UIImage(systemName: self.presenter.tableViewData[indexPath.row].iconStringID)
         iconImage.tintColor = .white
         cirleColorImage.backgroundColor = self.itemColor[indexPath.row]
+        cirleColorImage.layer.cornerRadius = 50
         
         underLineView.backgroundColor? = self.itemColor[indexPath.row]
         
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.presenter.didSelectCell(indexPath: indexPath)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return 170
     }
 
         
@@ -136,8 +140,22 @@ extension HomeViewController:HomeViewPresenterOutput{
     func reloadTableView() {
         tableView.reloadData()
     }
-    
-    
+    func trasitonToNetShoppingVC() {
+        let storyBoard = UIStoryboard(name: "NetShopping", bundle: nil)
+        let NetShoppingVC = storyBoard.instantiateViewController(withIdentifier: "NetShopVC")
+        navigationController?.pushViewController(NetShoppingVC, animated: true)
+    }
+    func transitionToGourmandSearchVC() {
+        let storyBoard = UIStoryboard(name: "GourmandSearch", bundle: nil)
+        let GourmandSearchVC = storyBoard
+            .instantiateViewController(withIdentifier: "gourmandSearchVC")
+        navigationController?.pushViewController(GourmandSearchVC, animated: true)
+    }
+    func transitionToTravelSearchVC() {
+        let storyBoard = UIStoryboard(name: "TravelSearch", bundle: nil)
+        let TravelSearchVC = storyBoard.instantiateViewController(withIdentifier: "travelSearchVC")
+        navigationController?.pushViewController(TravelSearchVC, animated: true)
+    }
     
 }
 
