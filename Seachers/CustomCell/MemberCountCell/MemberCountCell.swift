@@ -13,15 +13,18 @@ class MemberCountCell: UITableViewCell {
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var minusButton: UIButton!
     
+    let buttonAnimat = ButtonAnimatedModel(animatType: .countCellButton)
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.plusButton.addTarget(self, action: #selector(touchDown(_:)), for: .touchDown)
+        self.plusButton.addTarget(self, action: #selector(touch(_:)), for: .touchDown)
         self.plusButton.addTarget(self, action: #selector(touchUpOutside(_:)), for: .touchUpOutside)
+        self.plusButton.addTarget(self, action: #selector(touch(_:)), for: .allTouchEvents)
         
-        self.minusButton.addTarget(self, action: #selector(touchDown(_:)), for: .touchDown)
+        self.minusButton.addTarget(self, action: #selector(touch(_:)), for: .touchDown)
         self.minusButton.addTarget(self, action: #selector(touchUpOutside(_:)), for: .touchUpOutside)
+        self.minusButton.addTarget(self, action: #selector(touch(_:)), for: .allTouchEvents)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -30,11 +33,13 @@ class MemberCountCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    @objc func touchDown(_ sender:UIButton){
-        
+    @objc func touch(_ sender:UIButton){
+        self.buttonAnimat.startAnimation(sender: sender)
     }
 
     @objc func touchUpOutside(_ sender:UIButton){
-        
+        self.buttonAnimat.endAnimation(sender: sender)
     }
+    
+
 }
