@@ -58,7 +58,7 @@ struct ShopDataToView {
 }
 
 struct travelDataToView{
-    var travelData: TravelData
+    var travelData: HotelBasicInfo
     var favorite:Bool = false
     var favShop: String{
         switch favorite{
@@ -87,9 +87,10 @@ class MapPresenter: MapPresenterInput{
         self.view = view
         let gourmandAPIModel = GourmandAPIModel(presenter: self)
         let locationModel = LocationModel(presenter: self)
+        let travelAPIModel = TravelAPIModel(presenter: self)
+        self.travelAPIModel = travelAPIModel
         self.locationModel = locationModel
         self.gourmandAPIModel = gourmandAPIModel
-        self.travelAPIModel = TravelAPIModel()
     }
 
     func requestScrollViewDidEndDecelerating(x:Double,width:Double) {
@@ -139,6 +140,7 @@ class MapPresenter: MapPresenterInput{
             gourmandAPIModel.setData(gourmandSearchData: gourmandSearchData, rangeCount: rangeCount)
         }else{
             self.travelDataArray = []
+            self.travelAPIModel.requestData(searchData: TravelSearchDataModel(), hits: 30, page: 1)
         }
     }
     
@@ -190,7 +192,14 @@ extension MapPresenter: GourmandAPIOutput{
 }
 
 extension MapPresenter: TravelAPIOutput{
+    func completedTravelAPIData(data: [HotelBasicInfo], pagingInfo: PagingInfo) {
+        print(data)
+    }
     
+    func requestfailed(error: Error) {
+        print("エラー：\(error)")
+    }
+
 //    func resultAPIData(shopDataArray: [ShopData], idoValue: Double, keidoValue: Double) {
 //        let realm = try! Realm()
 //        let favShopData = realm.objects(favShopData.self)
@@ -212,7 +221,7 @@ extension MapPresenter: TravelAPIOutput{
 //            self.view.indicatorViewStop()
 //        }
 //    }
-//
+
 //    func makeMarker(shopData:TravelData) {
 //        let latitude = shopData.latitude!
 //        let longitude = shopData.longitude!
@@ -225,7 +234,7 @@ extension MapPresenter: TravelAPIOutput{
 //        marker.snippet = shopData.smallAreaName! + "/" + shopData.genreName!
 //        markers.append(marker)
 //    }
-//
+
 }
 
 extension MapPresenter: LocationModelOutput{
