@@ -39,9 +39,9 @@ class MapViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        presenter.reloadData(gourmandSearchData:gourmandSearchData,rangeCount:3,previousVCString:previousVCString)
-        presenter.configureSubViews()
         presenter.previousVCString = previousVCString
+        presenter.reloadData(gourmandSearchData:gourmandSearchData,rangeCount:3)
+        presenter.configureSubViews()
     }
 
     @objc func doneButtonOfCategory(){
@@ -184,7 +184,7 @@ extension MapViewController: MapPresenterOutput{
         textFieldInsideSearchBar.endEditing(true)
         searchBar.placeholder = "\(searchBar.text!)mを検索中"
         searchBar.text = searchBar.text! + "m"
-        presenter.reloadData(gourmandSearchData: gourmandSearchData, rangeCount: rangeCount,previousVCString:previousVCString)
+        presenter.reloadData(gourmandSearchData: gourmandSearchData, rangeCount: rangeCount)
     }
     
     func setUpMap(idoValue:Double,keidoValue:Double) {

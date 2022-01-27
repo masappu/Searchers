@@ -13,7 +13,7 @@ import CoreLocation
 
 protocol MapPresenterInput {
     
-    func reloadData(gourmandSearchData:GourmandSearchDataModel,rangeCount:Int,previousVCString:String)
+    func reloadData(gourmandSearchData:GourmandSearchDataModel,rangeCount:Int)
     func configureSubViews()
     func requestScrollViewDidEndDecelerating(x:Double,width:Double)
     func requestMapViewDidTap(marker:GMSMarker)
@@ -131,8 +131,7 @@ class MapPresenter: MapPresenterInput{
         self.view.goToWebVC(url: url)
     }
     
-    func reloadData(gourmandSearchData:GourmandSearchDataModel,rangeCount:Int,previousVCString:String) {
-        self.previousVCString = previousVCString
+    func reloadData(gourmandSearchData:GourmandSearchDataModel,rangeCount:Int) {
         self.view.indicatorViewStart()
         self.markers = []
         if previousVCString == "GourmandSearchViewController"{
