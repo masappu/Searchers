@@ -18,6 +18,7 @@ protocol TravelSearchPresenterInput{
     func roomMinusPushButton()
     func memberPlusPushButton()
     func memberMinusPushButton()
+    func receiveData(Data:PlaceSearchDataModel)
 }
 
 protocol TravelSearchPresenterOutput{
@@ -31,6 +32,7 @@ protocol TravelSearchPresenterOutput{
 }
 
 final class TravelSearchPresenter: TravelSearchPresenterInput{
+    
     
     private var view: TravelSearchPresenterOutput!
     var searchData: TravelSearchDataModel = TravelSearchDataModel()
@@ -93,4 +95,11 @@ final class TravelSearchPresenter: TravelSearchPresenterInput{
         }
         self.view.reloadTableView()
     }
+    
+    func receiveData(Data:PlaceSearchDataModel) {
+        self.searchData.placeData = Data
+        self.view.reloadTableView()
+    }
+    
+    
 }
