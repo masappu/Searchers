@@ -96,8 +96,16 @@ extension GourmandSearchViewController:GourmandSearchOutput{
     }
     
     func setNavigationControllerInfo() {
-        self.navigationItem.titleView?.tintColor = .green
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .orange
+        
+        self.navigationItem.standardAppearance = appearance
+        self.navigationItem.scrollEdgeAppearance = appearance
+        self.navigationItem.compactAppearance = appearance
         self.navigationItem.title = "グルメ検索"
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
+        
     }
     
     func reloadTableView() {
@@ -158,6 +166,13 @@ extension GourmandSearchViewController:GourmandSearchOutput{
         gourmandGenreVC.popVC = self
         gourmandGenreVC.selecteGenres = selectedGenres
         self.navigationController?.pushViewController(gourmandGenreVC, animated: true)
+    }
+    
+    func showAlertLocationIsEmpty() {
+        let alert = UIAlertController(title: "目的地が選択されていません。", message: "目的地を選択するか、位置情報の取得を許可してください。", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "OK", style: .cancel,handler: nil)
+        alert.addAction(cancel)
+        self.present(alert, animated: true, completion: nil)
     }
     
 }
