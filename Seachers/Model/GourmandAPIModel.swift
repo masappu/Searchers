@@ -33,6 +33,9 @@ protocol GourmandGenreAPIModelOutput{
     
     //依頼先に取得データを受け渡す
     func completedGourmandGenreData(data:[GenreAPIModel])
+    
+    //エラー
+    func requestfailed(error:Error?)
 }
 
 struct ShopData: Decodable  {
@@ -185,7 +188,11 @@ final class GourmandGenreAPIModel:NSObject, GourmandGenreAPIModelInput{
                 self.parser = parser
                 self.parser.delegate = self
                 self.genreData = []
-                self.parser.parse()
+//                self.parser.parse()
+                guard self.parser.parse() else {
+                    presenter.requestfailed(error: nil)
+                    return
+                }
             }
         }
     }
@@ -214,5 +221,15 @@ extension GourmandGenreAPIModel:XMLParserDelegate{
     func parserDidEndDocument(_ parser: XMLParser) {
         self.presenter.completedGourmandGenreData(data: self.genreData)
     }
+
+    func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
+        self.presenter.requestfailed(error: parseError)
+    }
+    
+    func parser(_ parser: XMLParser, validationErrorOccurred validationError: Error) {
+        self.presenter.requestfailed(error: validationError)
+    }
+    
+    
 }
 
