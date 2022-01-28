@@ -35,7 +35,6 @@ class TravelSearchViewController: UIViewController {
         super.viewWillAppear(animated)
         
         presenter.loadView(Data: travelSearchDataModel)
-        self.navigationItem.title = "旅行・宿検索"
     }
     
     
@@ -89,9 +88,18 @@ extension TravelSearchViewController: TravelSearchPresenterOutput{
         tableView.register(UINib(nibName: "SelectDestinationCell", bundle: nil), forCellReuseIdentifier: "selectDestinationCell")
         tableView.register(UINib(nibName: "CheckInCell", bundle: nil), forCellReuseIdentifier: "checkInCell")
         tableView.register(UINib(nibName: "CheckOutCell", bundle: nil), forCellReuseIdentifier: "checkOutCell")
-        tableView.register(UINib(nibName: "RoomAndMemberCell", bundle: nil), forCellReuseIdentifier: "roomAndMemberCell")
         tableView.register(UINib(nibName: "RoomCountOfTravelCell", bundle: nil), forCellReuseIdentifier: "roomCountOfTravelCell")
         tableView.register(UINib(nibName: "MemberCountOfTravelCell", bundle: nil), forCellReuseIdentifier: "memberCountOfTravelCell")
+    }
+    
+    func setNavigationControllerInfo() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .green
+        self.navigationItem.standardAppearance = appearance
+        self.navigationItem.scrollEdgeAppearance = appearance
+        self.navigationItem.compactAppearance = appearance
+        self.navigationItem.title = "旅行・宿検索"
     }
     
     func reloadTableView() {
@@ -165,7 +173,7 @@ extension TravelSearchViewController: UITableViewDelegate, UITableViewDataSource
         }else if section == 1{
             return 2
         }else{
-            return 3
+            return 2
         }
     }
     
@@ -209,12 +217,6 @@ extension TravelSearchViewController: UITableViewDelegate, UITableViewDataSource
         case .roomAndMemberCell:
             let cellType = RoomAndMemberCellType(rawValue: indexPath.row)
             switch (cellType)! {
-            case .roomAndMemberCell:
-                let cell = tableView.dequeueReusableCell(withIdentifier: cellType!.cellIdentifier) as! RoomAndMemberCell
-                cell.selectionStyle = .none
-                cell.memberCountLabel.text = "人数" + String(self.presenter.searchData.adultNum) + "名"
-                cell.roomCountLabel.text = String(self.presenter.searchData.roomNum) + "部屋"
-                return cell
             case .numberOfroomsCountCell:
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellType!.cellIdentifier) as! RoomCountOfTravelCell
                 cell.selectionStyle = .none
