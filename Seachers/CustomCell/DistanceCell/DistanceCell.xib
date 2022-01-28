@@ -20,34 +20,28 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="35m-z5-bwH">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="340"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wn1-Vf-THO">
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oKB-L2-wwm">
                                 <rect key="frame" x="30" y="25" width="330" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="距離・範囲" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9LP-41-u75">
-                                        <rect key="frame" x="0.0" y="0.0" width="330" height="25"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="70"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="lWO-Vs-SXi"/>
+                                            <constraint firstAttribute="width" constant="150" id="xZP-QY-GwO"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="○○○○m 以内" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XaZ-6H-klX">
-                                        <rect key="frame" x="0.0" y="55" width="330" height="15"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="15" id="AUE-XZ-Mwe"/>
-                                        </constraints>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="○○○○m 以内" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XaZ-6H-klX">
+                                        <rect key="frame" x="212.5" y="0.0" width="117.5" height="70"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="9LP-41-u75" firstAttribute="leading" secondItem="wn1-Vf-THO" secondAttribute="leading" id="1YJ-AJ-FTL"/>
-                                    <constraint firstItem="XaZ-6H-klX" firstAttribute="top" secondItem="9LP-41-u75" secondAttribute="bottom" constant="30" id="4Ik-Qj-305"/>
-                                    <constraint firstAttribute="height" constant="70" id="FPf-rY-7Me"/>
-                                    <constraint firstItem="9LP-41-u75" firstAttribute="top" secondItem="wn1-Vf-THO" secondAttribute="top" id="k9d-ax-owZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="9LP-41-u75" secondAttribute="trailing" id="soG-GJ-YRc"/>
+                                    <constraint firstItem="XaZ-6H-klX" firstAttribute="leading" secondItem="9LP-41-u75" secondAttribute="trailing" constant="5" id="04J-U0-a6D"/>
+                                    <constraint firstAttribute="height" constant="70" id="brZ-pJ-G5i"/>
                                 </constraints>
                             </stackView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ehf-vo-aFz">
@@ -59,13 +53,13 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="wn1-Vf-THO" firstAttribute="leading" secondItem="35m-z5-bwH" secondAttribute="leading" constant="30" id="TAh-z5-YNk"/>
+                            <constraint firstItem="Ehf-vo-aFz" firstAttribute="top" secondItem="oKB-L2-wwm" secondAttribute="bottom" constant="25" id="ENW-b7-OmA"/>
+                            <constraint firstItem="oKB-L2-wwm" firstAttribute="leading" secondItem="35m-z5-bwH" secondAttribute="leading" constant="30" id="W53-3e-cme"/>
                             <constraint firstAttribute="trailing" secondItem="Ehf-vo-aFz" secondAttribute="trailing" constant="30" id="YmX-k8-uiQ"/>
-                            <constraint firstAttribute="trailing" secondItem="wn1-Vf-THO" secondAttribute="trailing" constant="30" id="aR8-bH-u4m"/>
-                            <constraint firstItem="Ehf-vo-aFz" firstAttribute="top" secondItem="wn1-Vf-THO" secondAttribute="bottom" constant="25" id="fab-Zt-xhp"/>
-                            <constraint firstItem="wn1-Vf-THO" firstAttribute="top" secondItem="35m-z5-bwH" secondAttribute="top" constant="25" id="hTZ-z5-y8F"/>
+                            <constraint firstAttribute="trailing" secondItem="oKB-L2-wwm" secondAttribute="trailing" constant="30" id="lpv-vx-Jex"/>
                             <constraint firstItem="Ehf-vo-aFz" firstAttribute="leading" secondItem="35m-z5-bwH" secondAttribute="leading" constant="30" id="rVJ-LI-LHf"/>
                             <constraint firstAttribute="height" constant="340" id="vjf-Yq-aa0"/>
+                            <constraint firstItem="oKB-L2-wwm" firstAttribute="top" secondItem="35m-z5-bwH" secondAttribute="top" constant="25" id="zzt-GL-L2b"/>
                         </constraints>
                     </view>
                 </subviews>
