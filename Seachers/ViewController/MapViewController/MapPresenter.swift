@@ -46,6 +46,7 @@ protocol MapPresenterOutput {
     func goToWebVC(url:String)
     func indicatorViewStart()
     func indicatorViewStop()
+    func showAlert()
     
 }
 
@@ -218,6 +219,12 @@ extension MapPresenter: GourmandAPIOutput{
         markers.append(marker)
     }
     
+    func error(error: Error) {
+        print("エラー：\(error)")
+        self.view.indicatorViewStop()
+        self.view.showAlert()
+    }
+    
 }
 
 extension MapPresenter: TravelAPIOutput{
@@ -245,6 +252,8 @@ extension MapPresenter: TravelAPIOutput{
     
     func requestfailed(error: Error) {
         print("エラー：\(error)")
+        self.view.indicatorViewStop()
+        self.view.showAlert()
     }
     
     func makeMarker(shopData:HotelsData) {

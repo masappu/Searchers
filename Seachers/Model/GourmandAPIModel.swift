@@ -17,6 +17,7 @@ protocol GourmandAPIInput{
 
 protocol GourmandAPIOutput{
     func resultAPIData(shopDataArray: [ShopData],idoValue:Double,keidoValue:Double)
+    func error(error: Error)
 }
 
 protocol GourmandGenreAPIModelInput{
@@ -142,12 +143,12 @@ class GourmandAPIModel: GourmandAPIInput{
                     
                 }catch{
                     print("エラーです")
-                    self.presenter.resultAPIData(shopDataArray: shopDataArray, idoValue: self.idoValue, keidoValue: self.keidoValue)
+                    self.presenter.error(error: response.error!)
                 }
                 break
                 
             case.failure:break
-                self.presenter.resultAPIData(shopDataArray: shopDataArray, idoValue: self.idoValue, keidoValue: self.keidoValue)
+                self.presenter.error(error: response.error!)
             }
             
         }
