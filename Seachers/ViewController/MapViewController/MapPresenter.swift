@@ -84,7 +84,7 @@ enum CategoryType: String, CaseIterable{
     var zoomArray: [Int] {
         switch self {
         case .gourmand: return [16,16,15,14,13]
-        case .travel: return [15,15,15]
+        case .travel: return [15,14,13]
         }
     }
 }
