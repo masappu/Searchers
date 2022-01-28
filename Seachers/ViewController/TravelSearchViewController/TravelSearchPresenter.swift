@@ -10,7 +10,7 @@ import Foundation
 
 protocol TravelSearchPresenterInput{
     var searchData:TravelSearchDataModel {get set}
-    func loadView()
+    func loadView(Data:TravelSearchDataModel)
     func didSelectCell(indexPath_row:Int, indexPath_section:Int)
     func datePickerOfCheckInValueChange(date:Date)
     func datePickerOfCheckOutValueChange(date:Date)
@@ -39,7 +39,8 @@ final class TravelSearchPresenter: TravelSearchPresenterInput{
         self.view = view
     }
     
-    func loadView() {
+    func loadView(Data: TravelSearchDataModel) {
+        self.searchData = Data
         self.view.setTableViewInfo()
     }
     
