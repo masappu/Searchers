@@ -176,8 +176,7 @@ extension TravelSearchViewController: UITableViewDelegate, UITableViewDataSource
         switch (cellType)! {
         case .selectDestinationCell:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType!.cellIdentifier) as! SelectDestinationCell
-            cell.destinationLabel.text = "検索範囲を1kmに設定中"
-            print(self.presenter.searchData.placeData?.name)
+            cell.destinationLabel.text = "検索範囲を" + (self.presenter.searchData.placeData?.searchRange!.searchRangeLabelText)! + "に設定中"
             cell.placeLabel.text = self.presenter.searchData.placeData?.name
             return cell
         case .checkCell:
