@@ -12,10 +12,6 @@ struct PlaceSearchDataModel{
     var name:String
     var locaitonAtSearchPlace:CLLocationCoordinate2D?
     var searchRange:SearchRange?
-//    var checkInDate:TravelDateModel
-//    var checkOutDate:TravelDateModel
-//    var adultNum:Int
-//    var roomNum:Int
     var locaitonAtCurrent:CLLocationCoordinate2D?{
         didSet{
             if self.locaitonAtSearchPlace == nil{
@@ -28,10 +24,6 @@ struct PlaceSearchDataModel{
         self.name = "未選択"
         self.searchRange = SearchRange(transitionSourceName: transitionSourceName)
         self.locaitonAtSearchPlace = nil
-//        self.checkInDate = TravelDateModel()
-//        self.checkOutDate = TravelDateModel()
-//        self.adultNum = 2
-//        self.roomNum = 1
         self.locaitonAtCurrent = nil
     }
 }
@@ -57,9 +49,9 @@ struct SearchRange{
     var searchRangeLabelText:String{
         var unitString = String()
         if transitionSourceName == "TravelSearch"{
-            unitString = "\(searchRange)km 以内"
+            unitString = "\(searchRange)km"
         }else if transitionSourceName == "Gourmand"{
-            unitString = "\(searchRange)m 以内"
+            unitString = "\(searchRange)m"
         }
         return unitString
     }

@@ -43,6 +43,9 @@ final class TravelSearchPresenter: TravelSearchPresenterInput{
     
     func loadView(Data: TravelSearchDataModel) {
         self.searchData = Data
+        
+        let placeData = PlaceSearchDataModel(transitionSourceName: "TravelSearch")
+        self.searchData.placeData = placeData
         self.view.setTableViewInfo()
     }
     
