@@ -25,7 +25,7 @@
                         <buttonConfiguration key="configuration" style="plain" title="検索する"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="検索して場所を指定" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGL-cs-LcK">
-                        <rect key="frame" x="15" y="25" width="345" height="25"/>
+                        <rect key="frame" x="30" y="25" width="340" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="ncO-Mu-eKn"/>
                         </constraints>
@@ -37,8 +37,8 @@
                 <constraints>
                     <constraint firstAttribute="bottomMargin" secondItem="XFk-tH-oyI" secondAttribute="bottom" constant="25" id="36h-hy-Trx"/>
                     <constraint firstItem="aGL-cs-LcK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="4hW-lh-365"/>
-                    <constraint firstAttribute="trailing" secondItem="aGL-cs-LcK" secondAttribute="trailing" constant="40" id="WI7-MA-hA3"/>
-                    <constraint firstItem="aGL-cs-LcK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="ggj-bN-84L"/>
+                    <constraint firstItem="aGL-cs-LcK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="I9I-P7-iNx"/>
+                    <constraint firstAttribute="trailing" secondItem="aGL-cs-LcK" secondAttribute="trailing" constant="30" id="JqT-EN-UJa"/>
                     <constraint firstItem="XFk-tH-oyI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="m7f-7P-pFJ"/>
                     <constraint firstItem="XFk-tH-oyI" firstAttribute="top" secondItem="aGL-cs-LcK" secondAttribute="bottom" constant="25" id="tlX-TO-Ae1"/>
                     <constraint firstAttribute="trailing" secondItem="XFk-tH-oyI" secondAttribute="trailing" constant="40" id="zW6-gD-Wld"/>
