@@ -55,8 +55,14 @@ extension GourmandGenreViewController:GourmandGenrePresenterOutput{
     }
     
     func setNavigationItemInfo() {
-        self.title = "ジャンル"
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .orange
         
+        self.navigationItem.standardAppearance = appearance
+        self.navigationItem.scrollEdgeAppearance = appearance
+        self.navigationItem.compactAppearance = appearance
+        self.navigationItem.title = "ジャンル"
         let clearButtonItem = UIBarButtonItem(title: "クリア", style: .done, target: self, action: #selector(clearButton))
         self.navigationItem.rightBarButtonItems = [clearButtonItem]
     }
@@ -72,6 +78,15 @@ extension GourmandGenreViewController:GourmandGenrePresenterOutput{
     func goBack(selectedData: [GenreViewModel]) {
         self.popVC?.passData(data: selectedData)
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func showAlertGenreAPIRequestFailed() {
+        let alert = UIAlertController(title: "予期せぬエラーが発生しました。", message: "ネットワーク接続を確認し、アプリを再起動してください。", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default) { action in
+            self.navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(ok)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
