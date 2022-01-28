@@ -10,7 +10,7 @@ import Foundation
 
 protocol TravelSearchPresenterInput{
     var searchData:TravelSearchDataModel {get set}
-    func loadView()
+    func loadView(Data:TravelSearchDataModel)
     func didSelectCell(indexPath_row:Int, indexPath_section:Int)
     func datePickerOfCheckInValueChange(date:Date)
     func datePickerOfCheckOutValueChange(date:Date)
@@ -18,6 +18,7 @@ protocol TravelSearchPresenterInput{
     func roomMinusPushButton()
     func memberPlusPushButton()
     func memberMinusPushButton()
+    func receiveData(Data:PlaceSearchDataModel)
 }
 
 protocol TravelSearchPresenterOutput{
@@ -32,6 +33,7 @@ protocol TravelSearchPresenterOutput{
 
 final class TravelSearchPresenter: TravelSearchPresenterInput{
     
+    
     private var view: TravelSearchPresenterOutput!
     var searchData: TravelSearchDataModel = TravelSearchDataModel()
     
@@ -39,7 +41,8 @@ final class TravelSearchPresenter: TravelSearchPresenterInput{
         self.view = view
     }
     
-    func loadView() {
+    func loadView(Data: TravelSearchDataModel) {
+        self.searchData = Data
         self.view.setTableViewInfo()
     }
     
@@ -92,4 +95,11 @@ final class TravelSearchPresenter: TravelSearchPresenterInput{
         }
         self.view.reloadTableView()
     }
+    
+    func receiveData(Data:PlaceSearchDataModel) {
+        self.searchData.placeData = Data
+        self.view.reloadTableView()
+    }
+    
+    
 }

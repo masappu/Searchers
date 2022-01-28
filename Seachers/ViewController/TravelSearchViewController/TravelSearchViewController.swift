@@ -15,12 +15,14 @@ class TravelSearchViewController: UIViewController {
     private var presenter: TravelSearchPresenterInput!
     private var datePickerOfCheckIn: CheckInCell!
     private var datePickerOfCheckOut:CheckOutCell!
+    var travelSearchDataModel = TravelSearchDataModel()
     private var datePickerCheckInShowing = false
     private var datePickerCheckOutShowing = false
-    
+
     func inject(presenter:TravelSearchPresenterInput){
         self.presenter = presenter
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,16 +34,8 @@ class TravelSearchViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        presenter.loadView()
+        presenter.loadView(Data: travelSearchDataModel)
         self.navigationItem.title = "旅行・宿検索"
-    }
-    
-    
-    
-    @IBAction func goPlaceSearchVC(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "PlaceSearch", bundle: nil)
-        let placeSearchVC = storyboard.instantiateInitialViewController() as! PlaceSearchViewController
-        self.navigationController?.pushViewController(placeSearchVC, animated: true)
     }
     
     
@@ -78,6 +72,13 @@ class TravelSearchViewController: UIViewController {
 
 }
 
+// MARK: - PlaceSearchViewOutput
+extension TravelSearchViewController: PlaceSearchViewOutput{
+    
+    func passData(Data: PlaceSearchDataModel) {
+        self.presenter.receiveData(Data: Data)
+    }
+}
 
 // MARK: - TravelSearchPresenterOutput
 extension TravelSearchViewController: TravelSearchPresenterOutput{
@@ -104,7 +105,10 @@ extension TravelSearchViewController: TravelSearchPresenterOutput{
     func transitionToPlaceSearchView() {
         let storyboard = UIStoryboard(name: "PlaceSearch", bundle: nil)
         let placeSearchVC = storyboard.instantiateInitialViewController() as! PlaceSearchViewController
+        placeSearchVC.placeSearchViewOutput = self
+        placeSearchVC.transitionSourceName = "TravelSearch"
         self.navigationController?.pushViewController(placeSearchVC, animated: true)
+        
     }
     
     func datePickerOfCheckInIsHidden() {
@@ -172,6 +176,9 @@ extension TravelSearchViewController: UITableViewDelegate, UITableViewDataSource
         switch (cellType)! {
         case .selectDestinationCell:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType!.cellIdentifier) as! SelectDestinationCell
+            cell.destinationLabel.text = "検索範囲を1kmに設定中"
+            print(self.presenter.searchData.placeData?.name)
+            cell.placeLabel.text = self.presenter.searchData.placeData?.name
             return cell
         case .checkCell:
             let cellType = CheckCellType(rawValue: indexPath.row)
