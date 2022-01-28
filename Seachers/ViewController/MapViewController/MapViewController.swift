@@ -22,6 +22,7 @@ class MapViewController: UIViewController {
     var locationManager = CLLocationManager()
     let toolbarOfCategory = UIToolbar()
     var gourmandSearchData = GourmandSearchDataModel()
+    var travelSearchData = TravelSearchDataModel()
     var previousVCString = String()
 
     private var presenter: MapPresenterInput!
@@ -39,14 +40,16 @@ class MapViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        presenter.travelSearchData = travelSearchData
+        presenter.gourmandSearchData = gourmandSearchData
         presenter.previousVCString = previousVCString
-        presenter.reloadData(gourmandSearchData:gourmandSearchData,rangeCount:3)
+        presenter.reloadData(range:"1000m")
         presenter.configureSubViews()
     }
 
     @objc func doneButtonOfCategory(){
-        presenter.requestDoneButtonOfCategory(text: searchBar.text!)
         textFieldInsideSearchBar.endEditing(true)
+        presenter.reloadData( range: searchBar.text!)
     }
     
     @objc func addToFavoritesButton(_ sender: UIButton){
@@ -77,7 +80,7 @@ extension MapViewController: UICollectionViewDataSource{
         let cellType = MapCellType(rawValue: "\(presenter.previousVCString)")
         switch (cellType)! {
         case .gourmandCell:
-            return presenter.shopDataArray!.count
+            return presenter.shopDataArray.count
         case .travelCell:
             return presenter.travelDataArray.count
         }
@@ -92,7 +95,7 @@ extension MapViewController: UICollectionViewDataSource{
         switch (cellType)! {
         case .gourmandCell:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(cellType!.cellIdentifier)", for: indexPath) as! GourmandCell
-            let shopDataArray = presenter.shopDataArray!
+            let shopDataArray = presenter.shopDataArray
 
             cell.shopImageView?.sd_setImage(with: URL(string: shopDataArray[indexPath.row].shopData.shop_image!), completed: nil)
             cell.area_genreLabel?.text = shopDataArray[indexPath.row].shopData.smallAreaName! + "/" + shopDataArray[indexPath.row].shopData.genreName!
@@ -163,6 +166,7 @@ extension MapViewController: MapPresenterOutput{
     }
     
     func indicatorViewStop() {
+        searchBar.text = ""
         activityIndicatorView.isHidden = true
         activityIndicatorView.stopAnimating()
     }
@@ -189,17 +193,15 @@ extension MapViewController: MapPresenterOutput{
         googleMap.selectedMarker = marker
     }
     
-    func responseDoneButtonOfCategory(rangeCount: Int) {
-        textFieldInsideSearchBar.endEditing(true)
-        searchBar.placeholder = "\(searchBar.text!)mを検索中"
-        searchBar.text = searchBar.text! + "m"
-        presenter.reloadData(gourmandSearchData: gourmandSearchData, rangeCount: rangeCount)
+    func setupSearchBarText() {
+        print(presenter.categoryArray[presenter.rangeCount])
+        searchBar.placeholder = presenter.categoryArray[presenter.rangeCount] + "以内を検索中"
+        searchBar.text = presenter.categoryArray[presenter.rangeCount]
     }
     
     func setUpMap(idoValue:Double,keidoValue:Double) {
         googleMap.removeFromSuperview()
-        searchBar.text = ""
-        let camera = GMSCameraPosition.camera(withLatitude: idoValue,longitude: keidoValue, zoom: 15)
+        let camera = GMSCameraPosition.camera(withLatitude: idoValue,longitude: keidoValue, zoom: Float(presenter.zoomCount))
         let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height), camera: camera)
         self.googleMap = mapView
         self.view.addSubview(googleMap)
@@ -209,8 +211,6 @@ extension MapViewController: MapPresenterOutput{
         googleMap.settings.myLocationButton = true
         
         let markers = presenter.markers
-        print("daigodaigo")
-        print(markers.count)
         for marker in markers{
             marker.map = googleMap
         }
@@ -231,7 +231,7 @@ extension MapViewController: MapPresenterOutput{
             let searchBar: UISearchBar = UISearchBar(frame: navigationBarFrame)
             self.searchBar = searchBar
             searchBar.delegate = self
-            searchBar.placeholder = "500m以内を検索中" //ここに渡ってきた検索範囲を入れる
+            searchBar.placeholder = presenter.categoryArray[presenter.rangeCount] + "以内を検索中" //ここに渡ってきた検索範囲を入れる
             searchBar.tintColor = UIColor.darkGray
             searchBar.keyboardType = UIKeyboardType.default
             searchBar.showsSearchResultsButton = true
