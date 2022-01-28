@@ -99,7 +99,7 @@ extension PlaceSearchViewController: PlaceSearchPresenterOutput{
     
     func reloadDistanceLabel() {
         self.tableView.beginUpdates()
-        pickerView?.distanceLabel.text = self.presenter.placeData.searchRange!.searchRange + self.presenter.placeData.searchRange!.unit
+        pickerView?.distanceLabel.text =  self.presenter.placeData.searchRange!.searchRangeLabelText
         self.tableView.endUpdates()
     }
     
@@ -144,7 +144,7 @@ extension PlaceSearchViewController: UITableViewDelegate, UITableViewDataSource{
             self.pickerView = cell
             cell.inject(presenter: self.presenter)
             cell.list = self.presenter.pickerList
-            cell.distanceLabel.text = presenter.placeData.searchRange!.searchRange + presenter.placeData.searchRange!.unit
+            cell.distanceLabel.text =  presenter.placeData.searchRange!.searchRangeLabelText
             return cell
         }
     }
