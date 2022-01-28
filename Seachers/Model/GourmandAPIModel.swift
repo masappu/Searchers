@@ -83,8 +83,7 @@ class GourmandAPIModel: GourmandAPIInput{
         
         print(rangeCount)
         
-        let urlString = "https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=\(apikey)&lat=\(idoValue)&lng=\(keidoValue)&range=\(rangeCount)&genre=\(genreString)&count=100&party_capacity=\(memberCount)&format=json"
-        //        let encodeUrlString:String = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let urlString = "https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=\(apikey)&lat=\(idoValue)&lng=\(keidoValue)&range=\(rangeCount + 1)&genre=\(genreString)&count=100&party_capacity=\(memberCount)&format=json"
         
         AF.request(urlString, method: .get, parameters: nil, encoding: JSONEncoding.default).responseDecodable(of: ShopData.self) { [self] response in
             
