@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--トラベル-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController id="Y6W-OH-hqX" customClass="FavOfTravelViewController" customModule="Seachers" customModuleProvider="target" sceneMemberID="viewController">
@@ -91,7 +91,7 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="DXp-47-wLv"/>
+                    <tabBarItem key="tabBarItem" title="トラベル" selectedImage="airplane" catalog="system" id="DXp-47-wLv"/>
                     <navigationItem key="navigationItem" id="D5r-av-vkS"/>
                     <connections>
                         <outlet property="tableView" destination="CGj-jr-ggZ" id="h9P-kD-IVI"/>
@@ -101,7 +101,7 @@
             </objects>
             <point key="canvasLocation" x="787" y="1072"/>
         </scene>
-        <!--Item-->
+        <!--グルメ-->
         <scene sceneID="gKC-Fu-5hs">
             <objects>
                 <viewController id="Oyh-Sa-Ijd" customClass="FavOfGourmandViewController" customModule="Seachers" customModuleProvider="target" sceneMemberID="viewController">
@@ -220,7 +220,7 @@
                             <constraint firstItem="Tlp-Yk-6P2" firstAttribute="top" secondItem="h3Y-vv-DgN" secondAttribute="top" id="wef-l6-PIJ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="n9Q-QL-FP2"/>
+                    <tabBarItem key="tabBarItem" title="グルメ" selectedImage="fork.knife" catalog="system" id="n9Q-QL-FP2"/>
                     <navigationItem key="navigationItem" id="paI-pQ-jFM"/>
                     <connections>
                         <outlet property="tableView" destination="Tlp-Yk-6P2" id="L3s-9F-nkE"/>
@@ -230,7 +230,7 @@
             </objects>
             <point key="canvasLocation" x="786.95652173913049" y="326.78571428571428"/>
         </scene>
-        <!--Item-->
+        <!--ネットショッピング-->
         <scene sceneID="ieS-uH-5gp">
             <objects>
                 <viewController storyboardIdentifier="favOfNetShoppingVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5eQ-Km-Uxq" customClass="FavOfNetShoppingViewController" customModule="Seachers" customModuleProvider="target" sceneMemberID="viewController">
@@ -240,7 +240,7 @@
                         <viewLayoutGuide key="safeArea" id="KHJ-w6-FXc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="nEG-Rq-GPM"/>
+                    <tabBarItem key="tabBarItem" title="ネットショッピング" selectedImage="cart" catalog="system" id="nEG-Rq-GPM"/>
                     <navigationItem key="navigationItem" id="tcX-iG-Ew7"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="egZ-F4-KmL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -268,6 +268,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="airplane" catalog="system" width="128" height="115"/>
+        <image name="cart" catalog="system" width="128" height="102"/>
+        <image name="fork.knife" catalog="system" width="92" height="128"/>
         <image name="night" width="256" height="256"/>
         <image name="noon" width="256" height="256"/>
         <systemColor name="labelColor">
