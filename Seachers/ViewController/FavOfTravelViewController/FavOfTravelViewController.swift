@@ -41,18 +41,17 @@ extension FavOfTravelViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "favTravelCell", for: indexPath)
-        let shopImage = cell.contentView.viewWithTag(1) as! UIImageView
-        let genreNameLabel = cell.contentView.viewWithTag(2) as! UILabel
-        let nameLabel = cell.contentView.viewWithTag(3) as! UILabel
+        let hotelImage = cell.contentView.viewWithTag(1) as! UIImageView
+        let areaLabel = cell.contentView.viewWithTag(2) as! UILabel
+        let hotelNameLabel = cell.contentView.viewWithTag(3) as! UILabel
         let priceLabel = cell.contentView.viewWithTag(4) as! UILabel
         
-        //↓realm出来次第変更してください
-        let favShopDataArray = presenter.favShopDataArray
-        shopImage.sd_setImage(with: URL(string: favShopDataArray[indexPath.row].shop_image))
-        genreNameLabel.text = favShopDataArray[indexPath.row].smallAreaName + "/" + favShopDataArray[indexPath.row].genreName
-        nameLabel.text = favShopDataArray[indexPath.row].name
-        priceLabel.text = favShopDataArray[indexPath.row].budgetAverage
-        //↑realm出来次第変更してください
+        let viewData = presenter.favShopDataArray[indexPath.row]
+        
+        hotelImage.sd_setImage(with: URL(string: viewData.hotelImageUrl))
+        areaLabel.text = viewData.area + "/" + viewData.nearestStation + "駅"
+        hotelNameLabel.text = viewData.hotelName
+        priceLabel.text = "税込" + String(viewData.hotelMinCharge) + "円〜"
         
         return cell
     }
@@ -109,8 +108,9 @@ extension FavOfTravelViewController: FavOfTravelPresenterOutput{
     }
     
     func reloadTableView() {
-        
+        tableView.reloadData()
     }
+    
     
 }
 
