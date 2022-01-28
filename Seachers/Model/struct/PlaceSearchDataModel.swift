@@ -43,14 +43,15 @@ struct SearchRange{
     var searchRange:String
     var transitionSourceName:String?
     
-    private mutating func initialsearchRange() -> String{
+    private func initialsearchRange() -> String{
         
+        var string = String()
         if transitionSourceName == "TravelSearch"{
-            self.searchRange = "1"
+            string = "1"
         }else if transitionSourceName == "Gourmand"{
-            self.searchRange = "300"
+            string = "300"
         }
-        return self.searchRange
+        return string
     }
     
     var searchRangeLabelText:String{
