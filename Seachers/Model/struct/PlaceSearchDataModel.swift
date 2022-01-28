@@ -53,12 +53,12 @@ struct SearchRange{
         return self.searchRange
     }
     
-    var unit:String{
+    var searchRangeLabelText:String{
         var unitString = String()
         if transitionSourceName == "TravelSearch"{
-            unitString = "km 以内"
+            unitString = "\(searchRange)km 以内"
         }else if transitionSourceName == "Gourmand"{
-            unitString = "m 以内"
+            unitString = "\(searchRange)m 以内"
         }
         return unitString
     }
