@@ -40,6 +40,7 @@ class TravelSearchViewController: UIViewController {
     @IBAction func goMapView(_ sender: Any) {
         let storyboard = UIStoryboard(name: "MapView", bundle: nil)
         let mapVC = storyboard.instantiateInitialViewController() as! MapViewController
+        mapVC.previousVCString = "TravelSearchViewController"
         self.navigationController?.pushViewController(mapVC, animated: true)
     }
     

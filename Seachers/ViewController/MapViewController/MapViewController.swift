@@ -74,12 +74,12 @@ extension MapViewController: UICollectionViewDelegate{
 extension MapViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let cellType = MapCellType(rawValue: "\(previousVCString)")
+        let cellType = MapCellType(rawValue: "\(presenter.previousVCString)")
         switch (cellType)! {
         case .gourmandCell:
             return presenter.shopDataArray!.count
         case .travelCell:
-            return 1 //（仮）
+            return presenter.travelDataArray.count
         }
     }
 
@@ -88,7 +88,7 @@ extension MapViewController: UICollectionViewDataSource{
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cellType = MapCellType(rawValue: "\(previousVCString)")
+        let cellType = MapCellType(rawValue: "\(presenter.previousVCString)")
         switch (cellType)! {
         case .gourmandCell:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(cellType!.cellIdentifier)", for: indexPath) as! GourmandCell
@@ -105,7 +105,16 @@ extension MapViewController: UICollectionViewDataSource{
 
             return cell
         case .travelCell:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(cellType!.cellIdentifier)", for: indexPath) as! GourmandCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(cellType!.cellIdentifier)", for: indexPath) as! TravelCell
+            let viewData = presenter.travelDataArray[indexPath.row]
+            cell.area_genreLabel.text = viewData.travelData.area + "/" + viewData.travelData.nearestStation + "駅"
+            cell.nameLabel.text = viewData.travelData.hotelName
+            cell.priceLabel.text = "税込 \(viewData.travelData.hotelMinCharge)円 〜"
+            cell.favButton.setImage(UIImage(systemName:viewData.favShop ), for: .normal)
+            cell.imageView.sd_setImage(with: URL(string: viewData.travelData.hotelImageUrl), completed: nil)
+            cell.favButton.addTarget(self, action: #selector(addToFavoritesButton(_:)), for: .touchUpInside)
+            cell.detailButton.addTarget(self, action: #selector(goToWebVCButton(_:)), for: .touchUpInside)
+            
             return cell
         }
     }
