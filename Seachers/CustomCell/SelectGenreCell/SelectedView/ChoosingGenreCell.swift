@@ -17,8 +17,8 @@ class ChoosingGenreCell: UICollectionViewCell {
         super.awakeFromNib()
         activationSelfSizing()
         self.stackView.layer.cornerRadius = 9
-        self.stackView.layer.borderColor = UIColor.red.cgColor
-        self.stackView.layer.borderWidth = 2
+//        self.stackView.layer.borderColor = UIColor.red.cgColor
+//        self.stackView.layer.borderWidth = 2
     }
     
     

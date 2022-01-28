@@ -62,22 +62,24 @@ class GourmandSearchViewController: UIViewController {
     }
     
     @IBAction func goMapView(_ sender: Any) {
+        self.presenter.buttonAnimation.touchUpInside(sender: sender as! UIButton)
         self.presenter.pushSearchButton()
     }
     
     @objc func plusButton(_ sender:UIButton){
-        self.memberCountCell?.buttonAnimat.endAnimation(sender: sender)
+        self.memberCountCell?.buttonAnimat.touchUpInside(sender: sender)
         self.presenter.pushPlusButton()
     }
     
     @objc func minusButton(_ sender:UIButton){
-        self.memberCountCell?.buttonAnimat.endAnimation(sender: sender)
+        self.memberCountCell?.buttonAnimat.touchUpInside(sender: sender)
         self.presenter.pushMinusButton()
     }
     
     @objc func datePickerValueDidChange(){
         self.presenter.datePickerValueChange(date: (self.PickerCell?.datePicker.date)!)
     }
+    
 }
 
 extension GourmandSearchViewController:GourmandSearchOutput{
@@ -174,7 +176,6 @@ extension GourmandSearchViewController:GourmandSearchOutput{
         alert.addAction(cancel)
         self.present(alert, animated: true, completion: nil)
     }
-    
 }
 
 extension GourmandSearchViewController:GourmandGenreViewOutput{
