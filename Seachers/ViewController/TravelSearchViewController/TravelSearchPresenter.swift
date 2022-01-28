@@ -25,6 +25,7 @@ protocol TravelSearchPresenterInput{
 
 protocol TravelSearchPresenterOutput{
     func setTableViewInfo()
+    func setNavigationControllerInfo()
     func transitionToPlaceSearchView()
     func datePickerOfCheckInIsHidden()
     func datePickerOfCheckOutIsHidden()
@@ -53,6 +54,7 @@ final class TravelSearchPresenter: TravelSearchPresenterInput{
         self.searchData.placeData = placeData
         self.model.requestAuthorization()
         self.view.setTableViewInfo()
+        self.view.setNavigationControllerInfo()
     }
     
     func didSelectCell(indexPath_row: Int, indexPath_section:Int) {

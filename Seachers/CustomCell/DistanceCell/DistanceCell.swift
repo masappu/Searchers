@@ -20,8 +20,8 @@ class DistanceCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSourc
     }
 
     var list = [String]()
-    static let compressedHeight: CGFloat = 90
-    static let expandedHeight: CGFloat = 250
+    static let compressedHeight: CGFloat = 120
+    static let expandedHeight: CGFloat = 340
     
     override func awakeFromNib() {
         super.awakeFromNib()

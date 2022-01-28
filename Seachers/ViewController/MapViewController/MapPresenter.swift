@@ -13,7 +13,7 @@ import CoreLocation
 
 protocol MapPresenterInput {
     
-    func reloadData(range:String)
+    func reloadData(goumandRange:String,travelRange:String)
     func configureSubViews()
     func requestScrollViewDidEndDecelerating(x:Double,width:Double)
     func requestMapViewDidTap(marker:GMSMarker)
@@ -84,7 +84,7 @@ enum CategoryType: String, CaseIterable{
     var zoomArray: [Int] {
         switch self {
         case .gourmand: return [16,16,15,14,13]
-        case .travel: return [15,15,15]
+        case .travel: return [15,14,13]
         }
     }
 }
@@ -153,19 +153,21 @@ class MapPresenter: MapPresenterInput{
         self.view.goToWebVC(url: url)
     }
     
-    func reloadData(range:String) {
+    func reloadData(goumandRange:String,travelRange:String) {
         let categoryType = CategoryType(rawValue: previousVCString)
         self.categoryArray = categoryType!.categoryArray
-        self.rangeCount = self.categoryArray.firstIndex(of: "\(range)")!
-        self.zoomCount = categoryType!.zoomArray[rangeCount]
         self.view.indicatorViewStart()
         self.markers = []
         if previousVCString == "GourmandSearchViewController"{
             self.shopDataArray = []
+            self.rangeCount = self.categoryArray.firstIndex(of: "\(goumandRange)")!
+            self.zoomCount = categoryType!.zoomArray[rangeCount]
             self.view.setupSearchBarText()
             gourmandAPIModel.setData(gourmandSearchData: self.gourmandSearchData, rangeCount: rangeCount)
         }else{
             self.travelDataArray = []
+            self.rangeCount = self.categoryArray.firstIndex(of: "\(travelRange)")!
+            self.zoomCount = categoryType!.zoomArray[rangeCount]
             self.view.setupSearchBarText()
             self.travelAPIModel.requestData(searchData: TravelSearchDataModel(), hits: 30, page: 1)
         }
