@@ -16,6 +16,40 @@
                 <rect key="frame" x="0.0" y="0.0" width="390" height="120"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="299" translatesAutoresizingMaskIntoConstraints="NO" id="Te7-a1-n65">
+                        <rect key="frame" x="180" y="35" width="150" height="50"/>
+                        <subviews>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="deD-Yv-jHQ">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="rMm-La-Lxc"/>
+                                </constraints>
+                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="plus.circle.fill" catalog="system" title="">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="font">
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                    </preferredSymbolConfiguration>
+                                    <color key="baseForegroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tWh-QN-iEe">
+                                <rect key="frame" x="100" y="0.0" width="50" height="50"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="minus.circle.fill" catalog="system" title="">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="font">
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                    </preferredSymbolConfiguration>
+                                    <color key="baseForegroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="150" id="3Qi-ew-kYp"/>
+                            <constraint firstAttribute="height" constant="50" id="Rxe-ar-Vwe"/>
+                            <constraint firstItem="tWh-QN-iEe" firstAttribute="leading" secondItem="deD-Yv-jHQ" secondAttribute="trailing" constant="50" id="a5h-vl-GC6"/>
+                        </constraints>
+                    </stackView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tPu-qV-XbZ">
                         <rect key="frame" x="30" y="25" width="50" height="70"/>
                         <subviews>
@@ -42,40 +76,6 @@
                             <constraint firstAttribute="height" constant="70" id="Blz-bn-84y"/>
                             <constraint firstAttribute="width" constant="50" id="cw3-nS-DcO"/>
                             <constraint firstItem="or7-67-YSm" firstAttribute="top" secondItem="Duz-1T-P0J" secondAttribute="bottom" constant="30" id="vrs-2q-v2Z"/>
-                        </constraints>
-                    </stackView>
-                    <stackView opaque="NO" contentMode="scaleToFill" spacing="299" translatesAutoresizingMaskIntoConstraints="NO" id="Te7-a1-n65">
-                        <rect key="frame" x="180" y="35" width="150" height="50"/>
-                        <subviews>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="deD-Yv-jHQ">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="rMm-La-Lxc"/>
-                                </constraints>
-                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="plus.circle.fill" catalog="system" title="">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="font">
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                    </preferredSymbolConfiguration>
-                                    <color key="baseForegroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                            </button>
-                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tWh-QN-iEe">
-                                <rect key="frame" x="79.5" y="0.0" width="70.5" height="50"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="minus.circle.fill" catalog="system" title="">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="font">
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                    </preferredSymbolConfiguration>
-                                    <color key="baseForegroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                            </button>
-                        </subviews>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="150" id="3Qi-ew-kYp"/>
-                            <constraint firstAttribute="height" constant="50" id="Rxe-ar-Vwe"/>
-                            <constraint firstItem="tWh-QN-iEe" firstAttribute="leading" secondItem="deD-Yv-jHQ" secondAttribute="trailing" constant="50" id="a5h-vl-GC6"/>
                         </constraints>
                     </stackView>
                 </subviews>
