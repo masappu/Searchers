@@ -46,6 +46,9 @@ protocol GourmandGenrePresenterOutput{
     //前画面に戻る指示
     func goBack(selectedData:[GenreViewModel])
     
+    //エラー
+    func showAlertGenreAPIRequestFailed()
+    
 }
 
 
@@ -117,5 +120,9 @@ extension GourmandGenrePresenter:GourmandGenreAPIModelOutput{
             self.allGenreData.append(newItem)
         }
         self.view.reloadTableView()
+    }
+    
+    func requestfailed(error: Error?) {
+        self.view.showAlertGenreAPIRequestFailed()
     }
 }
