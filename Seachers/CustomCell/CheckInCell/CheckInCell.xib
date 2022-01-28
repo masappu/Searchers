@@ -20,9 +20,12 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2SP-UB-oxJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="340"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="チェックイン" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mAm-fk-Emu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="チェックイン" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mAm-fk-Emu">
                                 <rect key="frame" x="0.0" y="25" width="374" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="uT1-tk-ksY"/>
+                                    <constraint firstAttribute="width" constant="374" id="vjD-aq-luj"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -31,9 +34,12 @@
                                 <rect key="frame" x="0.0" y="120" width="414" height="220"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </datePicker>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="日時" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HH9-ty-VW0">
-                                <rect key="frame" x="0.0" y="71" width="374" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日時" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HH9-ty-VW0">
+                                <rect key="frame" x="0.0" y="80" width="374" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="KfQ-TR-4gk"/>
+                                    <constraint firstAttribute="width" constant="374" id="rPQ-ds-iad"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -41,7 +47,13 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="mAm-fk-Emu" secondAttribute="trailing" constant="40" id="8mz-I5-v9o"/>
+                            <constraint firstItem="mAm-fk-Emu" firstAttribute="top" secondItem="2SP-UB-oxJ" secondAttribute="top" constant="25" id="E7W-Tu-Pv0"/>
                             <constraint firstAttribute="height" constant="340" id="GIg-H8-V5F"/>
+                            <constraint firstItem="mAm-fk-Emu" firstAttribute="leading" secondItem="2SP-UB-oxJ" secondAttribute="leading" id="L4B-tv-vr5"/>
+                            <constraint firstItem="HH9-ty-VW0" firstAttribute="top" secondItem="mAm-fk-Emu" secondAttribute="bottom" constant="30" id="T9B-lV-oxh"/>
+                            <constraint firstAttribute="trailing" secondItem="HH9-ty-VW0" secondAttribute="trailing" constant="40" id="nMw-Vg-fXu"/>
+                            <constraint firstItem="HH9-ty-VW0" firstAttribute="leading" secondItem="2SP-UB-oxJ" secondAttribute="leading" id="rcL-yM-ipD"/>
                         </constraints>
                     </view>
                 </subviews>
