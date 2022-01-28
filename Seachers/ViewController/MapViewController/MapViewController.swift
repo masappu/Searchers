@@ -43,13 +43,17 @@ class MapViewController: UIViewController {
         presenter.travelSearchData = travelSearchData
         presenter.gourmandSearchData = gourmandSearchData
         presenter.previousVCString = previousVCString
-        presenter.reloadData(range:"1000m")
+        print(presenter.gourmandSearchData.place.searchRange!.searchRangeLabelText)
+        presenter.reloadData(goumandRange:
+                                presenter.gourmandSearchData.place.searchRange!.searchRangeLabelText,
+                             travelRange:
+                                (presenter.travelSearchData.placeData?.searchRange!.searchRangeLabelText)!)
         presenter.configureSubViews()
     }
 
     @objc func doneButtonOfCategory(){
         textFieldInsideSearchBar.endEditing(true)
-        presenter.reloadData( range: searchBar.text!)
+        presenter.reloadData(goumandRange:String(presenter.rangeCount),travelRange:String(presenter.rangeCount))
     }
     
     @objc func addToFavoritesButton(_ sender: UIButton){
