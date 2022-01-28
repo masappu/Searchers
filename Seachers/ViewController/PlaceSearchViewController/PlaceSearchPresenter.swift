@@ -11,7 +11,8 @@ import CoreLocation
 protocol PlaceSearchPresenterInput{
     
     var placeData:PlaceSearchDataModel {get set}
-    func loadView(Data:PlaceSearchDataModel)
+    var pickerList:[String] {get set}
+    func loadView(Data:PlaceSearchDataModel, transitionSourceName:String)
     func searchButton()
     func searchData(name:String,place: CLLocationCoordinate2D)
     func didSelectCell(index:Int)
@@ -33,16 +34,24 @@ protocol PlaceSearchPresenterOutput{
 final class PlaceSearchPresenter: PlaceSearchPresenterInput{
     
     private var view: PlaceSearchPresenterOutput!
-    var placeData: PlaceSearchDataModel = PlaceSearchDataModel()
+    var placeData: PlaceSearchDataModel
+    var pickerList = [String]()
+    var unit = String()
     
-    init(view:PlaceSearchPresenterOutput){
+    
+    init(view:PlaceSearchPresenterOutput, initialValue:String){
         self.view = view
+        self.placeData = PlaceSearchDataModel(transitionSourceName: initialValue)
     }
     
-    func loadView(Data:PlaceSearchDataModel) {
+    func loadView(Data:PlaceSearchDataModel, transitionSourceName:String) {
         self.placeData = Data
+        if transitionSourceName == "TravelSearch"{
+            self.pickerList = ["1","2","3"]
+        }else if transitionSourceName == "Gourmand"{
+            self.pickerList = ["300","500","1000","2000","3000"]
+        }
         self.view.setTableViewInfo()
-        self.view.reloadTableView()
     }
     
     func searchButton(){
@@ -62,8 +71,9 @@ final class PlaceSearchPresenter: PlaceSearchPresenterInput{
     }
     
     func didSelectPickerData(selectedData: String) {
-        self.placeData.searchRange = Int(selectedData)!
+        self.placeData.searchRange!.searchRange = selectedData
         self.view.reloadDistanceLabel()
+        
     }
     
     func pushDoneButton() {

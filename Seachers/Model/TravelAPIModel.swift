@@ -115,8 +115,8 @@ struct PassData{
     let longitude:Double
     let searchRadius:Double
     init(){
-        self.checkInDate = "2022-01-27"
-        self.checkOutDate = "2022-01-28"
+        self.checkInDate = "2022-01-28"
+        self.checkOutDate = "2022-01-29"
         self.adultNum = 2
         self.roomNum = 1
         self.latitude = 35.6809591
@@ -136,7 +136,7 @@ class TravelAPIModel: TravelAPIInput{
     func requestData(searchData:TravelSearchDataModel,hits:Int,page:Int){
         let parameters = TravelRequestParameterModel(searchData: PassData(),hits: hits,page: page)
         let urlString = "https://app.rakuten.co.jp/services/api/Travel/VacantHotelSearch/20170426?format=json&checkinDate=\(parameters.searchData.checkInDate)&checkoutDate=\(parameters.searchData.checkOutDate)&elements=\(parameters.elements)&adultNum=\(parameters.searchData.adultNum)&roomNum=\(parameters.searchData.roomNum)&latitude=\(parameters.searchData.latitude)&longitude=\(parameters.searchData.longitude)&searchRadius=\(parameters.searchData.searchRadius)&datumType=\(parameters.datumType)&hits=\(parameters.hits)&page=\(parameters.page)&sort=\(parameters.sort)&applicationId=\(parameters.apiKey)"
-        
+        print(urlString)
         AF.request(urlString, method: .get, parameters: nil, encoding: JSONEncoding.default).responseDecodable(of: TravelAPIDecoder.self) { [self] response in
             switch response.result{
             case.success(let travelData):
