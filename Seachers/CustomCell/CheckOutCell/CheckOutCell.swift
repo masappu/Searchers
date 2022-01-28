@@ -13,8 +13,8 @@ class CheckOutCell: UITableViewCell {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var conteinerViewHeight: NSLayoutConstraint!
     
-    static let compressedHeight:CGFloat = 55
-    static let expandedHeight:CGFloat = 150
+    static let compressedHeight:CGFloat = 120
+    static let expandedHeight:CGFloat = 340
     
     override func awakeFromNib() {
         super.awakeFromNib()

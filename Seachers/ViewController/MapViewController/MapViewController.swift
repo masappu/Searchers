@@ -1,4 +1,4 @@
-    //
+//
 //  MapViewController.swift
 //  Seachers
 //
@@ -43,13 +43,16 @@ class MapViewController: UIViewController {
         presenter.travelSearchData = travelSearchData
         presenter.gourmandSearchData = gourmandSearchData
         presenter.previousVCString = previousVCString
-        presenter.reloadData(range:"1000m")
+        presenter.reloadData(goumandRange:
+                                presenter.gourmandSearchData.place.searchRange!.searchRangeLabelText,
+                             travelRange:
+                                (presenter.travelSearchData.placeData?.searchRange!.searchRangeLabelText)!)
         presenter.configureSubViews()
     }
 
     @objc func doneButtonOfCategory(){
         textFieldInsideSearchBar.endEditing(true)
-        presenter.reloadData( range: searchBar.text!)
+        presenter.reloadData(goumandRange:searchBar.text!,travelRange:searchBar.text!)
     }
     
     @objc func addToFavoritesButton(_ sender: UIButton){
@@ -184,8 +187,8 @@ extension MapViewController: MapPresenterOutput{
   
     func responseMapViewDidTap(marker: GMSMarker, index: Int) {
         collectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .right, animated: true)
-        marker.tracksInfoWindowChanges = true //情報ウィンドウを自動的に更新するように設定する
-        googleMap.selectedMarker = marker //デフォルトで情報ウィンドウを表示
+        marker.tracksInfoWindowChanges = true
+        googleMap.selectedMarker = marker
     }
     
     func responseScrollViewDidEndDecelerating(marker: GMSMarker) {
@@ -231,7 +234,7 @@ extension MapViewController: MapPresenterOutput{
             let searchBar: UISearchBar = UISearchBar(frame: navigationBarFrame)
             self.searchBar = searchBar
             searchBar.delegate = self
-            searchBar.placeholder = presenter.categoryArray[presenter.rangeCount] + "以内を検索中" //ここに渡ってきた検索範囲を入れる
+            searchBar.placeholder = presenter.categoryArray[presenter.rangeCount] + "以内を検索中"
             searchBar.tintColor = UIColor.darkGray
             searchBar.keyboardType = UIKeyboardType.default
             searchBar.showsSearchResultsButton = true
@@ -289,7 +292,6 @@ extension MapViewController: UISearchBarDelegate{
         return true
     }
     
-    //検索バーのキャンセルがタップされた時
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
         searchBar.resignFirstResponder()
