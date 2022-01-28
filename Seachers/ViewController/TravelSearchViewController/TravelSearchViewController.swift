@@ -76,9 +76,7 @@ class TravelSearchViewController: UIViewController {
 extension TravelSearchViewController: PlaceSearchViewOutput{
     
     func passData(Data: PlaceSearchDataModel) {
-        print("&&&&&&&&&&&&&&&&&&&")
-        print(Data)
-        self.presenter.searchData.placeData = Data
+        self.presenter.receiveData(Data: Data)
     }
 }
 
@@ -179,6 +177,7 @@ extension TravelSearchViewController: UITableViewDelegate, UITableViewDataSource
         case .selectDestinationCell:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType!.cellIdentifier) as! SelectDestinationCell
             cell.destinationLabel.text = "検索範囲を1kmに設定中"
+            print(self.presenter.searchData.placeData?.name)
             cell.placeLabel.text = self.presenter.searchData.placeData?.name
             return cell
         case .checkCell:
