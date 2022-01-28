@@ -18,9 +18,10 @@ class PlaceSearchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var autocompleteController = GMSAutocompleteViewController()
-    var placeSearchDataModel = PlaceSearchDataModel()
+    var placeSearchDataModel: PlaceSearchDataModel!
     var placeSearchViewOutput: PlaceSearchViewOutput!
-    private var presenter: PlaceSearchPresenterInput!
+    var presenter: PlaceSearchPresenterInput!
+    var transitionSourceName = String()
     private var pickerView: DistanceCell?
     private var isPickerViewShowing = false
     
@@ -28,17 +29,21 @@ class PlaceSearchViewController: UIViewController {
         self.presenter = presenter
     }
     
+    func placeSearchModelInject(model:PlaceSearchDataModel){
+        self.placeSearchDataModel = model
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let presenter = PlaceSearchPresenter(view:self)
+        let presenter = PlaceSearchPresenter(view:self, initialValue:transitionSourceName)
         inject(presenter: presenter)
-   
+        placeSearchModelInject(model:self.presenter.placeData)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        presenter.loadView(Data: self.placeSearchDataModel)
+        presenter.loadView(Data: self.placeSearchDataModel, transitionSourceName: transitionSourceName)
         self.navigationItem.title = "目的地"
     }
     
@@ -94,7 +99,7 @@ extension PlaceSearchViewController: PlaceSearchPresenterOutput{
     
     func reloadDistanceLabel() {
         self.tableView.beginUpdates()
-        pickerView?.distanceLabel.text = String(self.presenter.placeData.searchRange) + "m 以内"
+        pickerView?.distanceLabel.text = self.presenter.placeData.searchRange!.searchRange + self.presenter.placeData.searchRange!.unit
         self.tableView.endUpdates()
     }
     
@@ -125,19 +130,21 @@ extension PlaceSearchViewController: UITableViewDelegate, UITableViewDataSource{
         
         if indexPath.section == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "PlaceSearchCell", for: indexPath) as! PlaceSearchCell
+            cell.selectionStyle = .none
             cell.button.addTarget(self, action: #selector(self.searchButton(_:)), for: .touchUpInside)
             return cell
         }else if indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "PlaceCell", for: indexPath) as! PlaceCell
             cell.selectionStyle = .none
-            cell.placeLabel.text = placeSearchDataModel.name
+            cell.placeLabel.text = self.presenter.placeData.name
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "DistanceCell", for: indexPath) as! DistanceCell
             cell.selectionStyle = .none
             self.pickerView = cell
             cell.inject(presenter: self.presenter)
-            cell.distanceLabel.text = String(placeSearchDataModel.searchRange) + "m 以内"
+            cell.list = self.presenter.pickerList
+            cell.distanceLabel.text = presenter.placeData.searchRange!.searchRange + presenter.placeData.searchRange!.unit
             return cell
         }
     }

@@ -9,6 +9,9 @@ import UIKit
 
 class SelectDestinationCell: UITableViewCell {
 
+    @IBOutlet weak var destinationLabel: UILabel!
+    @IBOutlet weak var placeLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

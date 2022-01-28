@@ -18,9 +18,8 @@ class DistanceCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSourc
     func inject(presenter: PlaceSearchPresenterInput){
         self.presenter = presenter
     }
-    
-    let list = ["300", "500", "1000", "2000", "3000"]
-    
+
+    var list = [String]()
     static let compressedHeight: CGFloat = 90
     static let expandedHeight: CGFloat = 250
     
@@ -80,7 +79,6 @@ class DistanceCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSourc
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        distanceLabel.text = list[row]
         self.presenter.didSelectPickerData(selectedData: list[row])
     }
     

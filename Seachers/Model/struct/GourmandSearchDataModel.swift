@@ -16,30 +16,10 @@ struct GourmandSearchDataModel{
     var memberCount:Int
     
     init(){
-        self.place = PlaceSearchDataModel()
+        self.place = PlaceSearchDataModel(transitionSourceName: nil)
         self.genre = [GenreViewModel]()
         self.date = DateModel()
         memberCount = 2
-    }
-}
-
-struct TravelSearchDataModel{
-    var checkInDate:TravelDateModel
-    var checkOutDate:TravelDateModel
-    var adultNum:Int
-    var roomNum:Int
-    var latitude:CLLocationCoordinate2D?
-    var longitude:CLLocationCoordinate2D?
-    var searchRadius:Double
-    
-    init(){
-        self.checkInDate = TravelDateModel()
-        self.checkOutDate = TravelDateModel()
-        self.adultNum = 2
-        self.roomNum = 1
-        self.latitude = nil
-        self.longitude = nil
-        self.searchRadius = 1
     }
 }
 
