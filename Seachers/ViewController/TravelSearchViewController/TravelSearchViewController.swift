@@ -40,10 +40,7 @@ class TravelSearchViewController: UIViewController {
     
     
     @IBAction func goMapView(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "MapView", bundle: nil)
-        let mapVC = storyboard.instantiateInitialViewController() as! MapViewController
-        mapVC.previousVCString = "TravelSearchViewController"
-        self.navigationController?.pushViewController(mapVC, animated: true)
+        self.presenter.doneButton()
     }
     
     @objc func datePickerOfCheckInValueChange(){
@@ -144,6 +141,16 @@ extension TravelSearchViewController: TravelSearchPresenterOutput{
         self.datePickerOfCheckOut.dateLabel.text = self.presenter.searchData.checkOutDate.dateString
         self.tableView.endUpdates()
     }
+    
+    func goMapView() {
+        let storyboard = UIStoryboard(name: "MapView", bundle: nil)
+        let mapVC = storyboard.instantiateInitialViewController() as! MapViewController
+        mapVC.previousVCString = "TravelSearchViewController"
+        mapVC.travelSearchData = self.presenter.searchData
+        self.navigationController?.pushViewController(mapVC, animated: true)
+    }
+    
+    
     
 }
 
