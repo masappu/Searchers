@@ -65,11 +65,13 @@ class GourmandSearchViewController: UIViewController {
         self.presenter.pushSearchButton()
     }
     
-    @objc func plusButton(){
+    @objc func plusButton(_ sender:UIButton){
+        self.memberCountCell?.buttonAnimat.endAnimation(sender: sender)
         self.presenter.pushPlusButton()
     }
     
-    @objc func minusButton(){
+    @objc func minusButton(_ sender:UIButton){
+        self.memberCountCell?.buttonAnimat.endAnimation(sender: sender)
         self.presenter.pushMinusButton()
     }
     
@@ -206,8 +208,8 @@ extension GourmandSearchViewController:UITableViewDelegate,UITableViewDataSource
             self.memberCountCell = cell
             cell.selectionStyle = .none
             self.memberCountCell?.memberCountLabel.text = String(self.presenter.searchData.memberCount) + "名"
-            self.memberCountCell?.plusButton.addTarget(self, action: #selector(plusButton), for: .touchUpInside)
-            self.memberCountCell?.minusButton.addTarget(self, action: #selector(minusButton), for: .touchUpInside)
+            self.memberCountCell?.plusButton.addTarget(self, action: #selector(plusButton(_:)), for: .touchUpInside)
+            self.memberCountCell?.minusButton.addTarget(self, action: #selector(minusButton(_:)), for: .touchUpInside)
             return cell
         }
     }
