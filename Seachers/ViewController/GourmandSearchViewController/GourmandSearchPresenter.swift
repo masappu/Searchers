@@ -73,6 +73,8 @@ protocol GourmandSearchOutput{
     
     //GourmandGenreViewへの遷移を指示する
     func transitionToGourmandGenreView(selectedGenres:[GenreViewModel])
+    
+    func showAlertLocationIsEmpty()
 }
 
 final class GourmandSearchPresenter: GourmandSearchInput{
@@ -90,6 +92,7 @@ final class GourmandSearchPresenter: GourmandSearchInput{
     }
     
     func loadView() {
+        self.view.setNavigationControllerInfo()
         self.model.requestAuthorization()
         self.view.setTableViewInfo()
         self.view.reloadTableView()
@@ -104,7 +107,12 @@ final class GourmandSearchPresenter: GourmandSearchInput{
     }
     
     func pushSearchButton() {
-        self.view.transitionToMapView(Data: self.searchData, previousVCString: self.previousVCString)
+        
+        if self.searchData.place.locaitonAtSearchPlace == nil{
+            self.view.showAlertLocationIsEmpty()
+        }else{
+            self.view.transitionToMapView(Data: self.searchData, previousVCString: self.previousVCString)
+        }
     }
     
     func deleteGenreData(indexPath row: Int) {
