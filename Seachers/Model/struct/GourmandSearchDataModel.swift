@@ -16,7 +16,7 @@ struct GourmandSearchDataModel{
     var memberCount:Int
     
     init(){
-        self.place = PlaceSearchDataModel(transitionSourceName: nil)
+        self.place = PlaceSearchDataModel(transitionSourceName: "Gourmand")
         self.genre = [GenreViewModel]()
         self.date = DateModel()
         memberCount = 2
