@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 
 protocol TravelSearchPresenterInput{
@@ -35,17 +36,20 @@ final class TravelSearchPresenter: TravelSearchPresenterInput{
     
     
     private var view: TravelSearchPresenterOutput!
+    private var model:LocationModelInput!
     var searchData: TravelSearchDataModel = TravelSearchDataModel()
     
     init(view:TravelSearchPresenterOutput){
         self.view = view
+        let model = LocationModel(presenter: self)
+        self.model = model
     }
     
     func loadView(Data: TravelSearchDataModel) {
         self.searchData = Data
-        
         let placeData = PlaceSearchDataModel(transitionSourceName: "TravelSearch")
         self.searchData.placeData = placeData
+        self.model.requestAuthorization()
         self.view.setTableViewInfo()
     }
     
@@ -104,5 +108,17 @@ final class TravelSearchPresenter: TravelSearchPresenterInput{
         self.view.reloadTableView()
     }
     
+}
+
+// MARK: - LocationModelOutput
+extension TravelSearchPresenter:LocationModelOutput{
+    
+    
+    func completedRequestLocaiton(request: CLLocationCoordinate2D) {
+        self.searchData.placeData?.locaitonAtCurrent = request
+    }
+    
+    
     
 }
+
