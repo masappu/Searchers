@@ -148,6 +148,7 @@ extension GourmandSearchViewController:GourmandSearchOutput{
     func transitionToPlaceSearchView() {
         let storyboard = UIStoryboard(name: "PlaceSearch", bundle: nil)
         let placeSearchVC = storyboard.instantiateInitialViewController() as! PlaceSearchViewController
+        placeSearchVC.placeSearchViewOutput = self
         self.navigationController?.pushViewController(placeSearchVC, animated: true)
     }
     
@@ -187,7 +188,9 @@ extension GourmandSearchViewController:UITableViewDelegate,UITableViewDataSource
         case .selectDestinationCell:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType!.cellIdentifier) as! SelectDestinationCell
             let placeLabel = cell.contentView.viewWithTag(1) as! UILabel
+            let searchRangeLabel = cell.contentView.viewWithTag(2) as! UILabel
             placeLabel.text = self.presenter.searchData.place.name
+            searchRangeLabel.text = "検索範囲を\(self.presenter.searchData.place.searchRange)に設定中"
             return cell
         case .selectGenreCell:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType!.cellIdentifier) as! SelectGenreCell
@@ -229,5 +232,13 @@ extension GourmandSearchViewController:GourmandSearchViewInput{
     
     func pushDeleteButton(at row: Int) {
         self.presenter.deleteGenreData(indexPath: row)
+    }
+}
+
+extension GourmandSearchViewController:PlaceSearchViewOutput{
+    func passData(Data: PlaceSearchDataModel) {
+        self.presenter.searchData.place.name = Data.name
+        self.presenter.searchData.place.locaitonAtSearchPlace = Data.locaitonAtSearchPlace
+        self.presenter.searchData.place.searchRange = Data.searchRange
     }
 }
