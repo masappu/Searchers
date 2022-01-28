@@ -92,8 +92,8 @@ class GourmandAPIModel: GourmandAPIInput{
                 do{
                     let json:JSON = try JSON(data: response.data!)
                     var totalHitCount = json["results"]["results_available"].int
-                    if totalHitCount! > rangeArray[rangeCount - 1]{
-                        totalHitCount = rangeArray[rangeCount - 1]
+                    if totalHitCount! > rangeArray[rangeCount]{
+                        totalHitCount = rangeArray[rangeCount]
                     }
                     if totalHitCount != 0{
                         

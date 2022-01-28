@@ -115,8 +115,8 @@ struct PassData{
     let longitude:Double
     let searchRadius:Double
     init(){
-        self.checkInDate = "2022-01-27"
-        self.checkOutDate = "2022-01-28"
+        self.checkInDate = "2022-01-28"
+        self.checkOutDate = "2022-01-29"
         self.adultNum = 2
         self.roomNum = 1
         self.latitude = 35.6809591
