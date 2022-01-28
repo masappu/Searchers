@@ -14,6 +14,9 @@ protocol GourmandSearchInput{
     //検索条件を受け渡す変数
     var searchData:GourmandSearchDataModel {get set}
     
+    //ボタンアニメーションの情報を保持する
+    var buttonAnimation:ButtonAnimatedModel {get}
+    
     //viewの構築のタイミングを通知する
     func loadView()
     
@@ -74,7 +77,9 @@ protocol GourmandSearchOutput{
     //GourmandGenreViewへの遷移を指示する
     func transitionToGourmandGenreView(selectedGenres:[GenreViewModel])
     
+    //エラー表示
     func showAlertLocationIsEmpty()
+    
 }
 
 final class GourmandSearchPresenter: GourmandSearchInput{
@@ -83,7 +88,7 @@ final class GourmandSearchPresenter: GourmandSearchInput{
     private var model:LocationModelInput!
     private let previousVCString = "GourmandSearchViewController"
     var searchData: GourmandSearchDataModel = GourmandSearchDataModel()
-    
+    var buttonAnimation = ButtonAnimatedModel(animatType: .DoneSearchButton)
     
     init(view:GourmandSearchOutput){
         self.view = view
