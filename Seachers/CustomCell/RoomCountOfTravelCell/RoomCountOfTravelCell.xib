@@ -44,13 +44,14 @@
                             <constraint firstItem="zbW-qI-kQR" firstAttribute="top" secondItem="vXe-Tq-qjC" secondAttribute="bottom" constant="31" id="yBc-dk-Gc2"/>
                         </constraints>
                     </stackView>
-                    <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="N9z-GL-M48">
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="N9z-GL-M48">
                         <rect key="frame" x="180" y="35" width="150" height="50"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2F-C2-Rp2">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="kqV-3x-lMZ"/>
+                                    <constraint firstAttribute="width" constant="50" id="KNe-BE-oAI"/>
+                                    <constraint firstAttribute="height" constant="50" id="ixh-W2-ELo"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="plus.circle.fill" catalog="system" title="">
@@ -60,6 +61,10 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8hX-91-7Fa">
                                 <rect key="frame" x="100" y="0.0" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="EKd-Ab-UFd"/>
+                                    <constraint firstAttribute="width" constant="50" id="f0n-RA-pet"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="minus.circle.fill" catalog="system" title="">
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="30"/>
@@ -68,9 +73,7 @@
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="width" constant="150" id="Hon-Mc-a9x"/>
                             <constraint firstAttribute="height" constant="50" id="Uiy-s5-aSy"/>
-                            <constraint firstItem="8hX-91-7Fa" firstAttribute="leading" secondItem="K2F-C2-Rp2" secondAttribute="trailing" constant="50" id="qco-dM-Q1R"/>
                         </constraints>
                     </stackView>
                 </subviews>

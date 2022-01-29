@@ -21,7 +21,7 @@ class CheckInCell: UITableViewCell {
         conteinerViewHeight.constant = CheckInCell.compressedHeight
         datePicker.isHidden = true
         datePicker.alpha = 0
-        
+        datePicker.minimumDate = Date()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
