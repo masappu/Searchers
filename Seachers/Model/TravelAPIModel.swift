@@ -101,32 +101,13 @@ struct HotelsData{
 }
 
 struct TravelRequestParameterModel{
-    let searchData:PassData
+    let searchData:TravelSearchDataModel
     let hits:Int
     let page:Int
     let elements:String  = "hotelName%2CplanListUrl%2Caddress1%2CnearestStation%2ChotelMinCharge%2ChotelImageUrl%2CrecordCount%2CpageCount%2Cpage%2Cfirst%2Clast%2Clatitude%2Clongitude"
     let datumType:Int = 1
     let sort:String = "%2BroomCharge"
     let apiKey:String = "1072027207911802205"
-}
-
-struct PassData{
-    let checkInDate:String
-    let checkOutDate:String
-    let adultNum:Int
-    let roomNum:Int
-    let latitude:Double
-    let longitude:Double
-    let searchRadius:Double
-    init(){
-        self.checkInDate = "2022-01-28"
-        self.checkOutDate = "2022-01-29"
-        self.adultNum = 2
-        self.roomNum = 1
-        self.latitude = 35.6809591
-        self.longitude = 139.7673068
-        self.searchRadius = 1.0
-    }
 }
 
 class TravelAPIModel: TravelAPIInput{
@@ -138,8 +119,8 @@ class TravelAPIModel: TravelAPIInput{
     }
     
     func requestData(searchData:TravelSearchDataModel,hits:Int,page:Int){
-        let parameters = TravelRequestParameterModel(searchData: PassData(),hits: hits,page: page)
-        let urlString = "https://app.rakuten.co.jp/services/api/Travel/VacantHotelSearch/20170426?format=json&checkinDate=\(parameters.searchData.checkInDate)&checkoutDate=\(parameters.searchData.checkOutDate)&elements=\(parameters.elements)&adultNum=\(parameters.searchData.adultNum)&roomNum=\(parameters.searchData.roomNum)&latitude=\(parameters.searchData.latitude)&longitude=\(parameters.searchData.longitude)&searchRadius=\(parameters.searchData.searchRadius)&datumType=\(parameters.datumType)&hits=\(parameters.hits)&page=\(parameters.page)&sort=\(parameters.sort)&applicationId=\(parameters.apiKey)"
+        let parameters = TravelRequestParameterModel(searchData: searchData,hits: hits,page: page)
+        let urlString = "https://app.rakuten.co.jp/services/api/Travel/VacantHotelSearch/20170426?format=json&checkinDate=\("2022-01-30")&checkoutDate=\("2022-01-31")&elements=\(parameters.elements)&adultNum=\(parameters.searchData.adultNum)&roomNum=\(parameters.searchData.roomNum)&latitude=\(parameters.searchData.placeData!.locaitonAtSearchPlace!.latitude)&longitude=\( parameters.searchData.placeData!.locaitonAtSearchPlace!.longitude)&searchRadius=\(parameters.searchData.placeData!.searchRange!.searchRange)&datumType=\(parameters.datumType)&hits=\(parameters.hits)&page=\(parameters.page)&sort=\(parameters.sort)&applicationId=\(parameters.apiKey)"
         print(urlString)
         AF.request(urlString, method: .get, parameters: nil, encoding: JSONEncoding.default).responseDecodable(of: TravelAPIDecoder.self) { [self] response in
             switch response.result{
