@@ -163,6 +163,15 @@ extension MapViewController: GMSMapViewDelegate{
 
 extension MapViewController: MapPresenterOutput{
     
+    func showAlert() {
+        let alert = UIAlertController(title: "予期せぬエラーが発生しました。", message: "通信環境をご確認ください。", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "OK", style: .cancel) { action in
+            self.navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(cancel)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func indicatorViewStart() {
         activityIndicatorView.isHidden = false
         activityIndicatorView.startAnimating()
