@@ -169,6 +169,7 @@ class MapPresenter: MapPresenterInput{
             self.rangeCount = self.categoryArray.firstIndex(of: "\(travelRange)")!
             self.zoomCount = categoryType!.zoomArray[rangeCount]
             self.view.setupSearchBarText()
+            print(travelSearchData)
             self.travelAPIModel.requestData(searchData: travelSearchData, hits: 30, page: 1)
         }
     }
