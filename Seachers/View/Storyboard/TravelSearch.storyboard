@@ -35,6 +35,9 @@
                                         <state key="normal" title="決定">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="goMapView:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="wUn-xk-OLg"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
