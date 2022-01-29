@@ -7,11 +7,13 @@
 
 import Foundation
 import CoreLocation
+import UIKit
 
 protocol PlaceSearchPresenterInput{
     
     var placeData:PlaceSearchDataModel {get set}
     var pickerList:[String] {get set}
+    var color:UIColor {get set}
     func loadView(Data:PlaceSearchDataModel, transitionSourceName:String)
     func searchButton()
     func searchData(name:String,place: CLLocationCoordinate2D)
@@ -23,6 +25,8 @@ protocol PlaceSearchPresenterInput{
 protocol PlaceSearchPresenterOutput{
     
     func setTableViewInfo()
+    func setNavigationControllerInfo()
+    func setButton()
     func reloadTableView()
     func startGooglePlaces()
     func AutocompleteControllerDismiss(selectedData: PlaceSearchDataModel)
@@ -37,6 +41,7 @@ final class PlaceSearchPresenter: PlaceSearchPresenterInput{
     var placeData: PlaceSearchDataModel
     var pickerList = [String]()
     var unit = String()
+    var color = UIColor()
     
     
     init(view:PlaceSearchPresenterOutput, initialValue:String){
@@ -48,10 +53,14 @@ final class PlaceSearchPresenter: PlaceSearchPresenterInput{
         self.placeData = Data
         if transitionSourceName == "TravelSearch"{
             self.pickerList = ["1","2","3"]
+            self.color = .green
         }else if transitionSourceName == "Gourmand"{
             self.pickerList = ["300","500","1000","2000","3000"]
+            self.color = .orange
         }
+        self.view.setButton()
         self.view.setTableViewInfo()
+        self.view.setNavigationControllerInfo()
     }
     
     func searchButton(){
@@ -65,7 +74,7 @@ final class PlaceSearchPresenter: PlaceSearchPresenterInput{
     }
     
     func didSelectCell(index: Int) {
-        if index == 2{
+        if index == 1{
             self.view.pickerViewIsHidden()
         }
     }
