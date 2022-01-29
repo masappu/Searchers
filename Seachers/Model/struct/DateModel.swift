@@ -42,10 +42,12 @@ struct DateModel{
 
 struct CheckInDate{
     private (set) var dateString:String
-    
+    private (set) var passDateString:String
+
     var date:Date{
         didSet{
             self.dateString = dateFormatter.string(from: date)
+            self.passDateString = String(dateString.dropLast(3))
         }
     }
     
@@ -68,6 +70,7 @@ struct CheckInDate{
 
     init(){
         self.dateString = String()
+        self.passDateString = String()
         self.date = Date()
         self.date = initialDate()
         self.dateString = self.dateFormatter.string(from: self.date)
