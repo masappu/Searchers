@@ -21,10 +21,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="340"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RqW-cU-zwj">
-                                <rect key="frame" x="30" y="25" width="330" height="70"/>
+                                <rect key="frame" x="30" y="25" width="260" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="チェックアウト" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P1h-2K-tn1">
-                                        <rect key="frame" x="0.0" y="0.0" width="330" height="25"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="260" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="cWK-nf-fcS"/>
                                         </constraints>
@@ -33,7 +33,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日時" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JfI-ab-zEt">
-                                        <rect key="frame" x="0.0" y="55" width="330" height="15"/>
+                                        <rect key="frame" x="0.0" y="55" width="260" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="jFe-N8-gCl"/>
                                         </constraints>
@@ -56,15 +56,25 @@
                                     <constraint firstAttribute="height" constant="220" id="RI3-R5-QXc"/>
                                 </constraints>
                             </datePicker>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5pM-uT-vdb">
+                                <rect key="frame" x="310" y="55" width="40" height="30.5"/>
+                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="cqg-8A-4GF"/>
+                                    <constraint firstAttribute="width" constant="40" id="vLU-oY-gS9"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="RqW-cU-zwj" firstAttribute="top" secondItem="9Gi-eJ-TMU" secondAttribute="top" constant="25" id="A51-7w-GKz"/>
                             <constraint firstAttribute="height" constant="340" id="IEf-FS-osG"/>
+                            <constraint firstItem="5pM-uT-vdb" firstAttribute="leading" secondItem="RqW-cU-zwj" secondAttribute="trailing" constant="20" id="JlW-Vz-l8o"/>
                             <constraint firstAttribute="trailing" secondItem="pCc-5U-yDi" secondAttribute="trailing" constant="30" id="KIq-kr-4EZ"/>
                             <constraint firstItem="pCc-5U-yDi" firstAttribute="top" secondItem="RqW-cU-zwj" secondAttribute="bottom" constant="25" id="O5z-6H-WqR"/>
                             <constraint firstItem="pCc-5U-yDi" firstAttribute="leading" secondItem="9Gi-eJ-TMU" secondAttribute="leading" constant="30" id="UXr-D8-adu"/>
-                            <constraint firstAttribute="trailing" secondItem="RqW-cU-zwj" secondAttribute="trailing" constant="30" id="Yhl-5o-aOc"/>
+                            <constraint firstAttribute="trailing" secondItem="5pM-uT-vdb" secondAttribute="trailing" constant="40" id="ZQd-Hv-ozA"/>
+                            <constraint firstItem="5pM-uT-vdb" firstAttribute="top" secondItem="9Gi-eJ-TMU" secondAttribute="top" constant="50" id="nnt-Ms-eg4"/>
                             <constraint firstItem="RqW-cU-zwj" firstAttribute="leading" secondItem="9Gi-eJ-TMU" secondAttribute="leading" constant="30" id="pyS-8j-vug"/>
                         </constraints>
                     </view>
@@ -78,6 +88,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="chevronImageView" destination="5pM-uT-vdb" id="fvE-O5-yks"/>
                 <outlet property="conteinerViewHeight" destination="IEf-FS-osG" id="2ah-Ma-7yr"/>
                 <outlet property="dateLabel" destination="JfI-ab-zEt" id="4jE-QW-sny"/>
                 <outlet property="datePicker" destination="pCc-5U-yDi" id="NCV-in-xMp"/>
@@ -86,6 +97,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="chevron.down" catalog="system" width="128" height="72"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
