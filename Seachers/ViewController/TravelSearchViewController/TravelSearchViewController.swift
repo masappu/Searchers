@@ -15,7 +15,6 @@ class TravelSearchViewController: UIViewController {
     private var presenter: TravelSearchPresenterInput!
     private var datePickerOfCheckIn: CheckInCell!
     private var datePickerOfCheckOut:CheckOutCell!
-    var travelSearchDataModel = TravelSearchDataModel()
     private var datePickerCheckInShowing = false
     private var datePickerCheckOutShowing = false
 
@@ -34,7 +33,7 @@ class TravelSearchViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        presenter.loadView(Data: travelSearchDataModel)
+        presenter.loadView()
     }
     
     
@@ -72,6 +71,7 @@ class TravelSearchViewController: UIViewController {
 extension TravelSearchViewController: PlaceSearchViewOutput{
     
     func passData(Data: PlaceSearchDataModel) {
+        self.presenter.searchData.placeData = Data
         self.presenter.receiveData(Data: Data)
     }
 }
@@ -160,10 +160,17 @@ extension TravelSearchViewController: TravelSearchPresenterOutput{
         let mapVC = storyboard.instantiateInitialViewController() as! MapViewController
         mapVC.previousVCString = "TravelSearchViewController"
         mapVC.travelSearchData = self.presenter.searchData
+        print("$%&$%&&&&&&&&&&&&&&&&&&&&")
+        print(self.presenter.searchData)
         self.navigationController?.pushViewController(mapVC, animated: true)
     }
     
-    
+    func showAlertLocationIsEmpty() {
+        let alert = UIAlertController(title: "目的地が選択されていません。", message: "目的地を選択するか、位置情報の取得を許可してください。", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "OK", style: .cancel,handler: nil)
+        alert.addAction(cancel)
+        self.present(alert, animated: true, completion: nil)
+    }
     
 }
 
@@ -207,7 +214,6 @@ extension TravelSearchViewController: UITableViewDelegate, UITableViewDataSource
                 cell.selectionStyle = .none
                 self.datePickerOfCheckIn = cell
                 self.datePickerOfCheckIn.dateLabel.text = self.presenter.searchData.checkInDate.dateString
-//                self.datePickerOfCheckIn?.datePicker.date = self.presenter.searchData.checkInDate.date
                 self.datePickerOfCheckIn.datePicker.addTarget(self, action: #selector(datePickerOfCheckInValueChange), for: .valueChanged)
                 return cell
             case .checkOutCell:
@@ -242,7 +248,7 @@ extension TravelSearchViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.presenter.didSelectCell(indexPath_row: indexPath.row, indexPath_section: indexPath.section)
-    }
-    
-    
+    }    
 }
+
+

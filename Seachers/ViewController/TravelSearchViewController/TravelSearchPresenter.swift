@@ -11,7 +11,7 @@ import CoreLocation
 
 protocol TravelSearchPresenterInput{
     var searchData:TravelSearchDataModel {get set}
-    func loadView(Data:TravelSearchDataModel)
+    func loadView()
     func didSelectCell(indexPath_row:Int, indexPath_section:Int)
     func datePickerOfCheckInValueChange(date:Date)
     func datePickerOfCheckOutValueChange(date:Date)
@@ -33,6 +33,7 @@ protocol TravelSearchPresenterOutput{
     func reloadCheckOutDateLabel()
     func reloadTableView()
     func goMapView()
+    func showAlertLocationIsEmpty()
 }
 
 final class TravelSearchPresenter: TravelSearchPresenterInput{
@@ -46,12 +47,11 @@ final class TravelSearchPresenter: TravelSearchPresenterInput{
         self.view = view
         let model = LocationModel(presenter: self)
         self.model = model
-    }
-    
-    func loadView(Data: TravelSearchDataModel) {
-        self.searchData = Data
         let placeData = PlaceSearchDataModel(transitionSourceName: "TravelSearch")
         self.searchData.placeData = placeData
+    }
+    
+    func loadView() {
         self.model.requestAuthorization()
         self.view.setTableViewInfo()
         self.view.setNavigationControllerInfo()
@@ -114,6 +114,9 @@ final class TravelSearchPresenter: TravelSearchPresenterInput{
     }
     
     func doneButton() {
+        if self.searchData.placeData?.locaitonAtSearchPlace == nil{
+            self.view.showAlertLocationIsEmpty()
+        }
         self.view.goMapView()
     }
     

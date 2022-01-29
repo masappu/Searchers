@@ -19,7 +19,6 @@ class PlaceSearchViewController: UIViewController {
     @IBOutlet weak var button: UIButton!
     
     var autocompleteController = GMSAutocompleteViewController()
-    var placeSearchDataModel: PlaceSearchDataModel!
     var placeSearchViewOutput: PlaceSearchViewOutput!
     var presenter: PlaceSearchPresenterInput!
     var transitionSourceName = String()
@@ -30,21 +29,17 @@ class PlaceSearchViewController: UIViewController {
         self.presenter = presenter
     }
     
-    func placeSearchModelInject(model:PlaceSearchDataModel){
-        self.placeSearchDataModel = model
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let presenter = PlaceSearchPresenter(view:self, initialValue:transitionSourceName)
         inject(presenter: presenter)
-        placeSearchModelInject(model:self.presenter.placeData)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        presenter.loadView(Data: self.placeSearchDataModel, transitionSourceName: transitionSourceName)
+        presenter.loadView(transitionSourceName: transitionSourceName)
     }
     
     @objc func searchButton(_ sender: UIButton){
@@ -103,7 +98,6 @@ extension PlaceSearchViewController: PlaceSearchPresenterOutput{
     }
     
     func AutocompleteControllerDismiss(selectedData: PlaceSearchDataModel) {
-        self.placeSearchDataModel = selectedData
         self.dismiss(animated: true, completion: nil)
         tableView.reloadData()
     }
