@@ -77,10 +77,12 @@ struct CheckInDate{
 struct CheckOutDate{
     
     private (set) var dateString:String
-    
+    private (set) var passDateString:String
+
     var date:Date{
         didSet{
             self.dateString = dateFormatter.string(from: date)
+            self.passDateString = String(dateString.dropLast(3))
         }
     }
     
@@ -88,6 +90,7 @@ struct CheckOutDate{
         didSet{
             let day = Calendar.current.date(byAdding: .day, value: 1, to: changeDate)
             self.dateString = dateFormatter.string(from: day!)
+            self.passDateString = String(dateString.dropLast(3))
             self.changeDate = day!
         }
     }
@@ -111,6 +114,7 @@ struct CheckOutDate{
     
     init(){
         self.dateString = String()
+        self.passDateString = String()
         self.date = Date()
         self.changeDate = Date()
         self.date = initialDate()

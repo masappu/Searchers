@@ -24,7 +24,6 @@ class PlaceSearchViewController: UIViewController {
     var transitionSourceName = String()
     private var pickerView: DistanceCell?
     private var isPickerViewShowing = false
-    
     func inject(presenter:PlaceSearchPresenterInput){
         self.presenter = presenter
     }
@@ -46,9 +45,19 @@ class PlaceSearchViewController: UIViewController {
         self.presenter.searchButton()
     }
     
+    @objc func touchDown(_ sender: UIButton){
+        self.presenter.buttonAnimation.touchDown(sender: sender)
+    }
+    
+    @objc func touchUpoutside(_ sender: UIButton){
+        self.presenter.buttonAnimation.touchUpOutside(sender: sender)
+    }
+    
     @IBAction func doneButton(_ sender: Any) {
+        self.presenter.buttonAnimation.touchUpInside(sender: sender as! UIButton)
         self.presenter.pushDoneButton()
     }
+    
 
 }
 
@@ -86,6 +95,9 @@ extension PlaceSearchViewController: PlaceSearchPresenterOutput{
         button.layer.shadowOffset = CGSize(width: 10, height: 10)
         button.layer.shadowOpacity = 0.3
         button.layer.shadowRadius = 5
+        button.addTarget(self, action: #selector(touchDown(_:)), for: .touchDown)
+        button.addTarget(self, action: #selector(touchUpoutside(_:)), for: .touchUpOutside)
+
     }
     
     func reloadTableView(){

@@ -12,6 +12,7 @@ import UIKit
 protocol PlaceSearchPresenterInput{
     
     var placeData:PlaceSearchDataModel {get set}
+    var buttonAnimation:ButtonAnimatedModel{get}
     var pickerList:[String] {get set}
     var color:UIColor {get set}
     func loadView(transitionSourceName:String)
@@ -39,6 +40,7 @@ final class PlaceSearchPresenter: PlaceSearchPresenterInput{
     
     private var view: PlaceSearchPresenterOutput!
     var placeData: PlaceSearchDataModel
+    var buttonAnimation = ButtonAnimatedModel(animatType: .countCellButton)
     var pickerList = [String]()
     var unit = String()
     var color = UIColor()
