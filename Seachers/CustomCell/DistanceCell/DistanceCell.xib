@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="340"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oKB-L2-wwm">
-                                <rect key="frame" x="30" y="25" width="330" height="70"/>
+                                <rect key="frame" x="30" y="25" width="280" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="距離・範囲" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9LP-41-u75">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="70"/>
@@ -33,7 +33,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="○○○○m 以内" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XaZ-6H-klX">
-                                        <rect key="frame" x="212.5" y="0.0" width="117.5" height="70"/>
+                                        <rect key="frame" x="162.5" y="0.0" width="117.5" height="70"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -50,15 +50,25 @@
                                     <constraint firstAttribute="height" constant="220" id="Byp-hv-2Yx"/>
                                 </constraints>
                             </pickerView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="wnL-BF-Img">
+                                <rect key="frame" x="330" y="45" width="40" height="30.5"/>
+                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="aRa-wD-2cY"/>
+                                    <constraint firstAttribute="width" constant="40" id="qrh-jV-hoQ"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="wnL-BF-Img" firstAttribute="leading" secondItem="oKB-L2-wwm" secondAttribute="trailing" constant="20" id="8C1-UZ-NcF"/>
+                            <constraint firstAttribute="trailing" secondItem="wnL-BF-Img" secondAttribute="trailing" constant="20" id="Dxa-yL-fFv"/>
                             <constraint firstItem="Ehf-vo-aFz" firstAttribute="top" secondItem="oKB-L2-wwm" secondAttribute="bottom" constant="25" id="ENW-b7-OmA"/>
                             <constraint firstItem="oKB-L2-wwm" firstAttribute="leading" secondItem="35m-z5-bwH" secondAttribute="leading" constant="30" id="W53-3e-cme"/>
                             <constraint firstAttribute="trailing" secondItem="Ehf-vo-aFz" secondAttribute="trailing" constant="30" id="YmX-k8-uiQ"/>
-                            <constraint firstAttribute="trailing" secondItem="oKB-L2-wwm" secondAttribute="trailing" constant="30" id="lpv-vx-Jex"/>
                             <constraint firstItem="Ehf-vo-aFz" firstAttribute="leading" secondItem="35m-z5-bwH" secondAttribute="leading" constant="30" id="rVJ-LI-LHf"/>
                             <constraint firstAttribute="height" constant="340" id="vjf-Yq-aa0"/>
+                            <constraint firstItem="wnL-BF-Img" firstAttribute="top" secondItem="35m-z5-bwH" secondAttribute="top" constant="40" id="xzM-eE-YcP"/>
                             <constraint firstItem="oKB-L2-wwm" firstAttribute="top" secondItem="35m-z5-bwH" secondAttribute="top" constant="25" id="zzt-GL-L2b"/>
                         </constraints>
                     </view>
@@ -72,6 +82,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="chevronImageView" destination="wnL-BF-Img" id="A65-ER-Cxs"/>
                 <outlet property="containerViewHeight" destination="vjf-Yq-aa0" id="ZBc-xv-d0j"/>
                 <outlet property="distanceLabel" destination="XaZ-6H-klX" id="aTo-px-8lw"/>
                 <outlet property="pickerView" destination="Ehf-vo-aFz" id="bD2-17-0sI"/>
@@ -80,6 +91,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="chevron.down" catalog="system" width="128" height="72"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

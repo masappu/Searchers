@@ -15,6 +15,8 @@ class TravelSearchViewController: UIViewController {
     private var presenter: TravelSearchPresenterInput!
     private var datePickerOfCheckIn: CheckInCell!
     private var datePickerOfCheckOut:CheckOutCell!
+    private var memberCountCell:MemberCountOfTravelCell!
+    private var roomCountCell:MemberCountOfTravelCell!
     private var datePickerCheckInShowing = false
     private var datePickerCheckOutShowing = false
 
@@ -38,6 +40,7 @@ class TravelSearchViewController: UIViewController {
     
     
     @IBAction func goMapView(_ sender: Any) {
+        self.presenter.buttonAnimation.touchUpInside(sender: sender as! UIButton)
         self.presenter.doneButton()
     }
     
@@ -50,18 +53,22 @@ class TravelSearchViewController: UIViewController {
     }
     
     @objc func roomPlusButton(_ sender: Any){
+        self.presenter.buttonAnimation.touchUpInside(sender: sender as! UIButton)
         self.presenter.roomPlusPushButton()
     }
     
     @objc func roomMinusButton(_ sender:Any){
+        self.presenter.buttonAnimation.touchUpInside(sender: sender as! UIButton)
         self.presenter.roomMinusPushButton()
     }
     
     @objc func memberPlusButton(_ sender:Any){
+        self.presenter.buttonAnimation.touchUpInside(sender: sender as! UIButton)
         self.presenter.memberPlusPushButton()
     }
     
     @objc func memberMinusButton(_ sender:Any){
+        self.presenter.buttonAnimation.touchUpInside(sender: sender as! UIButton)
         self.presenter.memberMinusPushButton()
     }
 
@@ -160,8 +167,6 @@ extension TravelSearchViewController: TravelSearchPresenterOutput{
         let mapVC = storyboard.instantiateInitialViewController() as! MapViewController
         mapVC.previousVCString = "TravelSearchViewController"
         mapVC.travelSearchData = self.presenter.searchData
-        print("$%&$%&&&&&&&&&&&&&&&&&&&&")
-        print(self.presenter.searchData)
         self.navigationController?.pushViewController(mapVC, animated: true)
     }
     
