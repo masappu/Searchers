@@ -71,6 +71,7 @@ final class TravelSearchPresenter: TravelSearchPresenterInput{
     
     func datePickerOfCheckInValueChange(date: Date) {
         self.searchData.checkInDate.date = date
+        self.searchData.checkOutDate.changeDate = date
         self.view.reloadCheckInDateLabel()
     }
     
