@@ -11,6 +11,7 @@ import CoreLocation
 
 protocol TravelSearchPresenterInput{
     var searchData:TravelSearchDataModel {get set}
+    var buttonAnimation:ButtonAnimatedModel {get}
     func loadView()
     func didSelectCell(indexPath_row:Int, indexPath_section:Int)
     func datePickerOfCheckInValueChange(date:Date)
@@ -42,6 +43,7 @@ final class TravelSearchPresenter: TravelSearchPresenterInput{
     private var view: TravelSearchPresenterOutput!
     private var model:LocationModelInput!
     var searchData: TravelSearchDataModel = TravelSearchDataModel()
+    var buttonAnimation = ButtonAnimatedModel(animatType: .DoneSearchButton)
     
     init(view:TravelSearchPresenterOutput){
         self.view = view
