@@ -17,16 +17,12 @@
 		222308D627A0618C00D561AF /* CheckInCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222308D427A0618C00D561AF /* CheckInCell.xib */; };
 		222308DA27A061C000D561AF /* CheckOutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222308D827A061C000D561AF /* CheckOutCell.swift */; };
 		222308DB27A061C000D561AF /* CheckOutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222308D927A061C000D561AF /* CheckOutCell.xib */; };
-		2241F6DB279717A50031E004 /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241F6DA279717A50031E004 /* PlaceCell.swift */; };
-		2241F6DD279717AE0031E004 /* PlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2241F6DC279717AE0031E004 /* PlaceCell.xib */; };
 		2241F6DF279717CD0031E004 /* PlaceSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241F6DE279717CD0031E004 /* PlaceSearchCell.swift */; };
 		2241F6E1279717D50031E004 /* PlaceSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2241F6E0279717D50031E004 /* PlaceSearchCell.xib */; };
 		2241F6E3279717E90031E004 /* DistanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241F6E2279717E90031E004 /* DistanceCell.swift */; };
 		2241F6E5279717EF0031E004 /* DistanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2241F6E4279717EF0031E004 /* DistanceCell.xib */; };
 		2241F6E7279718040031E004 /* PlaceSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241F6E6279718040031E004 /* PlaceSearchViewController.swift */; };
 		2241F6E92797180F0031E004 /* PlaceSearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241F6E82797180F0031E004 /* PlaceSearchPresenter.swift */; };
-		22CD02D6279AAB24006A2B5C /* RoomAndMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CD02D4279AAB24006A2B5C /* RoomAndMemberCell.swift */; };
-		22CD02D7279AAB24006A2B5C /* RoomAndMemberCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22CD02D5279AAB24006A2B5C /* RoomAndMemberCell.xib */; };
 		22E48DF527A2791E008DF640 /* TravelSearchDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E48DF427A2791E008DF640 /* TravelSearchDataModel.swift */; };
 		86514DEA278C0EC2003839DF /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86514DE9278C0EC2003839DF /* MapPresenter.swift */; };
 		86514DEF278DB217003839DF /* GourmandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86514DED278DB217003839DF /* GourmandCell.swift */; };
@@ -118,16 +114,12 @@
 		222308D427A0618C00D561AF /* CheckInCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckInCell.xib; sourceTree = "<group>"; };
 		222308D827A061C000D561AF /* CheckOutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutCell.swift; sourceTree = "<group>"; };
 		222308D927A061C000D561AF /* CheckOutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckOutCell.xib; sourceTree = "<group>"; };
-		2241F6DA279717A50031E004 /* PlaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
-		2241F6DC279717AE0031E004 /* PlaceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceCell.xib; sourceTree = "<group>"; };
 		2241F6DE279717CD0031E004 /* PlaceSearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceSearchCell.swift; sourceTree = "<group>"; };
 		2241F6E0279717D50031E004 /* PlaceSearchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceSearchCell.xib; sourceTree = "<group>"; };
 		2241F6E2279717E90031E004 /* DistanceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceCell.swift; sourceTree = "<group>"; };
 		2241F6E4279717EF0031E004 /* DistanceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DistanceCell.xib; sourceTree = "<group>"; };
 		2241F6E6279718040031E004 /* PlaceSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceSearchViewController.swift; sourceTree = "<group>"; };
 		2241F6E82797180F0031E004 /* PlaceSearchPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceSearchPresenter.swift; sourceTree = "<group>"; };
-		22CD02D4279AAB24006A2B5C /* RoomAndMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomAndMemberCell.swift; sourceTree = "<group>"; };
-		22CD02D5279AAB24006A2B5C /* RoomAndMemberCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoomAndMemberCell.xib; sourceTree = "<group>"; };
 		22E48DF427A2791E008DF640 /* TravelSearchDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSearchDataModel.swift; sourceTree = "<group>"; };
 		246EEE1674E45709A3BAA599 /* Pods-Seachers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seachers.release.xcconfig"; path = "Target Support Files/Pods-Seachers/Pods-Seachers.release.xcconfig"; sourceTree = "<group>"; };
 		3A6F3AEA775E55F36E45865B /* Pods-Seachers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seachers.debug.xcconfig"; path = "Target Support Files/Pods-Seachers/Pods-Seachers.debug.xcconfig"; sourceTree = "<group>"; };
@@ -754,15 +746,6 @@
 			path = PlaceSearchCell;
 			sourceTree = "<group>";
 		};
-		22838C8F279156F400562F67 /* PlaceCell */ = {
-			isa = PBXGroup;
-			children = (
-				2241F6DA279717A50031E004 /* PlaceCell.swift */,
-				2241F6DC279717AE0031E004 /* PlaceCell.xib */,
-			);
-			path = PlaceCell;
-			sourceTree = "<group>";
-		};
 		22838C902791572000562F67 /* DistanceCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -770,15 +753,6 @@
 				2241F6E4279717EF0031E004 /* DistanceCell.xib */,
 			);
 			path = DistanceCell;
-			sourceTree = "<group>";
-		};
-		22CD02D8279AAB3C006A2B5C /* RoomAndMemberCell */ = {
-			isa = PBXGroup;
-			children = (
-				22CD02D4279AAB24006A2B5C /* RoomAndMemberCell.swift */,
-				22CD02D5279AAB24006A2B5C /* RoomAndMemberCell.xib */,
-			);
-			path = RoomAndMemberCell;
 			sourceTree = "<group>";
 		};
 		840095A7B1C94F6C57977F12 /* Frameworks */ = {
@@ -1408,9 +1382,7 @@
 				87A49771278D64AB00D1D33A /* SelectGenreCell */,
 				87A4976C278D642200D1D33A /* DestinationCell */,
 				22838C8E279156BE00562F67 /* PlaceSearchCell */,
-				22838C8F279156F400562F67 /* PlaceCell */,
 				22838C902791572000562F67 /* DistanceCell */,
-				22CD02D8279AAB3C006A2B5C /* RoomAndMemberCell */,
 				222308CD27A060CE00D561AF /* MemberCountOfTravelCell */,
 				222308D227A0615700D561AF /* RoomCountOfTravelCell */,
 				222308D727A0619200D561AF /* CheckInCell */,
@@ -1662,7 +1634,6 @@
 				222308D127A0614F00D561AF /* RoomCountOfTravelCell.xib in Resources */,
 				87A49750278B653900D1D33A /* PlaceSearch.storyboard in Resources */,
 				86514DF4278E7D06003839DF /* TravelCell.xib in Resources */,
-				2241F6DD279717AE0031E004 /* PlaceCell.xib in Resources */,
 				222308DB27A061C000D561AF /* CheckOutCell.xib in Resources */,
 				87A49770278D64A200D1D33A /* SelectDestinationCell.xib in Resources */,
 				87E10C7A278A9E00005AAA4A /* NetShopping.storyboard in Resources */,
@@ -1680,7 +1651,6 @@
 				222308D627A0618C00D561AF /* CheckInCell.xib in Resources */,
 				87E10C80278AAA3A005AAA4A /* GourmandSearch.storyboard in Resources */,
 				87A4975F278B6CE600D1D33A /* FavView.storyboard in Resources */,
-				22CD02D7279AAB24006A2B5C /* RoomAndMemberCell.xib in Resources */,
 				CCC805A52793DCA1000AAE8F /* NetShoppingTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1779,10 +1749,8 @@
 				87A49782278D669400D1D33A /* GourmandSearchPresenter.swift in Sources */,
 				222308C8279E7DE800D561AF /* TravelSearchPresenter.swift in Sources */,
 				87A49747278B4DDA00D1D33A /* GourmandSearchViewController.swift in Sources */,
-				2241F6DB279717A50031E004 /* PlaceCell.swift in Sources */,
 				2241F6DF279717CD0031E004 /* PlaceSearchCell.swift in Sources */,
 				87E10C65278A967F005AAA4A /* HomeViewController.swift in Sources */,
-				22CD02D6279AAB24006A2B5C /* RoomAndMemberCell.swift in Sources */,
 				87387188279FDFEB00DEBCC3 /* ButtonAnimatedModel.swift in Sources */,
 				87A49764278B712600D1D33A /* FavOfTravelViewController.swift in Sources */,
 				22E48DF527A2791E008DF640 /* TravelSearchDataModel.swift in Sources */,
