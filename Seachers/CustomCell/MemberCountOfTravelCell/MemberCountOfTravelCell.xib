@@ -17,10 +17,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="urr-ZE-fdk">
-                        <rect key="frame" x="30" y="25" width="50" height="70"/>
+                        <rect key="frame" x="30" y="25" width="61.5" height="70"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="人数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EOi-VL-DkK">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="25"/>
+                                <rect key="frame" x="0.0" y="0.0" width="61.5" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="P3f-i1-BFc"/>
                                 </constraints>
@@ -29,7 +29,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="○名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KnC-um-Vh8">
-                                <rect key="frame" x="0.0" y="55" width="50" height="15"/>
+                                <rect key="frame" x="0.0" y="55" width="61.5" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="8vP-wN-mPJ"/>
                                 </constraints>
@@ -39,18 +39,19 @@
                             </label>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="width" constant="50" id="0rh-Zd-33B"/>
                             <constraint firstItem="KnC-um-Vh8" firstAttribute="top" secondItem="EOi-VL-DkK" secondAttribute="bottom" constant="30" id="3fT-MU-nNz"/>
+                            <constraint firstAttribute="width" constant="61.5" id="98p-Ls-aiC"/>
                             <constraint firstAttribute="height" constant="70" id="oGS-aC-kGs"/>
                         </constraints>
                     </stackView>
-                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EGk-ap-wS2">
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="EGk-ap-wS2">
                         <rect key="frame" x="180" y="35" width="150" height="50"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iB5-FT-n5b">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="sl1-XK-Ws4"/>
+                                    <constraint firstAttribute="height" constant="50" id="He2-F5-fkB"/>
+                                    <constraint firstAttribute="width" constant="50" id="Qol-Tu-i1U"/>
                                 </constraints>
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -59,7 +60,11 @@
                                 </buttonConfiguration>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xDy-Cl-Izz">
-                                <rect key="frame" x="80.5" y="0.0" width="69.5" height="50"/>
+                                <rect key="frame" x="100" y="0.0" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="Usp-7C-3Yd"/>
+                                    <constraint firstAttribute="height" constant="50" id="cLg-wb-MZa"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="minus.circle.fill" catalog="system" title="">
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="30"/>
@@ -68,9 +73,7 @@
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="width" constant="150" id="2CA-M8-RXG"/>
                             <constraint firstAttribute="height" constant="50" id="OPt-ei-hWo"/>
-                            <constraint firstItem="xDy-Cl-Izz" firstAttribute="leading" secondItem="iB5-FT-n5b" secondAttribute="trailing" constant="50" id="TCi-au-4sJ"/>
                         </constraints>
                     </stackView>
                 </subviews>
@@ -89,7 +92,7 @@
                 <outlet property="minusButton" destination="xDy-Cl-Izz" id="BYv-uq-fX4"/>
                 <outlet property="plusButton" destination="iB5-FT-n5b" id="EHa-Qv-nPX"/>
             </connections>
-            <point key="canvasLocation" x="131.8840579710145" y="81.361607142857139"/>
+            <point key="canvasLocation" x="131.8840579710145" y="81.026785714285708"/>
         </tableViewCell>
     </objects>
     <resources>

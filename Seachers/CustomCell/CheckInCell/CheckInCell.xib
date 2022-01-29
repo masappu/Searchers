@@ -28,7 +28,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="qx3-Si-Wje"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -50,7 +50,7 @@
                                     <constraint firstItem="mAm-fk-Emu" firstAttribute="top" secondItem="oR1-ab-yIR" secondAttribute="top" id="YZ6-DE-w18"/>
                                 </constraints>
                             </stackView>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="WTc-DX-krd">
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="WTc-DX-krd">
                                 <rect key="frame" x="30" y="120" width="330" height="220"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="220" id="cgc-Nn-pbC"/>

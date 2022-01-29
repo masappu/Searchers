@@ -84,6 +84,7 @@ extension TravelSearchViewController: TravelSearchPresenterOutput{
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.separatorColor = .green
         
         tableView.register(UINib(nibName: "SelectDestinationCell", bundle: nil), forCellReuseIdentifier: "selectDestinationCell")
         tableView.register(UINib(nibName: "CheckInCell", bundle: nil), forCellReuseIdentifier: "checkInCell")
@@ -141,6 +142,9 @@ extension TravelSearchViewController: TravelSearchPresenterOutput{
     func reloadCheckInDateLabel() {
         self.tableView.beginUpdates()
         self.datePickerOfCheckIn.dateLabel.text = self.presenter.searchData.checkInDate.dateString
+        self.datePickerOfCheckOut.datePicker.minimumDate = self.presenter.searchData.checkOutDate.changeDate
+        self.datePickerOfCheckOut.dateLabel.text = self.presenter.searchData.checkOutDate.dateString
+        self.presenter.searchData.checkOutDate.date = self.presenter.searchData.checkOutDate.changeDate
         self.tableView.endUpdates()
     }
     
@@ -202,7 +206,7 @@ extension TravelSearchViewController: UITableViewDelegate, UITableViewDataSource
                 cell.selectionStyle = .none
                 self.datePickerOfCheckIn = cell
                 self.datePickerOfCheckIn.dateLabel.text = self.presenter.searchData.checkInDate.dateString
-                self.datePickerOfCheckIn?.datePicker.date = self.presenter.searchData.checkInDate.date
+//                self.datePickerOfCheckIn?.datePicker.date = self.presenter.searchData.checkInDate.date
                 self.datePickerOfCheckIn.datePicker.addTarget(self, action: #selector(datePickerOfCheckInValueChange), for: .valueChanged)
                 return cell
             case .checkOutCell:
@@ -210,7 +214,7 @@ extension TravelSearchViewController: UITableViewDelegate, UITableViewDataSource
                 cell.selectionStyle = .none
                 self.datePickerOfCheckOut = cell
                 self.datePickerOfCheckOut.dateLabel.text = self.presenter.searchData.checkOutDate.dateString
-                self.datePickerOfCheckOut.datePicker.date = self.presenter.searchData.checkOutDate.date
+                self.datePickerOfCheckOut.datePicker.minimumDate = self.presenter.searchData.checkOutDate.date
                 self.datePickerOfCheckOut.datePicker.addTarget(self, action: #selector(datePickerOfCheckOutValueChange), for: .valueChanged)
                 return cell
             }
