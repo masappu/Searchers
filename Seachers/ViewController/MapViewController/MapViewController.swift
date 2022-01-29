@@ -40,6 +40,7 @@ class MapViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        print(travelSearchData)
         presenter.travelSearchData = travelSearchData
         presenter.gourmandSearchData = gourmandSearchData
         presenter.previousVCString = previousVCString
