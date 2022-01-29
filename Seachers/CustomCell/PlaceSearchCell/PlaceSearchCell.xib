@@ -32,7 +32,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未選択" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zf4-Zg-GnT">
                                 <rect key="frame" x="0.0" y="71" width="340" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="0nJ-VM-VEk"/>
+                                    <constraint firstAttribute="height" priority="250" constant="20" id="0nJ-VM-VEk"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="340" id="zLj-rp-1bV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>

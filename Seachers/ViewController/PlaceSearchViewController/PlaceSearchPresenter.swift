@@ -14,7 +14,7 @@ protocol PlaceSearchPresenterInput{
     var placeData:PlaceSearchDataModel {get set}
     var pickerList:[String] {get set}
     var color:UIColor {get set}
-    func loadView(Data:PlaceSearchDataModel, transitionSourceName:String)
+    func loadView(transitionSourceName:String)
     func searchButton()
     func searchData(name:String,place: CLLocationCoordinate2D)
     func didSelectCell(index:Int)
@@ -49,8 +49,7 @@ final class PlaceSearchPresenter: PlaceSearchPresenterInput{
         self.placeData = PlaceSearchDataModel(transitionSourceName: initialValue)
     }
     
-    func loadView(Data:PlaceSearchDataModel, transitionSourceName:String) {
-        self.placeData = Data
+    func loadView(transitionSourceName:String) {
         if transitionSourceName == "TravelSearch"{
             self.pickerList = ["1","2","3"]
             self.color = .green
