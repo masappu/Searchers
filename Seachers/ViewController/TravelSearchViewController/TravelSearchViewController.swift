@@ -101,6 +101,7 @@ extension TravelSearchViewController: TravelSearchPresenterOutput{
         self.navigationItem.scrollEdgeAppearance = appearance
         self.navigationItem.compactAppearance = appearance
         self.navigationItem.title = "旅行・宿検索"
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
     }
     
     func reloadTableView() {
