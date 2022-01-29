@@ -59,7 +59,7 @@ struct HotelsData{
     var planListUrl = String()
     var latitude = Double()
     var longitude = Double()
-    var hotelMinCharge = Int()
+    var hotelMinCharge = String()
     var area = String()
     var nearestStation = String()
     var hotelImageUrl = String()
@@ -71,9 +71,13 @@ struct HotelsData{
         self.longitude = data.longitude!
         
         if data.hotelMinCharge == nil{
-            self.hotelMinCharge = 0
+            self.hotelMinCharge = "-"
         }else{
-            self.hotelMinCharge = data.hotelMinCharge!
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal
+            formatter.groupingSeparator = ","
+            formatter.groupingSize = 3
+            self.hotelMinCharge = "\(formatter.string(from: NSNumber(value: data.hotelMinCharge!)) ?? "-")"
         }
         
         if data.address1 == nil{
