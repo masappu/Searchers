@@ -41,15 +41,19 @@ class ButtonAnimatedModel{
     }
     
     func touchUpInside(sender:UIButton){
-        UIView.animate(withDuration: withDuration, delay: delay, options: options) {
-            sender.transform = self.transform
-            sender.alpha = self.alpha
-        } completion: { _ in
-            UIView.animate(withDuration: self.withDuration, delay: self.delay, options: self.options, animations: {
-                sender.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-                sender.alpha = 1
-            }, completion: nil)
-        }
+//        UIView.animate(withDuration: withDuration, delay: delay, options: options) {
+//            sender.transform = self.transform
+//            sender.alpha = self.alpha
+//        } completion: { _ in
+//            UIView.animate(withDuration: self.withDuration, delay: self.delay, options: self.options, animations: {
+//                sender.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+//                sender.alpha = 1
+//            }, completion: nil)
+//        }
+        UIView.animate(withDuration: withDuration, delay: delay, options: options, animations: {
+            sender.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            sender.alpha = 1
+        }, completion: nil)
     }
     
     func touchDown(sender:UIButton){
