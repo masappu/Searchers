@@ -105,14 +105,14 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
         let iconImage = cell.contentView.viewWithTag(2) as! UIImageView
-        let cirleColorImage = cell.contentView.viewWithTag(1) as! UIImageView
+        let cirleColorView = cell.contentView.viewWithTag(1) as! UIView
         let titleLabel = cell.contentView.viewWithTag(3) as! UILabel
         let underLineView = cell.contentView.viewWithTag(4)!
         titleLabel.text = presenter.tableViewData[indexPath.row].goToSearchButtonName
         iconImage.image = UIImage(systemName: self.presenter.tableViewData[indexPath.row].iconStringID)
         iconImage.tintColor = .white
-        cirleColorImage.backgroundColor = self.itemColor[indexPath.row]
-        cirleColorImage.layer.cornerRadius = 50
+        cirleColorView.backgroundColor = self.itemColor[indexPath.row]
+        cirleColorView.layer.cornerRadius = 50
         
         underLineView.backgroundColor? = self.itemColor[indexPath.row]
         
@@ -124,7 +124,7 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 170
+        return view.frame.height / 5
     }
 
         

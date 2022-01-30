@@ -41,7 +41,7 @@ class NetShoppingViewController: UIViewController {
     }
     
     @objc func addToFavoritesButton(_ sender: UIButton) {
-        let cell = sender.superview?.superview as! UITableViewCell
+        let cell = sender.superview?.superview?.superview as! UITableViewCell
         let indexPath = tableView.indexPath(for: cell)
         presenter.addToFavoritesButton(indexPath: indexPath!)
     }
@@ -83,11 +83,10 @@ extension NetShoppingViewController: NetShoppingPresenterOutput{
     
    
 
-    
-    func goToWebBotton(_ sender: UIButton) {
-        let cell = sender.superview?.superview?.superview?.superview as! UITableViewCell
+    @objc func goToWebButton(_ sender: UIButton) {
+        let cell = sender.superview?.superview as! UITableViewCell
         let indexPath = tableView.indexPath(for: cell)
-     //   presenter.goToWebVCButton(indexPath: indexPath!)
+        presenter.goToWebButton(indexPath: indexPath!)
     }
     
     func addToFavorites(indexPath: IndexPath) {
@@ -103,7 +102,6 @@ extension NetShoppingViewController: NetShoppingPresenterOutput{
     func reloadTableView() {
         tableView.reloadData()
     }
-    
     
     
     func setSearchBar() {
@@ -149,9 +147,10 @@ extension NetShoppingViewController: UITableViewDelegate,UITableViewDataSource{
         
         cell.ProductImage?.sd_setImage(with: URL(string: productDataArray[indexPath.row].NetShoppingData.product_image!), completed: nil)
         cell.NameLabel?.text = productDataArray[indexPath.row].NetShoppingData.name!
-        cell.PriceLabel.text = String(productDataArray[indexPath.row].NetShoppingData.price!)
-        cell.FavoriteButtom.addTarget(self, action: #selector(addToFavoritesButton(_:)), for: .touchUpInside)
-        cell.FavoriteButtom.imageView?.image = UIImage(systemName: productDataArray[indexPath.row].favProduct)
+        cell.PriceLabel.text = "¥\(String(productDataArray[indexPath.row].NetShoppingData.price!))"
+        cell.FavoriteButton.addTarget(self, action: #selector(addToFavoritesButton(_:)), for: .touchUpInside)
+        cell.FavoriteButton.imageView?.image = UIImage(systemName: productDataArray[indexPath.row].favProduct)
+        cell.UrlButtom.addTarget(self, action: #selector(goToWebButton(_:)), for: .touchUpInside)
         
         return cell
     }
@@ -172,6 +171,6 @@ extension NetShoppingViewController: UITableViewDelegate,UITableViewDataSource{
             return view
         }
             return nil
-        }
+    }
     
 }

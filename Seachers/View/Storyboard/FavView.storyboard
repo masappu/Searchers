@@ -248,15 +248,31 @@
                     <view key="view" contentMode="scaleToFill" id="avp-HD-PQQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1Kq-Sh-GED">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="KHJ-w6-FXc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="KHJ-w6-FXc" firstAttribute="bottom" secondItem="1Kq-Sh-GED" secondAttribute="bottom" id="ZTC-Jf-dEA"/>
+                            <constraint firstItem="1Kq-Sh-GED" firstAttribute="top" secondItem="KHJ-w6-FXc" secondAttribute="top" id="boT-fI-fI0"/>
+                            <constraint firstItem="1Kq-Sh-GED" firstAttribute="trailing" secondItem="KHJ-w6-FXc" secondAttribute="trailing" id="cPQ-F3-d5h"/>
+                            <constraint firstItem="1Kq-Sh-GED" firstAttribute="leading" secondItem="KHJ-w6-FXc" secondAttribute="leading" id="eU1-NP-gGy"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="ネットショッピング" selectedImage="cart" catalog="system" id="nEG-Rq-GPM"/>
                     <navigationItem key="navigationItem" id="tcX-iG-Ew7"/>
+                    <connections>
+                        <outlet property="tableView" destination="1Kq-Sh-GED" id="Czv-Hb-RRe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="egZ-F4-KmL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1697.1014492753625" y="-346.20535714285711"/>
+
         </scene>
         <!--Root Of Fav View Controller-->
         <scene sceneID="1tG-pb-hd0">
