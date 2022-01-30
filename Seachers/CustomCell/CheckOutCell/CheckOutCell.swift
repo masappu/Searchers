@@ -11,10 +11,11 @@ class CheckOutCell: UITableViewCell {
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var chevronImageView: UIImageView!
     @IBOutlet weak var conteinerViewHeight: NSLayoutConstraint!
     
-    static let compressedHeight:CGFloat = 55
-    static let expandedHeight:CGFloat = 150
+    static let compressedHeight:CGFloat = 120
+    static let expandedHeight:CGFloat = 340
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,6 +39,7 @@ class CheckOutCell: UITableViewCell {
             self.datePicker.alpha = 1
             self.layoutIfNeeded()
         }
+        chevronImageView.image = UIImage(systemName: "chevron.up")
     }
     
     func hidePicker() {
@@ -51,6 +53,7 @@ class CheckOutCell: UITableViewCell {
         }, completion: { _ in
             self.datePicker.isHidden = true
         })
+        chevronImageView.image = UIImage(systemName: "chevron.down")
     }
     
 }

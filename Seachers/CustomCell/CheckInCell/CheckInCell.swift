@@ -11,6 +11,7 @@ class CheckInCell: UITableViewCell {
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var chevronImageView: UIImageView!
     @IBOutlet weak var conteinerViewHeight: NSLayoutConstraint!
     
     static let compressedHeight:CGFloat = 120
@@ -21,7 +22,7 @@ class CheckInCell: UITableViewCell {
         conteinerViewHeight.constant = CheckInCell.compressedHeight
         datePicker.isHidden = true
         datePicker.alpha = 0
-        
+        datePicker.minimumDate = Date()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -39,6 +40,7 @@ class CheckInCell: UITableViewCell {
             self.datePicker.alpha = 1
             self.layoutIfNeeded()
         }
+        chevronImageView.image = UIImage(systemName: "chevron.up")
     }
     
     func hidePicker() {
@@ -52,6 +54,7 @@ class CheckInCell: UITableViewCell {
         }, completion: { _ in
             self.datePicker.isHidden = true
         })
+        chevronImageView.image = UIImage(systemName: "chevron.down")
     }
     
 }

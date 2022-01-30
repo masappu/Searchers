@@ -11,7 +11,8 @@ import CoreLocation
 
 protocol TravelSearchPresenterInput{
     var searchData:TravelSearchDataModel {get set}
-    func loadView(Data:TravelSearchDataModel)
+    var buttonAnimation:ButtonAnimatedModel {get}
+    func loadView()
     func didSelectCell(indexPath_row:Int, indexPath_section:Int)
     func datePickerOfCheckInValueChange(date:Date)
     func datePickerOfCheckOutValueChange(date:Date)
@@ -25,6 +26,7 @@ protocol TravelSearchPresenterInput{
 
 protocol TravelSearchPresenterOutput{
     func setTableViewInfo()
+    func setNavigationControllerInfo()
     func transitionToPlaceSearchView()
     func datePickerOfCheckInIsHidden()
     func datePickerOfCheckOutIsHidden()
@@ -32,6 +34,7 @@ protocol TravelSearchPresenterOutput{
     func reloadCheckOutDateLabel()
     func reloadTableView()
     func goMapView()
+    func showAlertLocationIsEmpty()
 }
 
 final class TravelSearchPresenter: TravelSearchPresenterInput{
@@ -40,19 +43,20 @@ final class TravelSearchPresenter: TravelSearchPresenterInput{
     private var view: TravelSearchPresenterOutput!
     private var model:LocationModelInput!
     var searchData: TravelSearchDataModel = TravelSearchDataModel()
+    var buttonAnimation = ButtonAnimatedModel(animatType: .DoneSearchButton)
     
     init(view:TravelSearchPresenterOutput){
         self.view = view
         let model = LocationModel(presenter: self)
         self.model = model
-    }
-    
-    func loadView(Data: TravelSearchDataModel) {
-        self.searchData = Data
         let placeData = PlaceSearchDataModel(transitionSourceName: "TravelSearch")
         self.searchData.placeData = placeData
+    }
+    
+    func loadView() {
         self.model.requestAuthorization()
         self.view.setTableViewInfo()
+        self.view.setNavigationControllerInfo()
     }
     
     func didSelectCell(indexPath_row: Int, indexPath_section:Int) {
@@ -69,6 +73,7 @@ final class TravelSearchPresenter: TravelSearchPresenterInput{
     
     func datePickerOfCheckInValueChange(date: Date) {
         self.searchData.checkInDate.date = date
+        self.searchData.checkOutDate.changeDate = date
         self.view.reloadCheckInDateLabel()
     }
     
@@ -111,6 +116,9 @@ final class TravelSearchPresenter: TravelSearchPresenterInput{
     }
     
     func doneButton() {
+        if self.searchData.placeData?.locaitonAtSearchPlace == nil{
+            self.view.showAlertLocationIsEmpty()
+        }
         self.view.goMapView()
     }
     

@@ -15,7 +15,8 @@ class TravelSearchViewController: UIViewController {
     private var presenter: TravelSearchPresenterInput!
     private var datePickerOfCheckIn: CheckInCell!
     private var datePickerOfCheckOut:CheckOutCell!
-    var travelSearchDataModel = TravelSearchDataModel()
+    private var memberCountCell:MemberCountOfTravelCell!
+    private var roomCountCell:MemberCountOfTravelCell!
     private var datePickerCheckInShowing = false
     private var datePickerCheckOutShowing = false
 
@@ -34,12 +35,12 @@ class TravelSearchViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        presenter.loadView(Data: travelSearchDataModel)
-        self.navigationItem.title = "旅行・宿検索"
+        presenter.loadView()
     }
     
     
     @IBAction func goMapView(_ sender: Any) {
+        self.presenter.buttonAnimation.touchUpInside(sender: sender as! UIButton)
         self.presenter.doneButton()
     }
     
@@ -52,18 +53,22 @@ class TravelSearchViewController: UIViewController {
     }
     
     @objc func roomPlusButton(_ sender: Any){
+        self.presenter.buttonAnimation.touchUpInside(sender: sender as! UIButton)
         self.presenter.roomPlusPushButton()
     }
     
     @objc func roomMinusButton(_ sender:Any){
+        self.presenter.buttonAnimation.touchUpInside(sender: sender as! UIButton)
         self.presenter.roomMinusPushButton()
     }
     
     @objc func memberPlusButton(_ sender:Any){
+        self.presenter.buttonAnimation.touchUpInside(sender: sender as! UIButton)
         self.presenter.memberPlusPushButton()
     }
     
     @objc func memberMinusButton(_ sender:Any){
+        self.presenter.buttonAnimation.touchUpInside(sender: sender as! UIButton)
         self.presenter.memberMinusPushButton()
     }
 
@@ -73,6 +78,7 @@ class TravelSearchViewController: UIViewController {
 extension TravelSearchViewController: PlaceSearchViewOutput{
     
     func passData(Data: PlaceSearchDataModel) {
+        self.presenter.searchData.placeData = Data
         self.presenter.receiveData(Data: Data)
     }
 }
@@ -85,13 +91,24 @@ extension TravelSearchViewController: TravelSearchPresenterOutput{
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.separatorColor = .green
         
         tableView.register(UINib(nibName: "SelectDestinationCell", bundle: nil), forCellReuseIdentifier: "selectDestinationCell")
         tableView.register(UINib(nibName: "CheckInCell", bundle: nil), forCellReuseIdentifier: "checkInCell")
         tableView.register(UINib(nibName: "CheckOutCell", bundle: nil), forCellReuseIdentifier: "checkOutCell")
-        tableView.register(UINib(nibName: "RoomAndMemberCell", bundle: nil), forCellReuseIdentifier: "roomAndMemberCell")
         tableView.register(UINib(nibName: "RoomCountOfTravelCell", bundle: nil), forCellReuseIdentifier: "roomCountOfTravelCell")
         tableView.register(UINib(nibName: "MemberCountOfTravelCell", bundle: nil), forCellReuseIdentifier: "memberCountOfTravelCell")
+    }
+    
+    func setNavigationControllerInfo() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .green
+        self.navigationItem.standardAppearance = appearance
+        self.navigationItem.scrollEdgeAppearance = appearance
+        self.navigationItem.compactAppearance = appearance
+        self.navigationItem.title = "旅行・宿検索"
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
     }
     
     func reloadTableView() {
@@ -133,6 +150,9 @@ extension TravelSearchViewController: TravelSearchPresenterOutput{
     func reloadCheckInDateLabel() {
         self.tableView.beginUpdates()
         self.datePickerOfCheckIn.dateLabel.text = self.presenter.searchData.checkInDate.dateString
+        self.datePickerOfCheckOut.datePicker.minimumDate = self.presenter.searchData.checkOutDate.changeDate
+        self.datePickerOfCheckOut.dateLabel.text = self.presenter.searchData.checkOutDate.dateString
+        self.presenter.searchData.checkOutDate.date = self.presenter.searchData.checkOutDate.changeDate
         self.tableView.endUpdates()
     }
     
@@ -150,7 +170,12 @@ extension TravelSearchViewController: TravelSearchPresenterOutput{
         self.navigationController?.pushViewController(mapVC, animated: true)
     }
     
-    
+    func showAlertLocationIsEmpty() {
+        let alert = UIAlertController(title: "目的地が選択されていません。", message: "目的地を選択するか、位置情報の取得を許可してください。", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "OK", style: .cancel,handler: nil)
+        alert.addAction(cancel)
+        self.present(alert, animated: true, completion: nil)
+    }
     
 }
 
@@ -165,7 +190,7 @@ extension TravelSearchViewController: UITableViewDelegate, UITableViewDataSource
         }else if section == 1{
             return 2
         }else{
-            return 3
+            return 2
         }
     }
     
@@ -194,7 +219,6 @@ extension TravelSearchViewController: UITableViewDelegate, UITableViewDataSource
                 cell.selectionStyle = .none
                 self.datePickerOfCheckIn = cell
                 self.datePickerOfCheckIn.dateLabel.text = self.presenter.searchData.checkInDate.dateString
-                self.datePickerOfCheckIn?.datePicker.date = self.presenter.searchData.checkInDate.date
                 self.datePickerOfCheckIn.datePicker.addTarget(self, action: #selector(datePickerOfCheckInValueChange), for: .valueChanged)
                 return cell
             case .checkOutCell:
@@ -202,19 +226,13 @@ extension TravelSearchViewController: UITableViewDelegate, UITableViewDataSource
                 cell.selectionStyle = .none
                 self.datePickerOfCheckOut = cell
                 self.datePickerOfCheckOut.dateLabel.text = self.presenter.searchData.checkOutDate.dateString
-                self.datePickerOfCheckOut.datePicker.date = self.presenter.searchData.checkOutDate.date
+                self.datePickerOfCheckOut.datePicker.minimumDate = self.presenter.searchData.checkOutDate.date
                 self.datePickerOfCheckOut.datePicker.addTarget(self, action: #selector(datePickerOfCheckOutValueChange), for: .valueChanged)
                 return cell
             }
         case .roomAndMemberCell:
             let cellType = RoomAndMemberCellType(rawValue: indexPath.row)
             switch (cellType)! {
-            case .roomAndMemberCell:
-                let cell = tableView.dequeueReusableCell(withIdentifier: cellType!.cellIdentifier) as! RoomAndMemberCell
-                cell.selectionStyle = .none
-                cell.memberCountLabel.text = "人数" + String(self.presenter.searchData.adultNum) + "名"
-                cell.roomCountLabel.text = String(self.presenter.searchData.roomNum) + "部屋"
-                return cell
             case .numberOfroomsCountCell:
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellType!.cellIdentifier) as! RoomCountOfTravelCell
                 cell.selectionStyle = .none
@@ -235,7 +253,7 @@ extension TravelSearchViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.presenter.didSelectCell(indexPath_row: indexPath.row, indexPath_section: indexPath.section)
-    }
-    
-    
+    }    
 }
+
+

@@ -12,6 +12,7 @@ class DistanceCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSourc
 
     @IBOutlet weak var containerViewHeight: NSLayoutConstraint!
     @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var chevronImageView: UIImageView!
     @IBOutlet weak var pickerView: UIPickerView!
     
     private var presenter: PlaceSearchPresenterInput!
@@ -20,8 +21,8 @@ class DistanceCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSourc
     }
 
     var list = [String]()
-    static let compressedHeight: CGFloat = 90
-    static let expandedHeight: CGFloat = 250
+    static let compressedHeight: CGFloat = 120
+    static let expandedHeight: CGFloat = 340
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -49,6 +50,7 @@ class DistanceCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSourc
             self.pickerView.alpha = 1
             self.layoutIfNeeded()
         }
+        chevronImageView.image = UIImage(systemName: "chevron.up")
     }
     
     func hidePicker(){
@@ -62,7 +64,7 @@ class DistanceCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSourc
         }, completion: { _ in
             self.pickerView.isHidden = true
         })
-
+        chevronImageView.image = UIImage(systemName: "chevron.down")
            
     }
     

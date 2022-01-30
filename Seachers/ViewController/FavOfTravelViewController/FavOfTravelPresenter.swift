@@ -14,9 +14,7 @@ protocol FavOfTravelPresenterInput{
     func deleteCellButton(indexPath:IndexPath)
     func didSelectRowAt(indexPath: IndexPath)
     
-    //↓Realm出来次第型を変更してください
-    var favShopDataArray: [favShopData] {get set}
-    //↑Realm出来次第型を変更してください
+    var favShopDataArray: [favHotelData] {get set}
     
 }
 
@@ -31,7 +29,7 @@ protocol FavOfTravelPresenterOutput{
 
 class FavOfTravelPresenter: FavOfTravelPresenterInput{
     
-    var favShopDataArray: [favShopData] = []
+    var favShopDataArray: [favHotelData] = []
     private var view:FavOfTravelPresenterOutput!
     
     init(view:FavOfTravelViewController){
@@ -40,7 +38,7 @@ class FavOfTravelPresenter: FavOfTravelPresenterInput{
     
     func viewwillAppear() {
         let realm = try! Realm()
-        let favShopData = realm.objects(favShopData.self)
+        let favShopData = realm.objects(favHotelData.self)
         for favShop in favShopData{
             self.favShopDataArray.append(favShop)
         }
@@ -51,9 +49,7 @@ class FavOfTravelPresenter: FavOfTravelPresenterInput{
         let realm = try! Realm()
         let selectedShopData = favShopDataArray[indexPath.row]
         
-        //↓Realm出来次第型を変更してください
-        let registeredFavShopData = realm.objects(favShopData.self).filter("name == '\(selectedShopData.name)'")
-        //↑Realm出来次第型を変更してください
+        let registeredFavShopData = realm.objects(favShopData.self).filter("hotelName == '\(selectedShopData.hotelName)'")
         
         self.favShopDataArray.remove(at: indexPath.row)
         try! realm.write {
@@ -64,7 +60,7 @@ class FavOfTravelPresenter: FavOfTravelPresenterInput{
     }
     
     func didSelectRowAt(indexPath: IndexPath) {
-        let url = self.favShopDataArray[indexPath.row].url
+        let url = self.favShopDataArray[indexPath.row].planListUrl
         self.view.goToWebVC(url: url)
     }
     
