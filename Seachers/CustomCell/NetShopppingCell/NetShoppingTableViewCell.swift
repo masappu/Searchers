@@ -13,13 +13,24 @@ class NetShoppingTableViewCell: UITableViewCell {
     @IBOutlet weak var PriceLabel: UILabel!
     @IBOutlet weak var ProductImage: UIImageView!
     @IBOutlet weak var UrlButtom: UIButton!
-    @IBOutlet weak var FavoriteButtom: UIButton!
+    @IBOutlet weak var FavoriteButton: UIButton!
+    @IBOutlet weak var NetShoppingView: UIView!
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        NetShoppingView.layer.cornerRadius = 10
+        NetShoppingView.layer.masksToBounds = false
+        NetShoppingView.layer.shadowOffset = CGSize(width: 1, height: 3)
+        NetShoppingView.layer.shadowOpacity = 0.2
+        NetShoppingView.layer.shadowRadius = 3
+        
         UrlButtom.layer.cornerRadius = 5
+        UrlButtom.layer.masksToBounds = false
+        UrlButtom.layer.shadowOffset = CGSize(width: 1, height: 3)
+        UrlButtom.layer.shadowOpacity = 0.2
+        UrlButtom.layer.shadowRadius = 3
         
         // Initialization code
     }
