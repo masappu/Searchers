@@ -10,13 +10,12 @@ import RealmSwift
 
 protocol NetShoppingPresenterInput{
     
-  
     func viewWillApper()
     func searchBarSearchButtonClicked(keyword:String)
     func searchBarCancelButtonClicked()
     func searchBarShouldBeginEditing()
     func addToFavoritesButton(indexPath:IndexPath)
-    func goToWebBotton(indexPath:IndexPath)
+    func goToWebButton(indexPath:IndexPath)
     
     var productDataArray:[viewProductData] {get set}
 }
@@ -73,11 +72,10 @@ class NetShoppingPresenter:NetShoppingPresenterInput{
             }
         }
     
-    func goToWebBotton(indexPath:IndexPath) {
+    func goToWebButton(indexPath:IndexPath) {
         let url = self.productDataArray[indexPath.row].NetShoppingData.url
             self.view.goToWeb(url: url!)
         }
-    
     
     
     var productDataArray: [viewProductData]
@@ -93,7 +91,6 @@ class NetShoppingPresenter:NetShoppingPresenterInput{
         self.model = model
     }
     
- 
     func viewWillApper(){
         self.view.setSearchBar()
     }
@@ -111,9 +108,6 @@ class NetShoppingPresenter:NetShoppingPresenterInput{
     }
    
     
-  
-
-    
 }
 
 extension NetShoppingPresenter: NetShoppingAPIModelOutput{
@@ -125,15 +119,21 @@ extension NetShoppingPresenter: NetShoppingAPIModelOutput{
             newItem.NetShoppingData = item
             self.productDataArray.append(newItem)
         }
+        
         //Realmのデータ取得
+        let realm = try! Realm()
+        let selectedItemDatas = realm.objects(favProductData.self)
         //productDataArrayと比較
-        //Bool値をtrueに変更
+        for item in selectedItemDatas{
+            if let index = self.productDataArray.firstIndex(where: { $0.NetShoppingData.name == item.name}){
+                self.productDataArray[index].favorite = true
+            }
+        }
         self.view.setTableViewInfo()
         self.view.reloadTableView()
         
-       var newData = productDataArray
+        let newData = productDataArray
        print(newData)
-//        newData.sort{$0.price! < $1.price!}
     }
     
 }
