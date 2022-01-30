@@ -14,24 +14,21 @@ protocol FavOfNetShoppingPresenterInput{
     func deleteCellButton(indexPath:IndexPath)
     func didSelectRowAt(indexPath: IndexPath)
     
-    //↓Realm出来次第型を変更してください
-    var favShopDataArray: [favShopData] {get set}
-    //↑Realm出来次第型を変更してください
-    
+    var favProductDataArray: [favProductData] {get set}
 }
 
 protocol FavOfNetShoppingPresenterOutput{
     
     func setupTableView()
     func reloadTableView()
-    func deleteFavShop(indexPath:IndexPath)
+    func deleteFavProduct(indexPath:IndexPath)
     func goToWebVC(url:String)
     
 }
 
 class FavOfNetShoppingPresenter: FavOfNetShoppingPresenterInput{
     
-    var favShopDataArray: [favShopData] = []
+    var favProductDataArray: [favProductData] = []
     private var view:FavOfNetShoppingPresenterOutput!
     
     init(view:FavOfNetShoppingViewController){
@@ -40,31 +37,29 @@ class FavOfNetShoppingPresenter: FavOfNetShoppingPresenterInput{
     
     func viewwillAppear() {
         let realm = try! Realm()
-        let favShopData = realm.objects(favShopData.self)
-        for favShop in favShopData{
-            self.favShopDataArray.append(favShop)
+        let favProductData = realm.objects(favProductData.self)
+        for item in favProductData{
+            self.favProductDataArray.append(item)
         }
         self.view.setupTableView()
     }
     
     func deleteCellButton(indexPath: IndexPath) {
         let realm = try! Realm()
-        let selectedShopData = favShopDataArray[indexPath.row]
+        let selectedProductData = favProductDataArray[indexPath.row]
         
-        //↓Realm出来次第型を変更してください
-        let registeredFavShopData = realm.objects(favShopData.self).filter("name == '\(selectedShopData.name)'")
-        //↑Realm出来次第型を変更してください
+        let registeredFavProductData = realm.objects(favProductData.self).filter("name == '\(selectedProductData.name)'")
         
-        self.favShopDataArray.remove(at: indexPath.row)
+        self.favProductDataArray.remove(at: indexPath.row)
         try! realm.write {
-            realm.delete(registeredFavShopData)
+            realm.delete(registeredFavProductData)
         }
         
-        self.view.deleteFavShop(indexPath: indexPath)
+        self.view.deleteFavProduct(indexPath: indexPath)
     }
     
     func didSelectRowAt(indexPath: IndexPath) {
-        let url = self.favShopDataArray[indexPath.row].url
+        let url = self.favProductDataArray[indexPath.row].url
         self.view.goToWebVC(url: url)
     }
     

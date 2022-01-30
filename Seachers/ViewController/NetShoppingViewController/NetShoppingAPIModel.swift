@@ -11,9 +11,7 @@ import SwiftyJSON
 
 protocol NetShoppingAPIModelInput{
     func setData(keyword:String)
-    
     var productDataArray:[productData] {get set}
-    
 }
 
 protocol NetShoppingAPIModelOutput{
@@ -26,7 +24,7 @@ struct productData {
     var name:String?
     var price:Int?
     var product_image:String?
-}
+    }
 
 class NetShoppingAPIModel: NetShoppingAPIModelInput{
     
@@ -36,25 +34,20 @@ class NetShoppingAPIModel: NetShoppingAPIModelInput{
     var apikey = "1072027207911802205"
     var pageCount = Int()
     var productDataArray = [productData]()
-
-
     
   init(presenter:NetShoppingAPIModelOutput){
       self.presenter = presenter
     }
-    
     //JSON解析を行う
-    
     func setData(keyword:String){
         
         //urlエンコーディング
+        let encordeUrlString:String = keyword.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let urlString = "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706?format=json&keyword=\(encordeUrlString)&sort=%2BitemPrice&applicationId=\(apikey)"
+
+        print(urlString)
         
-        let urlString = "https://app.rakuten.co.jp/services/api/Product/Search/20170426?format=json&keyword=\(keyword)&applicationId=\(apikey)"
-        
-        let encordeUrlString:String = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        
-        
-        AF.request(encordeUrlString, method: .get, parameters: nil, encoding: JSONEncoding.default).responseJSON { [self] (response) in
+        AF.request(urlString, method: .get, parameters: nil, encoding: JSONEncoding.default).responseJSON { [self] (response) in
 
             print(response.debugDescription)
             
@@ -64,36 +57,28 @@ class NetShoppingAPIModel: NetShoppingAPIModelInput{
                 do{
                     let json:JSON = try JSON(data: response.data!)
                     print(json.debugDescription)
-                    var totalHitCount = json["count"].int
-                    if totalHitCount! > 50{
-                        totalHitCount = 50
-                    }
-                    
+                    let totalHitCount = json["hits"].int
                     
                     for i in 0...totalHitCount! - 1{
                      
-                        if json["Products"][i]["Product"]["minPrice"] != "" && json["Products"][i]["Product"]["productName"] != "" && json["Products"][i]["Product"]["productUrlMobile"] != "" &&  json["Products"][i]["Product"]["smallImageUrl"] != ""{
+                        if json["Items"][i]["Item"]["itemName"] != "" && json["Items"][i]["Item"]["itemPrice"] != "" && json["Items"][i]["Item"]["itemUrl"] != "" &&  json["Items"][i]["Item"]["smallImageUrls"][0]["imageUrl"] != ""{
 
-                            
-                            let productData = productData(url: json["Products"][i]["Product"]["productUrlMobile"].string,
-                                                          name: json["Products"][i]["Product"]["productName"].string,
-                                                          price: json["Products"][i]["Product"]["minPrice"].int,
-                                                          product_image: json["Products"][i]["Product"]["smallImageUrl"].string)
-                            
-
+                            let productData = productData(
+                                url: json["Items"][i]["Item"]["itemName"].string,
+                                name: json["Items"][i]["Item"]["itemPrice"].string,
+                                price: json["Items"][i]["Item"]["itemUrl"].int,
+                                product_image: json["Items"][i]["Item"]["smallImageUrls"][0]["imageUrl"].string)
+                        
                               self.productDataArray.append(productData)
                             print(self.productDataArray.debugDescription)
                             
                         }else{
-                            
                             print("何かしらが空です")
-                            
                         }
                     }
                     self.presenter.resultAPIData(productDataArray: productDataArray)
                     
                 }catch{
-                    
                     print("エラーです")
                 }
             break
@@ -101,9 +86,6 @@ class NetShoppingAPIModel: NetShoppingAPIModelInput{
             case .failure:break
             
             }
-        
         }
-        
-
-}
+    }
 }
