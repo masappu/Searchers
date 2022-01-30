@@ -8,10 +8,9 @@
 import UIKit
 
 class FavOfNetShoppingViewController: UIViewController {
-
-    //↓storyBoardを作って繋げてください
-//    @IBOutlet weak var tableView: UITableView!
-    //↑storyBoardを作って繋げてください
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     
     private var presenter:FavOfNetShoppingPresenterInput!
     
@@ -21,7 +20,7 @@ class FavOfNetShoppingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let presenter = FavOfNetShoppingPresenter(view: self)
         inject(presenter: presenter)
         
@@ -32,34 +31,26 @@ class FavOfNetShoppingViewController: UIViewController {
         
         presenter.viewwillAppear()
     }
-
+    
 }
 
 extension FavOfNetShoppingViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.favShopDataArray.count
+        return presenter.favProductDataArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //↓storyBoardを作ってIDを変更してください
-        let cell = tableView.dequeueReusableCell(withIdentifier: "favGourmandCell", for: indexPath)
-        //↑storyBoardを作ってIDを変更してください
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NetShoppingCell", for: indexPath) as! NetShoppingTableViewCell
+        print("section：\(indexPath.section),row:\(indexPath.row)")
         
-        //↓storyBoardを作って変えてください
-        let shopImage = cell.contentView.viewWithTag(1) as! UIImageView
-        let genreNameLabel = cell.contentView.viewWithTag(2) as! UILabel
-        let nameLabel = cell.contentView.viewWithTag(3) as! UILabel
-        let budgetAverageLabel = cell.contentView.viewWithTag(4) as! UILabel
-        let lunchLabel = cell.contentView.viewWithTag(5) as! UILabel
+        let productDataArray = presenter.favProductDataArray
         
-        let favShopDataArray = presenter.favShopDataArray
-        shopImage.sd_setImage(with: URL(string: favShopDataArray[indexPath.row].shop_image))
-        genreNameLabel.text = favShopDataArray[indexPath.row].smallAreaName + "/" + favShopDataArray[indexPath.row].genreName
-        nameLabel.text = favShopDataArray[indexPath.row].name
-        budgetAverageLabel.text = favShopDataArray[indexPath.row].budgetAverage
-        lunchLabel.text = favShopDataArray[indexPath.row].lunch
-        //↑storyBoardを作って変えてください
+        
+        cell.ProductImage?.sd_setImage(with: URL(string: productDataArray[indexPath.row].product_image), completed: nil)
+        cell.NameLabel?.text = productDataArray[indexPath.row].name
+        cell.PriceLabel.text = String(productDataArray[indexPath.row].price)
+        cell.FavoriteButton.isHidden = true
         
         return cell
     }
@@ -67,7 +58,7 @@ extension FavOfNetShoppingViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 125
     }
-        
+    
 }
 
 extension FavOfNetShoppingViewController: UITableViewDelegate{
@@ -77,13 +68,13 @@ extension FavOfNetShoppingViewController: UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-                
+        
         let deleteAction = UIContextualAction(style: .destructive, title:"delete") { [self]
             (ctxAction, view, completionHandler) in
             self.presenter.deleteCellButton(indexPath: indexPath)
             completionHandler(true)
         }
-
+        
         let trashImage = UIImage(systemName: "trash.fill")?.withTintColor(UIColor.white , renderingMode: .alwaysTemplate)
         deleteAction.image = trashImage
         deleteAction.backgroundColor = UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 1)
@@ -94,17 +85,20 @@ extension FavOfNetShoppingViewController: UITableViewDelegate{
         return swipeAction
     }
     
-    
 }
+
 
 extension FavOfNetShoppingViewController: FavOfNetShoppingPresenterOutput{
     
+    func deleteFavProduct(indexPath: IndexPath) {
+        self.tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+    
     func setupTableView() {
-        //↓tableViewを繋げてコメントアウトを外してください
-//        tableView.delegate = self
-//        tableView.dataSource = self
-//        tableView.separatorStyle = .none
-        //↑tableViewを繋げてコメントアウトを外してください
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.separatorStyle = .none
+        tableView.register(UINib(nibName: "NetShoppingTableViewCell", bundle: nil), forCellReuseIdentifier: "NetShoppingCell")
     }
     
     func goToWebVC(url: String) {
@@ -114,14 +108,8 @@ extension FavOfNetShoppingViewController: FavOfNetShoppingPresenterOutput{
         self.present(webVC, animated: true, completion: nil)
     }
     
-    func deleteFavShop(indexPath:IndexPath) {
-        //↓tableViewを繋げてコメントアウトを外してください
-//        self.tableView.deleteRows(at: [indexPath], with: .automatic)
-        //↑tableViewを繋げてコメントアウトを外してください
-    }
-    
     func reloadTableView() {
-        
+        tableView.reloadData()
     }
     
 }

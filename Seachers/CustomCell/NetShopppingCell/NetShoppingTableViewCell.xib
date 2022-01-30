@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,81 +17,85 @@
                 <rect key="frame" x="0.0" y="0.0" width="499" height="180"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商品名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sLs-5i-U1C">
-                        <rect key="frame" x="185" y="15" width="292" height="68"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dQD-Mo-qBH">
+                        <rect key="frame" x="10" y="8" width="479" height="168"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j4f-S3-saw">
+                                <rect key="frame" x="174" y="132" width="235" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="商品ページへ">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" red="0.74496008179999995" green="0.96620899439999997" blue="0.21291380770000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </backgroundConfiguration>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gof-aC-lwf">
+                                <rect key="frame" x="418" y="107" width="45" height="58"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <color key="tintColor" red="0.96620899439999997" green="0.95541689149999998" blue="0.22871650330000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="bookmark" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="44"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商品名" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sLs-5i-U1C">
+                                <rect key="frame" x="173" y="10" width="306" height="64.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="金額" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYm-6k-fJD">
+                                <rect key="frame" x="173" y="74.5" width="208" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="D1q-7j-Cxp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pGp-hj-TAb">
+                                <rect key="frame" x="0.0" y="0.0" width="163" height="163"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="163" id="1lv-Sm-Uko"/>
+                                    <constraint firstAttribute="height" constant="163" id="QeE-H0-m8y"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="68" id="8eR-74-hkn"/>
-                            <constraint firstAttribute="width" constant="292" id="K4A-fh-y0D"/>
+                            <constraint firstItem="sLs-5i-U1C" firstAttribute="leading" secondItem="pGp-hj-TAb" secondAttribute="trailing" constant="10" id="BRf-ew-WNe"/>
+                            <constraint firstItem="gof-aC-lwf" firstAttribute="leading" secondItem="j4f-S3-saw" secondAttribute="trailing" constant="9" id="Bof-Qm-uUd"/>
+                            <constraint firstAttribute="trailing" secondItem="j4f-S3-saw" secondAttribute="trailing" constant="70" id="GrF-Rh-2Ae"/>
+                            <constraint firstItem="gYm-6k-fJD" firstAttribute="top" secondItem="sLs-5i-U1C" secondAttribute="bottom" id="K8N-hz-WhY"/>
+                            <constraint firstItem="sLs-5i-U1C" firstAttribute="top" secondItem="dQD-Mo-qBH" secondAttribute="top" constant="10" id="Kkc-NG-AIq"/>
+                            <constraint firstItem="gYm-6k-fJD" firstAttribute="leading" secondItem="pGp-hj-TAb" secondAttribute="trailing" constant="10" id="NcT-E0-Ccx"/>
+                            <constraint firstAttribute="bottom" secondItem="gof-aC-lwf" secondAttribute="bottom" constant="3" id="OdQ-Zi-5Zf"/>
+                            <constraint firstAttribute="trailing" secondItem="sLs-5i-U1C" secondAttribute="trailing" id="U2Z-Eg-rvr"/>
+                            <constraint firstItem="j4f-S3-saw" firstAttribute="top" secondItem="dQD-Mo-qBH" secondAttribute="top" constant="132" id="VGK-Da-xgH"/>
+                            <constraint firstAttribute="bottom" secondItem="gYm-6k-fJD" secondAttribute="bottom" constant="49.5" id="eOi-bO-oUW"/>
+                            <constraint firstAttribute="bottom" secondItem="j4f-S3-saw" secondAttribute="bottom" constant="5" id="jCn-yj-OwK"/>
+                            <constraint firstItem="j4f-S3-saw" firstAttribute="leading" secondItem="dQD-Mo-qBH" secondAttribute="leading" constant="174" id="mCn-Je-LSA"/>
+                            <constraint firstItem="gof-aC-lwf" firstAttribute="top" secondItem="dQD-Mo-qBH" secondAttribute="top" constant="107" id="nya-9l-nb6"/>
+                            <constraint firstAttribute="trailing" secondItem="gof-aC-lwf" secondAttribute="trailing" constant="16" id="oEh-eA-qJ4"/>
+                            <constraint firstItem="pGp-hj-TAb" firstAttribute="top" secondItem="dQD-Mo-qBH" secondAttribute="top" id="r8E-ka-7WP"/>
+                            <constraint firstAttribute="trailing" secondItem="gYm-6k-fJD" secondAttribute="trailing" constant="98" id="tDA-xR-FvS"/>
+                            <constraint firstItem="pGp-hj-TAb" firstAttribute="leading" secondItem="dQD-Mo-qBH" secondAttribute="leading" id="wsT-sN-a8c"/>
+                            <constraint firstAttribute="bottom" secondItem="pGp-hj-TAb" secondAttribute="bottom" id="wzB-Vo-aui"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="金額" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYm-6k-fJD">
-                        <rect key="frame" x="185" y="82" width="247" height="48"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="48" id="S6t-YX-qyF"/>
-                            <constraint firstAttribute="width" constant="247" id="exd-10-gJs"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gof-aC-lwf">
-                        <rect key="frame" x="425" y="109" width="45" height="52.5"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="52.5" id="TP0-Eh-2e5"/>
-                            <constraint firstAttribute="width" constant="45" id="mu0-eE-rGV"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                        <state key="normal" image="bookmark" catalog="system">
-                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="44"/>
-                        </state>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j4f-S3-saw">
-                        <rect key="frame" x="182" y="147" width="235" height="31"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="31" id="6Sa-8K-zNc"/>
-                            <constraint firstAttribute="width" constant="235" id="8sp-ZR-LvS"/>
-                        </constraints>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" title="商品ページへ">
-                            <backgroundConfiguration key="background">
-                                <color key="backgroundColor" red="0.74496008179999995" green="0.96620899439999997" blue="0.21291380770000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </backgroundConfiguration>
-                        </buttonConfiguration>
-                    </button>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pGp-hj-TAb">
-                        <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="180" id="05F-Is-GoJ"/>
-                            <constraint firstAttribute="width" constant="180" id="fOe-3u-eOw"/>
-                        </constraints>
-                    </imageView>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="pGp-hj-TAb" secondAttribute="bottom" id="1RB-O1-114"/>
-                    <constraint firstItem="gof-aC-lwf" firstAttribute="leading" secondItem="j4f-S3-saw" secondAttribute="trailing" constant="8" symbolic="YES" id="3jR-ll-M8d"/>
-                    <constraint firstAttribute="trailing" secondItem="gof-aC-lwf" secondAttribute="trailing" constant="29" id="ALu-eA-eUa"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="gYm-6k-fJD" secondAttribute="trailing" constant="47" id="Bsd-Gc-YxX"/>
-                    <constraint firstItem="sLs-5i-U1C" firstAttribute="leading" secondItem="pGp-hj-TAb" secondAttribute="trailing" constant="5" id="NyL-Pd-OW0"/>
-                    <constraint firstItem="pGp-hj-TAb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="O3j-QY-eJM"/>
-                    <constraint firstItem="pGp-hj-TAb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Qh9-lu-rkW"/>
-                    <constraint firstAttribute="trailing" secondItem="sLs-5i-U1C" secondAttribute="trailing" constant="22" id="SSt-In-2Tk"/>
-                    <constraint firstItem="gYm-6k-fJD" firstAttribute="leading" secondItem="pGp-hj-TAb" secondAttribute="trailing" constant="5" id="Sfr-mp-Aed"/>
-                    <constraint firstItem="j4f-S3-saw" firstAttribute="top" secondItem="gYm-6k-fJD" secondAttribute="bottom" constant="17" id="WGP-to-63A"/>
-                    <constraint firstItem="gof-aC-lwf" firstAttribute="top" secondItem="sLs-5i-U1C" secondAttribute="bottom" constant="26" id="Ym6-1g-uOe"/>
-                    <constraint firstItem="sLs-5i-U1C" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="aZi-AV-JM8"/>
-                    <constraint firstAttribute="bottom" secondItem="j4f-S3-saw" secondAttribute="bottom" constant="2" id="gbg-fU-Y2y"/>
-                    <constraint firstItem="j4f-S3-saw" firstAttribute="leading" secondItem="pGp-hj-TAb" secondAttribute="trailing" constant="2" id="lLQ-09-JNB"/>
-                    <constraint firstAttribute="bottom" secondItem="gof-aC-lwf" secondAttribute="bottom" constant="18.5" id="oTW-R6-EkX"/>
+                    <constraint firstItem="dQD-Mo-qBH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="0s6-Zb-Fgu"/>
+                    <constraint firstAttribute="bottom" secondItem="dQD-Mo-qBH" secondAttribute="bottom" constant="8" id="cOh-iB-qlg"/>
+                    <constraint firstAttribute="trailing" secondItem="dQD-Mo-qBH" secondAttribute="trailing" constant="10" id="maR-ni-jpM"/>
+                    <constraint firstItem="dQD-Mo-qBH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="plt-dJ-GLg"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="FavoriteButtom" destination="gof-aC-lwf" id="ks5-0l-dBZ"/>
+                <outlet property="FavoriteButton" destination="gof-aC-lwf" id="VhF-em-dUE"/>
                 <outlet property="NameLabel" destination="sLs-5i-U1C" id="36r-Bz-fFg"/>
+                <outlet property="NetShoppingView" destination="dQD-Mo-qBH" id="IsJ-nz-DVa"/>
                 <outlet property="PriceLabel" destination="gYm-6k-fJD" id="sOt-tO-B7N"/>
                 <outlet property="ProductImage" destination="pGp-hj-TAb" id="k1k-54-p5n"/>
                 <outlet property="UrlButtom" destination="j4f-S3-saw" id="oUb-Kq-ntS"/>
@@ -100,5 +105,8 @@
     </objects>
     <resources>
         <image name="bookmark" catalog="system" width="112" height="128"/>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
