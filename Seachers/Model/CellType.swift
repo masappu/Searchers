@@ -70,13 +70,11 @@ enum CheckCellType: Int, CaseIterable, CellType{
 }
 
 enum RoomAndMemberCellType: Int, CaseIterable, CellType{
-    case roomAndMemberCell
     case numberOfroomsCountCell
     case numberOfmemberCountCell
     
     var cellIdentifier: String{
         switch self {
-        case .roomAndMemberCell: return "roomAndMemberCell"
         case .numberOfroomsCountCell: return "roomCountOfTravelCell"
         case .numberOfmemberCountCell: return "memberCountOfTravelCell"
         }

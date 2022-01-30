@@ -40,6 +40,7 @@ class MapViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        print(travelSearchData)
         presenter.travelSearchData = travelSearchData
         presenter.gourmandSearchData = gourmandSearchData
         presenter.previousVCString = previousVCString
@@ -162,6 +163,15 @@ extension MapViewController: GMSMapViewDelegate{
 }
 
 extension MapViewController: MapPresenterOutput{
+    
+    func showAlert() {
+        let alert = UIAlertController(title: "予期せぬエラーが発生しました。", message: "通信環境をご確認ください。", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "OK", style: .cancel) { action in
+            self.navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(cancel)
+        self.present(alert, animated: true, completion: nil)
+    }
     
     func indicatorViewStart() {
         activityIndicatorView.isHidden = false

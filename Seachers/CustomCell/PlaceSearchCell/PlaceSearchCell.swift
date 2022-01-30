@@ -9,6 +9,7 @@ import UIKit
 
 class PlaceSearchCell: UITableViewCell {
 
+    @IBOutlet weak var placeLabel: UILabel!
     @IBOutlet weak var button: UIButton!
     
     override func awakeFromNib() {

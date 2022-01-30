@@ -46,6 +46,7 @@ protocol MapPresenterOutput {
     func goToWebVC(url:String)
     func indicatorViewStart()
     func indicatorViewStop()
+    func showAlert()
     
 }
 
@@ -92,7 +93,6 @@ enum CategoryType: String, CaseIterable{
 class MapPresenter: MapPresenterInput{
     
     var currentLocation: CLLocationCoordinate2D = CLLocationCoordinate2D()
-    var searchPlaceLocation:CLLocationCoordinate2D = CLLocationCoordinate2D()
     var categoryArray: [String] = []
     var zoomCount: Int = 15
     var rangeCount: Int = 2
@@ -169,7 +169,8 @@ class MapPresenter: MapPresenterInput{
             self.rangeCount = self.categoryArray.firstIndex(of: "\(travelRange)")!
             self.zoomCount = categoryType!.zoomArray[rangeCount]
             self.view.setupSearchBarText()
-            self.travelAPIModel.requestData(searchData: TravelSearchDataModel(), hits: 30, page: 1)
+            print(travelSearchData)
+            self.travelAPIModel.requestData(searchData: travelSearchData, hits: 30, page: 1)
         }
     }
     
@@ -218,6 +219,12 @@ extension MapPresenter: GourmandAPIOutput{
         markers.append(marker)
     }
     
+    func error(error: Error) {
+        print("エラー：\(error)")
+        self.view.indicatorViewStop()
+        self.view.showAlert()
+    }
+    
 }
 
 extension MapPresenter: TravelAPIOutput{
@@ -226,7 +233,7 @@ extension MapPresenter: TravelAPIOutput{
         let realm = try! Realm()
         let favShopData = realm.objects(favHotelData.self)
         if data.isEmpty == true{
-            self.view.setUpMap(idoValue:35.6809591,keidoValue:139.7673068)
+            self.view.setUpMap(idoValue:(travelSearchData.placeData?.locaitonAtSearchPlace!.latitude)!,keidoValue:(travelSearchData.placeData?.locaitonAtSearchPlace!.longitude)!)
             self.view.indicatorViewStop()
         }else{
             for item in data{
@@ -238,13 +245,15 @@ extension MapPresenter: TravelAPIOutput{
                     self.travelDataArray[index].favorite = true
                 }
             }
-            self.view.setUpMap(idoValue:35.6809591,keidoValue:139.7673068)
+            self.view.setUpMap(idoValue:(travelSearchData.placeData?.locaitonAtSearchPlace!.latitude)!,keidoValue:(travelSearchData.placeData?.locaitonAtSearchPlace!.longitude)!)
             self.view.indicatorViewStop()
         }
     }
     
     func requestfailed(error: Error) {
         print("エラー：\(error)")
+        self.view.indicatorViewStop()
+        self.view.showAlert()
     }
     
     func makeMarker(shopData:HotelsData) {

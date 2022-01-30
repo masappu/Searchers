@@ -32,7 +32,7 @@ class favHotelData: Object{
     @objc dynamic var latitude:Double = 0.0
     @objc dynamic var longitude:Double = 0.0
     @objc dynamic var planListUrl:String = ""
-    @objc dynamic var hotelMinCharge:Int = 0
+    @objc dynamic var hotelMinCharge:String = ""
     @objc dynamic var area:String = ""
     @objc dynamic var nearestStation:String = ""
     @objc dynamic var hotelImageUrl:String = ""

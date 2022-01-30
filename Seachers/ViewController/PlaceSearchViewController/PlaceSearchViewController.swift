@@ -16,44 +16,48 @@ class PlaceSearchViewController: UIViewController {
 
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var button: UIButton!
     
     var autocompleteController = GMSAutocompleteViewController()
-    var placeSearchDataModel: PlaceSearchDataModel!
     var placeSearchViewOutput: PlaceSearchViewOutput!
     var presenter: PlaceSearchPresenterInput!
     var transitionSourceName = String()
     private var pickerView: DistanceCell?
     private var isPickerViewShowing = false
-    
     func inject(presenter:PlaceSearchPresenterInput){
         self.presenter = presenter
     }
     
-    func placeSearchModelInject(model:PlaceSearchDataModel){
-        self.placeSearchDataModel = model
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let presenter = PlaceSearchPresenter(view:self, initialValue:transitionSourceName)
         inject(presenter: presenter)
-        placeSearchModelInject(model:self.presenter.placeData)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        presenter.loadView(Data: self.placeSearchDataModel, transitionSourceName: transitionSourceName)
-        self.navigationItem.title = "目的地"
+        presenter.loadView(transitionSourceName: transitionSourceName)
     }
     
     @objc func searchButton(_ sender: UIButton){
         self.presenter.searchButton()
     }
     
+    @objc func touchDown(_ sender: UIButton){
+        self.presenter.buttonAnimation.touchDown(sender: sender)
+    }
+    
+    @objc func touchUpoutside(_ sender: UIButton){
+        self.presenter.buttonAnimation.touchUpOutside(sender: sender)
+    }
+    
     @IBAction func doneButton(_ sender: Any) {
+        self.presenter.buttonAnimation.touchUpInside(sender: sender as! UIButton)
         self.presenter.pushDoneButton()
     }
+    
 
 }
 
@@ -65,10 +69,35 @@ extension PlaceSearchViewController: PlaceSearchPresenterOutput{
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
-
+        tableView.separatorColor = self.presenter.color
         tableView.register(UINib(nibName: "PlaceSearchCell", bundle: nil), forCellReuseIdentifier: "PlaceSearchCell")
-        tableView.register(UINib(nibName: "PlaceCell", bundle: nil), forCellReuseIdentifier: "PlaceCell")
         tableView.register(UINib(nibName: "DistanceCell", bundle: nil), forCellReuseIdentifier: "DistanceCell")
+    }
+    
+    func setNavigationControllerInfo() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = self.presenter.color
+        
+        self.navigationItem.standardAppearance = appearance
+        self.navigationItem.scrollEdgeAppearance = appearance
+        self.navigationItem.compactAppearance = appearance
+        self.navigationItem.title = "目的地"
+    }
+    
+    func setButton() {
+        
+        button.backgroundColor = self.presenter.color
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20.0)
+        button.layer.cornerRadius = 40.0
+        button.layer.shadowColor = self.presenter.color.cgColor
+        button.layer.shadowOffset = CGSize(width: 10, height: 10)
+        button.layer.shadowOpacity = 0.3
+        button.layer.shadowRadius = 5
+        button.addTarget(self, action: #selector(touchDown(_:)), for: .touchDown)
+        button.addTarget(self, action: #selector(touchUpoutside(_:)), for: .touchUpOutside)
+
     }
     
     func reloadTableView(){
@@ -81,7 +110,6 @@ extension PlaceSearchViewController: PlaceSearchPresenterOutput{
     }
     
     func AutocompleteControllerDismiss(selectedData: PlaceSearchDataModel) {
-        self.placeSearchDataModel = selectedData
         self.dismiss(animated: true, completion: nil)
         tableView.reloadData()
     }
@@ -115,7 +143,7 @@ extension PlaceSearchViewController: UITableViewDelegate, UITableViewDataSource{
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -131,12 +159,8 @@ extension PlaceSearchViewController: UITableViewDelegate, UITableViewDataSource{
         if indexPath.section == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "PlaceSearchCell", for: indexPath) as! PlaceSearchCell
             cell.selectionStyle = .none
-            cell.button.addTarget(self, action: #selector(self.searchButton(_:)), for: .touchUpInside)
-            return cell
-        }else if indexPath.section == 1{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PlaceCell", for: indexPath) as! PlaceCell
-            cell.selectionStyle = .none
             cell.placeLabel.text = self.presenter.placeData.name
+            cell.button.addTarget(self, action: #selector(self.searchButton(_:)), for: .touchUpInside)
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "DistanceCell", for: indexPath) as! DistanceCell

@@ -40,34 +40,86 @@ struct DateModel{
     }
 }
 
-struct TravelDateModel{
+struct CheckInDate{
     private (set) var dateString:String
-    
+    private (set) var passDateString:String
+
     var date:Date{
         didSet{
             self.dateString = dateFormatter.string(from: date)
+            self.passDateString = String(dateString.dropLast(3))
         }
     }
     
     private var dateFormatter: DateFormatter{
         let formatter = DateFormatter()
-        formatter.dateFormat = "MM月dd日(EEE)"
+        formatter.dateFormat = "yyyy-MM-dd(EEE)"
         formatter.locale = Locale(identifier: "ja_JP")
         return formatter
     }
     
     private func initialDate() -> Date{
         let formatter = DateFormatter()
-        formatter.dateFormat = "MM月dd日(EEE)"
+        formatter.dateFormat = "yyyy-MM-dd(EEE)"
         formatter.locale = Locale(identifier: "ja_JP")
         let initialDateString = formatter.string(from: Date())
 
         return self.dateFormatter.date(from: initialDateString)!
     }
+    
 
     init(){
         self.dateString = String()
+        self.passDateString = String()
         self.date = Date()
+        self.date = initialDate()
+        self.dateString = self.dateFormatter.string(from: self.date)
+    }
+}
+
+struct CheckOutDate{
+    
+    private (set) var dateString:String
+    private (set) var passDateString:String
+
+    var date:Date{
+        didSet{
+            self.dateString = dateFormatter.string(from: date)
+            self.passDateString = String(dateString.dropLast(3))
+        }
+    }
+    
+    var changeDate:Date{
+        didSet{
+            let day = Calendar.current.date(byAdding: .day, value: 1, to: changeDate)
+            self.dateString = dateFormatter.string(from: day!)
+            self.passDateString = String(dateString.dropLast(3))
+            self.changeDate = day!
+        }
+    }
+    
+    private var dateFormatter: DateFormatter{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd(EEE)"
+        formatter.locale = Locale(identifier: "ja_JP")
+        return formatter
+    }
+        
+    private func initialDate() -> Date{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd(EEE)"
+        formatter.locale = Locale(identifier: "ja_JP")
+        let day = Calendar.current.date(byAdding: .day, value: 1, to: Date())
+        let initialNextDateString = formatter.string(from: day!)
+        
+        return self.dateFormatter.date(from: initialNextDateString)!
+    }
+    
+    init(){
+        self.dateString = String()
+        self.passDateString = String()
+        self.date = Date()
+        self.changeDate = Date()
         self.date = initialDate()
         self.dateString = self.dateFormatter.string(from: self.date)
     }
