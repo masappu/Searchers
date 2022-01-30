@@ -20,7 +20,7 @@ class MemberCountOfTravelCell: UITableViewCell {
         
         self.plusButton.addTarget(self, action: #selector(touchDown(_:)), for: .touchDown)
         self.plusButton.addTarget(self, action: #selector(touchUpOutside(_:)), for: .touchUpOutside)
-        
+
         self.minusButton.addTarget(self, action: #selector(touchDown(_:)), for: .touchDown)
         self.minusButton.addTarget(self, action: #selector(touchUpOutside(_:)), for: .touchUpOutside)
     }
