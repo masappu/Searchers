@@ -49,7 +49,7 @@ class FavOfTravelPresenter: FavOfTravelPresenterInput{
         let realm = try! Realm()
         let selectedShopData = favShopDataArray[indexPath.row]
         
-        let registeredFavShopData = realm.objects(favShopData.self).filter("hotelName == '\(selectedShopData.hotelName)'")
+        let registeredFavShopData = realm.objects(favHotelData.self).filter("hotelName == '\(selectedShopData.hotelName)'")
         
         self.favShopDataArray.remove(at: indexPath.row)
         try! realm.write {
