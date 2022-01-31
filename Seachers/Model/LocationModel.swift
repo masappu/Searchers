@@ -49,6 +49,7 @@ class LocationModel:NSObject,LocationModelInput{
         switch status {
         case .notDetermined,.restricted,.denied:
             self.locationManager.requestWhenInUseAuthorization()
+            self.locationManager.requestLocation()
         case .authorizedAlways,.authorizedWhenInUse:
             self.locationManager.requestLocation()
         case .authorized:
@@ -58,7 +59,6 @@ class LocationModel:NSObject,LocationModelInput{
         }
     }
     
-
     
     func showAlert(){
         
