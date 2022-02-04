@@ -88,6 +88,7 @@ extension GourmandSearchViewController:GourmandSearchOutput{
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.separatorColor = UIColor(red: 1.0, green: 0.8, blue: 0.0, alpha:1.0)
         
         tableView.register(UINib(nibName: "SelectDestinationCell", bundle: nil), forCellReuseIdentifier: "selectDestinationCell")
         tableView.register(UINib(nibName: "SelectGenreCell", bundle: nil), forCellReuseIdentifier: "selectGenreCell")
@@ -100,7 +101,7 @@ extension GourmandSearchViewController:GourmandSearchOutput{
     func setNavigationControllerInfo() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .orange
+        appearance.backgroundColor = UIColor(red: 1.0, green: 0.8, blue: 0.0, alpha:1.0)
         
         self.navigationItem.standardAppearance = appearance
         self.navigationItem.scrollEdgeAppearance = appearance
