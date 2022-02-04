@@ -41,7 +41,7 @@ class NetShoppingViewController: UIViewController {
     }
     
     @objc func addToFavoritesButton(_ sender: UIButton) {
-        let cell = sender.superview?.superview?.superview?.superview as! UITableViewCell
+        let cell = sender.superview?.superview?.superview as! UITableViewCell
         let indexPath = tableView.indexPath(for: cell)
         presenter.addToFavoritesButton(indexPath: indexPath!)
     }
