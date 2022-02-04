@@ -30,6 +30,9 @@ class FavOfNetShoppingViewController: UIViewController {
         super.viewWillAppear(animated)
         
         presenter.viewwillAppear()
+        if let indexPathForSelectedRow = tableView.indexPathForSelectedRow { //ハイライト解除
+            tableView.deselectRow(at: indexPathForSelectedRow, animated: true)
+                }
     }
     
 }
@@ -49,14 +52,15 @@ extension FavOfNetShoppingViewController: UITableViewDataSource{
         
         cell.ProductImage?.sd_setImage(with: URL(string: productDataArray[indexPath.row].product_image), completed: nil)
         cell.NameLabel?.text = productDataArray[indexPath.row].name
-        cell.PriceLabel.text = String(productDataArray[indexPath.row].price)
+        cell.PriceLabel.text = "¥\(String(productDataArray[indexPath.row].price))"
         cell.FavoriteButton.isHidden = true
+        cell.UrlButtom.isHidden = true
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 125
+        return 250
     }
     
 }

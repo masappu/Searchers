@@ -24,7 +24,7 @@ protocol FavOfGourmandPresenterOutput{
     func reloadTableView()
     func deleteFavShop(indexPath:IndexPath)
     func goToWebVC(url:String)
-    
+
 }
 
 class FavOfGourmandPresenter: FavOfGourmandPresenterInput{
