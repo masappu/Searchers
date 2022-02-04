@@ -27,11 +27,13 @@ protocol NetShoppingPresenterOutput{
     func setSearchBar()
     func addToFavorites(indexPath: IndexPath)
     func goToWeb(url: String)
+    func showAlertResultEmpty()
+    func showAlertError()
     
 }
 
 struct viewProductData{
-    var NetShoppingData:productData
+    var NetShoppingData:newProductData
     var favorite:Bool
     var favProduct:String{
         switch self.favorite{
@@ -39,43 +41,38 @@ struct viewProductData{
         case false:return "bookmark"
         }
     }
-    
-    init(){
-        self.NetShoppingData = productData()
-        self.favorite = false
-    }
 }
 
 class NetShoppingPresenter:NetShoppingPresenterInput{
-        func addToFavoritesButton(indexPath:IndexPath) {
-            let realm = try! Realm()
-            let selectedProductData = productDataArray[indexPath.row]
-            let registeredFavProductData = realm.objects(favProductData.self).filter("name == '\(selectedProductData.NetShoppingData.name!)'")
-            let favProduct = favProductData()
-    
-            if productDataArray[indexPath.row].favorite == false{
-                favProduct.price = selectedProductData.NetShoppingData.price!
-                favProduct.name = selectedProductData.NetShoppingData.name!
-                favProduct.product_image = selectedProductData.NetShoppingData.product_image!
-                favProduct.url = selectedProductData.NetShoppingData.url!
-                try! realm.write {
-                    realm.add(favProduct)
-                }
-                productDataArray[indexPath.row].favorite = true
-                self.view.addToFavorites(indexPath: indexPath)
-            }else{
-                try! realm.write {
-                    realm.delete(registeredFavProductData)
-                }
-                productDataArray[indexPath.row].favorite = false
-                self.view.addToFavorites(indexPath: indexPath)
+    func addToFavoritesButton(indexPath:IndexPath) {
+        let realm = try! Realm()
+        let selectedProductData = productDataArray[indexPath.row]
+        let registeredFavProductData = realm.objects(favProductData.self).filter("name == '\(selectedProductData.NetShoppingData.name)'")
+        let favProduct = favProductData()
+        
+        if productDataArray[indexPath.row].favorite == false{
+            favProduct.price = selectedProductData.NetShoppingData.price
+            favProduct.name = selectedProductData.NetShoppingData.name
+            favProduct.product_image = selectedProductData.NetShoppingData.product_image
+            favProduct.url = selectedProductData.NetShoppingData.url
+            try! realm.write {
+                realm.add(favProduct)
             }
+            productDataArray[indexPath.row].favorite = true
+            self.view.addToFavorites(indexPath: indexPath)
+        }else{
+            try! realm.write {
+                realm.delete(registeredFavProductData)
+            }
+            productDataArray[indexPath.row].favorite = false
+            self.view.addToFavorites(indexPath: indexPath)
         }
+    }
     
     func goToWebButton(indexPath:IndexPath) {
         let url = self.productDataArray[indexPath.row].NetShoppingData.url
-            self.view.goToWeb(url: url!)
-        }
+        self.view.goToWeb(url: url)
+    }
     
     
     var productDataArray: [viewProductData]
@@ -96,6 +93,7 @@ class NetShoppingPresenter:NetShoppingPresenterInput{
     }
     
     func searchBarSearchButtonClicked(keyword:String) {
+        self.productDataArray = []
         model.setData(keyword: keyword)
     }
     
@@ -106,18 +104,21 @@ class NetShoppingPresenter:NetShoppingPresenterInput{
     func searchBarShouldBeginEditing() {
         
     }
-   
+    
     
 }
 
 extension NetShoppingPresenter: NetShoppingAPIModelOutput{
+    func requestFailed() {
+        view.showAlertError()
+    }
     
-    func resultAPIData(productDataArray: [productData]) {
+    
+    
+    func resultAPIData(productDataArray: [newProductData]) {
         
         for item in productDataArray{
-            var newItem = viewProductData()
-            newItem.NetShoppingData = item
-            self.productDataArray.append(newItem)
+            self.productDataArray.append(viewProductData(NetShoppingData: item, favorite: false))
         }
         
         //Realmのデータ取得
@@ -131,9 +132,10 @@ extension NetShoppingPresenter: NetShoppingAPIModelOutput{
         }
         self.view.setTableViewInfo()
         self.view.reloadTableView()
-        
-        let newData = productDataArray
-       print(newData)
     }
+    func resultEmpty() {
+        view.showAlertResultEmpty()
+    }
+    
     
 }
