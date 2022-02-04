@@ -46,15 +46,15 @@ class PlaceSearchViewController: UIViewController {
     }
     
     @objc func touchDown(_ sender: UIButton){
-        self.presenter.buttonAnimation.touchDown(sender: sender)
+        self.presenter.buttonAnimation.startAnimation(sender: sender)
     }
     
-    @objc func touchUpoutside(_ sender: UIButton){
-        self.presenter.buttonAnimation.touchUpOutside(sender: sender)
+    @objc func touchUpOutside(_ sender: UIButton){
+        self.presenter.buttonAnimation.endAnimation(sender: sender)
     }
     
     @IBAction func doneButton(_ sender: Any) {
-        self.presenter.buttonAnimation.touchUpInside(sender: sender as! UIButton)
+        self.presenter.buttonAnimation.endAnimation(sender: sender as! UIButton)
         self.presenter.pushDoneButton()
     }
     
@@ -69,7 +69,7 @@ extension PlaceSearchViewController: PlaceSearchPresenterOutput{
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.separatorColor = self.presenter.color
+        tableView.separatorColor = UIColor(red: self.presenter.rgb.r, green: self.presenter.rgb.g, blue: self.presenter.rgb.b, alpha: self.presenter.rgb.alpha)
         tableView.register(UINib(nibName: "PlaceSearchCell", bundle: nil), forCellReuseIdentifier: "PlaceSearchCell")
         tableView.register(UINib(nibName: "DistanceCell", bundle: nil), forCellReuseIdentifier: "DistanceCell")
     }
@@ -77,7 +77,7 @@ extension PlaceSearchViewController: PlaceSearchPresenterOutput{
     func setNavigationControllerInfo() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = self.presenter.color
+        appearance.backgroundColor = UIColor(red: self.presenter.rgb.r, green: self.presenter.rgb.g, blue: self.presenter.rgb.b, alpha: self.presenter.rgb.alpha)
         
         self.navigationItem.standardAppearance = appearance
         self.navigationItem.scrollEdgeAppearance = appearance
@@ -87,16 +87,16 @@ extension PlaceSearchViewController: PlaceSearchPresenterOutput{
     
     func setButton() {
         
-        button.backgroundColor = self.presenter.color
+        button.backgroundColor = UIColor(red: self.presenter.rgb.r, green: self.presenter.rgb.g, blue: self.presenter.rgb.b, alpha: self.presenter.rgb.alpha)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20.0)
         button.layer.cornerRadius = 40.0
-        button.layer.shadowColor = self.presenter.color.cgColor
+        button.layer.shadowColor = UIColor(red: self.presenter.rgb.r, green: self.presenter.rgb.g, blue: self.presenter.rgb.b, alpha: self.presenter.rgb.alpha).cgColor
         button.layer.shadowOffset = CGSize(width: 10, height: 10)
         button.layer.shadowOpacity = 0.3
         button.layer.shadowRadius = 5
         button.addTarget(self, action: #selector(touchDown(_:)), for: .touchDown)
-        button.addTarget(self, action: #selector(touchUpoutside(_:)), for: .touchUpOutside)
+        button.addTarget(self, action: #selector(touchUpOutside(_:)), for: .touchUpOutside)
 
     }
     

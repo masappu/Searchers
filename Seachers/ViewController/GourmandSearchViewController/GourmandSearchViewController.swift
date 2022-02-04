@@ -62,17 +62,14 @@ class GourmandSearchViewController: UIViewController {
     }
     
     @IBAction func goMapView(_ sender: Any) {
-        self.presenter.buttonAnimation.touchUpInside(sender: sender as! UIButton)
         self.presenter.pushSearchButton()
     }
     
     @objc func plusButton(_ sender:UIButton){
-        self.memberCountCell?.buttonAnimat.touchUpInside(sender: sender)
         self.presenter.pushPlusButton()
     }
     
     @objc func minusButton(_ sender:UIButton){
-        self.memberCountCell?.buttonAnimat.touchUpInside(sender: sender)
         self.presenter.pushMinusButton()
     }
     
@@ -88,7 +85,7 @@ extension GourmandSearchViewController:GourmandSearchOutput{
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.separatorColor = UIColor(red: 1.0, green: 0.8, blue: 0.0, alpha:1.0)
+        tableView.separatorColor = UIColor(red: self.presenter.rgb.r, green: self.presenter.rgb.g, blue: self.presenter.rgb.b, alpha: self.presenter.rgb.alpha)
         
         tableView.register(UINib(nibName: "SelectDestinationCell", bundle: nil), forCellReuseIdentifier: "selectDestinationCell")
         tableView.register(UINib(nibName: "SelectGenreCell", bundle: nil), forCellReuseIdentifier: "selectGenreCell")
@@ -101,7 +98,7 @@ extension GourmandSearchViewController:GourmandSearchOutput{
     func setNavigationControllerInfo() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor(red: 1.0, green: 0.8, blue: 0.0, alpha:1.0)
+        appearance.backgroundColor = UIColor(red: self.presenter.rgb.r, green: self.presenter.rgb.g, blue: self.presenter.rgb.b, alpha: self.presenter.rgb.alpha)
         
         self.navigationItem.standardAppearance = appearance
         self.navigationItem.scrollEdgeAppearance = appearance
