@@ -14,7 +14,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     private var presenter:HomeViewPresenterInput!
     
-    private let itemColor: [UIColor] = [UIColor(red: 0.6, green: 0.6, blue: 1.0, alpha:1.0),UIColor(red: 1.0, green: 0.8, blue: 0.0, alpha:1.0),UIColor(red: 0.0, green: 1.0, blue: 0.6, alpha:1.0)]
+    private let itemColor: [UIColor] = [UIColor(red: 0.6, green: 0.6, blue: 1.0, alpha:1.0),UIColor(red: 1.2, green: 0.6, blue: 0.0, alpha:1.0),UIColor(red: 0.0, green: 1.0, blue: 0.6, alpha:1.0)]
     
     func inject(presenter:HomeViewPresenterInput){
         self.presenter = presenter
