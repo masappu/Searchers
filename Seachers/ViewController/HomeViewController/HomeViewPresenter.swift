@@ -11,6 +11,7 @@ protocol HomeViewPresenterInput{
     var tableViewData:[TableViewData] {get set}
     func viewDidLoad()
     func didSelectCell(indexPath:IndexPath)
+    func viewWillAppear(indexPath:IndexPath?)
 }
 
 protocol HomeViewPresenterOutput{
@@ -19,6 +20,7 @@ protocol HomeViewPresenterOutput{
     func trasitonToNetShoppingVC()
     func transitionToGourmandSearchVC()
     func transitionToTravelSearchVC()
+    func highlightDelete(indexPath:IndexPath)
 }
 
 struct TableViewData{
@@ -51,6 +53,12 @@ class HomeViewPresenter:HomeViewPresenterInput{
     
     init(view:HomeViewPresenterOutput){
         self.view = view
+    }
+    
+    func viewWillAppear(indexPath:IndexPath?) {
+        if let selectedRow = indexPath{
+            view.highlightDelete(indexPath: selectedRow)
+        }
     }
     
     func viewDidLoad() {

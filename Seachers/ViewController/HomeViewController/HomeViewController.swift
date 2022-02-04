@@ -9,12 +9,12 @@ import UIKit
 import AVFoundation
 
 class HomeViewController: UIViewController {
-
+    
     @IBOutlet weak var FavoriteButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     private var presenter:HomeViewPresenterInput!
-
-    private let itemColor: [UIColor] = [.blue,.orange,.green]
+    
+    private let itemColor: [UIColor] = [UIColor(red: 0.6, green: 0.6, blue: 1.0, alpha:1.0),UIColor(red: 1.0, green: 0.8, blue: 0.0, alpha:1.0),UIColor(red: 0.0, green: 1.0, blue: 0.6, alpha:1.0)]
     
     func inject(presenter:HomeViewPresenterInput){
         self.presenter = presenter
@@ -25,9 +25,13 @@ class HomeViewController: UIViewController {
         
         self.presenter = HomeViewPresenter(view: self)
         
-        
         presenter.viewDidLoad()
         FavoriteButton.layer.cornerRadius = 10
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.viewWillAppear(indexPath: tableView.indexPathForSelectedRow)
     }
     
 }
@@ -40,7 +44,7 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
         let iconImage = cell.contentView.viewWithTag(2) as! UIImageView
-        let cirleColorView = cell.contentView.viewWithTag(1) as! UIView
+        let cirleColorView = cell.contentView.viewWithTag(1)!
         let titleLabel = cell.contentView.viewWithTag(3) as! UILabel
         let underLineView = cell.contentView.viewWithTag(4)!
         titleLabel.text = presenter.tableViewData[indexPath.row].goToSearchButtonName
@@ -61,9 +65,8 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return view.frame.height / 5
     }
-        
-}
     
+}
 
 extension HomeViewController:HomeViewPresenterOutput{
     
@@ -91,6 +94,11 @@ extension HomeViewController:HomeViewPresenterOutput{
         let TravelSearchVC = storyBoard.instantiateViewController(withIdentifier: "travelSearchVC")
         navigationController?.pushViewController(TravelSearchVC, animated: true)
     }
+    
+    func highlightDelete(indexPath:IndexPath){
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     
 }
 

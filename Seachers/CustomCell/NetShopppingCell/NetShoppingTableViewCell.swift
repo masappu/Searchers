@@ -15,6 +15,8 @@ class NetShoppingTableViewCell: UITableViewCell {
     @IBOutlet weak var UrlButtom: UIButton!
     @IBOutlet weak var FavoriteButton: UIButton!
     @IBOutlet weak var NetShoppingView: UIView!
+    @IBOutlet weak var valuationLabel: UILabel!
+    @IBOutlet weak var valuationImage: UIImageView!
     
     
     override func awakeFromNib() {

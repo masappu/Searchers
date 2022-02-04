@@ -33,7 +33,7 @@ class NetShoppingViewController: UIViewController {
         
         presenter.viewWillApper()
     }
- 
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         self.view.endEditing(true)
@@ -41,11 +41,11 @@ class NetShoppingViewController: UIViewController {
     }
     
     @objc func addToFavoritesButton(_ sender: UIButton) {
-        let cell = sender.superview?.superview?.superview as! UITableViewCell
+        let cell = sender.superview?.superview?.superview?.superview as! UITableViewCell
         let indexPath = tableView.indexPath(for: cell)
         presenter.addToFavoritesButton(indexPath: indexPath!)
     }
-
+    
 }
 
 extension NetShoppingViewController: UISearchBarDelegate{
@@ -73,7 +73,17 @@ extension NetShoppingViewController: UISearchBarDelegate{
 }
 
 extension NetShoppingViewController: NetShoppingPresenterOutput{
-   
+    func showAlertError() {
+        let alert = UIAlertController(title: "予期せぬエラーが発生しました。", message: "ネットワーク接続を確認し、アプリを再起動してください。", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default) { _ in
+            self.navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(ok)
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
+    
     func goToWeb(url: String) {
         let storyboard = UIStoryboard(name: "WebView", bundle: nil)
         let webVC = storyboard.instantiateViewController(withIdentifier: "webVC") as! WebViewController
@@ -81,10 +91,8 @@ extension NetShoppingViewController: NetShoppingPresenterOutput{
         self.present(webVC, animated: true, completion: nil)
     }
     
-   
-
     @objc func goToWebButton(_ sender: UIButton) {
-        let cell = sender.superview?.superview as! UITableViewCell
+        let cell = sender.superview?.superview?.superview as! UITableViewCell
         let indexPath = tableView.indexPath(for: cell)
         presenter.goToWebButton(indexPath: indexPath!)
     }
@@ -96,6 +104,7 @@ extension NetShoppingViewController: NetShoppingPresenterOutput{
     func setTableViewInfo() {
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorStyle = .none
         tableView.register(UINib(nibName: "NetShoppingTableViewCell", bundle: nil), forCellReuseIdentifier: "NetShoppingCell")
     }
     
@@ -103,6 +112,12 @@ extension NetShoppingViewController: NetShoppingPresenterOutput{
         tableView.reloadData()
     }
     
+    func showAlertResultEmpty() {
+        let alert = UIAlertController(title: "検索結果が見つかりません。", message: "", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "OK", style: .cancel,handler: nil)
+        alert.addAction(cancel)
+        self.present(alert, animated: true, completion: nil)
+    }
     
     func setSearchBar() {
         // NavigationBarにSearchBarをセット
@@ -119,25 +134,20 @@ extension NetShoppingViewController: NetShoppingPresenterOutput{
             navigationItem.titleView = searchBar
             //NavigationTitleのサイズを検索バーと同じにする
             navigationItem.titleView?.frame = searchBar.frame
+            
         }
     }
-    
 }
+
 
 extension NetShoppingViewController: UITableViewDelegate,UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        if section == 0 {
-            return 1
-       }else{
-           print("データの個数：\(presenter.productDataArray.count)")
-           return presenter.productDataArray.count
-        }
+        return presenter.productDataArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -145,32 +155,14 @@ extension NetShoppingViewController: UITableViewDelegate,UITableViewDataSource{
         print("section：\(indexPath.section),row:\(indexPath.row)")
         let productDataArray = presenter.productDataArray
         
-        cell.ProductImage?.sd_setImage(with: URL(string: productDataArray[indexPath.row].NetShoppingData.product_image!), completed: nil)
-        cell.NameLabel?.text = productDataArray[indexPath.row].NetShoppingData.name!
-        cell.PriceLabel.text = "¥\(String(productDataArray[indexPath.row].NetShoppingData.price!))"
+        cell.ProductImage?.sd_setImage(with: URL(string: productDataArray[indexPath.row].NetShoppingData.product_image), completed: nil)
+        cell.NameLabel?.text = productDataArray[indexPath.row].NetShoppingData.name
+        cell.PriceLabel.text = "¥\(String(productDataArray[indexPath.row].NetShoppingData.price))"
         cell.FavoriteButton.addTarget(self, action: #selector(addToFavoritesButton(_:)), for: .touchUpInside)
         cell.FavoriteButton.imageView?.image = UIImage(systemName: productDataArray[indexPath.row].favProduct)
         cell.UrlButtom.addTarget(self, action: #selector(goToWebButton(_:)), for: .touchUpInside)
+        cell.valuationLabel.text = productDataArray[indexPath.row].NetShoppingData.valuation
         
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
-        if section == 0{
-            //ヘッダーにするビューを生成
-                    let view = UIView()
-                    view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 100)
-                    view.backgroundColor = UIColor.red
-            //ヘッダーに追加するラベルを生成
-                    let headerLabel = UILabel()
-                    headerLabel.frame =  CGRect(x: 0, y: 1, width: self.view.frame.size.width, height: 25)
-                    headerLabel.text = "最安値"
-                    headerLabel.textColor = UIColor.white
-                    headerLabel.textAlignment = NSTextAlignment.center
-                    view.addSubview(headerLabel)
-            return view
-        }
-            return nil
-    }
-    
 }
