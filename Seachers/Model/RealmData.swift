@@ -24,7 +24,7 @@ class favProductData: Object{
     @objc dynamic var name:String = ""
     @objc dynamic var product_image:String = ""
     @objc dynamic var url:String = ""
-    @objc dynamic var price:Int = 0
+    @objc dynamic var price:String = ""
 }
 
 class favHotelData: Object{
