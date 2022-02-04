@@ -14,8 +14,6 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     private var presenter:HomeViewPresenterInput!
     
-    private let itemColor: [UIColor] = [UIColor(red: 0.6, green: 0.6, blue: 1.0, alpha:1.0),UIColor(red: 1.2, green: 0.6, blue: 0.0, alpha:1.0),UIColor(red: 0.0, green: 1.0, blue: 0.6, alpha:1.0)]
-    
     func inject(presenter:HomeViewPresenterInput){
         self.presenter = presenter
     }
@@ -50,10 +48,12 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource{
         titleLabel.text = presenter.tableViewData[indexPath.row].goToSearchButtonName
         iconImage.image = UIImage(systemName: self.presenter.tableViewData[indexPath.row].iconStringID)
         iconImage.tintColor = .white
-        cirleColorView.backgroundColor = self.itemColor[indexPath.row]
+        
+        let rgb = presenter.requestColorType(indexPath: indexPath)
+        cirleColorView.backgroundColor = UIColor(red: rgb.r, green: rgb.g, blue: rgb.b, alpha: rgb.alpha)
         cirleColorView.layer.cornerRadius = 50
         
-        underLineView.backgroundColor? = self.itemColor[indexPath.row]
+        underLineView.backgroundColor? = UIColor(red: rgb.r, green: rgb.g, blue: rgb.b, alpha: rgb.alpha)
         
         return cell
     }
@@ -73,6 +73,7 @@ extension HomeViewController:HomeViewPresenterOutput{
     func setTableViewInfo() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.isScrollEnabled = false
     }
     
     func reloadTableView() {

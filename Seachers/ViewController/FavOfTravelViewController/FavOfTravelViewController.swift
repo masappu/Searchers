@@ -28,7 +28,7 @@ class FavOfTravelViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        presenter.viewwillAppear()
+        presenter.viewwillAppear(didSelectCell: tableView.indexPathForSelectedRow)
     }
     
 }
@@ -111,6 +111,9 @@ extension FavOfTravelViewController: FavOfTravelPresenterOutput{
         tableView.reloadData()
     }
     
+    func highlightDelete(indexPath:IndexPath){
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     
 }
 
