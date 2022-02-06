@@ -15,6 +15,7 @@ protocol FavOfTravelPresenterInput{
     func didSelectRowAt(indexPath: IndexPath)
     
     var favShopDataArray: [favHotelData] {get set}
+    var rgb: color{get}
     
 }
 
@@ -29,6 +30,7 @@ protocol FavOfTravelPresenterOutput{
 
 class FavOfTravelPresenter: FavOfTravelPresenterInput{
     
+    var rgb: color = ColorType(rawValue: "Travel")!.rgb
     var favShopDataArray: [favHotelData] = []
     private var view:FavOfTravelPresenterOutput!
     
