@@ -95,8 +95,7 @@ extension FavOfGourmandViewController: FavOfGourmandPresenterOutput{
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.separatorStyle = .none
-    }
+        tableView.separatorColor = UIColor(red: self.presenter.rgb.r, green: self.presenter.rgb.g, blue: self.presenter.rgb.b, alpha: self.presenter.rgb.alpha)    }
     
     func goToWebVC(url: String) {
         let storyboard = UIStoryboard(name: "WebView", bundle: nil)

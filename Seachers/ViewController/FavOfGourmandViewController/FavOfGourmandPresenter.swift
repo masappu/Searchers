@@ -15,6 +15,7 @@ protocol FavOfGourmandPresenterInput{
     func didSelectRowAt(indexPath: IndexPath)
     
     var favShopDataArray: [favShopData] {get set}
+    var rgb: color{get}
     
 }
 
@@ -30,6 +31,7 @@ protocol FavOfGourmandPresenterOutput{
 
 class FavOfGourmandPresenter: FavOfGourmandPresenterInput{
     
+    var rgb: color = ColorType(rawValue: "Gourmand")!.rgb
     var favShopDataArray: [favShopData] = []
     private var view:FavOfGourmandPresenterOutput!
     
