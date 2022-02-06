@@ -123,6 +123,7 @@ final class TravelSearchPresenter: TravelSearchPresenterInput{
         self.view.goMapView()
     }
     
+    
 }
 
 // MARK: - LocationModelOutput
@@ -132,7 +133,6 @@ extension TravelSearchPresenter:LocationModelOutput{
     func completedRequestLocaiton(request: CLLocationCoordinate2D) {
         self.searchData.placeData?.locaitonAtCurrent = request
     }
-    
     
     
 }

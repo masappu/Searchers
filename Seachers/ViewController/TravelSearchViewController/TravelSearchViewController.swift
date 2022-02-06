@@ -20,6 +20,7 @@ class TravelSearchViewController: UIViewController {
     private var datePickerCheckInShowing = false
     private var datePickerCheckOutShowing = false
 
+    
     func inject(presenter:TravelSearchPresenterInput){
         self.presenter = presenter
     }
@@ -76,6 +77,7 @@ extension TravelSearchViewController: PlaceSearchViewOutput{
         self.presenter.searchData.placeData = Data
         self.presenter.receiveData(Data: Data)
     }
+    
 }
 
 // MARK: - TravelSearchPresenterOutput

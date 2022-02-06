@@ -15,6 +15,7 @@ protocol FavOfNetShoppingPresenterInput{
     func didSelectRowAt(indexPath: IndexPath)
     
     var favProductDataArray: [favProductData] {get set}
+    var rgb: color{get}
 }
 
 protocol FavOfNetShoppingPresenterOutput{
@@ -29,6 +30,7 @@ protocol FavOfNetShoppingPresenterOutput{
 
 class FavOfNetShoppingPresenter: FavOfNetShoppingPresenterInput{
     
+    var rgb: color = ColorType(rawValue: "NetShopping")!.rgb
     var favProductDataArray: [favProductData] = []
     private var view:FavOfNetShoppingPresenterOutput!
     
