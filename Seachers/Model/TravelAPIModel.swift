@@ -36,11 +36,11 @@ struct Hotel:Codable{
 }
 
 struct PagingInfo:Codable{
-    var recordCount:Int
-    var pageCount:Int
-    var page:Int
-    var first:Int
-    var last:Int
+    var recordCount:Int?
+    var pageCount:Int?
+    var page:Int?
+    var first:Int?
+    var last:Int?
 }
 
 struct HotelBasicInfo:Codable{

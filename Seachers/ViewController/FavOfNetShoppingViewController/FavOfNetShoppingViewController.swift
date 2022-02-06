@@ -28,8 +28,7 @@ class FavOfNetShoppingViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        presenter.viewwillAppear()
+        presenter.viewwillAppear(didSelectCell: tableView.indexPathForSelectedRow)
     }
     
 }
@@ -41,16 +40,18 @@ extension FavOfNetShoppingViewController: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NetShoppingCell", for: indexPath) as! NetShoppingTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "favNetShoppingCell", for: indexPath)
         print("section：\(indexPath.section),row:\(indexPath.row)")
         
         let productDataArray = presenter.favProductDataArray
         
         
-        cell.ProductImage?.sd_setImage(with: URL(string: productDataArray[indexPath.row].product_image), completed: nil)
-        cell.NameLabel?.text = productDataArray[indexPath.row].name
-        cell.PriceLabel.text = String(productDataArray[indexPath.row].price)
-        cell.FavoriteButton.isHidden = true
+        let ProductImage = cell.contentView.viewWithTag(1) as! UIImageView
+        ProductImage.sd_setImage(with: URL(string: productDataArray[indexPath.row].product_image), completed: nil)
+        let NameLabel = cell.contentView.viewWithTag(2) as! UILabel
+        NameLabel.text? = productDataArray[indexPath.row].name
+        let PriceLabel = cell.contentView.viewWithTag(3) as! UILabel
+        PriceLabel.text? = "¥\(productDataArray[indexPath.row].price)"
         
         return cell
     }
@@ -110,6 +111,10 @@ extension FavOfNetShoppingViewController: FavOfNetShoppingPresenterOutput{
     
     func reloadTableView() {
         tableView.reloadData()
+    }
+    
+    func highlightDelete(indexPath:IndexPath){
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }

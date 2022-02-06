@@ -10,7 +10,7 @@ import RealmSwift
 
 protocol FavOfNetShoppingPresenterInput{
     
-    func viewwillAppear()
+    func viewwillAppear(didSelectCell indexPath:IndexPath?)
     func deleteCellButton(indexPath:IndexPath)
     func didSelectRowAt(indexPath: IndexPath)
     
@@ -23,6 +23,7 @@ protocol FavOfNetShoppingPresenterOutput{
     func reloadTableView()
     func deleteFavProduct(indexPath:IndexPath)
     func goToWebVC(url:String)
+    func highlightDelete(indexPath:IndexPath)
     
 }
 
@@ -35,7 +36,10 @@ class FavOfNetShoppingPresenter: FavOfNetShoppingPresenterInput{
         self.view = view
     }
     
-    func viewwillAppear() {
+    func viewwillAppear(didSelectCell indexPath:IndexPath?) {
+        if let selectRow = indexPath{
+            self.view.highlightDelete(indexPath: selectRow)
+        }
         let realm = try! Realm()
         let favProductData = realm.objects(favProductData.self)
         for item in favProductData{

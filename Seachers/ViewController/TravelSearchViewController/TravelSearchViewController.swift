@@ -41,7 +41,6 @@ class TravelSearchViewController: UIViewController {
     
     
     @IBAction func goMapView(_ sender: Any) {
-        self.presenter.buttonAnimation.touchUpInside(sender: sender as! UIButton)
         self.presenter.doneButton()
     }
     
@@ -54,22 +53,18 @@ class TravelSearchViewController: UIViewController {
     }
     
     @objc func roomPlusButton(_ sender: Any){
-        self.presenter.buttonAnimation.touchUpInside(sender: sender as! UIButton)
         self.presenter.roomPlusPushButton()
     }
     
     @objc func roomMinusButton(_ sender:Any){
-        self.presenter.buttonAnimation.touchUpInside(sender: sender as! UIButton)
         self.presenter.roomMinusPushButton()
     }
     
     @objc func memberPlusButton(_ sender:Any){
-        self.presenter.buttonAnimation.touchUpInside(sender: sender as! UIButton)
         self.presenter.memberPlusPushButton()
     }
     
     @objc func memberMinusButton(_ sender:Any){
-        self.presenter.buttonAnimation.touchUpInside(sender: sender as! UIButton)
         self.presenter.memberMinusPushButton()
     }
 
@@ -93,8 +88,8 @@ extension TravelSearchViewController: TravelSearchPresenterOutput{
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.separatorColor = .green
-        
+        tableView.separatorColor = UIColor(red: self.presenter.rgb.r, green: self.presenter.rgb.g, blue: self.presenter.rgb.b, alpha: self.presenter.rgb.alpha)
+
         tableView.register(UINib(nibName: "SelectDestinationCell", bundle: nil), forCellReuseIdentifier: "selectDestinationCell")
         tableView.register(UINib(nibName: "CheckInCell", bundle: nil), forCellReuseIdentifier: "checkInCell")
         tableView.register(UINib(nibName: "CheckOutCell", bundle: nil), forCellReuseIdentifier: "checkOutCell")
@@ -105,7 +100,7 @@ extension TravelSearchViewController: TravelSearchPresenterOutput{
     func setNavigationControllerInfo() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .green
+        appearance.backgroundColor = UIColor(red: self.presenter.rgb.r, green: self.presenter.rgb.g, blue: self.presenter.rgb.b, alpha: self.presenter.rgb.alpha)
         self.navigationItem.standardAppearance = appearance
         self.navigationItem.scrollEdgeAppearance = appearance
         self.navigationItem.compactAppearance = appearance

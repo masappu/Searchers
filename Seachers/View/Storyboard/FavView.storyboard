@@ -140,13 +140,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="gTH-TY-gUc">
                                                     <rect key="frame" x="144" y="9" width="250" height="107.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="蕨/居酒屋" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOw-PX-DL7">
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="蕨/居酒屋" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOw-PX-DL7">
                                                             <rect key="frame" x="0.0" y="0.0" width="250" height="14.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="浜焼き　餃子道場　蕨東口店" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQ6-N1-wkw">
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="浜焼き　餃子道場　蕨東口店" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQ6-N1-wkw">
                                                             <rect key="frame" x="0.0" y="19.5" width="250" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <nil key="textColor"/>
@@ -248,19 +248,71 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1Kq-Sh-GED">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1Kq-Sh-GED">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="favNetShoppingCell" rowHeight="140" id="hqd-oK-H9v">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="140"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hqd-oK-H9v" id="cf4-RB-hUM">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="mX1-Gk-rBT">
+                                                    <rect key="frame" x="148" y="21" width="250" height="110"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ロレックス　デイトナ　中古　プレミア　世界で１０本のみの流通" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="r3Y-hb-1Im">
+                                                            <rect key="frame" x="0.0" y="0.0" width="250" height="79.5"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥7,800,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vf8-cQ-I7W">
+                                                            <rect key="frame" x="0.0" y="88.5" width="250" height="21.5"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j2a-83-9qs">
+                                                    <rect key="frame" x="25" y="21" width="100" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="100" id="GqF-h7-IfZ"/>
+                                                        <constraint firstAttribute="width" constant="100" id="poH-3R-HTr"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X6n-2U-tFh">
+                                                    <rect key="frame" x="18" y="137" width="378" height="1"/>
+                                                    <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="uic-gB-1kz"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="mX1-Gk-rBT" firstAttribute="leading" secondItem="j2a-83-9qs" secondAttribute="trailing" constant="23" id="1OJ-oC-Zeg"/>
+                                                <constraint firstAttribute="bottom" secondItem="mX1-Gk-rBT" secondAttribute="bottom" constant="9" id="40s-cj-y0V"/>
+                                                <constraint firstItem="X6n-2U-tFh" firstAttribute="leading" secondItem="cf4-RB-hUM" secondAttribute="leading" constant="18" id="7dd-vk-BaK"/>
+                                                <constraint firstAttribute="bottom" secondItem="X6n-2U-tFh" secondAttribute="bottom" constant="2" id="HPv-7F-HcU"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="j2a-83-9qs" secondAttribute="bottom" constant="8" id="Ohy-as-iJp"/>
+                                                <constraint firstItem="X6n-2U-tFh" firstAttribute="top" secondItem="mX1-Gk-rBT" secondAttribute="bottom" constant="6" id="YXo-vn-ECk"/>
+                                                <constraint firstAttribute="trailing" secondItem="mX1-Gk-rBT" secondAttribute="trailing" constant="16" id="azB-6q-9kr"/>
+                                                <constraint firstItem="j2a-83-9qs" firstAttribute="top" secondItem="cf4-RB-hUM" secondAttribute="topMargin" constant="10" id="flK-ra-YiK"/>
+                                                <constraint firstAttribute="trailing" secondItem="X6n-2U-tFh" secondAttribute="trailing" constant="18" id="m0J-a4-Rfi"/>
+                                                <constraint firstItem="mX1-Gk-rBT" firstAttribute="top" secondItem="cf4-RB-hUM" secondAttribute="top" constant="21" id="myP-Yg-AsL"/>
+                                                <constraint firstItem="j2a-83-9qs" firstAttribute="leading" secondItem="cf4-RB-hUM" secondAttribute="leadingMargin" constant="5" id="vHE-3h-gem"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KHJ-w6-FXc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="KHJ-w6-FXc" firstAttribute="bottom" secondItem="1Kq-Sh-GED" secondAttribute="bottom" id="ZTC-Jf-dEA"/>
-                            <constraint firstItem="1Kq-Sh-GED" firstAttribute="top" secondItem="KHJ-w6-FXc" secondAttribute="top" id="boT-fI-fI0"/>
-                            <constraint firstItem="1Kq-Sh-GED" firstAttribute="trailing" secondItem="KHJ-w6-FXc" secondAttribute="trailing" id="cPQ-F3-d5h"/>
-                            <constraint firstItem="1Kq-Sh-GED" firstAttribute="leading" secondItem="KHJ-w6-FXc" secondAttribute="leading" id="eU1-NP-gGy"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="ネットショッピング" selectedImage="cart" catalog="system" id="nEG-Rq-GPM"/>
                     <navigationItem key="navigationItem" id="tcX-iG-Ew7"/>
@@ -270,7 +322,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="egZ-F4-KmL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="786.95652173913049" y="-346.20535714285711"/>
+            <point key="canvasLocation" x="1697.1014492753625" y="-346.20535714285711"/>
         </scene>
         <!--Root Of Fav View Controller-->
         <scene sceneID="1tG-pb-hd0">
@@ -303,6 +355,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

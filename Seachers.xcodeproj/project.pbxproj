@@ -70,6 +70,7 @@
 		87A4977E278D65F800D1D33A /* MemberCountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A4977C278D65F800D1D33A /* MemberCountCell.swift */; };
 		87A4977F278D65F800D1D33A /* MemberCountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87A4977D278D65F800D1D33A /* MemberCountCell.xib */; };
 		87A49782278D669400D1D33A /* GourmandSearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A49781278D669400D1D33A /* GourmandSearchPresenter.swift */; };
+		87D2CDBD27AD4D7B0032B3A6 /* ColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D2CDBC27AD4D7B0032B3A6 /* ColorModel.swift */; };
 		87E10C61278A967F005AAA4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E10C60278A967F005AAA4A /* AppDelegate.swift */; };
 		87E10C63278A967F005AAA4A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E10C62278A967F005AAA4A /* SceneDelegate.swift */; };
 		87E10C65278A967F005AAA4A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E10C64278A967F005AAA4A /* HomeViewController.swift */; };
@@ -643,6 +644,7 @@
 		87A4977C278D65F800D1D33A /* MemberCountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCountCell.swift; sourceTree = "<group>"; };
 		87A4977D278D65F800D1D33A /* MemberCountCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemberCountCell.xib; sourceTree = "<group>"; };
 		87A49781278D669400D1D33A /* GourmandSearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GourmandSearchPresenter.swift; sourceTree = "<group>"; };
+		87D2CDBC27AD4D7B0032B3A6 /* ColorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorModel.swift; sourceTree = "<group>"; };
 		87E10C5D278A967F005AAA4A /* Seachers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seachers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87E10C60278A967F005AAA4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87E10C62278A967F005AAA4A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -1273,6 +1275,7 @@
 				87717DB3278DDA0200AD966C /* PlaceSearchDataModel.swift */,
 				87717DB5278DDC8F00AD966C /* DateModel.swift */,
 				22E48DF427A2791E008DF640 /* TravelSearchDataModel.swift */,
+				87D2CDBC27AD4D7B0032B3A6 /* ColorModel.swift */,
 			);
 			path = struct;
 			sourceTree = "<group>";
@@ -1729,6 +1732,7 @@
 				87717DB4278DDA0200AD966C /* PlaceSearchDataModel.swift in Sources */,
 				86E8F1D02797FA0300AD667B /* RealmData.swift in Sources */,
 				871D97562798237E00AA05F3 /* ChoosingGenreCell.swift in Sources */,
+				87D2CDBD27AD4D7B0032B3A6 /* ColorModel.swift in Sources */,
 				86514DF827914CF4003839DF /* TravelAPIModel.swift in Sources */,
 				87A49782278D669400D1D33A /* GourmandSearchPresenter.swift in Sources */,
 				222308C8279E7DE800D561AF /* TravelSearchPresenter.swift in Sources */,
