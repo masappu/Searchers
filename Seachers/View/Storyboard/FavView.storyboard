@@ -102,7 +102,6 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="トラベル" selectedImage="airplane" catalog="system" id="DXp-47-wLv"/>
-
                     <navigationItem key="navigationItem" id="D5r-av-vkS"/>
                     <connections>
                         <outlet property="tableView" destination="CGj-jr-ggZ" id="h9P-kD-IVI"/>
@@ -110,7 +109,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1697.1014492753625" y="1071.4285714285713"/>
+            <point key="canvasLocation" x="787" y="1028"/>
         </scene>
         <!--グルメ-->
         <scene sceneID="gKC-Fu-5hs">
@@ -239,7 +238,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZIf-uD-Dof" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1697.1014492753625" y="326.78571428571428"/>
+            <point key="canvasLocation" x="787" y="327"/>
         </scene>
         <!--ネットショッピング-->
         <scene sceneID="ieS-uH-5gp">
