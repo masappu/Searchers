@@ -28,11 +28,7 @@ class FavOfNetShoppingViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        presenter.viewwillAppear()
-        if let indexPathForSelectedRow = tableView.indexPathForSelectedRow { //ハイライト解除
-            tableView.deselectRow(at: indexPathForSelectedRow, animated: true)
-                }
+        presenter.viewwillAppear(didSelectCell: tableView.indexPathForSelectedRow)
     }
     
 }
@@ -115,6 +111,10 @@ extension FavOfNetShoppingViewController: FavOfNetShoppingPresenterOutput{
     
     func reloadTableView() {
         tableView.reloadData()
+    }
+    
+    func highlightDelete(indexPath:IndexPath){
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }

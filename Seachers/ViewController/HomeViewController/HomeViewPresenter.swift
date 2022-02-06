@@ -12,6 +12,7 @@ protocol HomeViewPresenterInput{
     func viewDidLoad()
     func didSelectCell(indexPath:IndexPath)
     func viewWillAppear(indexPath:IndexPath?)
+    func requestColorType(indexPath:IndexPath) -> color
 }
 
 protocol HomeViewPresenterOutput{
@@ -73,6 +74,16 @@ class HomeViewPresenter:HomeViewPresenterInput{
             view.transitionToGourmandSearchVC()
         }else if indexPath.row == 2{
             view.transitionToTravelSearchVC()
+        }
+    }
+    
+    func requestColorType(indexPath: IndexPath) -> color {
+        if indexPath.row == 0{
+            return ColorType(rawValue: "NetShopping")!.rgb
+        }else if indexPath.row == 1{
+            return ColorType(rawValue: "Gourmand")!.rgb
+        }else{
+            return ColorType(rawValue: "Travel")!.rgb
         }
     }
 }

@@ -28,7 +28,7 @@ class FavOfGourmandViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        presenter.viewwillAppear()
+        presenter.viewwillAppear(didSelectCell: tableView.indexPathForSelectedRow)
     }
     
 }
@@ -110,7 +110,10 @@ extension FavOfGourmandViewController: FavOfGourmandPresenterOutput{
     }
     
     func reloadTableView() {
-        
+        self.tableView.reloadData()
     }
     
+    func highlightDelete(indexPath:IndexPath){
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
