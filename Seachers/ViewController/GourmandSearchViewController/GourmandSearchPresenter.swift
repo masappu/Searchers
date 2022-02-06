@@ -14,8 +14,8 @@ protocol GourmandSearchInput{
     //検索条件を受け渡す変数
     var searchData:GourmandSearchDataModel {get set}
     
-    //ボタンアニメーションの情報を保持する
-    var buttonAnimation:ButtonAnimatedModel {get}
+    //イメージカラーをの情報を保持する
+    var rgb:color {get}
     
     //viewの構築のタイミングを通知する
     func loadView()
@@ -84,12 +84,13 @@ protocol GourmandSearchOutput{
 
 final class GourmandSearchPresenter: GourmandSearchInput{
     
+    
     private var view:GourmandSearchOutput
     private var model:LocationModelInput!
     private let previousVCString = "GourmandSearchViewController"
     var searchData: GourmandSearchDataModel = GourmandSearchDataModel()
-    var buttonAnimation = ButtonAnimatedModel(animatType: .DoneSearchButton)
-    
+    var rgb: color = ColorType(rawValue: "Gourmand")!.rgb
+
     init(view:GourmandSearchOutput){
         self.view = view
         let model = LocationModel(presenter: self)

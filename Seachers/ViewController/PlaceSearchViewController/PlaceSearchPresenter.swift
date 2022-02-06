@@ -7,14 +7,13 @@
 
 import Foundation
 import CoreLocation
-import UIKit
 
 protocol PlaceSearchPresenterInput{
     
     var placeData:PlaceSearchDataModel {get set}
     var buttonAnimation:ButtonAnimatedModel{get}
-    var pickerList:[String] {get set}
-    var color:UIColor {get set}
+    var pickerList:[String] {get}
+    var rgb:color {get}
     func loadView(transitionSourceName:String)
     func searchButton()
     func searchData(name:String,place: CLLocationCoordinate2D)
@@ -38,12 +37,26 @@ protocol PlaceSearchPresenterOutput{
 
 final class PlaceSearchPresenter: PlaceSearchPresenterInput{
     
+    
     private var view: PlaceSearchPresenterOutput!
+    private var transitionSourceName: String?
     var placeData: PlaceSearchDataModel
-    var buttonAnimation = ButtonAnimatedModel(animatType: .countCellButton)
-    var pickerList = [String]()
+    var buttonAnimation = ButtonAnimatedModel(animatType: .DoneButton)
+    var pickerList: [String]{
+        if self.transitionSourceName == "TravelSearch"{
+            return ["1","2","3"]
+        }else{
+            return ["300","500","1000","2000","3000"]
+        }
+    }
     var unit = String()
-    var color = UIColor()
+    var rgb: color{
+        if self.transitionSourceName == "TravelSearch"{
+            return ColorType(rawValue: "Travel")!.rgb
+        }else{
+            return ColorType(rawValue: "Gourmand")!.rgb
+        }
+    }
     
     
     init(view:PlaceSearchPresenterOutput, initialValue:String){
@@ -52,13 +65,7 @@ final class PlaceSearchPresenter: PlaceSearchPresenterInput{
     }
     
     func loadView(transitionSourceName:String) {
-        if transitionSourceName == "TravelSearch"{
-            self.pickerList = ["1","2","3"]
-            self.color = .green
-        }else if transitionSourceName == "Gourmand"{
-            self.pickerList = ["300","500","1000","2000","3000"]
-            self.color = .orange
-        }
+        self.transitionSourceName = transitionSourceName
         self.view.setButton()
         self.view.setTableViewInfo()
         self.view.setNavigationControllerInfo()

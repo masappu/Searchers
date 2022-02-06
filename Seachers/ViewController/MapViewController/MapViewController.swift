@@ -125,7 +125,6 @@ extension MapViewController: UICollectionViewDataSource{
             return cell
         }
     }
-
 }
 
 extension MapViewController: UICollectionViewDelegateFlowLayout{
