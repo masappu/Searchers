@@ -10,7 +10,7 @@ import RealmSwift
 
 protocol FavOfTravelPresenterInput{
     
-    func viewwillAppear()
+    func viewwillAppear(didSelectCell indexPath:IndexPath?)
     func deleteCellButton(indexPath:IndexPath)
     func didSelectRowAt(indexPath: IndexPath)
     
@@ -24,7 +24,7 @@ protocol FavOfTravelPresenterOutput{
     func reloadTableView()
     func deleteFavShop(indexPath:IndexPath)
     func goToWebVC(url:String)
-    
+    func highlightDelete(indexPath:IndexPath)
 }
 
 class FavOfTravelPresenter: FavOfTravelPresenterInput{
@@ -36,7 +36,10 @@ class FavOfTravelPresenter: FavOfTravelPresenterInput{
         self.view = view
     }
     
-    func viewwillAppear() {
+    func viewwillAppear(didSelectCell indexPath:IndexPath?) {
+        if let selectRow = indexPath{
+            self.view.highlightDelete(indexPath: selectRow)
+        }
         let realm = try! Realm()
         let favShopData = realm.objects(favHotelData.self)
         for favShop in favShopData{
@@ -49,7 +52,7 @@ class FavOfTravelPresenter: FavOfTravelPresenterInput{
         let realm = try! Realm()
         let selectedShopData = favShopDataArray[indexPath.row]
         
-        let registeredFavShopData = realm.objects(favShopData.self).filter("hotelName == '\(selectedShopData.hotelName)'")
+        let registeredFavShopData = realm.objects(favHotelData.self).filter("hotelName == '\(selectedShopData.hotelName)'")
         
         self.favShopDataArray.remove(at: indexPath.row)
         try! realm.write {

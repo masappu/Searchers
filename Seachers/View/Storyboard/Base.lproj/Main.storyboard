@@ -31,7 +31,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="146"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ef5-Gt-C0i">
-                                                    <rect key="frame" x="150" y="48" width="229" height="54"/>
+                                                    <rect key="frame" x="150" y="48" width="229" height="57"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="229" id="0IE-5p-ORD"/>
                                                         <constraint firstAttribute="height" constant="54" id="rrX-ax-jif"/>
@@ -53,20 +53,20 @@
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 </view>
                                                 <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xod-mh-xCt">
-                                                    <rect key="frame" x="150" y="104" width="218" height="5"/>
+                                                    <rect key="frame" x="150" y="109" width="218" height="2"/>
                                                     <color key="backgroundColor" systemColor="systemBlueColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="5" id="To3-DH-43F"/>
+                                                        <constraint firstAttribute="height" constant="2" id="r4J-F4-O87"/>
                                                         <constraint firstAttribute="width" constant="218" id="tj0-nm-iUF"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="xod-mh-xCt" secondAttribute="bottom" constant="26" id="Fp0-Sv-qaA"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="xod-mh-xCt" secondAttribute="bottom" constant="24" id="Fp0-Sv-qaA"/>
                                                 <constraint firstItem="Ef5-Gt-C0i" firstAttribute="leading" secondItem="a5e-2g-jHn" secondAttribute="leadingMargin" constant="130" id="HK4-dh-NfF"/>
-                                                <constraint firstItem="xod-mh-xCt" firstAttribute="top" secondItem="Ef5-Gt-C0i" secondAttribute="bottom" constant="2" id="Ifq-KM-Ytd"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Ef5-Gt-C0i" secondAttribute="trailing" constant="15" id="dih-Xn-pIu"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="xod-mh-xCt" secondAttribute="trailing" constant="26" id="e0W-gG-SH4"/>
+                                                <constraint firstItem="xod-mh-xCt" firstAttribute="top" secondItem="Ef5-Gt-C0i" secondAttribute="bottom" constant="4" id="mKb-Z0-tSg"/>
                                                 <constraint firstItem="xod-mh-xCt" firstAttribute="leading" secondItem="a5e-2g-jHn" secondAttribute="leadingMargin" constant="130" id="sg1-Vj-xGl"/>
                                                 <constraint firstItem="Ef5-Gt-C0i" firstAttribute="top" secondItem="a5e-2g-jHn" secondAttribute="topMargin" constant="37" id="y37-9e-ekN"/>
                                             </constraints>

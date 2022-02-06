@@ -11,6 +11,8 @@ protocol HomeViewPresenterInput{
     var tableViewData:[TableViewData] {get set}
     func viewDidLoad()
     func didSelectCell(indexPath:IndexPath)
+    func viewWillAppear(indexPath:IndexPath?)
+    func requestColorType(indexPath:IndexPath) -> color
 }
 
 protocol HomeViewPresenterOutput{
@@ -19,6 +21,7 @@ protocol HomeViewPresenterOutput{
     func trasitonToNetShoppingVC()
     func transitionToGourmandSearchVC()
     func transitionToTravelSearchVC()
+    func highlightDelete(indexPath:IndexPath)
 }
 
 struct TableViewData{
@@ -53,6 +56,12 @@ class HomeViewPresenter:HomeViewPresenterInput{
         self.view = view
     }
     
+    func viewWillAppear(indexPath:IndexPath?) {
+        if let selectedRow = indexPath{
+            view.highlightDelete(indexPath: selectedRow)
+        }
+    }
+    
     func viewDidLoad() {
         view.setTableViewInfo()
         view.reloadTableView()
@@ -65,6 +74,16 @@ class HomeViewPresenter:HomeViewPresenterInput{
             view.transitionToGourmandSearchVC()
         }else if indexPath.row == 2{
             view.transitionToTravelSearchVC()
+        }
+    }
+    
+    func requestColorType(indexPath: IndexPath) -> color {
+        if indexPath.row == 0{
+            return ColorType(rawValue: "NetShopping")!.rgb
+        }else if indexPath.row == 1{
+            return ColorType(rawValue: "Gourmand")!.rgb
+        }else{
+            return ColorType(rawValue: "Travel")!.rgb
         }
     }
 }

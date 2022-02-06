@@ -14,7 +14,9 @@ class RootOfFavViewController: UITabBarController {
         
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .systemYellow
+        let rgb = ColorType(rawValue: "Fav")?.rgb
+        appearance.backgroundColor = UIColor(red: rgb!.r, green: rgb!.g, blue: rgb!.b, alpha: rgb!.alpha)
+        
         
         self.navigationItem.standardAppearance = appearance
         self.navigationItem.scrollEdgeAppearance = appearance
