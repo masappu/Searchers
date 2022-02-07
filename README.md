@@ -29,7 +29,7 @@
 - iOS 15.2
 - MVP
 
-＜Posd＞  
+＜Pods＞  
 - GoogleMaps
 - GooglePlaces
 - SwiftyJSON
