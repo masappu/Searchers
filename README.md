@@ -11,15 +11,15 @@
 ＜概要＞  
 ネット通販、グルメ、宿の検索機能を１ツールに集約したアプリです  
 <p>
-<img src="https://user-images.githubusercontent.com/91421375/152862410-ba44163e-925a-4267-bf7a-241a73738304.png" width=180>
-<img src="https://user-images.githubusercontent.com/91421375/152862705-dc6231fc-7ade-4750-bb15-20783e0c23d2.png" width=180>
-<img src="https://user-images.githubusercontent.com/91421375/152862639-d9ce62e8-386a-48d8-b60c-a9ea62748d64.png" width=180>
+<img src="https://user-images.githubusercontent.com/91421375/152862410-ba44163e-925a-4267-bf7a-241a73738304.png" width=180>&emsp;
+<img src="https://user-images.githubusercontent.com/91421375/152862705-dc6231fc-7ade-4750-bb15-20783e0c23d2.png" width=180>&emsp;
+<img src="https://user-images.githubusercontent.com/91421375/152862639-d9ce62e8-386a-48d8-b60c-a9ea62748d64.png" width=180>&emsp;
 <img src="https://user-images.githubusercontent.com/91421375/152862557-84c3284a-2e81-4ee6-81eb-e112fab24f50.png" width=180>
 </p>  
 
 # 目次  
 - [使用技術](https://github.com/masappu/Searchers/tree/master#%E4%BD%BF%E7%94%A8%E6%8A%80%E8%A1%93)
-- [機能一覧](https://github.com/masappu/Searchers/new/master?readme=1#%E6%A9%9F%E8%83%BD%E4%B8%80%E8%A6%A7)
+- [機能一覧](https://github.com/masappu/Searchers/tree/master#%E6%A9%9F%E8%83%BD%E4%B8%80%E8%A6%A7)
 - [設計](https://github.com/masappu/Searchers/new/master?readme=1#%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3)
 
 
