@@ -69,4 +69,4 @@
 
 その他資料  
 - [画面イベント定義書](https://docs.google.com/spreadsheets/d/18DRXvEmEQuNkz8gr_RiQoSqudhwqNlAA-f7Nf1lmhwU/edit?usp=sharing)
-- [MVP実装における定義書](https://docs.google.com/spreadsheets/d/18DRXvEmEQuNkz8gr_RiQoSqudhwqNlAA-f7Nf1lmhwU/edit?usp=sharing)
+- [MVP実装における定義書](https://docs.google.com/spreadsheets/d/18DRXvEmEQuNkz8gr_RiQoSqudhwqNlAA-f7Nf1lmhwU/edit#gid=2067322156)
