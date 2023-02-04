@@ -6,11 +6,24 @@ target 'Seachers' do
   use_frameworks!
 
   # Pods for Seachers
-pod 'GoogleMaps'
-pod 'GooglePlaces'
+pod 'GoogleMaps', '6.0.1'
+pod 'GooglePlaces', '6.0.0'
 pod 'SwiftyJSON'
-pod 'Alamofire'
-pod 'SDWebImage'
+pod 'Alamofire', '5.5.0'
+pod 'SDWebImage', '5.12.2'
 pod 'RealmSwift'
 pod 'VideoSplashKit'
+
+disableGenerics = ['RealmSwift']
+
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+            if disableGenerics.include?(target.name)
+                config.build_settings['OTHER_SWIFT_FLAGS'] = '-Xfrontend -requirement-machine-inferred-signatures=off'
+            end
+        end
+    end
+end
+
 end
